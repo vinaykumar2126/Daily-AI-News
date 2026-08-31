@@ -1,0 +1,5 @@
+anthropic[vertex]>=0.40.0
+google-genai>=0.3.0
+google-cloud-texttospeech>=2.16.0
+google-cloud-storage>=2.16.0
+beautifulsoup4>=4.12.0
