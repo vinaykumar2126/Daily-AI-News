@@ -62,17 +62,24 @@ class Config:
         self.tldr_subject_contains = os.environ.get("TLDR_SUBJECT_CONTAINS", "TLDR AI")
         self.imap_lookback_days = int(os.environ.get("IMAP_LOOKBACK_DAYS", "3"))
 
-        # LLM: Vertex AI first, Anthropic API as fallback.
-        self.use_vertex = os.environ.get("USE_VERTEX", "1") == "1"
+        # LLM provider: "gemini" (Vertex Gemini) or "claude" (Vertex Anthropic + API fallback).
+        self.llm_provider = os.environ.get("LLM_PROVIDER", "gemini").lower()
         self.gcp_project = os.environ.get(
             "GOOGLE_CLOUD_PROJECT", os.environ.get("GCP_PROJECT", "")
         )
+
+        # Claude on Vertex AI
+        self.use_vertex = os.environ.get("USE_VERTEX", "1") == "1"
         self.vertex_region = os.environ.get("VERTEX_REGION", "us-east5")
         self.vertex_model = os.environ.get("VERTEX_MODEL", "claude-haiku-4-5@20251001")
         self.anthropic_api_key = os.environ.get("ANTHROPIC_API_KEY", "")
         self.anthropic_model = os.environ.get(
             "ANTHROPIC_MODEL", "claude-haiku-4-5-20251001"
         )
+
+        # Gemini on Vertex AI
+        self.gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+        self.gemini_region = os.environ.get("GEMINI_REGION", "us-central1")
 
         # Text-to-Speech
         self.tts_language = os.environ.get("TTS_LANGUAGE", "en-US")
@@ -201,6 +208,25 @@ def fetch_latest_tldr(cfg: Config) -> str | None:
 def build_prompt(source: str) -> str:
     template = Path(__file__).with_name("prompt_template.md").read_text()
     return template.replace("{{SOURCE}}", source)
+
+
+def rewrite(cfg: Config, source: str) -> str:
+    """Dispatch to the configured LLM provider."""
+    if cfg.llm_provider == "gemini":
+        return rewrite_with_gemini(cfg, source)
+    return rewrite_with_claude(cfg, source)
+
+
+def rewrite_with_gemini(cfg: Config, source: str) -> str:
+    from google import genai
+
+    prompt = build_prompt(source)
+    client = genai.Client(
+        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
+    )
+    log.info("Rewriting via Vertex Gemini model %s", cfg.gemini_model)
+    resp = client.models.generate_content(model=cfg.gemini_model, contents=prompt)
+    return resp.text.strip()
 
 
 def rewrite_with_claude(cfg: Config, source: str) -> str:
@@ -355,7 +381,7 @@ def main() -> int:
         log.info("No source material today — nothing to send. Exiting cleanly.")
         return 0
 
-    script = rewrite_with_claude(cfg, source)
+    script = rewrite(cfg, source)
     word_count = len(script.split())
     log.info("Generated briefing script (%d words)", word_count)
 
