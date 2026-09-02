@@ -77,7 +77,7 @@ gcloud run jobs deploy "$JOB_NAME" \
   --tasks=1 \
   --max-retries=1 \
   --task-timeout=600s \
-  --set-env-vars="GMAIL_ADDRESS=${GMAIL_ADDRESS},RECIPIENT=${RECIPIENT},TLDR_SENDER=${TLDR_SENDER},LLM_PROVIDER=gemini,GEMINI_MODEL=gemini-2.5-flash,GEMINI_REGION=us-central1,GOOGLE_CLOUD_PROJECT=${PROJECT_ID},TTS_VOICE=${TTS_VOICE}" \
+  --set-env-vars="GMAIL_ADDRESS=${GMAIL_ADDRESS},RECIPIENT=${RECIPIENT},TLDR_SENDER=${TLDR_SENDER},GEMINI_MODEL=gemini-2.5-flash,GEMINI_REGION=us-central1,GOOGLE_CLOUD_PROJECT=${PROJECT_ID},TTS_VOICE=${TTS_VOICE}" \
   --set-secrets="$SECRET_FLAGS"
 
 echo ">> Creating/updating Cloud Scheduler trigger: $SCHEDULER_NAME"
