@@ -13,7 +13,7 @@ INSTRUCTIONS:
    Use natural spoken transitions ("Next up...", "Speaking of...", "Here's an interesting one...").
 3. Prioritize by relevance to a working AI/ML engineer: model releases, infra/inference
    research, and competitive moves between labs (Anthropic, OpenAI, Google, Meta, etc.) matter
-   most. Funding news, minor tool launches, and pure business stories get one line each or a
+   most. Funding news, minor tool launches, Layoffs and pure business stories get one line each or a
    quick mention in a "quick hits" section at the end — don't cut them entirely, just don't
    dwell.
 4. For anything technical (benchmarks, architecture, inference optimizations), briefly explain

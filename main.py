@@ -3,8 +3,7 @@
 Runs as a Cloud Run Job (triggered daily by Cloud Scheduler):
 
   1. Fetch the latest TLDR AI newsletter from Gmail over IMAP.
-  2. Rewrite it into a spoken-word briefing with Claude Haiku (Vertex AI, with an
-     Anthropic-API fallback).
+  2. Rewrite it into a spoken-word briefing with Gemini on Vertex AI.
   3. Synthesize audio with Google Cloud Text-to-Speech (MP3).
   4. Email the MP3 (script in the body) back to the user over Gmail SMTP.
   5. Optionally archive the script + audio to a GCS bucket.
@@ -62,17 +61,12 @@ class Config:
         self.tldr_subject_contains = os.environ.get("TLDR_SUBJECT_CONTAINS", "TLDR AI")
         self.imap_lookback_days = int(os.environ.get("IMAP_LOOKBACK_DAYS", "3"))
 
-        # LLM: Vertex AI first, Anthropic API as fallback.
-        self.use_vertex = os.environ.get("USE_VERTEX", "1") == "1"
+        # LLM: Gemini on Vertex AI
         self.gcp_project = os.environ.get(
             "GOOGLE_CLOUD_PROJECT", os.environ.get("GCP_PROJECT", "")
         )
-        self.vertex_region = os.environ.get("VERTEX_REGION", "us-east5")
-        self.vertex_model = os.environ.get("VERTEX_MODEL", "claude-haiku-4-5@20251001")
-        self.anthropic_api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-        self.anthropic_model = os.environ.get(
-            "ANTHROPIC_MODEL", "claude-haiku-4-5-20251001"
-        )
+        self.gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+        self.gemini_region = os.environ.get("GEMINI_REGION", "us-central1")
 
         # Text-to-Speech
         self.tts_language = os.environ.get("TTS_LANGUAGE", "en-US")
@@ -196,45 +190,24 @@ def fetch_latest_tldr(cfg: Config) -> str | None:
 
 
 # --------------------------------------------------------------------------- #
-# Step 2: rewrite with Claude
+# Step 2: rewrite with Gemini
 # --------------------------------------------------------------------------- #
 def build_prompt(source: str) -> str:
     template = Path(__file__).with_name("prompt_template.md").read_text()
     return template.replace("{{SOURCE}}", source)
 
 
-def rewrite_with_claude(cfg: Config, source: str) -> str:
+def rewrite(cfg: Config, source: str) -> str:
+    """Rewrite the newsletter into a spoken-word briefing via Vertex Gemini."""
+    from google import genai
+
     prompt = build_prompt(source)
-
-    if cfg.use_vertex:
-        try:
-            from anthropic import AnthropicVertex
-
-            client = AnthropicVertex(
-                project_id=cfg.gcp_project, region=cfg.vertex_region
-            )
-            log.info("Rewriting via Vertex AI model %s", cfg.vertex_model)
-            resp = client.messages.create(
-                model=cfg.vertex_model,
-                max_tokens=2000,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            return resp.content[0].text.strip()
-        except Exception as exc:  # noqa: BLE001
-            if not cfg.anthropic_api_key:
-                raise
-            log.warning("Vertex path failed (%s); falling back to Anthropic API", exc)
-
-    from anthropic import Anthropic
-
-    client = Anthropic(api_key=cfg.anthropic_api_key)
-    log.info("Rewriting via Anthropic API model %s", cfg.anthropic_model)
-    resp = client.messages.create(
-        model=cfg.anthropic_model,
-        max_tokens=2000,
-        messages=[{"role": "user", "content": prompt}],
+    client = genai.Client(
+        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
     )
-    return resp.content[0].text.strip()
+    log.info("Rewriting via Vertex Gemini model %s", cfg.gemini_model)
+    resp = client.models.generate_content(model=cfg.gemini_model, contents=prompt)
+    return resp.text.strip()
 
 
 # --------------------------------------------------------------------------- #
@@ -355,7 +328,7 @@ def main() -> int:
         log.info("No source material today — nothing to send. Exiting cleanly.")
         return 0
 
-    script = rewrite_with_claude(cfg, source)
+    script = rewrite(cfg, source)
     word_count = len(script.split())
     log.info("Generated briefing script (%d words)", word_count)
 
