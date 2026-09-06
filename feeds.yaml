@@ -1,0 +1,62 @@
+# The digest catalog. Each feed becomes one spoken segment, in `order`.
+# A feed can aggregate several sources; their stories are merged, then curated.
+# Add a new topic by adding a feed here — no code changes needed.
+
+feeds:
+  - name: "AI & Tech"
+    order: 1
+    enabled: true
+    length_budget_words: 450
+    max_stories: 8
+    prompt: prompts/ai_news.md
+    interests: ["AI", "agent", "LLM", "model", "open source", "tool", "launch",
+                "release", "inference", "GPU", "benchmark", "Anthropic", "OpenAI",
+                "Google", "Meta", "startup"]
+    sources:
+      - type: gmail_newsletter
+        params: { sender: "dan@tldrnewsletter.com", subject_contains: "TLDR AI", lookback_days: 3 }
+      - type: hackernews
+        params: { queries: ["Show HN", "AI agent", "LLM"], min_points: 50, lookback_days: 2, max_items: 5 }
+      - type: google_news_rss
+        params: { queries: ["new AI tool launch", "AI agent released", "open source LLM"], max_items: 6, lookback_days: 2 }
+      # - type: producthunt   # optional; needs PRODUCTHUNT_TOKEN. Enable later.
+      #   params: { topic: "artificial-intelligence" }
+
+  - name: "US Headlines"
+    order: 2
+    enabled: true
+    length_budget_words: 250
+    max_stories: 6
+    prompt: prompts/us_news.md
+    interests: ["policy", "economy", "election", "court", "congress", "national"]
+    sources:
+      - type: google_news_rss
+        params: { topic: "NATION", max_items: 8, lookback_days: 1 }
+
+  - name: "Immigration & Visas"
+    order: 3
+    enabled: true
+    length_budget_words: 250
+    max_stories: 6
+    prompt: prompts/immigration.md
+    interests: ["H-1B", "O-1", "visa", "USCIS", "immigration", "green card",
+                "international students", "OPT", "STEM"]
+    sources:
+      - type: google_news_rss
+        params:
+          queries: ["H-1B visa policy", "O-1 visa", "international students USCIS", "USCIS policy change"]
+          max_items: 8
+          lookback_days: 2
+
+  - name: "Markets"
+    order: 4
+    enabled: true
+    length_budget_words: 150
+    max_stories: 4
+    prompt: prompts/stocks.md
+    interests: []
+    sources:
+      - type: stocks
+        params:
+          indices: ["^GSPC", "^IXIC", "^DJI"]
+          watchlist: ["NVDA", "GOOGL", "MSFT", "AAPL", "AMZN"]

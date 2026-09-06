@@ -24,12 +24,14 @@ IMAGE="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/daily-news:latest"
 RUNTIME_SA="${RUNTIME_SA:-vertex-ai-runner@${PROJECT_ID}.iam.gserviceaccount.com}"
 
 # Runtime env (non-secret). Secrets are wired via --set-secrets below.
+# The feed catalog (sources, topics, budgets) lives in feeds.yaml, baked into the image.
 GMAIL_ADDRESS="${GMAIL_ADDRESS:-godavartivinaykumar@gmail.com}"
 RECIPIENT="${RECIPIENT:-$GMAIL_ADDRESS}"
-TLDR_SENDER="${TLDR_SENDER:-TLDR AI}"        # match the AI edition by From display name
 GEMINI_MODEL="${GEMINI_MODEL:-gemini-2.5-flash}"
 GEMINI_REGION="${GEMINI_REGION:-us-central1}"
 TTS_VOICE="${TTS_VOICE:-en-US-Neural2-D}"
+CURATOR="${CURATOR:-deterministic}"          # deterministic | agentic
+GCS_BUCKET="${GCS_BUCKET:-}"                  # optional: archive + agentic memory store
 # ---------------------------------------------------------------------------- #
 
 echo ">> Setting project: $PROJECT_ID"
@@ -82,7 +84,7 @@ gcloud run jobs deploy "$JOB_NAME" \
   --tasks=1 \
   --max-retries=1 \
   --task-timeout=600s \
-  --set-env-vars="GMAIL_ADDRESS=${GMAIL_ADDRESS},RECIPIENT=${RECIPIENT},TLDR_SENDER=${TLDR_SENDER},GEMINI_MODEL=${GEMINI_MODEL},GEMINI_REGION=${GEMINI_REGION},GOOGLE_CLOUD_PROJECT=${PROJECT_ID},TTS_VOICE=${TTS_VOICE}" \
+  --set-env-vars="GMAIL_ADDRESS=${GMAIL_ADDRESS},RECIPIENT=${RECIPIENT},GEMINI_MODEL=${GEMINI_MODEL},GEMINI_REGION=${GEMINI_REGION},GOOGLE_CLOUD_PROJECT=${PROJECT_ID},TTS_VOICE=${TTS_VOICE},CURATOR=${CURATOR},GCS_BUCKET=${GCS_BUCKET}" \
   --set-secrets="GMAIL_APP_PASSWORD=gmail-app-password:latest"
 
 echo ">> Creating/updating Cloud Scheduler trigger: $SCHEDULER_NAME"

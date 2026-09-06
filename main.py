@@ -1,29 +1,27 @@
-"""Daily AI News Briefing pipeline.
+"""Daily News Briefing pipeline (Cloud Run Job entrypoint).
 
-Runs as a Cloud Run Job (triggered daily by Cloud Scheduler):
-
-  1. Fetch the latest TLDR AI newsletter from Gmail over IMAP.
-  2. Rewrite it into a spoken-word briefing with Gemini on Vertex AI.
+  1. For each enabled feed in feeds.yaml: fetch + merge its sources, curate, and rewrite into
+     a spoken segment with Gemini on Vertex AI.
+  2. Compose the segments into one script (greeting + transitions + sign-off).
   3. Synthesize audio with Google Cloud Text-to-Speech (MP3).
   4. Email the MP3 (script in the body) back to the user over Gmail SMTP.
   5. Optionally archive the script + audio to a GCS bucket.
 
-All configuration comes from environment variables. In Cloud Run these are injected
-from Secret Manager (see deploy.sh); for local testing a .env file is loaded if present.
+Configuration comes from environment variables (Secret Manager in the cloud, a local .env for
+development); the feed catalog comes from feeds.yaml. Set DRY_RUN=1 to print the script and
+skip audio + email. Set CURATOR=agentic to use the ADK curator instead of the deterministic one.
 """
 
 from __future__ import annotations
 
 import datetime as dt
-import email
-import imaplib
 import logging
-import os
 import smtplib
 import sys
-from email.header import decode_header
 from email.message import EmailMessage
-from pathlib import Path
+
+import pipeline
+from config import Config, load_dotenv, load_feeds
 
 logging.basicConfig(
     level=logging.INFO,
@@ -36,182 +34,7 @@ TTS_MAX_CHARS = 4500
 
 
 # --------------------------------------------------------------------------- #
-# Configuration
-# --------------------------------------------------------------------------- #
-def _load_dotenv() -> None:
-    """Load a local .env for development. No-op in the cloud (no file present)."""
-    env_path = Path(__file__).with_name(".env")
-    if not env_path.exists():
-        return
-    for line in env_path.read_text().splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
-
-
-class Config:
-    def __init__(self) -> None:
-        self.gmail_address = self._req("GMAIL_ADDRESS")
-        self.gmail_app_password = self._req("GMAIL_APP_PASSWORD")
-        self.recipient = os.environ.get("RECIPIENT", self.gmail_address)
-
-        self.tldr_sender = os.environ.get("TLDR_SENDER", "dan@tldrnewsletter.com")
-        self.tldr_subject_contains = os.environ.get("TLDR_SUBJECT_CONTAINS", "TLDR AI")
-        self.imap_lookback_days = int(os.environ.get("IMAP_LOOKBACK_DAYS", "3"))
-
-        # LLM: Gemini on Vertex AI
-        self.gcp_project = os.environ.get(
-            "GOOGLE_CLOUD_PROJECT", os.environ.get("GCP_PROJECT", "")
-        )
-        self.gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-        self.gemini_region = os.environ.get("GEMINI_REGION", "us-central1")
-
-        # Text-to-Speech
-        self.tts_language = os.environ.get("TTS_LANGUAGE", "en-US")
-        self.tts_voice = os.environ.get("TTS_VOICE", "en-US-Neural2-D")
-
-        # Optional archive
-        self.gcs_bucket = os.environ.get("GCS_BUCKET", "")
-
-    @staticmethod
-    def _req(name: str) -> str:
-        value = os.environ.get(name)
-        if not value:
-            raise RuntimeError(f"Missing required environment variable: {name}")
-        return value
-
-
-# --------------------------------------------------------------------------- #
-# Step 1: fetch the TLDR AI newsletter over IMAP
-# --------------------------------------------------------------------------- #
-def _decode(value: str) -> str:
-    parts = decode_header(value)
-    out = []
-    for text, enc in parts:
-        if isinstance(text, bytes):
-            out.append(text.decode(enc or "utf-8", errors="replace"))
-        else:
-            out.append(text)
-    return "".join(out)
-
-
-def _extract_body(msg: email.message.Message) -> str:
-    """Return plain-text body, falling back to HTML stripped to text."""
-    plain, html = None, None
-    if msg.is_multipart():
-        for part in msg.walk():
-            ctype = part.get_content_type()
-            disp = str(part.get("Content-Disposition") or "")
-            if "attachment" in disp:
-                continue
-            try:
-                payload = part.get_payload(decode=True)
-            except Exception:
-                continue
-            if payload is None:
-                continue
-            charset = part.get_content_charset() or "utf-8"
-            decoded = payload.decode(charset, errors="replace")
-            if ctype == "text/plain" and plain is None:
-                plain = decoded
-            elif ctype == "text/html" and html is None:
-                html = decoded
-    else:
-        payload = msg.get_payload(decode=True)
-        charset = msg.get_content_charset() or "utf-8"
-        text = payload.decode(charset, errors="replace") if payload else ""
-        if msg.get_content_type() == "text/html":
-            html = text
-        else:
-            plain = text
-
-    if plain and plain.strip():
-        return plain
-    if html:
-        try:
-            from bs4 import BeautifulSoup
-
-            soup = BeautifulSoup(html, "html.parser")
-            for tag in soup(["script", "style"]):
-                tag.decompose()
-            return soup.get_text("\n")
-        except Exception:
-            return html
-    return ""
-
-
-def fetch_latest_tldr(cfg: Config) -> str | None:
-    """Return the plain-text body of the most recent TLDR AI email, or None."""
-    since = (
-        dt.date.today() - dt.timedelta(days=cfg.imap_lookback_days)
-    ).strftime("%d-%b-%Y")
-
-    log.info("Connecting to Gmail IMAP as %s", cfg.gmail_address)
-    imap = imaplib.IMAP4_SSL("imap.gmail.com", 993)
-    try:
-        imap.login(cfg.gmail_address, cfg.gmail_app_password)
-        imap.select("INBOX", readonly=True)
-
-        typ, data = imap.search(
-            None, "FROM", f'"{cfg.tldr_sender}"', "SINCE", since
-        )
-        ids = data[0].split() if data and data[0] else []
-
-        if not ids:
-            # Fall back to a subject-based search if the sender didn't match.
-            typ, data = imap.search(
-                None, "SUBJECT", f'"{cfg.tldr_subject_contains}"', "SINCE", since
-            )
-            ids = data[0].split() if data and data[0] else []
-
-        if not ids:
-            log.warning(
-                "No TLDR email found (sender=%s, subject~=%s, since=%s)",
-                cfg.tldr_sender,
-                cfg.tldr_subject_contains,
-                since,
-            )
-            return None
-
-        latest_id = ids[-1]
-        typ, msg_data = imap.fetch(latest_id, "(RFC822)")
-        raw = msg_data[0][1]
-        msg = email.message_from_bytes(raw)
-        subject = _decode(msg.get("Subject", ""))
-        log.info("Fetched email: %r", subject)
-        return _extract_body(msg)
-    finally:
-        try:
-            imap.logout()
-        except Exception:
-            pass
-
-
-# --------------------------------------------------------------------------- #
-# Step 2: rewrite with Gemini
-# --------------------------------------------------------------------------- #
-def build_prompt(source: str) -> str:
-    template = Path(__file__).with_name("prompt_template.md").read_text()
-    return template.replace("{{SOURCE}}", source)
-
-
-def rewrite(cfg: Config, source: str) -> str:
-    """Rewrite the newsletter into a spoken-word briefing via Vertex Gemini."""
-    from google import genai
-
-    prompt = build_prompt(source)
-    client = genai.Client(
-        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
-    )
-    log.info("Rewriting via Vertex Gemini model %s", cfg.gemini_model)
-    resp = client.models.generate_content(model=cfg.gemini_model, contents=prompt)
-    return resp.text.strip()
-
-
-# --------------------------------------------------------------------------- #
-# Step 3: synthesize audio with Cloud TTS
+# Audio synthesis
 # --------------------------------------------------------------------------- #
 def _chunk_text(text: str, limit: int = TTS_MAX_CHARS) -> list[str]:
     """Split text into <=limit-char chunks on paragraph/sentence boundaries."""
@@ -225,7 +48,6 @@ def _chunk_text(text: str, limit: int = TTS_MAX_CHARS) -> list[str]:
         if current:
             chunks.append(current)
             current = ""
-        # Paragraph itself may exceed the limit: split on sentences.
         if len(para) <= limit:
             current = para
         else:
@@ -268,15 +90,15 @@ def synthesize_mp3(cfg: Config, script: str) -> bytes:
 
 
 # --------------------------------------------------------------------------- #
-# Step 4: email the clip
+# Delivery
 # --------------------------------------------------------------------------- #
 def send_email(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
     msg = EmailMessage()
-    msg["Subject"] = f"AI Morning Briefing — {date_str}"
+    msg["Subject"] = f"Morning Briefing — {date_str}"
     msg["From"] = cfg.gmail_address
     msg["To"] = cfg.recipient
     msg.set_content(
-        "Your daily AI briefing is attached as audio.\n\n"
+        "Your daily briefing is attached as audio.\n\n"
         "Transcript below.\n\n"
         f"{script}\n"
     )
@@ -284,7 +106,7 @@ def send_email(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
         mp3,
         maintype="audio",
         subtype="mpeg",
-        filename=f"ai-briefing-{date_str}.mp3",
+        filename=f"briefing-{date_str}.mp3",
     )
 
     log.info("Emailing briefing to %s", cfg.recipient)
@@ -293,9 +115,6 @@ def send_email(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
         server.send_message(msg)
 
 
-# --------------------------------------------------------------------------- #
-# Step 5 (optional): archive to GCS
-# --------------------------------------------------------------------------- #
 def archive_to_gcs(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
     if not cfg.gcs_bucket:
         return
@@ -310,7 +129,7 @@ def archive_to_gcs(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
         bucket.blob(f"briefings/{date_str}.mp3").upload_from_string(
             mp3, content_type="audio/mpeg"
         )
-        log.info("Archived script + audio to gs://%s/briefings/%s.*", cfg.gcs_bucket, date_str)
+        log.info("Archived to gs://%s/briefings/%s.*", cfg.gcs_bucket, date_str)
     except Exception as exc:  # noqa: BLE001
         log.warning("GCS archive failed (non-fatal): %s", exc)
 
@@ -319,18 +138,24 @@ def archive_to_gcs(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
 # Orchestration
 # --------------------------------------------------------------------------- #
 def main() -> int:
-    _load_dotenv()
+    load_dotenv()
     cfg = Config()
-    date_str = dt.date.today().isoformat()
+    feeds = load_feeds()
+    date = dt.date.today()
+    date_str = date.isoformat()
 
-    source = fetch_latest_tldr(cfg)
-    if not source or not source.strip():
-        log.info("No source material today — nothing to send. Exiting cleanly.")
+    script = pipeline.generate_script(cfg, feeds, date=date)
+    if not script.strip():
+        log.info("No content across any feed today — nothing to send. Exiting cleanly.")
         return 0
 
-    script = rewrite(cfg, source)
     word_count = len(script.split())
-    log.info("Generated briefing script (%d words)", word_count)
+    log.info("Composed briefing script (%d words)", word_count)
+
+    if cfg.dry_run:
+        print("\n" + "=" * 70 + "\n" + script + "\n" + "=" * 70 + "\n")
+        log.info("DRY_RUN set — skipping audio + email.")
+        return 0
 
     mp3 = synthesize_mp3(cfg, script)
     log.info("Synthesized audio (%d KB)", len(mp3) // 1024)
