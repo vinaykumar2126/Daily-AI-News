@@ -30,36 +30,47 @@ logging.basicConfig(
 log = logging.getLogger("daily-news")
 
 # Cloud TTS accepts at most 5000 bytes of input per request; stay well under it.
-TTS_MAX_CHARS = 4500
+# Gemini TTS caps input.text at 4000 bytes per request; keep a safety margin.
+TTS_MAX_BYTES = 3800
+
+
+def _blen(s: str) -> int:
+    """UTF-8 byte length (multi-byte chars like em-dashes count as >1)."""
+    return len(s.encode("utf-8"))
+
+
+def _byte_truncate(s: str, limit: int) -> str:
+    """Truncate a string to at most `limit` UTF-8 bytes without splitting a char."""
+    return s.encode("utf-8")[:limit].decode("utf-8", errors="ignore")
 
 
 # --------------------------------------------------------------------------- #
 # Audio synthesis
 # --------------------------------------------------------------------------- #
-def _chunk_text(text: str, limit: int = TTS_MAX_CHARS) -> list[str]:
-    """Split text into <=limit-char chunks on paragraph/sentence boundaries."""
+def _chunk_text(text: str, limit: int = TTS_MAX_BYTES) -> list[str]:
+    """Split text into <=limit-byte chunks on paragraph/sentence boundaries."""
     chunks: list[str] = []
     current = ""
     for para in text.split("\n"):
         candidate = f"{current}\n{para}" if current else para
-        if len(candidate) <= limit:
+        if _blen(candidate) <= limit:
             current = candidate
             continue
         if current:
             chunks.append(current)
             current = ""
-        if len(para) <= limit:
+        if _blen(para) <= limit:
             current = para
         else:
             sentence = ""
             for token in para.replace(". ", ".\n").split("\n"):
                 cand = f"{sentence} {token}".strip()
-                if len(cand) <= limit:
+                if _blen(cand) <= limit:
                     sentence = cand
                 else:
                     if sentence:
                         chunks.append(sentence)
-                    sentence = token[:limit]
+                    sentence = _byte_truncate(token, limit)
             current = sentence
     if current:
         chunks.append(current)
@@ -70,9 +81,12 @@ def synthesize_mp3(cfg: Config, script: str) -> bytes:
     from google.cloud import texttospeech
 
     client = texttospeech.TextToSpeechClient()
-    voice = texttospeech.VoiceSelectionParams(
-        language_code=cfg.tts_language, name=cfg.tts_voice
-    )
+    # model_name + input.prompt are Gemini-TTS-only. Send them only when TTS_MODEL is set,
+    # so a plain/stable voice (Chirp3-HD, Neural2, ...) works with the same code path.
+    voice_kwargs = {"language_code": cfg.tts_language, "name": cfg.tts_voice}
+    if cfg.tts_model:
+        voice_kwargs["model_name"] = cfg.tts_model
+    voice = texttospeech.VoiceSelectionParams(**voice_kwargs)
     audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
@@ -81,7 +95,10 @@ def synthesize_mp3(cfg: Config, script: str) -> bytes:
     chunks = _chunk_text(script)
     log.info("Synthesizing %d TTS chunk(s) with voice %s", len(chunks), cfg.tts_voice)
     for chunk in chunks:
-        synthesis_input = texttospeech.SynthesisInput(text=chunk)
+        input_kwargs = {"text": chunk}
+        if cfg.tts_model and cfg.tts_prompt:
+            input_kwargs["prompt"] = cfg.tts_prompt
+        synthesis_input = texttospeech.SynthesisInput(**input_kwargs)
         response = client.synthesize_speech(
             input=synthesis_input, voice=voice, audio_config=audio_config
         )

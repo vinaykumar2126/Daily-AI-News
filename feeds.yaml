@@ -44,7 +44,7 @@ feeds:
     sources:
       - type: google_news_rss
         params:
-          queries: ["H-1B visa policy", "O-1 visa", "international students USCIS", "USCIS policy change"]
+          queries: ["H-1B visa policy", "O-1 visa", "international students USCIS", "USCIS policy change", "ICE"]
           max_items: 8
           lookback_days: 2
 
