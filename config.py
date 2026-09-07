@@ -65,9 +65,14 @@ class Config:
         # Curation strategy: "deterministic" (default) or "agentic"
         self.curator = os.environ.get("CURATOR", "deterministic")
 
-        # Text-to-Speech
+        # Text-to-Speech. Default to a stable Chirp3-HD voice. Set TTS_MODEL to a Gemini-TTS
+        # model (e.g. gemini-3.1-flash-tts-preview) to enable model_name + style prompt.
         self.tts_language = os.environ.get("TTS_LANGUAGE", "en-US")
-        self.tts_voice = os.environ.get("TTS_VOICE", "en-US-Neural2-D")
+        self.tts_voice = os.environ.get("TTS_VOICE", "en-US-Chirp3-HD-Charon")
+        self.tts_model = os.environ.get("TTS_MODEL", "")  # empty = plain stable voice
+        self.tts_prompt = os.environ.get(
+            "TTS_PROMPT", "Read this in a warm, natural, upbeat morning-briefing tone."
+        )
 
         # Optional archive (also used by the agentic curator's memory)
         self.gcs_bucket = os.environ.get("GCS_BUCKET", "")

@@ -29,7 +29,8 @@ GMAIL_ADDRESS="${GMAIL_ADDRESS:-godavartivinaykumar@gmail.com}"
 RECIPIENT="${RECIPIENT:-$GMAIL_ADDRESS}"
 GEMINI_MODEL="${GEMINI_MODEL:-gemini-2.5-flash}"
 GEMINI_REGION="${GEMINI_REGION:-us-central1}"
-TTS_VOICE="${TTS_VOICE:-en-US-Neural2-D}"
+TTS_VOICE="${TTS_VOICE:-en-US-Chirp3-HD-Charon}"   # stable Chirp3-HD voice
+TTS_MODEL="${TTS_MODEL:-}"                          # set to a gemini-*-tts model to use Gemini TTS
 CURATOR="${CURATOR:-deterministic}"          # deterministic | agentic
 GCS_BUCKET="${GCS_BUCKET:-}"                  # optional: archive + agentic memory store
 # ---------------------------------------------------------------------------- #
@@ -84,7 +85,7 @@ gcloud run jobs deploy "$JOB_NAME" \
   --tasks=1 \
   --max-retries=1 \
   --task-timeout=600s \
-  --set-env-vars="GMAIL_ADDRESS=${GMAIL_ADDRESS},RECIPIENT=${RECIPIENT},GEMINI_MODEL=${GEMINI_MODEL},GEMINI_REGION=${GEMINI_REGION},GOOGLE_CLOUD_PROJECT=${PROJECT_ID},TTS_VOICE=${TTS_VOICE},CURATOR=${CURATOR},GCS_BUCKET=${GCS_BUCKET}" \
+  --set-env-vars="GMAIL_ADDRESS=${GMAIL_ADDRESS},RECIPIENT=${RECIPIENT},GEMINI_MODEL=${GEMINI_MODEL},GEMINI_REGION=${GEMINI_REGION},GOOGLE_CLOUD_PROJECT=${PROJECT_ID},TTS_VOICE=${TTS_VOICE},TTS_MODEL=${TTS_MODEL},CURATOR=${CURATOR},GCS_BUCKET=${GCS_BUCKET}" \
   --set-secrets="GMAIL_APP_PASSWORD=gmail-app-password:latest"
 
 echo ">> Creating/updating Cloud Scheduler trigger: $SCHEDULER_NAME"

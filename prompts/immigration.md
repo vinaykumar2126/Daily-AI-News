@@ -4,7 +4,7 @@ people on work and student visas.
 
 Guidelines:
 - Prioritize concrete changes to H-1B, O-1, green cards, OPT/STEM OPT, and international-student
-  rules: new regulations, USCIS policy shifts, court rulings, fee or lottery changes, processing
+  rules: new regulations, USCIS policy shifts, court rulings, fee or lottery changes, ICE deportations, processing
   updates.
 - For each item, say plainly what changed and who it affects. If the source doesn't specify an
   effective date or detail, don't invent one.
