@@ -1,0 +1,52 @@
+{
+  "golden": "2026-09-13",
+  "curator": "agentic",
+  "latency_sec": 108.7,
+  "word_count": 966,
+  "code_checks": {
+    "length_adherence": {
+      "passed": true,
+      "score": 0.93,
+      "detail": "all segments within budget"
+    },
+    "structure": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "complete"
+    },
+    "tts_safety": {
+      "passed": false,
+      "score": 0.75,
+      "detail": "found: markdown(2)"
+    }
+  },
+  "judge": {
+    "faithfulness": 1.0,
+    "coverage": 0.65,
+    "relevance": 1.0,
+    "per_segment": [
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.85,
+        "relevance": 1.0,
+        "rationale": "The segment is perfectly faithful, with all claims directly supported by the source stories and no invented facts. All included content is highly relevant to the briefing's focus, covering numerous AI model, agent, and company updates. Coverage is strong, though it misses a few notable relevant items such as AI agent security incidents and ethical AI governance news.",
+        "segment": "AI & Tech"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.6,
+        "relevance": 1.0,
+        "rationale": "The script is faithful to the sources and covers several key Trump-related stories relevant to national politics and policy. However, it misses other important national news items like the Congressman's emergency landing and the security incident at Kamala Harris's property, limiting its overall coverage.",
+        "segment": "US Headlines"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.5,
+        "relevance": 1.0,
+        "rationale": "The segment faithfully reports on the H-1B grace period, tech giants rerouting jobs, and the USCIS green card packet change. However, it omits several relevant stories, including the O-1 visa, international student visas, and multiple detailed reports regarding ICE activities.",
+        "segment": "Immigration & Visas"
+      }
+    ]
+  },
+  "script": "Good morning. Here's your briefing for Sunday, September 13.\n\nFirst up, AI & Tech.\n\nFirst up, some new tools you can dive into today. OpenAI has launched its Agents API in public beta, providing managed infrastructure for developers to build persistent AI agents that can handle context, use tools, and interact with code environments. This is for anyone creating complex, long-running AI assistants.\n\nMeta is rolling out \"Shared Agents\" for its Muse app, letting users create and share custom AI agents. This could benefit small businesses on Meta platforms, allowing specialized agents for tasks like customer support.\n\nAlibaba has open-sourced its internal, AI-powered code review command-line interface tool, Open Code Review. It's been validated at massive scale, offering deep, context-aware reviews, ideal for development teams seeking advanced code quality assistance.\n\nOpenAI's new GPT-Live-1 API model offers natural, full-duplex voice agents for five cents per minute. It can listen and speak simultaneously, handle interruptions, and maintain conversational flow, making it great for advanced conversational AI.\n\nNow for some competitive moves. In a major update, Cognition has launched SWE-2. This model achieves fifty percent on the Frontier Code benchmark and is sixty-four percent cheaper than its predecessor. It beats SWE-one point seven and Grok four point six on both performance and cost, matches GPT-five point six Sol and Fable five at a fraction of their price, and rivals GPT-six Astra for just a quarter of the cost. This positions SWE-2 as a new price-performance leader for AI software engineering agents, making accessible autonomous coding a step closer. Separately, Abacus dot AI claims its Smaug models can cut agent costs by one hundred times.\n\nGoogle Cloud released a new plugin specifically for AI coding agents, equipping them with tools and skills to operate more effectively across Google Cloud services. And Universal Music Group is partnering with Eleven Labs for an AI music platform, letting users remix and mashup UMG's licensed music catalog. OpenAI also unveiled a financial-services version of ChatGPT Work, which combines GPT-six Astra with built-in premium financial data.\n\nMoving on to serious technical news. Cohere Labs released North Small Translate, an open-weights research model with twenty-five billion active parameters, specialized for high-quality translation across fifty languages. This offers practitioners a powerful, accessible option for integrating specialized multilingual translation into their applications.\n\nNew research indicates that larger video models and more pre-training compute significantly improve robot task performance, even for complex industrial tasks like unpacking. The takeaway is that investing in higher quality pre-training directly boosts real-world robot efficiency and scalability.\n\nMeta launched WearableQA, a new benchmark for health reasoning, derived from thousands of real-world wearable data points, blood biomarkers, and user demographics. This provides a critical dataset for validating and advancing AI models interpreting physiological data.\n\nAnd Salesforce research found that directly training smaller models on expert agent trajectories can actually *hurt* performance if the agent's orchestrator, or \"harness,\" is already optimized. For practitioners, this means complex AI systems require co-designing or co-optimizing both the agent and its control system to avoid performance degradation.\n\nFinally, some quick mentions: OpenAI is reportedly considering slowing cutting-edge AI development due to safety concerns. Demand for OpenAI's new Astra model has led to a temporary pause in new Pro subscriptions. And Anthropic's latest report details how malicious actors are evolving their use of AI models, though not with their most advanced systems.\n\nNext, US Headlines.\n\nHouse Speaker Mike Johnson says former President Trump's proposal for five-thousand-dollar dividend checks to Americans would require Congressional approval and funding. This comes despite Trump's assertion that such payouts would be easy to fit into the federal budget. Separately, vulnerable House Republicans are increasingly embracing former President Trump as the Republican Party prepares for the midterm elections, betting that strong alignment with him will help them defy historical trends.\n\nOn technology news, former President Trump has downplayed warnings from AI experts and tech leaders about the risks of artificial intelligence. He stated he does not want to slow development, believing the country that wins with AI will ultimately win. And finally, on a recent trip to Ireland, former President Trump stirred international debate by expressing support for a united Ireland. This departs from long-standing U.S. diplomatic neutrality on the sensitive issue.\n\nAnd finally, Immigration & Visas.\n\nFirst, for H-1B visa holders, the Department of Homeland Security, or DHS, has proposed a significant change. They are considering ending the current 60-day grace period. Right now, if your H-1B employment ends, you have 60 days to find new work or change your immigration status without falling out of status. If this proposal becomes a final rule, H-1B workers would lose this flexibility. This means that if your employment ends, you could immediately be out of status, dramatically increasing the pressure to secure new employment or depart the US without delay. This change directly affects all H-1B visa holders and highlights the need to closely monitor your employment situation.\n\nIn related news for H-1B, some tech giants are reportedly rerouting jobs outside the United States. This trend is a response to the rising costs associated with the H-1B visa program. While not a direct policy change, this shift by employers could impact the availability of H-1B sponsored positions in the US and affects both companies looking to hire and individuals seeking H-1B employment here.\n\nMoving on to green cards, U.S. Citizenship and Immigration Services, or USCIS, has made an administrative change. They have stopped mailing the physical \"Welcome to America\" packet to new green card holders. This packet traditionally included general information and resources for new permanent residents. While the packet itself is no longer being sent, the information it contained is still available online. This change primarily affects new green card holders, who will now need to access these resources digitally.\n\nThat's your briefing. Have a great day."
+}

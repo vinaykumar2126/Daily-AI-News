@@ -1,0 +1,111 @@
+{
+  "deterministic": {
+    "golden": "2026-09-06",
+    "curator": "deterministic",
+    "latency_sec": 52.6,
+    "word_count": 954,
+    "code_checks": {
+      "length_adherence": {
+        "passed": true,
+        "score": 0.92,
+        "detail": "all segments within budget"
+      },
+      "structure": {
+        "passed": true,
+        "score": 1.0,
+        "detail": "complete"
+      },
+      "tts_safety": {
+        "passed": false,
+        "score": 0.5,
+        "detail": "found: markdown(34), model_hyphen_digit(1)"
+      }
+    },
+    "judge": {
+      "faithfulness": 0.967,
+      "coverage": 0.8,
+      "relevance": 1.0,
+      "per_segment": [
+        {
+          "faithfulness": 1.0,
+          "coverage": 0.75,
+          "relevance": 1.0,
+          "rationale": "The segment is highly faithful, accurately reporting all claims from the source stories without invention, and maintains excellent relevance by focusing exclusively on topics within the specified AI and tech scope. However, coverage is somewhat lacking as it missed a significant industry acquisition (NVIDIA/Hugging Face) and a major company's IPO (Anthropic), which are important developments in the AI landscape.",
+          "segment": "AI & Tech"
+        },
+        {
+          "faithfulness": 1.0,
+          "coverage": 0.75,
+          "relevance": 1.0,
+          "rationale": "The segment faithfully reports all included details from the sources and focuses entirely on relevant topics. However, it omits coverage of Donald Trump's controversial map posts and the alleged attack on Ohio gubernatorial candidate Amy Acton.",
+          "segment": "US Headlines"
+        },
+        {
+          "faithfulness": 0.9,
+          "coverage": 0.9,
+          "relevance": 1.0,
+          "rationale": "The segment faithfully reports on ICE enforcement activities mentioned in the sources, including specific incidents in Virginia, Memphis, and Washington State. It maintains high relevance to the specified topics by focusing on ICE and immigration, and by noting the absence of news on specific visa types within the given sources. Coverage is good for the segment's stated focus on ICE enforcement, although it doesn't cover all immigration-related stories like policy critiques or documentary news.",
+          "segment": "Immigration & Visas"
+        }
+      ]
+    },
+    "script": "Good morning. Here's your briefing for Monday, September 7.\n\nFirst up, AI & Tech.\n\nGood morning. Let's dive into the latest in AI and tech.\n\nFirst up, a major new capability from **Anthropic's Claude**, which successfully created the first complete computer-verified proof of Fermat's Last Theorem in just eleven days using the Lean theorem prover. This automates a traditionally complex and laborious task, demonstrating AI's rapidly advancing potential to accelerate and ensure correctness in mathematical and logical proofs—a significant step for areas like software and hardware verification.\n\nFor creative tools, **Elon Musk's Grok Imagine Video one-point-five agent** is now live on web, iOS, and Android. It delivers higher quality, better storytelling, and improved continuity across multiple shots compared to previous versions, making it a strong contender for video content creators.\n\nOn the agent front, **OpenAI** is looking to automate the very process of research, planning to develop an **automated AI researcher** by March two thousand twenty-eight. Researchers are already seeing increased code generation and experiment execution using current coding agents, suggesting future AI platforms could heavily leverage AI for scientific discovery and software development. Complementing this, **Meta** has released **AIRA three**, a new autonomous AI research engine that runs and coordinates many long-running agents asynchronously. For developers building or evaluating agent systems, a new open-source framework, **LLM as a Verifier**, offers fine-grained feedback for any AI agent without additional training, achieving state-of-the-art results across coding, robotics, and medical benchmarks.\n\nIn competitive moves, **OpenAI's GPT-6 Astra** made a notable advance in robotics. Using an Inspect Robots agent policy, Astra completed a block-picking task far more often than previous models like Fable, and at about half the cost per run, indicating a significant improvement in AI-controlled robotic manipulation. However, on the benchmarking side, clarity is key. A recent report notes that OpenAI's highly publicized ninety-nine point nine percent score on ARC-AGI-3 was achieved with significant surrounding 'scaffolding.' The raw model alone scored sixty-two point seven percent, emphasizing that practitioners should look beyond headline model numbers to understand the full system's contribution to benchmark performance.\n\nMoving to infrastructure and inference, **Extropic** has unveiled the **Z1 chip**, aimed at improving energy efficiency for transformer inference using probabilistic sub-threshold CMOS technology. The \"so what\" here is a potential significant reduction in power consumption, which is crucial for cost-effective and environmentally friendly large-scale AI inference. In LLM architecture, **Random Attention** is a new method that optimizes KV-cache entries by uniformly sampling a subset. This approach matched or exceeded more complex eviction methods while reducing overhead. For ML engineers, this means a simpler yet highly effective way to boost memory and speed for LLM inference, especially with longer contexts.\n\nBriefly on other new tools: **Tencent** previewed its open-source **Hy4 large language model** with seven hundred and seventy billion parameters and over one million tokens of context, offering a powerful option for long-context applications. **Google** is integrating its new **\"Pics\" AI image tool** into Workspace apps like Slides, making AI image generation more accessible for business users. And in vertical specific AI, Belgian startup **LegalFly** launched an AI-powered contract intelligence tool for legal professionals, while **Pheonix Motorcycle Training** introduced an \"AI Coach\" for learner riders.\n\nNext, US Headlines.\n\nIn national news, a Massachusetts judge declared a mistrial in the high-profile case of Lindsay Clancy, who was accused of killing her three children, after one juror refused to convict. Her legal fate remains unresolved, meaning she could face a retrial or lengthy confinement in a psychiatric facility.\n\nMoving to aviation, a fatal Amazon cargo plane crash occurred at Miami-Opa Locka Executive Airport, where the jet overran a runway, hitting a cleaning crew van and SUV and killing five people. Federal investigators have recovered the black boxes as they work to determine the cause of the tragic accident.\n\nInternationally, Canada has officially imposed new tariffs on a range of American products, including milk, perfume, and golf clubs, escalating an ongoing trade dispute between the two nations. This move is a retaliatory measure, with the United States indicating potential further escalation in the trade conflict.\n\nTensions are rising in the Middle East as Iran has threatened the United States with \"economic warfare\" and missile strikes, amidst Houthi attacks on Saudi Arabia. Iran also announced plans to expand its control in the Strait of Hormuz, a critical shipping route, which could further impact global oil and gas prices.\n\nOn the weather front, Southern California is experiencing intense heat and dangerous surf due to Tropical Storm Marie, leading to high waves and strong currents along its beaches. Residents are preparing for continued high waters, with some coastal areas already seeing clean-up efforts from flooding. Meanwhile, Hurricane Lowell is approaching the western Hawaiian islands, generating thirty-foot surf, heavy rain, and strong winds. Areas like Kauai are bracing for dangerous conditions, including the risk of flash floods and powerful coastal impacts.\n\nAnd finally, Immigration & Visas.\n\nTurning to U.S. immigration and visa news: Recent reports indicate continued enforcement activity by Immigration and Customs Enforcement, or ICE, across several regions. For example, in Virginia, one individual was deported following an ICE arrest in Chantilly, while another remains in custody. Separately, an ICE operation in Memphis led to over one hundred twenty arrests at a nightclub. Another incident saw an ICE raid occur during a family camping trip in Washington State over the Labor Day weekend. While these reports detail specific incidents, they signal active and visible enforcement efforts by ICE. This underscores the importance for those on work and student visas to stay informed about immigration compliance. No new regulations or policy changes directly impacting H-One-B, O-One, Green Cards, OPT, or STEM OPT programs have been announced through these sources at this time.\n\nThat's your briefing. Have a great day."
+  },
+  "agentic": {
+    "golden": "2026-09-06",
+    "curator": "agentic",
+    "latency_sec": 59.3,
+    "word_count": 1052,
+    "code_checks": {
+      "length_adherence": {
+        "passed": false,
+        "score": 0.86,
+        "detail": "AI & Tech: 634w > 450w budget"
+      },
+      "structure": {
+        "passed": true,
+        "score": 1.0,
+        "detail": "complete"
+      },
+      "tts_safety": {
+        "passed": true,
+        "score": 1.0,
+        "detail": "clean"
+      }
+    },
+    "judge": {
+      "faithfulness": 1.0,
+      "coverage": 0.767,
+      "relevance": 1.0,
+      "per_segment": [
+        {
+          "faithfulness": 1.0,
+          "coverage": 0.7,
+          "relevance": 1.0,
+          "rationale": "The segment is entirely faithful, with all claims directly supported by the source stories, and every included story is highly relevant to the specified focus areas. However, several important stories, such as the OpenAI researcher's warning about rapidly advancing AI, Anthropic's IPO, and AI regulation discussions, were omitted.",
+          "segment": "AI & Tech"
+        },
+        {
+          "faithfulness": 1.0,
+          "coverage": 0.7,
+          "relevance": 1.0,
+          "rationale": "The segment is faithful to the source material and all included stories are relevant to a national news briefing. However, it notably misses two important national stories: Donald Trump's controversial map post and the alleged attack on Ohio gubernatorial candidate Amy Acton.",
+          "segment": "US Headlines"
+        },
+        {
+          "faithfulness": 1.0,
+          "coverage": 0.9,
+          "relevance": 1.0,
+          "rationale": "The script faithfully reports on several ICE enforcement actions from the source stories. It covers the most direct ICE enforcement incidents well, though it omits some related but less direct immigration enforcement news, while remaining highly relevant to the specified focus areas.",
+          "segment": "Immigration & Visas"
+        }
+      ]
+    },
+    "script": "Good morning. Here's your briefing for Monday, September 7.\n\nFirst up, AI & Tech.\n\nStarting with new tools you can try today:\n\nGrok has released its Imagine Video one-point-five agent. It offers higher quality and better storytelling than previous versions, powered by Grok's Image two-point-oh model, and is now live on web, iOS, and Android. It's for anyone looking for improved AI video generation with better continuity on Grok platforms.\n\nFor agent developers, a new general-purpose framework called LLM-as-a-Verifier is out on GitHub. It provides fine-grained feedback for any AI agent without needing extra training, achieving state-of-the-art performance in coding, robotics, and medical benchmarks. This is a crucial tool for developers and researchers to get feedback for test-time scaling, progress tracking, and reinforcement learning.\n\nMeta has introduced AIRA three, a new generation of its autonomous AI research engine. It's designed to run and coordinate multiple long-running agents asynchronously in isolated environments, making it useful for researchers building and experimenting with complex multi-agent systems.\n\nGoogle is integrating a new AI image generation tool called \"Pics\" into its Workspace apps, starting with Slides. This will allow Workspace users to generate images directly within their applications for presentations and documents. And in legal tech, Belgian startup LegalFly has launched an AI-powered Contract Intelligence tool for legal professionals needing efficient contract analysis.\n\nMoving to competitive moves:\n\nAnthropic's Claude successfully created the first complete computer-verified proof of Fermat's Last Theorem in just eleven days using Lean. This automates a complex mathematical task, initially proven manually by Andrew Wiles in nineteen ninety-five, demonstrating a significant leap in AI's symbolic reasoning and formal verification capabilities compared to traditional methods.\n\nIn robotics, OpenAI's GPT-six Astra, when controlling YAM robotic arms, achieved manipulation tasks, like placing a block in a bowl, far more often and at about half the cost per run than the competitor Fable. This shows Astra's competitive edge in robotic control efficiency and performance.\n\nTencent has released a preview of its open-source Hy4 large language model. This model boasts seven hundred and seventy billion parameters and a context window of over one million tokens, making it a new strong contender in the open-source LLM space, rivaling existing models with its large scale and context capabilities.\n\nA clarification regarding a previous claim by OpenAI: their reported ninety-nine point nine percent score on the ARC-AGI-three benchmark for AGI was largely due to surrounding software scaffolding. When the same model was run through the benchmark's own software, it scored sixty-two point seven percent, adjusting expectations for the model's standalone performance.\n\nNow for infrastructure and research news:\n\nOpenAI plans to develop an automated AI researcher by March two thousand twenty-eight, aiming to automate routine experimental work and shift human researchers' focus to more complex tasks. So what: This initiative could fundamentally accelerate AI research and development cycles across the industry.\n\nSalesforce AI Research has introduced \"Random Attention\" for transformer models. It uniformly samples a subset of K V-cache entries instead of complex learned methods, matching or exceeding performance of more complex eviction methods while reducing overhead. So what: This could lead to more efficient and cheaper inference for large transformer models by simplifying K V-cache management without sacrificing performance.\n\nExtropic has unveiled the Z1 chip, designed to significantly improve energy efficiency in transformer inference by using probabilistic sub-threshold C-MOS technology. So what: This specialized chip could drastically reduce the power consumption and operational costs associated with deploying large transformer models at scale.\n\nWorld Labs' Atlas model unifies generation and three D reconstruction, predicting new views using sparse images to infer scenes from unseen positions. So what: This advancement could simplify and improve tasks like digital content creation, robotics, and simulation by enabling more robust and data-efficient three D environment understanding from limited input.\n\nFinally, a quick business note: Nvidia is reportedly acquiring Hugging Face for thirteen billion dollars, a move that could significantly reshape the open-source AI ecosystem.\n\nNext, US Headlines.\n\nWe start this morning with national news. A mistrial was declared in the high-profile case of Lindsay Clancy, who was accused of killing her three children, after a single juror refused to convict. This leaves the possibility of a retrial or years of confinement ahead in a case that has drawn significant public attention.\n\nFederal investigators are probing a fatal Amazon cargo plane crash at Miami International Airport, where the aircraft overran a runway, hitting a cleaning crew van and an SUV and killing five people.\n\nInternationally, a trade dispute between the United States and Canada has intensified, with Canada imposing retaliatory tariffs on American goods including milk, perfume, and golf clubs. This follows earlier tariffs from the US, prolonging the trade war.\n\nTensions in the Middle East remain high as Iran threatened the United States with \"economic warfare\" and missiles. This comes alongside warnings of expanded control in the strategic Strait of Hormuz and Houthi attacks on Saudi Arabia.\n\nFinally, we turn to weather. Southern California is bracing for intense heat and oppressive humidity, compounded by dangerous surf and strong currents from Tropical Storm Marie. Further west, Hurricane Lowell is nearing the western Hawaiian islands, bringing thirty-foot surf, heavy rain, and strong winds, especially to Kauai.\n\nAnd finally, Immigration & Visas.\n\nTurning to immigration news, recent reports indicate continued and active enforcement by U.S. Immigration and Customs Enforcement, or I C E. Several incidents across the country highlight this trend.\n\nIn Chantilly, Virginia, an I C E arrest led to the deportation of one individual, with another remaining in custody. Separately, a Labor Day weekend family camping trip in Washington state was reportedly interrupted by an I C E raid, resulting in multiple arrests.\n\nPerhaps most notably, an I C E operation at a Memphis nightclub led to more than one hundred twenty arrests. These events suggest ongoing and widespread enforcement activities by I C E, targeting individuals believed to be in violation of immigration laws.\n\nWhile these incidents are specific cases, they signal a sustained focus on immigration enforcement. This environment could affect individuals currently residing in the U.S. who may be out of status, or those with past immigration violations. For international professionals on work or student visas, these reports underscore the importance of maintaining strict compliance with all visa terms and conditions, and being aware of the current enforcement climate.\n\nThat's your briefing. Have a great day."
+  },
+  "pairwise_overall": {
+    "winner": "B",
+    "reason": "Segment B is better organized, particularly in the 'AI & Tech' section, explicitly highlighting the 'so what' for various news items, which enhances clarity and usefulness, making it a more natural and informative listening experience.",
+    "winner_label": "agentic"
+  }
+}
