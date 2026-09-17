@@ -1,0 +1,403 @@
+<title>Agentic Briefing Field Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --bg: #F5F7F8;
+    --surface: #FFFFFF;
+    --surface-2: #ECF0F2;
+    --ink: #14181D;
+    --muted: #58636F;
+    --line: #E0E6EA;
+    --accent: #0E7C86;
+    --accent-ink: #0A5A62;
+    --accent-soft: #DFEFF0;
+    --warn: #A85D14;
+    --warn-soft: #F6ECDC;
+    --warn-line: #E7D3B4;
+
+    --display: "Fraunces", Georgia, serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --wrap: 46rem;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #0F1317;
+      --surface: #161C22;
+      --surface-2: #1D252C;
+      --ink: #E7ECF0;
+      --muted: #98A3AF;
+      --line: #27313A;
+      --accent: #3EB9C1;
+      --accent-ink: #6FD3D9;
+      --accent-soft: #10353A;
+      --warn: #E0A155;
+      --warn-soft: #2C2418;
+      --warn-line: #47391F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1317;
+    --surface: #161C22;
+    --surface-2: #1D252C;
+    --ink: #E7ECF0;
+    --muted: #98A3AF;
+    --line: #27313A;
+    --accent: #3EB9C1;
+    --accent-ink: #6FD3D9;
+    --accent-soft: #10353A;
+    --warn: #E0A155;
+    --warn-soft: #2C2418;
+    --warn-line: #47391F;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: var(--wrap); margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
+
+  /* ---- Header ---- */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 1.1rem;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 1rem;
+  }
+  .lede {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 34rem;
+    margin: 0 0 1.75rem;
+  }
+  .meta {
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 1.4rem;
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+
+  /* ---- Contents ---- */
+  nav.toc {
+    margin: 3rem 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: .6rem;
+  }
+  nav.toc a {
+    display: flex;
+    gap: .8rem;
+    align-items: baseline;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: .85rem 1rem;
+    transition: border-color .15s, transform .15s;
+  }
+  nav.toc a:hover { border-color: var(--accent); transform: translateY(-1px); }
+  nav.toc .n { font-family: var(--mono); color: var(--accent-ink); font-size: .8rem; }
+  nav.toc .t { font-weight: 500; font-size: .95rem; }
+
+  /* ---- Chapters ---- */
+  .chapter { margin-top: 4rem; scroll-margin-top: 1.5rem; }
+  .chapter > header {
+    display: flex;
+    align-items: baseline;
+    gap: .9rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: .7rem;
+    margin-bottom: 1.8rem;
+  }
+  .chapter > header .n {
+    font-family: var(--mono);
+    font-size: .85rem;
+    color: var(--accent-ink);
+    font-weight: 500;
+  }
+  .chapter > header h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.7rem;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .lesson { margin-bottom: 2.3rem; }
+  .lesson h3 {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 1.16rem;
+    margin: 0 0 .5rem;
+    letter-spacing: -0.005em;
+  }
+  .lesson p { margin: 0 0 .7rem; }
+  .lesson p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  code {
+    font-family: var(--mono);
+    font-size: .86em;
+    background: var(--surface-2);
+    padding: .1em .38em;
+    border-radius: 5px;
+    color: var(--accent-ink);
+    word-break: break-word;
+  }
+  .term { color: var(--accent-ink); font-weight: 600; }
+
+  /* ---- Soundbite ---- */
+  .say {
+    margin: .9rem 0 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem;
+  }
+  .say .label {
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    display: block;
+    margin-bottom: .4rem;
+  }
+  .say q { font-style: italic; quotes: "\201C" "\201D"; }
+  .say q::before { content: open-quote; }
+  .say q::after { content: close-quote; }
+
+  /* ---- Pitfall ---- */
+  .pitfall {
+    margin: .9rem 0 0;
+    background: var(--warn-soft);
+    border: 1px solid var(--warn-line);
+    border-radius: 10px;
+    padding: .8rem 1.05rem;
+    font-size: .95rem;
+  }
+  .pitfall .label {
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--warn);
+    font-weight: 500;
+    display: block;
+    margin-bottom: .3rem;
+  }
+
+  /* ---- Quick-fact table ---- */
+  .tablewrap { overflow-x: auto; margin: 1rem 0 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--line); }
+  th { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  td:last-child, th:last-child { font-variant-numeric: tabular-nums; }
+
+  footer {
+    margin-top: 5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--muted);
+  }
+  a.inline { color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+</style>
+
+<div class="page">
+  <header>
+    <p class="eyebrow">Field notes · what I learned building it</p>
+    <h1>Agentic Briefing Field Notes</h1>
+    <p class="lede">The engineering ideas I ran into while building a multi-source, agentic AI news-briefing pipeline — each with the plain lesson and the line to say out loud in an interview.</p>
+    <div class="meta">
+      <span><b>Project</b> Daily_News — audio briefing on Cloud Run</span>
+      <span><b>Stack</b> Python · Gemini on Vertex · ADK · Cloud TTS</span>
+      <span><b>Captured</b> Sept 2026</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <a href="#arch"><span class="n">01</span><span class="t">Architecture &amp; design patterns</span></a>
+    <a href="#llm"><span class="n">02</span><span class="t">LLMs, agents &amp; evaluation</span></a>
+    <a href="#tts"><span class="n">03</span><span class="t">Text-to-speech &amp; audio</span></a>
+    <a href="#judgment"><span class="n">04</span><span class="t">Infra, Git &amp; engineering judgment</span></a>
+  </nav>
+
+  <!-- ================= CHAPTER 1 ================= -->
+  <section class="chapter" id="arch">
+    <header><span class="n">01</span><h2>Architecture &amp; design patterns</h2></header>
+
+    <div class="lesson">
+      <h3>One app, a swappable brain — the Strategy pattern</h3>
+      <p>I didn't build a "deterministic app" and an "agentic app." I built <strong>one</strong> pipeline where every stage is shared except the curation step, which sits behind a <span class="term">Curator</span> abstract base class. A deterministic ranker and an ADK agent both implement the same <code>curate()</code> method, so a config flag swaps them without touching anything else.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>I used the Strategy pattern so the deterministic and agentic curators were interchangeable behind one interface — comparing them was a config flag, not a rewrite.</q></div>
+    </div>
+
+    <div class="lesson">
+      <h3>Abstract base classes are a contract, not just inheritance</h3>
+      <p>An ABC does two things at once: it lets me add new strategies freely (<em>extensibility</em>), and <code>@abstractmethod</code> makes the program refuse to run a subclass that forgot to implement the method (<em>an enforced contract</em>). The same idea gave me a <span class="term">Source</span> ABC so Gmail, RSS, Hacker News, and a stock API all return the same normalized <code>Story</code> object — the adapter pattern.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>I normalized every source into one schema behind a Source interface, so the pipeline downstream was completely source-agnostic — adding a feed was a new adapter, not a pipeline change.</q></div>
+    </div>
+
+    <div class="lesson">
+      <h3>Open/Closed &amp; config-driven design</h3>
+      <p>New topics get added in a <code>feeds.yaml</code> file, not in code — the engine is <em>open</em> to new behavior but <em>closed</em> to modification. The feed catalog (sources, word budgets, prompts) is data; the engine that runs it is code.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Segment-then-stitch beats one mega-prompt</h3>
+      <p>For a combined digest, the wrong move is dumping every source into one giant prompt — each topic needs its own voice, and you blow the token budget. Instead each topic is rewritten with its own persona and word budget, then a <span class="term">composer</span> stitches the segments with spoken transitions. Adding a topic doesn't change the composer.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Deterministic backbone, agent only where judgment pays</h3>
+      <p>The delivery path (fetch → rewrite → TTS → email) stays deterministic because it's an unattended cron job that must be reliable. The agent lives only in curation, where dynamic judgment actually helps — and if it errors, it <strong>falls back to the deterministic curator</strong> so the digest always ships.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>I used an agent only where dynamic judgment added value and kept the delivery path deterministic for reliability and cost — with the deterministic version as an automatic fallback.</q></div>
+    </div>
+  </section>
+
+  <!-- ================= CHAPTER 2 ================= -->
+  <section class="chapter" id="llm">
+    <header><span class="n">02</span><h2>LLMs, agents &amp; evaluation</h2></header>
+
+    <div class="lesson">
+      <h3>LLM-as-judge: the model grades output against source in one prompt</h3>
+      <p>To judge a segment, I put <strong>both</strong> the source stories and the produced script into a single prompt and ask the model to score faithfulness, coverage, and relevance. It needs both halves: you can't catch a hallucination without the source to check against, and you can't catch a missed story without seeing what <em>could</em> have been included.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Reference-free vs reference-based judging</h3>
+      <p><span class="term">Reference-free</span>: the judge reasons from the source material alone. <span class="term">Reference-based</span>: the judge grades against a human-written answer key (<code>expectations.md</code>) — my must-includes, noise to drop, duplicates to merge, and red lines. I wired the answer key into the judge so my editorial judgment became part of the automated score.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>I built both reference-free and reference-based evals — the reference-based one grades output against a golden answer key I wrote, so the score reflects real editorial intent, not just internal consistency.</q></div>
+    </div>
+
+    <div class="lesson">
+      <h3>Golden datasets = frozen input + an answer key</h3>
+      <p>A golden set is captured source stories (<code>sources.json</code>, frozen so it never changes) plus my expectations. Because the input is fixed, when I tweak a prompt any change in the score is caused by <em>my change</em>, not by the news being different that day. That's what makes an eval a fair, repeatable test.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>An LLM can't browse unless you give it a tool</h3>
+      <p>A plain <code>generate_content()</code> call has <strong>no internet access</strong> — it only sees the text in the prompt. A URL in the data is just characters; the model can't click it. Web access comes only from a tool (my agentic curator has a <code>fetch_article()</code> tool; the judge deliberately doesn't).</p>
+      <div class="pitfall"><span class="label">Gotcha</span> My faithfulness check is only as deep as the text I captured. With one-line RSS snippets, the judge can flag legitimate detail as "unsupported" simply because it isn't in the snippet — not because it's false. Richer captured text is the fix, not a smarter judge.</div>
+    </div>
+
+    <div class="lesson">
+      <h3>Not all metrics survive thin sources</h3>
+      <p><strong>Coverage</strong> and <strong>relevance</strong> hold up with headline-only sources — a headline is enough to tell whether a story was included and on-topic. <strong>Faithfulness</strong> does not — verifying invented details needs the full article text.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Agentic memory: long-term state exposed as a tool</h3>
+      <p>A stateless daily job can't say "Y beats last week's X" because it never saw X. I persist a compact record after each run and give the agent a <code>recent_digest_history()</code> tool to read it. That cross-run memory — distinct from the agent's within-run context — is what enables competitive comparisons.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Vertex AI vs the AI Studio API-key path</h3>
+      <p>The same Gemini SDK can talk to two backends: <span class="term">Vertex AI</span> (uses your cloud project + ADC credentials) or <span class="term">AI Studio</span> (needs an API key). ADK defaulted to the API-key path and failed with "No API key provided" until I set <code>GOOGLE_GENAI_USE_VERTEXAI=True</code> plus project and location.</p>
+      <div class="pitfall"><span class="label">Gotcha</span> "No API key was provided" from an agent usually doesn't mean you need a key — it means the SDK isn't pointed at Vertex. Fix the routing, don't add a key.</div>
+    </div>
+
+    <div class="lesson">
+      <h3>Evals cost real tokens — and the judge shouldn't grade its own family</h3>
+      <p>One eval run is <em>N</em> generation calls + <em>N</em> judge calls (plus curation if agentic) — roughly 8–12 model calls for four segments, doubled when comparing two curators. And using the same model to generate and to judge invites self-bias; a common practice is a stronger or different judge model.</p>
+    </div>
+  </section>
+
+  <!-- ================= CHAPTER 3 ================= -->
+  <section class="chapter" id="tts">
+    <header><span class="n">03</span><h2>Text-to-speech &amp; audio</h2></header>
+
+    <div class="lesson">
+      <h3>TTS has a per-request input limit — so you chunk and stitch</h3>
+      <p>Every TTS engine caps input per request, because one call is meant for a chunk of speech, not a whole document. A ~1,000-word briefing can't go in one call — so the code splits the script on sentence boundaries, synthesizes each chunk, and concatenates the audio bytes into one file.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Path</th><th>Per-request limit</th></tr></thead>
+          <tbody>
+            <tr><td>Gemini TTS</td><td>4,000 bytes</td></tr>
+            <tr><td>Standard <code>synthesize_speech</code> (Chirp3-HD, Neural2)</td><td>5,000 bytes</td></tr>
+            <tr><td>Long Audio API (async, writes to GCS)</td><td>~1,000,000 bytes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h3>The limit is in bytes, not characters</h3>
+      <p>This one bit me. A <code>—</code> em-dash is 3 bytes; a curly quote is 3 bytes. A 4,500-<em>character</em> script can be well over 5,000 <em>bytes</em>, so my chunker had to measure UTF-8 byte length, not <code>len()</code>.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>The TTS limit is measured in bytes, not characters, so multi-byte punctuation like em-dashes can push you over even when the character count looks safe — I made the chunker byte-aware.</q></div>
+    </div>
+
+    <div class="lesson">
+      <h3>Selecting a voice vs selecting a model</h3>
+      <p>In Cloud TTS, <code>VoiceSelectionParams</code> takes a voice <code>name</code> and <code>language_code</code>. To use Gemini TTS you also pass <code>model_name</code> (only in library ≥ 2.29.0) and can add a style <code>prompt</code> on <code>SynthesisInput</code>. Passing a model into the wrong field — or as the old <code>model=</code> — just errors.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>The voice model is not the "it sounds robotic" lever</h3>
+      <p>I A/B'd a premium Gemini TTS voice against Chirp3-HD and honestly couldn't tell the difference — so I dropped the preview model (it's unstable and forced that 4,000-byte limit) for the stable voice. "It feels like it's just reading the screen" is a <strong>script and format</strong> problem — the fix is conversational writing or a two-host dialogue, not a fancier voice.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>I tested a premium TTS model, measured no perceptible gain over the stable voice, and cut it — naturalness comes from the script and format, not the voice tier.</q></div>
+    </div>
+  </section>
+
+  <!-- ================= CHAPTER 4 ================= -->
+  <section class="chapter" id="judgment">
+    <header><span class="n">04</span><h2>Infra, Git &amp; engineering judgment</h2></header>
+
+    <div class="lesson">
+      <h3>Source control and deployment are separate systems</h3>
+      <p>Pushing to GitHub stores and versions code; it runs nothing. Deploying to GCP (via <code>deploy.sh</code> → Cloud Build → Cloud Run) is what actually runs it — and it deploys the code in my working folder, not what's on GitHub. Safe order: merge the PR → pull <code>main</code> → deploy.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Push vs pull request; one working tree</h3>
+      <p>A <code>push</code> uploads a branch to GitHub; a <strong>pull request</strong> is a separate proposal to merge that branch into <code>main</code>, reviewed and accepted with a Merge button. And all branches share one working folder — uncommitted edits float and aren't tied to a branch, which is why Git blocks a switch that would overwrite them (<code>commit</code> or <code>stash</code> first).</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Word budgets are where editorial priority lives</h3>
+      <p>The per-segment word budget does four jobs at once: it controls total listen time (~150 words/minute), allocates attention by topic (AI gets more than markets), forces concision so the model prioritizes instead of dumping, and gives the eval a concrete target to score.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Knowing when <em>not</em> to add a model is seniority</h3>
+      <p>My A/B result was honest: for a typical day, the agentic curator improved relevance and competitive framing but didn't justify ~2× the latency and cost, and both curators shared a coverage gap I traced to ranking. Reporting that plainly — instead of declaring the fancy thing a win — is the mature move.</p>
+      <div class="say"><span class="label">Say this in an interview</span><q>I A/B'd an agentic curator against a deterministic baseline with an eval harness. The agent improved relevance and framing but didn't justify 2× latency on typical input, and both shared a coverage gap I traced to ranking — so I kept the baseline as default and the agent behind a flag.</q></div>
+    </div>
+  </section>
+
+  <footer>
+    Daily_News · personal field notes · built with Claude Code. Update as you learn more — the best notebook is the one you keep adding to.
+  </footer>
+</div>

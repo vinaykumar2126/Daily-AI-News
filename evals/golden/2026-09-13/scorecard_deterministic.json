@@ -1,0 +1,71 @@
+{
+  "golden": "2026-09-13",
+  "curator": "deterministic",
+  "latency_sec": 47.2,
+  "word_count": 1123,
+  "has_expectations": true,
+  "code_checks": {
+    "length_adherence": {
+      "passed": false,
+      "score": 0.85,
+      "detail": "AI & Tech: 614w > 450w budget"
+    },
+    "structure": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "complete"
+    },
+    "tts_safety": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "clean"
+    }
+  },
+  "judge": {
+    "faithfulness": 1.0,
+    "coverage": 0.6,
+    "relevance": 1.0,
+    "expectations_adherence": 0.864,
+    "per_segment": [
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.7,
+        "relevance": 1.0,
+        "rationale": "The segment demonstrates excellent faithfulness, with all information directly supported by the source material. However, its coverage could be improved by including some of the highly discussed external news items regarding AI agent behavior and ethics that were prominent in the Hacker News sources. All included stories are highly relevant to the specified focus areas of AI, agents, and models.",
+        "segment": "AI & Tech",
+        "expectations_adherence": 0.923,
+        "missed_must_includes": [
+          "OpenAI agents attacked RubyGems"
+        ],
+        "kept_noise": [],
+        "expectations_rationale": "The segment successfully included 3 out of 4 must-include stories, correctly dropped all noise items, merged duplicates, and respected red lines including the '100x' phrasing. It missed the high-signal 'OpenAI agents attacked RubyGems' story."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.7,
+        "relevance": 1.0,
+        "rationale": "The segment is highly faithful to the source stories and all included content is relevant to the defined focus areas. However, it missed one significant story regarding vulnerable House Republicans embracing Trump, which is relevant to election and congressional topics.",
+        "segment": "US Headlines",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The segment correctly included both must-include stories about Trump's $5,000 checks and his stance on AI risk, and successfully omitted all specified noise items for US Headlines."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.4,
+        "relevance": 1.0,
+        "rationale": "The segment is completely faithful to the source material and highly relevant to its stated focus. However, it only covers two of the significant updates, missing several important stories related to ICE and another key H-1B development from the provided sources.",
+        "segment": "Immigration & Visas",
+        "expectations_adherence": 0.67,
+        "missed_must_includes": [
+          "H-1B costs skyrocketing, jobs rerouted",
+          "US student visas — what Indian students need to know in 2026"
+        ],
+        "kept_noise": [],
+        "expectations_rationale": "The segment successfully included two of the four must-include immigration stories and correctly omitted all specified noise items. It also correctly merged the duplicate H-1B grace period story into a single mention. However, two important must-include stories were missed."
+      }
+    ]
+  },
+  "script": "Good morning. Here's your briefing for Sunday, September 13.\n\nFirst up, AI & Tech.\n\nHere’s a look at the latest in AI and tech.\n\nFirst up, new tools you can use today: OpenAI has released its Agents API in public beta, giving developers access to the managed infrastructure and agent harness behind models like Codex. This means you can build complex, long-running AI agents that handle context, tools, and code environments with less setup. OpenAI also rolled out GPT-Live-1, now available in their API for five cents per minute. This model offers full-duplex speech, allowing it to listen and speak simultaneously, handles interruptions fluidly, and offers twelve voice options. This is a big step for conversational AI, with early tests showing eighty percent fewer interruptions than previous turn-based systems, helping agents maintain natural conversation flow even during deep reasoning.\n\nFor engineers, Alibaba Group has open-sourced \"Open Code Review,\" an AI-powered command-line interface tool. It acts as a deep code review assistant, able to read full file contents, search the codebase, inspect other changed files for context, and pinpoint millions of code defects, having been validated at massive scale internally. You can find it on GitHub. Meta is also introducing a \"Shared Agents\" feature for its Muse app, allowing users to create and share customizable AI agents, which could be particularly useful for small businesses leveraging Meta platforms for customer support or sales. And for developers working in Google Cloud, there's a new Google Cloud plugin for AI coding agents that equips your preferred AI assistant with specific skills and tools for interacting with their services. In specialized models, \"North Small Translate\" is an open-weights research release with twenty-five billion active parameters, specialized for high-quality machine translation across fifty languages. Lastly, OpenAI has launched a financial services version of ChatGPT Work, combining their GPT-six Astra model with built-in premium financial data for professionals.\n\nIn competitive news, Cognition has significantly advanced the code-generation frontier with SWE-2. This model achieves fifty percent on the FrontierCode one-point-one Main One benchmark, while being sixty-four percent cheaper than its predecessor. It outperforms SWE-one-point-seven and Grok four-point-six on both score and cost. SWE-2 matches GPT-five-point-six Sol and Fable five/five-point-one at a fraction of their price and comes within a few points of GPT-six Astra, all at a quarter of the cost. This makes high-performance code generation significantly more affordable and powerful. Additionally, Abacus dot AI's Smaug models are reportedly cutting AI agent costs by one hundred times, setting a new bar for cost efficiency.\n\nLooking at serious infrastructure and research, new findings confirm that larger video models and increased pre-training compute significantly improve robot task performance. For roboticists, this indicates that scaling web-video pre-training is a direct and efficient path to deploying more capable robots in real-world scenarios. A study also explored \"opaque serial depth,\" examining how much unverbalized internal processing AI models can perform and how architectural shifts could make Chain-of-Thought monitoring harder. This highlights a growing challenge for practitioners in debugging and ensuring the reliability of increasingly complex AI systems, as their internal reasoning becomes less transparent. On the prompt engineering front, analysis from AI startups shows that sprawling, unstructured prompts lead to contradictions and higher costs. The solution? Treating prompts like product code, with modular sections for background, behavior, and output. For anyone working with prompts, adopting a structured, modular approach is crucial for improving agent quality, reducing regressions, and optimizing costs.\n\nFinally, in quick hits: OpenAI is reportedly considering slowing down the development of cutting-edge AI due to safety concerns. Anthropic has released a report detailing how its threat intelligence team detected and disrupted several malicious operations attempting to misuse Claude. And OpenAI has paused new subscriptions for its two-hundred-dollar-per-month Pro plan due to high demand for its new Astra model.\n\nNext, US Headlines.\n\nFormer President Trump's proposal for five thousand dollar checks to Americans would require congressional approval, according to House Speaker Mike Johnson. Johnson stated that while Congress could potentially work with Trump on the idea, there are no guarantees, despite Trump calling such payouts easy to fit into the federal budget. The fiscal feasibility and the necessary legislative process for such a measure are now subjects of political discussion in Washington.\n\nSeparately, former President Trump has downplayed concerns about the risks of artificial intelligence, rejecting calls from experts and tech CEOs to slow its development. He reportedly said he doesn't want the U.S. to cede its technological edge to China, stating that \"whoever wins with AI, wins.\" This stance differs from some expert warnings about potential societal and ethical dangers associated with rapid AI advancement.\n\nInternationally, during a recent golf trip, former President Trump voiced support for a unified Ireland, calling the prospect \"fantastic\" and breaking from decades of U.S. diplomatic precedent. His comments have sparked renewed debate over Irish unity in both the United Kingdom and Ireland, drawing significant attention from political figures in the region.\n\nIn other news, Chicago Mayor Brandon Johnson has announced his bid for re-election, gambling that progressive voters will turn out to support him. His campaign is being watched nationally as a test of progressive political strength in a major American city, particularly following his first term.\n\nFinally, some reports indicate that rhetoric from former President Trump is causing certain Canadians to reconsider travel and purchasing goods from the United States. This sentiment is contributing to broader discussions about cross-border relations and potential economic impacts between the two countries.\n\nAnd finally, Immigration & Visas.\n\nWe have two key updates today affecting international professionals in the US.\n\nFirst, for those pursuing green cards: U S Citizenship and Immigration Services, or USCIS, has stopped sending out the physical 'Welcome to America' informational packets to new green card holders. This means individuals who recently obtained their permanent resident status will no longer receive a printed guide. Instead, they will need to access this information online through the USCIS website. This is a change in processing and affects anyone receiving their green card moving forward.\n\nSecond, for H one B visa holders, there's a significant proposed change to be aware of. The Department of Homeland Security, or DHS, has put forward a rule that would eliminate the sixty-day grace period for H one B visa holders whose employment ends. Currently, this sixty-day period allows H one B workers to seek new employment or adjust their immigration status without falling out of status. If this proposed rule takes effect, it would drastically reduce the time H one B visa holders have to find a new sponsor or change to a different visa category after losing a job. This proposed change directly impacts all H one B visa holders and their job security in the US.\n\nThat's your briefing. Have a great day."
+}
