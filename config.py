@@ -62,6 +62,14 @@ class Config:
         self.gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
         self.gemini_region = os.environ.get("GEMINI_REGION", "us-central1")
 
+        # Point ADK (agentic curator) at Vertex AI, matching pipeline.rewrite's
+        # genai.Client(vertexai=True). Without this ADK defaults to the AI Studio
+        # API-key path and fails with "No API key was provided".
+        os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "True")
+        if self.gcp_project:
+            os.environ.setdefault("GOOGLE_CLOUD_PROJECT", self.gcp_project)
+        os.environ.setdefault("GOOGLE_CLOUD_LOCATION", self.gemini_region)
+
         # Curation strategy: "deterministic" (default) or "agentic"
         self.curator = os.environ.get("CURATOR", "deterministic")
 

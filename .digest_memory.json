@@ -43,5 +43,50 @@
         "source": "247wallst.com"
       }
     ]
+  },
+  {
+    "date": "2026-09-16",
+    "items": [
+      {
+        "title": "Agents API 🤖, Cognition SWE-2👨‍💻, Muse Shared Agents🧑‍🤝‍🧑",
+        "url": "",
+        "source": "dan@tldrnewsletter.com"
+      },
+      {
+        "title": "How To Get Started With Meta's New AI Agent, Muse - Engadget",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZ3lUVE9KRmtVQlEzWlNhWGJWYVl6U09RVnV2VmNaZkw4WXAwTDEwSFR2WTVZMDZzMEVQQTg2QktTcHZZX2NrcGJVWnotMWFqY2JKMnZQMkRlU2NTREZXbXN4cXlTaWVGVEN3NHRiMnZNdHZSMF9OZjFzZGVIRUZlbHRtV1N0cUtJYkE?oc=5",
+        "source": "Engadget"
+      },
+      {
+        "title": "OpenAI agents carried out an undisclosed attack on RubyGems",
+        "url": "https://www.rubyhack.ai/",
+        "source": "Hacker News"
+      },
+      {
+        "title": "Why are AI agents lying, cheating and coordinating?",
+        "url": "https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating",
+        "source": "Hacker News"
+      },
+      {
+        "title": "AgentsDock: An IDE designed for agentic AI research",
+        "url": "https://agentsdock.net/",
+        "source": "Hacker News"
+      },
+      {
+        "title": "UNESCO launches new tools to reinforce ethical AI Governance at global forum in Riyadh, Saudi Arabia - UNESCO",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcFdhalJ5OUpQenQ2Y080RUdhT3h1N0M1ZGJGUEEzTEpaXzJvTGZOZUMxNFdfZHNPYlBMUV9iYnpXcEtRdnlQcnNja0NTbWpOWVBSTUtoUndRYmt2U196eTBFYXpHQ3R6SXdUenJHcWFCSGZXeXNKZWFxWkszVG5oLTk4ZFNEOUhiYTBndzlRYnI4V0Zmbi1vV0ZCRGFFYW8tb0U1MG0tMmhWOFBGMkp6Q3ZnVlFfeGZ6X0JlLUJreXFOZ1E?oc=5",
+        "source": "UNESCO"
+      },
+      {
+        "title": "Ripple Just Put AI Agents Inside Its Treasury Software. Here’s What They Can and Can’t Do. - 247wallst.com",
+        "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNWVFlekFta28xZXR2VVhjeTlDVXFZbWJrb1JjbEZ4TTRZU1dsb285Z3BrOEttVHE4ZS00M0txMy02NlFwZHM0NnJKQ3JYWU9CUnZhSmtRUGZJOUFTSkpkY3pOWDdOZlBOUGM2bUQtUUVHWEdiamdVZ3hQZXpXX3N2T056VTBxUjJPN3h5YlBlUUc1UlVoMHFKT2pTVWt0QVpsY04xeWtnWThlOHVRdWxpVk4wZFY5NFRpTF9hT3JjZ09qbmZkbnpyUkZrb0FvNURnMGQ0ZURZYXdwNWNQdWc?oc=5",
+        "source": "247wallst.com"
+      },
+      {
+        "title": "Solo.io Extends AI Agent Governance to the Desktop with agentdesktop - The Futurum Group",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSFZyOU9mSGtNTVVLNGhmdkttanNEdHVuU09HTFVGdlNraVBwYjNJR3NhOWpaT1VrR0lMRUVmS0xhdGlnRWR1cEhJN3BVcE1xaXR0Q0o4SVFPSUdSRlREaHNWNC1PdnFyaFlmQ3JMNTVLMDlsSXVsdE5RT2w2ajJfUnhJc0FPZzViTFpHQkNSR3haN2J3bjk2VHp2OHJLeVVwRTJwdnhB?oc=5",
+        "source": "The Futurum Group"
+      }
+    ]
   }
 ]
