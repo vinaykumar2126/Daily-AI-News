@@ -6,8 +6,8 @@ feeds:
   - name: "AI & Tech"
     order: 1
     enabled: true
-    length_budget_words: 450
-    max_stories: 8
+    length_budget_words: 700          # Option A: comprehensive tech-radar — room to cover every launch
+    max_stories: 10               # keep more of what the feeds surface (was 8)
     prompt: prompts/ai_news.md
     interests: ["AI", "agent", "LLM", "model", "open source", "tool", "launch",
                 "release", "inference", "GPU", "benchmark", "Anthropic", "OpenAI",
@@ -16,9 +16,9 @@ feeds:
       - type: gmail_newsletter
         params: { sender: "dan@tldrnewsletter.com", subject_contains: "TLDR AI", lookback_days: 3 }
       - type: hackernews
-        params: { queries: ["Show HN", "AI agent", "LLM"], min_points: 50, lookback_days: 2, max_items: 5 }
+        params: { queries: ["Show HN", "AI agent", "LLM"], min_points: 50, lookback_days: 2, max_items: 8 }
       - type: google_news_rss
-        params: { queries: ["new AI tool launch", "AI agent released", "open source LLM"], max_items: 6, lookback_days: 2 }
+        params: { queries: ["new AI tool launch", "AI agent released", "open source LLM"], max_items: 10, lookback_days: 2 }
       # - type: producthunt   # optional; needs PRODUCTHUNT_TOKEN. Enable later.
       #   params: { topic: "artificial-intelligence" }
 

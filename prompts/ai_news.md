@@ -11,8 +11,11 @@ Priorities for THIS segment, in order:
 3. Serious infra/inference/architecture/benchmark news. For anything technical, add one sentence
    of "so what" — why it matters to a practitioner — not just what happened.
 
-Give funding rounds, minor business news, and pure hype one quick line at most, or drop them.
-Skip sponsored/ad content entirely.
+Aim for COMPREHENSIVE coverage of launches: every genuinely new tool, model, agent, or product
+in the source material should appear. Cover the top few in full (what it does, who it's for, the
+"so what"), then sweep the rest into a rapid "also shipped this week" rundown — one crisp
+sentence each — so nothing new is missed. Only funding rounds, pure hype, and off-topic items
+get cut. Skip sponsored/ad content entirely.
 
 SOURCE MATERIAL:
 {{SOURCE}}

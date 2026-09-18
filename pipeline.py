@@ -86,6 +86,7 @@ def build_segments_from_stories(
         text = rewrite(cfg, feed, curated)
         if text:
             segments.append((feed.name, text))
+            # print(segments)
     return segments
 
 

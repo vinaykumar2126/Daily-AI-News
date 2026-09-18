@@ -2,12 +2,12 @@
 
 _My running dev log for Daily_News. Read this first when I come back. Update it before I stop._
 
-_Last updated: 2026-09-16_
+_Last updated: 2026-09-18_
 
 ## Right now
-- **Branch:** `feature/multisource-agentic` — clean, everything committed.
-- **Last commit:** `6e5c1c1` "Evaluated with a self written golden dataset with LLM as a Judge".
-- **Pushed to GitHub?** Yes. **Deployed to GCP?** No — Cloud Run still runs the OLD single-source code. Pushing ≠ deploying; deploy runs `deploy.sh` on my local code, not GitHub.
+- **Branch:** `feature/multisource-agentic`. STATE.md and the expectations→judge wiring ARE committed now (commits `73222de`, `562f973`), so those are safe.
+- **Uncommitted today — COMMIT THESE so they don't get wiped like last time:** `feeds.yaml` (Option A caps + walk-back to max_stories 10), `prompts/ai_news.md` (coverage rundown), `curation/agentic.py` ("don't drop launches" instruction), `pipeline.py`, `.digest_memory.json`, and the new `evals/golden/2026-09-18/` (today's golden set + my answer key + scorecards).
+- **Pushed to GitHub?** Yes (older commits). **Deployed to GCP?** No — Cloud Run still runs the OLD single-source code. Pushing ≠ deploying; deploy runs `deploy.sh` on my local code, not GitHub.
 
 ## What this project is
 A daily audio news briefing. It pulls stories from several sources, an LLM rewrites them into a spoken script, Cloud TTS makes an MP3, and it emails me the clip. One combined digest: AI & Tech, US Headlines, Immigration & Visas, Markets.
@@ -26,10 +26,12 @@ A daily audio news briefing. It pulls stories from several sources, an LLM rewri
 - **Vertex vs API key.** The Gemini SDK / ADK defaulted to the AI-Studio API-key path and errored "No API key provided." Fix was routing it to Vertex with `GOOGLE_GENAI_USE_VERTEXAI=True` + project + region — NOT adding a key.
 - **How LLM-as-judge actually works.** The judge reads the segment script AND the source stories in ONE prompt and grades one against the other. It can't catch a hallucination or a missed story without both halves.
 - **The judge does NOT open links.** A plain LLM call has no internet — the URL in the JSON is just text. So faithfulness is only checked against the short snippet I captured, not the full article. (Only a tool like `fetch_article` gives web access — the agent has it, the judge doesn't.)
-- **Reference-free vs reference-based.** I thought my `expectations.md` was driving the scores — it wasn't. The scorecard numbers came from the judge reading only `sources.json`. `expectations.md` was just a doc until it's wired into the judge. (See next step — that wiring got reverted.)
+- **Reference-free vs reference-based.** I thought my `expectations.md` was driving the scores — it wasn't. The scorecard numbers came from the judge reading only `sources.json`. `expectations.md` was just a doc until it's wired into the judge. (Now fixed AND committed: `judge_against_expectations()` + `load_expectations()` feed my answer key into the score.)
 - **`.env` vs `.env.`** — a stray trailing dot in the dotenv path meant nothing loaded. Silly but cost time.
 - **How the grading actually flows.** It clicked once I said it out loud: the eval loads the frozen stories from `sources.json` (not live), the curator picks which ones, the LLM rewrites them into a segment, and then TWO judges score it — one against `sources.json` (faithfulness / coverage / relevance), one against my `expectations.md` (did it hit my must-includes and drop the noise). Only the *curator* differs between deterministic and agentic; everything else is identical, so any score gap is caused purely by which stories the brain picked.
 - **`expectations.md` is a rubric, not a model answer.** It's my list of judgments — must-include / drop-as-noise / merge-duplicates / red-lines — not the exact words the segment should say. And I write it myself by reading `sources.json`, so it reflects MY editorial taste. If I want the score to mean "does the app do what *I* want," I have to keep editing that file to match my priorities.
+- **Two "coverage" numbers can disagree — trust the expectations one.** On 2026-09-18 the source-based coverage said 0.5 for the AI segment, but expectations-adherence said 0.94. The 0.5 looked scary but was misleading — it penalizes me for dropping the ~20 junk stories I WANTED dropped. The 0.985 overall adherence was the real signal: the app covered what I said matters. Without my answer key I'd have panicked at 0.5 and kept loosening caps.
+- **Cramming stories hurts faithfulness.** I first raised `max_stories` to 14 to "cover everything" — faithfulness dropped 1.0 → 0.8 and latency doubled (~5 min). Walked it back to 10 (kept budget 700) → faithfulness back to 1.0, latency halved to ~148s. "Cover everything" has a real cost; better ranking beats bigger caps.
 
 ## Next steps (start here)
 1. **Re-add the expectations→judge wiring** — it was reverted and is NOT in `evals/judge.py` / `evals/run.py` right now. Need `judge_against_expectations()` in judge.py and `load_expectations()` + the per-segment call in run.py, so `expectations_adherence` shows up in the scorecard.
