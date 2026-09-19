@@ -25,25 +25,44 @@ class ElevenLabsProvider(RealtimeProvider):
         super().__init__(cfg)
         if not cfg.eleven_api_key:
             raise RuntimeError("ELEVENLABS_API_KEY not set")
-        # TODO(verify): construct the client, e.g. `from elevenlabs.client import ElevenLabs;
-        # self.client = ElevenLabs(api_key=cfg.eleven_api_key)`
-        self.client = None
+        from elevenlabs import ElevenLabs
 
-    def sync(self, context: dict) -> None:
-        """Refresh the agent's grounding with today's knowledge.
+        self.client = ElevenLabs(api_key=cfg.eleven_api_key)
 
-        Implement (verify against current ElevenLabs Conversational AI docs):
-          1. Render `context` to text via agent.context.render_markdown.
-          2. Upload/replace it as the agent's KNOWLEDGE BASE document
-             (create a KB doc from text, then attach it to ELEVENLABS_AGENT_ID; remove the
-             previous day's doc so only today's is attached).
-          3. Optionally set/refresh the agent's first message from context['narrative'] so the
-             call opens with today's briefing.
+    def sync(self, context: dict) -> dict:
+        """Refresh the agent's knowledge base with today's briefing (create doc + attach to agent).
+
+        Creates a fresh dated knowledge-base document from today's rendered doc and points the
+        agent's `knowledge_base` at just that document (previous days' docs remain in the KB but
+        are no longer attached). Verified against the ElevenLabs Conversational AI Python SDK.
         """
-        raise NotImplementedError(
-            "ElevenLabs sync() not implemented — verify current KB/agent API and fill in "
-            "(see docstring). Requires ELEVENLABS_AGENT_ID."
+        from agent.context import render_markdown
+
+        if not self.cfg.eleven_agent_id:
+            raise RuntimeError("ELEVENLABS_AGENT_ID not set")
+
+        text = render_markdown(context)
+        name = f"Daily briefing {context.get('date', '')}".strip()
+        log.info("Uploading knowledge doc %r (%d chars)", name, len(text))
+        doc = self.client.conversational_ai.knowledge_base.documents.create_from_text(
+            text=text, name=name
         )
+
+        # Attach ONLY today's document to the agent.
+        self.client.conversational_ai.agents.update(
+            agent_id=self.cfg.eleven_agent_id,
+            conversation_config={
+                "agent": {
+                    "prompt": {
+                        "knowledge_base": [
+                            {"type": "text", "name": doc.name, "id": doc.id},
+                        ]
+                    }
+                }
+            },
+        )
+        log.info("Agent %s knowledge refreshed -> doc %s", self.cfg.eleven_agent_id, doc.id)
+        return {"document_id": doc.id, "name": doc.name}
 
     def create_session(self) -> dict:
         """Return {'signed_url': ...} for the browser client to open a live conversation.
