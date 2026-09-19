@@ -85,6 +85,22 @@ class Config:
         # Optional archive (also used by the agentic curator's memory)
         self.gcs_bucket = os.environ.get("GCS_BUCKET", "")
 
+        # --- Realtime interactive agent (all optional; only needed for the phone-call mode) ---
+        self.realtime_provider = os.environ.get("REALTIME_PROVIDER", "elevenlabs")
+        # ElevenLabs Conversational AI
+        self.eleven_api_key = os.environ.get("ELEVENLABS_API_KEY", "")
+        self.eleven_agent_id = os.environ.get("ELEVENLABS_AGENT_ID", "")
+        self.eleven_voice_id = os.environ.get("ELEVENLABS_VOICE_ID", "")
+        self.eleven_phone_number_id = os.environ.get("ELEVENLABS_PHONE_NUMBER_ID", "")
+        # Retell (alternate provider)
+        self.retell_api_key = os.environ.get("RETELL_API_KEY", "")
+        self.retell_agent_id = os.environ.get("RETELL_AGENT_ID", "")
+        # Telephony (Twilio, when the provider uses it) + who to call
+        self.twilio_account_sid = os.environ.get("TWILIO_ACCOUNT_SID", "")
+        self.twilio_auth_token = os.environ.get("TWILIO_AUTH_TOKEN", "")
+        self.twilio_from_number = os.environ.get("TWILIO_FROM_NUMBER", "")
+        self.user_phone_number = os.environ.get("USER_PHONE_NUMBER", "")
+
         # Dev conveniences
         self.dry_run = os.environ.get("DRY_RUN", "").lower() in {"1", "true", "yes"}
 

@@ -6,3 +6,8 @@ feedparser>=6.0.0
 PyYAML>=6.0
 yfinance>=0.2.40
 google-adk>=0.2.0
+# Realtime interactive agent (phone-call mode)
+elevenlabs>=1.0.0
+twilio>=9.0.0
+fastapi>=0.110.0
+uvicorn>=0.29.0
