@@ -43,10 +43,16 @@ def build_context(cfg: Config, feeds: list[Feed], date: dt.date | None = None) -
     narrative = composer.compose(segments, date=date)
 
     stories: list[dict] = []
+    seen: set[str] = set()  # global de-dup: a story can match two feeds' queries
     for feed in feeds:
         for s in feed_stories.get(feed.name, []):
-            if s.title.strip():
-                stories.append(_story_dict(feed.name, s))
+            if not s.title.strip():
+                continue
+            key = _norm(s.title)
+            if key in seen:
+                continue
+            seen.add(key)
+            stories.append(_story_dict(feed.name, s))
 
     return {"date": date.isoformat(), "narrative": narrative, "stories": stories}
 
@@ -94,7 +100,9 @@ def render_markdown(ctx: dict) -> str:
         if url:
             line += f" ({url})"
         lines.append(line)
-    return "\n".join(lines).strip() + "\n"
+    from sources.base import strip_symbols
+
+    return strip_symbols("\n".join(lines).strip()) + "\n"
 
 
 def main() -> int:

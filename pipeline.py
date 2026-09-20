@@ -69,6 +69,25 @@ def _needs_enrichment(story: Story) -> bool:
     return len((story.body or "").strip()) < 200
 
 
+import re as _re
+
+# Standalone UI chrome that leaks in when we scrape a page (buttons/menus), safe to drop.
+_CHROME = _re.compile(
+    r"\b(log ?in|sign ?up|subscribe|theme|light\s+dark|menu|share|read more|"
+    r"accept( all)?( cookies)?|cookie settings|skip to content|toggle)\b",
+    _re.I,
+)
+
+
+def _clean_enriched(text: str) -> str:
+    """Strip emoji/symbols and obvious UI chrome from fetched article text, collapse whitespace."""
+    from sources.base import strip_symbols
+
+    text = strip_symbols(text)
+    text = _CHROME.sub("", text)
+    return _re.sub(r"\s{2,}", " ", text).strip()
+
+
 def enrich_stories(stories: list[Story], max_stories: int) -> None:
     """Fetch real article text for thin-bodied stories so the rewrite grounds on facts, not a
     headline. Mutates stories in place; bounded per feed; failures leave the story unchanged."""
@@ -82,7 +101,7 @@ def enrich_stories(stories: list[Story], max_stories: int) -> None:
             continue
         res = fetch_article(s.url)
         if res.get("status") == "success" and len(res.get("text", "")) > 200:
-            s.body = res["text"]
+            s.body = _clean_enriched(res["text"])
             enriched += 1
             log.info("Enriched %r from %s (%d chars)", s.title[:50], s.url, len(s.body))
     if enriched:
