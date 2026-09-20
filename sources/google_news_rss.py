@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
+import re
 import time
 import urllib.parse
 
@@ -20,6 +21,21 @@ import feedparser
 from sources.base import Source, Story, register_source
 
 log = logging.getLogger("daily-news.sources.gnews")
+
+
+def _strip_html(text: str) -> str:
+    """Google News RSS summaries are HTML (<a>, <font>, &nbsp;, <ol><li>) wrapping huge redirect
+    URLs — strip to plain text so it doesn't bloat tokens or confuse the LLM."""
+    if not text:
+        return ""
+    try:
+        from bs4 import BeautifulSoup
+
+        text = BeautifulSoup(text, "html.parser").get_text(" ")
+    except Exception:
+        text = re.sub(r"<[^>]+>", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
 
 _HL = "en-US"
 _GL = "US"
@@ -90,7 +106,7 @@ class GoogleNewsRssSource(Source):
                 if key in seen_titles:
                     continue
                 seen_titles.add(key)
-                summary = getattr(entry, "summary", "") or ""
+                summary = _strip_html(getattr(entry, "summary", "") or "")
                 stories.append(
                     Story(
                         title=title,

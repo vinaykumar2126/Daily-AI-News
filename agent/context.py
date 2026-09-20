@@ -50,6 +50,29 @@ def build_context(cfg: Config, feeds: list[Feed], date: dt.date | None = None) -
     return {"date": date.isoformat(), "narrative": narrative, "stories": stories}
 
 
+def _norm(text: str) -> str:
+    return re.sub(r"\W+", " ", text or "").strip().lower()
+
+
+def _useful_summary(title: str, summary: str) -> str:
+    """Keep a summary only if it adds info beyond the title (RSS summaries are usually just the
+    title + source repeated). Trim to keep the KB lean."""
+    if not summary:
+        return ""
+    t, s = _norm(title), _norm(summary)
+    if not s or s == t or s.startswith(t) or (t in s and len(s) <= len(t) + 40):
+        return ""
+    return summary[:300]
+
+
+def _useful_url(url: str) -> str:
+    """Drop opaque Google News redirect URLs and any very long link — a voice agent can't use
+    them and they dominate the token count. Keep short, real source URLs."""
+    if not url or "news.google.com" in url or len(url) > 120:
+        return ""
+    return url
+
+
 def render_markdown(ctx: dict) -> str:
     """Human/agent-readable knowledge doc: the opening narrative + grounded source stories."""
     lines = [f"# Daily briefing knowledge — {ctx['date']}", ""]
@@ -63,10 +86,12 @@ def render_markdown(ctx: dict) -> str:
             current = s["topic"]
             lines.append(f"\n### {current}")
         line = f"- {s['title']}"
-        if s.get("summary"):
-            line += f" — {s['summary']}"
-        if s.get("url"):
-            line += f" ({s['url']})"
+        summary = _useful_summary(s["title"], s.get("summary", ""))
+        if summary:
+            line += f" — {summary}"
+        url = _useful_url(s.get("url", ""))
+        if url:
+            line += f" ({url})"
         lines.append(line)
     return "\n".join(lines).strip() + "\n"
 
