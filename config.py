@@ -73,6 +73,11 @@ class Config:
         # Curation strategy: "deterministic" (default) or "agentic"
         self.curator = os.environ.get("CURATOR", "deterministic")
 
+        # Article enrichment: fetch real article text for thin (headline-only) curated stories
+        # before rewriting, so the LLM grounds on facts instead of hallucinating from a headline.
+        self.enrich_articles = os.environ.get("ENRICH_ARTICLES", "1").lower() not in {"0", "false", "no"}
+        self.enrich_max_per_feed = int(os.environ.get("ENRICH_MAX_PER_FEED", "6"))
+
         # Text-to-Speech. Default to a stable Chirp3-HD voice. Set TTS_MODEL to a Gemini-TTS
         # model (e.g. gemini-3.1-flash-tts-preview) to enable model_name + style prompt.
         self.tts_language = os.environ.get("TTS_LANGUAGE", "en-US")
