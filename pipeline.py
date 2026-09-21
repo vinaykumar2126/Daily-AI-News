@@ -60,6 +60,54 @@ def rewrite(cfg: Config, feed: Feed, stories: list[Story]) -> str:
     return (resp.text or "").strip()
 
 
+def _needs_enrichment(story: Story) -> bool:
+    """A story the rewrite would otherwise hallucinate from: real link, but a thin (headline /
+    vote-count-only) body. Skip opaque Google News redirect URLs (they don't fetch cleanly, and
+    those segments' headlines are self-contained)."""
+    if not story.url or "news.google.com" in story.url:
+        return False
+    return len((story.body or "").strip()) < 200
+
+
+import re as _re
+
+# Standalone UI chrome that leaks in when we scrape a page (buttons/menus), safe to drop.
+_CHROME = _re.compile(
+    r"\b(log ?in|sign ?up|subscribe|theme|light\s+dark|menu|share|read more|"
+    r"accept( all)?( cookies)?|cookie settings|skip to content|toggle)\b",
+    _re.I,
+)
+
+
+def _clean_enriched(text: str) -> str:
+    """Strip emoji/symbols and obvious UI chrome from fetched article text, collapse whitespace."""
+    from sources.base import strip_symbols
+
+    text = strip_symbols(text)
+    text = _CHROME.sub("", text)
+    return _re.sub(r"\s{2,}", " ", text).strip()
+
+
+def enrich_stories(stories: list[Story], max_stories: int) -> None:
+    """Fetch real article text for thin-bodied stories so the rewrite grounds on facts, not a
+    headline. Mutates stories in place; bounded per feed; failures leave the story unchanged."""
+    from curation.tools import fetch_article
+
+    enriched = 0
+    for s in stories:
+        if enriched >= max_stories:
+            break
+        if not _needs_enrichment(s):
+            continue
+        res = fetch_article(s.url)
+        if res.get("status") == "success" and len(res.get("text", "")) > 200:
+            s.body = _clean_enriched(res["text"])
+            enriched += 1
+            log.info("Enriched %r from %s (%d chars)", s.title[:50], s.url, len(s.body))
+    if enriched:
+        log.info("Enriched %d stories with article text", enriched)
+
+
 def build_segments_from_stories(
     cfg: Config,
     feeds: list[Feed],
@@ -83,6 +131,8 @@ def build_segments_from_stories(
         if not curated:
             log.warning("[%s] nothing survived curation; skipping segment", feed.name)
             continue
+        if cfg.enrich_articles:
+            enrich_stories(curated, cfg.enrich_max_per_feed)
         text = rewrite(cfg, feed, curated)
         if text:
             segments.append((feed.name, text))

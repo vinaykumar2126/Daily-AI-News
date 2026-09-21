@@ -9,11 +9,31 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
+import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Callable
 
 log = logging.getLogger("daily-news.sources")
+
+# Emoji / pictographs / arrows / misc-technical (incl. ⌘ U+2318) — junk that confuses TTS.
+# Keeps normal punctuation like em/en dashes and curly quotes (those read fine aloud).
+_SYMBOLS = re.compile(
+    "[\U0001F000-\U0001FAFF"   # emoji & pictographs
+    "\U00002600-\U000027BF"    # misc symbols + dingbats
+    "\U00002190-\U000021FF"    # arrows
+    "\U00002B00-\U00002BFF"    # misc symbols & arrows
+    "\U0001F1E6-\U0001F1FF"    # regional-indicator (flags)
+    "⌀-⏿"            # misc technical (⌘, ⌨, ⏰, …)
+    "‍️]"            # zero-width joiner, variation selector
+)
+
+
+def strip_symbols(text: str) -> str:
+    """Remove emoji/pictographic/technical symbols that TTS mispronounces; collapse leftover spaces."""
+    if not text:
+        return text
+    return re.sub(r"[ \t]{2,}", " ", _SYMBOLS.sub("", text))
 
 
 @dataclass

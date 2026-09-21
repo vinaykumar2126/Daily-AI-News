@@ -12,11 +12,48 @@ import email
 import imaplib
 import logging
 import os
+import re
 from email.header import decode_header
 
 from sources.base import Source, Story, register_source
 
 log = logging.getLogger("daily-news.sources.gmail")
+
+# Footnote-style link refs the text extraction leaves behind, e.g. "Sign Up [1]".
+_LINK_REF = re.compile(r"\[\d+\]")
+
+# Newsletter boilerplate to drop entirely (nav, sponsor tags, footer). Targets structural
+# patterns — NOT any line containing the word "sponsor" (e.g. real "companies that sponsor
+# H-1B visas" content must survive), so matches are anchored to parenthesized tags / nav rows.
+_BOILERPLATE = re.compile(
+    r"\(sponsor(ed)?\)"                 # "(SPONSOR)" ad tag
+    r"|\btogether with\b"               # TLDR sponsor lead-in
+    r"|\bunsubscribe\b"
+    r"|manage (your )?(preferences|subscription)"
+    r"|update your profile"
+    r"|view (online|in browser)|read online"
+    r"|sign up\b.*\badvertise\b"        # the "Sign Up | Advertise | View Online" nav row
+    r"|^\s*advertise\s*$",
+    re.I,
+)
+
+
+def _clean_newsletter(text: str) -> str:
+    """Strip newsletter ads / nav / footer / link-refs so they don't bloat tokens or confuse
+    the LLM. Line-based and conservative — only removes structural boilerplate."""
+    kept: list[str] = []
+    for raw in text.splitlines():
+        line = _LINK_REF.sub("", raw)
+        line = re.sub(r"\s+([.,;:!?])", r"\1", line)  # fix "beta ." left by ref removal
+        line = re.sub(r"[ \t]{2,}", " ", line)         # collapse runs of spaces
+        stripped = line.strip()
+        if _BOILERPLATE.search(stripped):
+            continue
+        if re.match(r"^https?://\S+$", stripped):  # bare tracking URL lines
+            continue
+        kept.append(line.rstrip())
+    cleaned = re.sub(r"\n{3,}", "\n\n", "\n".join(kept))
+    return cleaned.strip()
 
 
 def _decode(value: str) -> str:
@@ -129,7 +166,7 @@ class GmailNewsletterSource(Source):
             msg = email.message_from_bytes(raw)
             subject = _decode(msg.get("Subject", ""))
             log.info("Fetched newsletter: %r", subject)
-            body = _extract_body(msg)
+            body = _clean_newsletter(_extract_body(msg))
             if not body.strip():
                 return []
             return [

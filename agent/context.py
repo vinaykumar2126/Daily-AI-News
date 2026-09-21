@@ -1,0 +1,126 @@
+"""Build today's grounding knowledge for the realtime agent.
+
+Provider-neutral: reuses the existing pipeline to produce (a) the spoken NARRATIVE (the composed
+briefing the agent opens with) and (b) the STORY LIST (title/summary/url per topic) the agent uses
+as its knowledge base for follow-up questions. Stories are gathered once and shared between both,
+so we don't fetch twice.
+
+    python -m agent.context            # print today's knowledge doc (markdown)
+    python -m agent.context --json     # emit the structured context as JSON
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import json
+import re
+
+import composer
+import pipeline
+from config import Config, Feed, load_dotenv, load_feeds
+from sources.base import Story
+
+_SUMMARY_CHARS = 600
+
+
+def _story_dict(topic: str, s: Story) -> dict:
+    return {
+        "topic": topic,
+        "title": s.title,
+        "summary": (s.body or "").strip()[:_SUMMARY_CHARS],
+        "url": s.url,
+        "source": s.source,
+    }
+
+
+def build_context(cfg: Config, feeds: list[Feed], date: dt.date | None = None) -> dict:
+    """Fetch once, then produce {date, narrative, stories:[...]} for the agent's grounding."""
+    date = date or dt.date.today()
+    # Fetch every feed's stories a single time, then reuse for both narrative and KB.
+    feed_stories = {f.name: pipeline.gather_stories(f) for f in feeds}
+    segments = pipeline.build_segments_from_stories(cfg, feeds, feed_stories)
+    narrative = composer.compose(segments, date=date)
+
+    stories: list[dict] = []
+    seen: set[str] = set()  # global de-dup: a story can match two feeds' queries
+    for feed in feeds:
+        for s in feed_stories.get(feed.name, []):
+            if not s.title.strip():
+                continue
+            key = _norm(s.title)
+            if key in seen:
+                continue
+            seen.add(key)
+            stories.append(_story_dict(feed.name, s))
+
+    return {"date": date.isoformat(), "narrative": narrative, "stories": stories}
+
+
+def _norm(text: str) -> str:
+    return re.sub(r"\W+", " ", text or "").strip().lower()
+
+
+def _useful_summary(title: str, summary: str) -> str:
+    """Keep a summary only if it adds info beyond the title (RSS summaries are usually just the
+    title + source repeated). Trim to keep the KB lean."""
+    if not summary:
+        return ""
+    t, s = _norm(title), _norm(summary)
+    if not s or s == t or s.startswith(t) or (t in s and len(s) <= len(t) + 40):
+        return ""
+    return summary[:300]
+
+
+def _useful_url(url: str) -> str:
+    """Drop opaque Google News redirect URLs and any very long link — a voice agent can't use
+    them and they dominate the token count. Keep short, real source URLs."""
+    if not url or "news.google.com" in url or len(url) > 120:
+        return ""
+    return url
+
+
+def render_markdown(ctx: dict) -> str:
+    """Human/agent-readable knowledge doc: the opening narrative + grounded source stories."""
+    lines = [f"# Daily briefing knowledge — {ctx['date']}", ""]
+    lines.append("## Opening narrative (what the agent delivers first)")
+    lines.append(ctx.get("narrative", "").strip() or "(none)")
+    lines.append("")
+    lines.append("## Source stories (grounding for follow-up questions)")
+    current = None
+    for s in ctx.get("stories", []):
+        if s["topic"] != current:
+            current = s["topic"]
+            lines.append(f"\n### {current}")
+        line = f"- {s['title']}"
+        summary = _useful_summary(s["title"], s.get("summary", ""))
+        if summary:
+            line += f" — {summary}"
+        url = _useful_url(s.get("url", ""))
+        if url:
+            line += f" ({url})"
+        lines.append(line)
+    from sources.base import strip_symbols
+
+    return strip_symbols("\n".join(lines).strip()) + "\n"
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--json", action="store_true", help="emit structured JSON instead of markdown")
+    args = ap.parse_args()
+
+    load_dotenv()
+    cfg = Config()
+    feeds = load_feeds()
+    ctx = build_context(cfg, feeds)
+
+    if args.json:
+        print(json.dumps(ctx, indent=2, ensure_ascii=False))
+    else:
+        print(render_markdown(ctx))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

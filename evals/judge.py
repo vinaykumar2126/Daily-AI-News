@@ -76,6 +76,68 @@ def judge_segment(
         }
 
 
+_EXPECTATIONS_PROMPT = """You are grading one segment of an audio news briefing against an
+EDITOR'S ANSWER KEY (the expectations the editor wrote for this day). Focus only on the part of
+the answer key relevant to the "{focus}" segment.
+
+Score expectations_adherence from 0.0 to 1.0, judging how well the segment follows the key:
+- +credit for each MUST-INCLUDE story that is present
+- +credit for NOISE / should-drop items that were correctly left out
+- +credit for DUPLICATES correctly merged into a single mention (penalize repeats)
+- +credit for RED LINES respected (nothing that must-not-appear appears)
+- -penalty for missing must-includes, keeping noise, repeating duplicates, or crossing red lines
+
+Respond ONLY with a JSON object of this exact shape:
+{{"expectations_adherence": <float>,
+  "missed_must_includes": ["<title>", ...],
+  "kept_noise": ["<title>", ...],
+  "rationale": "<one or two sentences>"}}
+
+EDITOR'S ANSWER KEY (expectations.md):
+{expectations}
+
+SEGMENT SCRIPT:
+{segment}
+"""
+
+
+def judge_against_expectations(
+    cfg: Config, focus: str, segment_text: str, expectations: str
+) -> dict:
+    """Grade a segment against the human-written expectations.md answer key.
+
+    Returns {expectations_adherence, missed_must_includes, kept_noise, rationale}."""
+    from google import genai
+
+    prompt = _EXPECTATIONS_PROMPT.format(
+        focus=focus, expectations=expectations or "(none provided)", segment=segment_text
+    )
+    client = genai.Client(
+        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
+    )
+    try:
+        resp = client.models.generate_content(
+            model=cfg.gemini_model,
+            contents=prompt,
+            config={"response_mime_type": "application/json"},
+        )
+        data = json.loads(resp.text)
+        return {
+            "expectations_adherence": float(data.get("expectations_adherence", 0.0)),
+            "missed_must_includes": list(data.get("missed_must_includes", [])),
+            "kept_noise": list(data.get("kept_noise", [])),
+            "rationale": str(data.get("rationale", "")),
+        }
+    except Exception as exc:  # noqa: BLE001
+        log.warning("expectations judge failed for %s: %s", focus, exc)
+        return {
+            "expectations_adherence": 0.0,
+            "missed_must_includes": [],
+            "kept_noise": [],
+            "rationale": f"judge error: {exc}",
+        }
+
+
 def judge_pairwise(
     cfg: Config, focus: str, segment_a: str, segment_b: str
 ) -> dict:

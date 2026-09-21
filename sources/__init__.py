@@ -11,5 +11,6 @@ from sources import gmail_newsletter  # noqa: F401
 from sources import google_news_rss  # noqa: F401
 from sources import hackernews  # noqa: F401
 from sources import stocks  # noqa: F401
+from sources import tldr_web  # noqa: F401
 
 __all__ = ["Story", "Source", "create_source", "register_source"]

@@ -66,6 +66,10 @@ _TTS_PATTERNS = {
     "money_abbrev": re.compile(r"\$\d+(\.\d+)?\s?[BMK]\b"),
     "model_hyphen_digit": re.compile(r"\b(GPT|Claude|Gemini|Llama)-?\d", re.I),
     "raw_multiplier": re.compile(r"\b\d+x\b"),
+    "emoji_symbol": re.compile(
+        "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U00002190-\U000021FF"
+        "\U00002B00-\U00002BFF\U0001F1E6-\U0001F1FF⌀-⏿]"
+    ),
 }
 
 
