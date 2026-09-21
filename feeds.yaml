@@ -13,8 +13,10 @@ feeds:
                 "release", "inference", "GPU", "benchmark", "Anthropic", "OpenAI",
                 "Google", "Meta", "startup"]
     sources:
-      - type: gmail_newsletter
-        params: { sender: "dan@tldrnewsletter.com", subject_contains: "TLDR AI", lookback_days: 3 }
+      # TLDR AI, straight from tldr.tech — the real current AI edition as HTML.
+      # Sponsors are dropped at the source; stories carry real publisher URLs + categories.
+      - type: tldr_web
+        params: { max_items: 12 }
       - type: hackernews
         params: { queries: ["Show HN", "AI agent", "LLM"], min_points: 50, lookback_days: 2, max_items: 8 }
       - type: google_news_rss

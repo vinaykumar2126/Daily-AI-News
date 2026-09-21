@@ -46,7 +46,7 @@ flowchart LR
 | `pipeline.py` | The core loop: gather → curate → rewrite → compose. |
 | `config.py` | Loads settings (env vars) + the feed list from `feeds.yaml`. |
 | `feeds.yaml` | **The knobs.** Topics, sources, word budgets. Edit here to change what the briefing covers. |
-| `sources/` | One adapter per source (Gmail, Google News, Hacker News, stocks). All return a `Story`. |
+| `sources/` | One adapter per source (TLDR AI web, Gmail, Google News, Hacker News, stocks). All return a `Story`. |
 | `curation/` | The swappable brain: `deterministic.py` + `agentic.py`, both behind `base.Curator`. |
 | `composer.py` | Joins segments into the final spoken script. |
 | `memory.py` | Cross-run memory (what past digests covered) — used by the agent. |
