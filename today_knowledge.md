@@ -1,7 +1,7 @@
-# Daily briefing knowledge — 2026-09-20
+# Daily briefing knowledge — 2026-09-21
 
 ## Opening narrative (what the agent delivers first)
-Good morning. Here's your briefing for Sunday, September 20.
+Good morning. Here's your briefing for Monday, September 21.
 
 First up, AI & Tech.
 
@@ -96,13 +96,11 @@ That's your briefing. Have a great day.
 - Burnham hails Greenland deal ahead of expected first Trump meeting - BBC
 
 ### Immigration & Visas
-- US Tightens H-1B Visa Rules, Extends $100,000 Fee for One Year - Deccan Chronicle
-- Trump extends $100K H-1B visa fee until Sept 2027 but court stay remains: White House cites plunge in fil - The Times of India
-- Trump extends $100,000 H-1B visa fee: What it means for Indian workers - The Indian Express
-- Trump extends H-1B visa restrictions, including $100,000 payment requirement, for another year - The Times of India
-- US Tightens H-1B Visa Rules, Probes Layoffs and Extends $100,000 Employer Fee - India Today - India Today
-- Trump extends $100,000 H-1B visa fee order for another year - The Economic Times
-- Trump extends $100,000 H-1B visa fee requirement for another year - Business Standard
+- Trump Enacts Additional Immigration Policies Against H-1B Visa Holders - Forbes
+- New US Visa Rules for Indians: H-1B Restrictions Extended and Social Media Checks Expanded - IndianEagle
+- FIIDS: Welcome tighter H-1B scrutiny, but not at cost of innovation - India Weekly
+- Trump Extends $100,000 H-1B Visa Fee Order for Another Year - Tekedia
+- Nifty IT Share Price Today: Falls 0.7% on H-1B Visa Fee - Univest
 - Trump got appeasement, India suffered humiliation: Congress on H-1B visa-fee renewal - The Economic Times
 - Should Indian students abandon the 'American Dream' amid F-1 visa volatility? 4 things immigration expert - The Times of India
 - Starting September 18, new Green Card rules coming into effect: Full list of categories that are subject - The Times of India
@@ -115,6 +113,6 @@ That's your briefing. Have a great day.
 - City confirms ICE Officer involved in North Austin shooting, victim in stable condition - KEYE
 
 ### Markets
-- Index moves — S&P 500: 7,650 (+0.17%); Nasdaq Composite: 26,523 (+0.39%); Dow Jones: 51,683 (-0.18%)
-- Watchlist moves — NVDA +1.34%; AMZN +1.00%; MSFT -0.80%; GOOGL +0.64%; AAPL -0.26%
+- Index moves — S&P 500: 7,765 (+1.49%); Nasdaq Composite: 27,122 (+2.26%); Dow Jones: 52,049 (+0.71%)
+- Watchlist moves — NVDA +2.30%; AMZN +1.87%; MSFT +1.59%; GOOGL +1.55%; AAPL +0.85%
 

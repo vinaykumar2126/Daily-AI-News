@@ -29,11 +29,20 @@ _SYMBOLS = re.compile(
 )
 
 
+# Invisible/zero-width characters that HTML emails inject as spacing (esp. TLDR): zero-width
+# space/non-joiner/joiner, LRM/RLM, word-joiner, BOM. Pure bloat.
+_INVISIBLE = re.compile("[​‌‍‎‏⁠﻿]")
+
+
 def strip_symbols(text: str) -> str:
-    """Remove emoji/pictographic/technical symbols that TTS mispronounces; collapse leftover spaces."""
+    """Remove emoji/pictographic/technical symbols and zero-width/invisible characters that TTS
+    mispronounces or that bloat the text; normalize no-break spaces; collapse leftover spaces."""
     if not text:
         return text
-    return re.sub(r"[ \t]{2,}", " ", _SYMBOLS.sub("", text))
+    text = _SYMBOLS.sub("", text)
+    text = _INVISIBLE.sub("", text)
+    text = text.replace(" ", " ")  # no-break space -> normal space
+    return re.sub(r"[ \t]{2,}", " ", text)
 
 
 @dataclass
