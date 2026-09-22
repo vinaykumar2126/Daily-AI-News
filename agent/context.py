@@ -72,16 +72,15 @@ def _useful_summary(title: str, summary: str) -> str:
     return summary[:300]
 
 
-def _useful_url(url: str) -> str:
-    """Drop opaque Google News redirect URLs and any very long link — a voice agent can't use
-    them and they dominate the token count. Keep short, real source URLs."""
-    if not url or "news.google.com" in url or len(url) > 120:
-        return ""
-    return url
+# Hacker News popularity metadata ("266 points, 104 comments on Hacker News.") — not content;
+# strip it from grounding so only the actual story survives.
+_HN_META = re.compile(r"\d+\s*points?,\s*\d+\s*comments?(?:\s*on\s*hacker news)?\.?", re.I)
 
 
 def render_markdown(ctx: dict) -> str:
-    """Human/agent-readable knowledge doc: the opening narrative + grounded source stories."""
+    """Human/agent-readable knowledge doc: the opening narrative + grounded source stories.
+    Trims HN points/comments metadata and source URLs — grounding is for the agent to answer
+    from, and it neither speaks URLs nor needs vote counts."""
     lines = [f"# Daily briefing knowledge — {ctx['date']}", ""]
     lines.append("## Opening narrative (what the agent delivers first)")
     lines.append(ctx.get("narrative", "").strip() or "(none)")
@@ -93,12 +92,9 @@ def render_markdown(ctx: dict) -> str:
             current = s["topic"]
             lines.append(f"\n### {current}")
         line = f"- {s['title']}"
-        summary = _useful_summary(s["title"], s.get("summary", ""))
+        summary = _HN_META.sub("", _useful_summary(s["title"], s.get("summary", ""))).strip()
         if summary:
             line += f" — {summary}"
-        url = _useful_url(s.get("url", ""))
-        if url:
-            line += f" ({url})"
         lines.append(line)
     from sources.base import strip_symbols
 

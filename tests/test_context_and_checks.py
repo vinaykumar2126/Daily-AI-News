@@ -4,7 +4,7 @@ Guarantees the agent's knowledge doc is de-duplicated, symbol-free, and free of 
 summaries / opaque URLs — and that the eval's TTS-safety check actually catches junk.
 """
 
-from agent.context import render_markdown, _useful_summary, _useful_url
+from agent.context import render_markdown, _useful_summary
 from evals import checks
 
 
@@ -18,11 +18,16 @@ def _ctx():
              "title": "Inside airlines' panic as FAA pushed new AI tool - Politico",
              "summary": "Inside airlines' panic as FAA pushed new AI tool Politico",
              "url": "https://news.google.com/rss/articles/CBMhuge?oc=5", "source": "Politico"},
-            # Hacker News: real summary + short real URL
+            # Hacker News: only points/comments metadata + a real URL — both should be trimmed
             {"topic": "AI & Tech",
              "title": "I think you should never use AI to write",
              "summary": "331 points, 161 comments on Hacker News.",
              "url": "https://erichgrunewald.substack.com/p/x", "source": "HN"},
+            # Enriched story: real article content — this summary MUST survive
+            {"topic": "AI & Tech",
+             "title": "Pirate Face",
+             "summary": "Turns Hugging Face models into checksum-verified torrents kept alive by a swarm.",
+             "url": "https://pirateface.co/", "source": "HN"},
         ],
     }
 
@@ -40,10 +45,20 @@ def test_render_drops_redundant_summary_and_opaque_url():
     assert "AI tool Politico —" not in md and "— Inside airlines" not in md
 
 
-def test_render_keeps_useful_hn_summary_and_real_url():
+def test_render_trims_points_and_all_urls():
     md = render_markdown(_ctx())
-    assert "331 points" in md
-    assert "erichgrunewald.substack.com" in md
+    # HN points/comments metadata is trimmed...
+    assert "331 points" not in md and "comments on Hacker News" not in md
+    # ...and NO URLs remain (neither opaque nor real)
+    assert "http" not in md
+    # ...but the story titles still survive
+    assert "I think you should never use AI to write" in md
+
+
+def test_render_keeps_real_content_summary():
+    md = render_markdown(_ctx())
+    # a genuine article summary (not points, not a title echo) is preserved
+    assert "checksum-verified torrents" in md
 
 
 # --- helpers ------------------------------------------------------------------------------- #
@@ -52,13 +67,7 @@ def test_useful_summary_drops_title_echo():
 
 
 def test_useful_summary_keeps_new_info():
-    assert _useful_summary("Big story", "331 points, 161 comments") != ""
-
-
-def test_useful_url_drops_google_and_long():
-    assert _useful_url("https://news.google.com/rss/articles/x") == ""
-    assert _useful_url("https://example.com/" + "a" * 200) == ""
-    assert _useful_url("https://example.com/a") == "https://example.com/a"
+    assert _useful_summary("Big story", "a genuinely different description of the thing") != ""
 
 
 # --- eval code-checks: TTS safety actually flags junk -------------------------------------- #
