@@ -60,6 +60,7 @@ class Config:
             "GOOGLE_CLOUD_PROJECT", os.environ.get("GCP_PROJECT", "")
         )
         self.gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+        self.gemini_rewrite_model = os.environ.get("GEMINI_REWRITE_MODEL", "gemini-2.5-pro")
         self.gemini_region = os.environ.get("GEMINI_REGION", "us-central1")
 
         # Point ADK (agentic curator) at Vertex AI, matching pipeline.rewrite's

@@ -1,118 +1,123 @@
-# Daily briefing knowledge — 2026-09-21
+# Daily briefing knowledge — 2026-09-22
 
 ## Opening narrative (what the agent delivers first)
-Good morning. Here's your briefing for Monday, September 21.
+Good morning. Here's your briefing for Tuesday, September 22.
 
 First up, AI & Tech.
 
-Good morning. Kicking off today's A I and tech briefing with some significant new tools and infrastructure plays.
+And now for your AI and tech briefing.
 
-First up, Google has launched an A I agent specifically designed for families. This new tool aims to help manage the daily chaos that comes with family life, providing a dedicated A I assistant focused on household organization and various domestic tasks. For those balancing work and home, this could be a practical, consumer-facing A I solution aimed at real-world family challenges.
+The biggest launch this week is Meta's new personal AI agent, Muse. It has surged to the top of the U.S. iOS App Store charts, hitting seven hundred thirty thousand downloads shortly after its release and outpacing tools like ChatGPT and Grok. The app, powered by Meta's Muse Spark AI models, is designed to let you manage digital assistants for tasks like filling out forms and organizing your emails.
 
-In a competitive move, Meta has launched Muse for Mac, positioning it as a personal A I agent that integrates deeply into your digital workflow. Muse is designed to work across your files, mail, messages, calendar, and notes on a Mac. This makes it a comprehensive tool for personal productivity and information management. The fact that Meta is investing in T V advertisements for Muse signals a strong push for A I agents, especially personal ones, to become a mainstream computing staple. For A I practitioners, this means watching how a major player like Meta integrates A I into existing operating systems and productivity suites, potentially setting new standards for personal A I assistants.
+The launch hasn't been without controversy, however. While Shopify has partnered with Meta to integrate what's being called "agentic checkout," Amazon has blocked the Muse agent from its site, citing security risks. Other headlines fill out the picture: Reuters reports that Meta is testing a "human concierge" service for Muse, and that Wall Street expects the agent to become a new revenue engine. And a piece in Futurism is already calling Muse the "creepiest" AI agent ever released.
 
-Switching gears to infrastructure, we have Pirate Face, a new platform designed to preserve open-source A I models. Pirate Face addresses the crucial problem of model deletion and central points of failure by turning open models—including large language models, image models, audio models, and datasets—into permanent torrents. It creates magnet links that cannot be taken down, ensuring that these models live forever. Pirate Face mirrors eligible open models from Hugging Face, holding them peer-to-peer as decentralized infrastructure for what they call 'sovereign A I.' Each mirrored file carries its official Hugging Face S H A two-hundred-fifty-six checksum, allowing users to verify every byte for authenticity. This censorship-resistant approach means that even if an original host is shut down, the peer-to-peer swarm keeps the model alive. For any A I or M L engineer working with open-source models, Pirate Face offers a critical permanence layer, enhancing the reliability and long-term availability of foundational A I assets.
+Meanwhile, a major competitor is preparing its next move. Anthropic has started testing its upcoming frontier models in the wild. People have begun posting outputs that appear to come from newer, more advanced models, possibly named Fable five point two and Opus five point five. An official announcement for Opus five point five could happen as soon as this week. The rumored pricing is four dollars per million input tokens and twenty dollars per million output tokens. So what this means for you is that a new, more advanced model from Anthropic is likely just days away. Keep an eye out for official benchmarks and pricing, as it could shift your model-of-choice calculations.
 
-Another significant piece of infrastructure news comes from Z dot A I, detailing how their G L M five point three-powered Infra Agent helped build G L M five point three-Flash's production serving stack. This was accomplished on over one hundred thousand Chinese accelerators in under two weeks. The process involved dense feedback, kernel fixes, and system-level optimization, which reportedly tripled throughput. Importantly, human operators remained responsible for setting objectives and managing risk throughout the process. This development is a powerful example of an A I agent not just performing tasks, but actively contributing to building and optimizing its *own* deployment infrastructure at scale. For engineers, this showcases a tangible step towards autonomous A I system management, suggesting future potential for much faster, more efficient, and potentially self-improving deployment cycles for complex models.
+Zooming out, this all plays into the growing tension between open and closed models. According to one analysis, the performance gap between the two has been shrinking over the last three years, and open-weight models have passed an inflection point for economic viability. Their usage is reportedly exploding in high-value industries. For a practitioner, this means open-source models are becoming an increasingly practical alternative to proprietary APIs for serious production work. The report also highlights that Chinese labs are maintaining their leadership status within the open-weight AI ecosystem.
 
-Finally, in a quick rundown of other relevant news this week, the F A A is scheduled to launch an A I air traffic tool on Monday. We’ll be watching for more details as that rolls out.
+And in a final rapid-fire launch note: AWS has released Strands harness, which is described as an open-source agent framework.
 
 Next, US Headlines.
 
-Former President Donald Trump has made headlines by suggesting a planned two-hundred-fifty-foot arch monument could function as a "top-grade military complex," designed to house drones and snipers. This proposal has prompted public discussion regarding the intended use and symbolism of such national structures.
+The White House has banned several major news outlets from its official press pool, which normally provides close access to the president. A court hearing on the legality of the ban is approaching, while the affected outlets continue to cover the administration from a distance.
 
-Within the Republican party, a notable trend is emerging as more members, especially those facing competitive re-election bids, are reportedly distancing themselves from former President Trump. This shift could signal a change in party dynamics and strategy as midterm elections approach.
+The Supreme Court has declined to intervene in a custody battle between a California couple and a surrogate mother. The decision means the baby, who was born with a heart condition, will remain in the custody of the biological parents as originally agreed.
 
-In a significant development for international justice, several individuals accused in the two-thousand-twenty-one assassination of Haitian President Jovenel Moïse have been extradited to the United States. They will now face trial in the U.S., a major step toward accountability in the high-profile case.
+A federal judge has temporarily blocked the deportation of a Venezuelan migrant and DoorDash driver who was shot by an ICE agent in Texas. The order comes as police released bodycam footage from the incident's aftermath, which has conflicting accounts.
 
-The United States and Denmark have finalized a new agreement that will expand the U.S. military presence in Greenland. This deal aims to strengthen American strategic interests and security in the geopolitically important Arctic region.
+The Trump administration is removing approximately seven hundred sixty thousand people from health insurance plans under the Affordable Care Act. Officials say the move targets enrollment fraud and will save taxpayers an estimated two point two billion dollars.
+
+In Mississippi, a grand jury decided not to file criminal charges in the death of Nolan Wells, citing insufficient evidence of a crime. The family of Wells says they will continue to seek answers in the case.
+
+And finally, the United States signed a deal with Denmark and Greenland to build two new American military bases on the island. The agreement is designed to increase the U.S. military presence and security in the strategic Arctic region.
 
 Turning to Immigration & Visas.
 
-Good morning. In US immigration news, there's an important update regarding the H-1B visa program.
+The Department of Homeland Security has proposed a new immigration rule that would affect H one B visa holders. The proposal aims to eliminate the sixty-day grace period that H one B workers currently have to find a new job after a layoff. If this rule is finalized, H one B professionals would no longer have that two-month window to secure new employment and maintain their legal status. It is important to note this is a proposal and has not been enacted as a final regulation.
 
-The additional one hundred thousand dollar H-1B visa fee, targeting certain employers, has been extended. This fee specifically applies to companies with more than fifty employees, where over fifty percent of their workforce consists of H-1B or L-1 visa holders. The extension prolongs this provision until September thirtieth, two thousand twenty-seven.
-
-For H-1B visa holders and their employers, it’s critical to understand that while this fee provision has been extended, its enforcement remains on hold due to a standing court injunction. This means the fee is not currently being collected, despite the extension of the rule itself.
-
-Separately, the US Citizenship and Immigration Services, or U.S.C.I.S., is reportedly stepping up investigations into layoffs at tech companies. The aim is to ensure compliance with regulations and prevent potential discrimination against H-1B workers during these employment changes. This signals increased scrutiny for employers handling layoffs that impact H-1B employees.
-
-We don't have new policy updates this morning concerning O-1 visas, green card categories, or specific changes to the Optional Practical Training, known as O.P.T., and S.T.E.M. O.P.T. programs, or broader international student rules, beyond the H-1B developments.
+In other news, the Trump administration has enacted new policies and extended existing restrictions impacting the H one B visa program. As part of these changes, visa applicants will now face expanded social media checks during the application process.
 
 And finally, Markets.
 
-Looking at how the markets wrapped up, the S&P five hundred saw a slight gain, moving up just under two-tenths of a percent. The Nasdaq Composite had a stronger showing, rising almost four-tenths of a percent. However, the Dow Jones industrial average moved in the opposite direction, ticking down just under two-tenths of a percent.
+In the markets, it was a mixed picture for the major indices.
 
-On your watchlist, several big names made moves. Nvidia had a good day, climbing about one and a third percent. Amazon also rose, up a full one percent, and Google's parent company, Alphabet, gained about two-thirds of a percent. On the other side, Microsoft saw a dip, falling about eight-tenths of a percent. Apple also finished lower, down just over a quarter of a percent.
+The Dow Jones Industrial Average slipped about a third of a percent, and the S and P five hundred ended the day essentially flat. The Nasdaq Composite, however, moved in the other direction, finishing up just under half a percent.
 
 That's your briefing. Have a great day.
 
 ## Source stories (grounding for follow-up questions)
 
 ### AI & Tech
-- How Claude is uplifting biomolecular modeling — Claude enhanced biomolecular modeling by optimizing over 30 models, achieving a 4x speed increase and creating a low-memory mode for predicting larger systems on a single NVIDIA GPU. These improvements, now open-sourced, allow for efficient protein design and structure prediction, potentially accele (https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling?utm_source=tldrai)
-- Google wants to give your family its own cloud computer — Google's family agent runs on its own cloud computer and Google account, turning the emails, files, and calendars your household shares into daily briefings and updated plans. It can fill out forms and coordinate activities for up to six people, asking permission before acting outside the group. The (https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups?utm_source=tldrai)
-- Projects redesigned: from folder to conversation — Claude Code Projects let users manage builds by automating task delegation, coordination, and result assembly across cloud sessions. Projects utilize threads for parallel operations, adapting based on progress, and draw on shared memory for efficient task execution. Available now in beta for select (https://claude.com/blog/projects-redesigned?utm_source=tldrai)
-- Noam Brown – Agent swarms, alignment, & recursive self-improvement — This post features a transcript of an interview with Noam Brown, a research scientist at OpenAI who works on reasoning, reinforcement learning, self-play, and multi-agent AI. Brown was a foundational contributor to the development of reasoning models. In this interview, Brown talks about multi-agent (https://www.dwarkesh.com/p/noam-brown?utm_source=tldrai)
-- LLM Classification Is Feature Engineering — Getting LLMs into shape to reliably serve as classifiers is hard work but potentially highly impactful. More and more research is relying on LLMs for classification, so these tools need to output high-quality results. This post shows how classification is just a feature engineering problem. (https://minimallysufficient.com/posts/llm-classification-is-feature-extraction/?utm_source=tldrai)
-- Anthropic says its AI now does a quarter of its research work — Anthropic says Claude now leads 26% of its AI research work and oversees tens of thousands of active internal agents. Its new measurements track how much AI is helping build the next models, whether people can still oversee those agents, and the computing driving the work. (https://www.anthropic.com/institute/measuring-pace-of-ai-development?utm_source=tldrai)
-- Toward Recursive Self-Improvement: How GLM Built Its Own Inference Infrastructure — Z.ai used a GLM-5.3-powered Infra Agent to help build GLM-5.3-Flash's production serving stack on 100,000+ Chinese accelerators in under two weeks. Dense feedback, kernel fixes, and system-level optimization tripled throughput while keeping humans responsible for objectives and risk. (https://z.ai/blog/glm-built-its-inference-infrastructure?utm_source=tldrai)
-- Introducing Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller Footprint — Ternary Bonsai 2 27B brings stronger reasoning, coding, vision, and agentic capability to the Bonsai series. It uses ternary {−1, 0, +1} weights with FP16 group-wise scaling, for 1.76 effective bits per weight and a total model footprint of 5.9GB. The model supports a 262K-token context window and m (https://prismml.com/news/bonsai-2-27b?utm_source=tldrai)
-- Helix 2.5 — Figure introduced Helix 2.5, a humanoid control model pretrained on its Index dataset and tested zero-shot across 30 Bay Area homes. Without collecting training data in those homes, the robots performed tasks including tidying rooms, folding towels, and making beds. (https://x.com/figure_robot/status/2100657350952779925?utm_source=tldrai)
-- Git as Shared Memory for AI Research Agents — Agora lets autonomous research agents share findings through an append-only Git DAG, where hypotheses, results, verifications, and reports become reproducible commits. (https://github.com/yifanzhang-pro/Agora?utm_source=tldrai)
-- Qwen3.8-Omni-Flash: Omni Senses. Agentic Delivery — Qwen3.8-Omni-Flash is a native omnimodal model. It supports a 1M-token context window with text, image, audio, and video inputs. Qwen3.8-Omni-Flash achieves audio-visual performance close to Gemini 3.8 Flash and overall audio performance that exceeds Gemini 3.8 Flash. It is now available on the Qian (https://qwen.ai/blog?id=qwen3.8-omni-flash&amp;utm_source=tldrai)
-- The Awesome and Alarming AI Visions of Anthropic's CEO — Dario Amodei, a co-founder and the chief executive of Anthropic, is one of the tech industry's most prolific and polished explainers. He has contributed to dozens of scholarly papers and more recently wrote a half-dozen informal essays for the general public. This article takes a look at his writing
-- ChatGPT now knows what you do on other websites via ad collector — 523 points, 298 comments on Hacker News. (https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/)
-- Pirate Face Rescues LLM Models from Deletion — Pirate Face - Turn AI into torrents that live forever Pirate Face K Turn AI into torrents that live forever. Open models - LLMs, image, audio, datasets - as magnet links that can never be taken down. No single owner or point of failure. pirateface.co/ Enter your handle above Type your handle above t (https://pirateface.co/)
-- I think you should almost never use AI to write — Why I Think You Should Almost Never Use AI to Write Anything Substantive Erich Grunewald Sign in Why You Should Almost Never Use AI to Write Anything Substantive A plea. Erich Grunewald Aug 06, 2026 96 22 23 I think you should almost never use AI to write -- that is, to do the thing you’re doing whe (https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai)
-- US Revokes Limits on Power Plants' Climate Pollution — 202 points, 201 comments on Hacker News. (https://text.hrw.org/news/2026/09/17/us-revokes-limits-on-power-plants-climate-pollution)
-- Chat-based Large Language Models replicate the mechanisms of a psychic's con — 154 points, 242 comments on Hacker News. (https://softwarecrisis.dev/letters/llmentalist/)
-- The Lamentable Later Life of Lemmings — 140 points, 33 comments on Hacker News. (https://www.filfre.net/2026/09/the-lamentable-later-life-of-lemmings/)
-- Show HN: CUA-S1 – A System One Model for Computer Use — 89 points, 10 comments on Hacker News. (https://github.com/trycua/cua)
-- Show HN: Radius – A Meetup.com Alternative — 81 points, 34 comments on Hacker News. (https://radius.to/)
-- Show HN: Sigabrt.dev – cronjob monitor with an SSH TUI — 69 points, 31 comments on Hacker News. (https://sigabrt.dev)
-- PyPy v8.0.0 Release — 55 points, 11 comments on Hacker News. (https://pypy.org/posts/2026/09/pypy-v800-release.html)
-- FAA tees up $875M AI tool to help manage air traffic congestion - Ars Technica
-- RELEASE: Gottheimer Announces New Bipartisan Legislation on AI Safety to Protect Jersey Families, National Security - House.gov
-- F.A.A. to Roll Out New A.I. Tool for Washington Airports - The New York Times
-- FAA to launch AI air traffic tool Monday - insideflyer.com
-- Meta’s Muse TV ad is the latest sign that AI agents are going mainstream - Business Insider
-- Measurements for understanding the pace of AI development inside frontier labs - anthropic.com
-- Google Gives Families Their Own AI Agent To Manage Daily Chaos - hothardware.com
-- Prophix Unveils Next-Gen AI Agents for Prophix One Autonomous Finance Platform - FF News
-- The Agent-Responsibility Gap: Why the Senate’s New AI Bill May Miss the Mark - forkast.news
-- Meta Launches Muse for Mac: A Personal AI Agent That Works Across Your Files, Mail, Messages, Calendar and Notes - MarkTechPost
-- Meta Muse for Mac Lets AI Work Across Files and Apps - Techgenyz
-- A new kind of AI model from a ChatGPT inventor is thrilling developers - TechCrunch
+- Xiaomi open-sources MiMo-V2.6 Pro and Flash models — Xiaomi MiMo-V2.6 Pro and Flash are omnimodal models that can coordinate agents to construct and visually test interactive 3D scenes. They can create Blender assets, control a robotic arm from camera feeds, produce frontends and presentations, assemble videos, and compose music as scores and MIDI. The models are now available in AI Studio, MiMo Code, MiMo Desktop, Xiaomi's MiMo API Platform, and OpenRouter.
+- Introducing Grok 4.7 — Grok 4.7 enhances coding and knowledge work capabilities with improved self-verification and safeguards, using a new, larger base model. It offers competitive pricing with $2 per million input tokens and $6 per million output tokens. Excelling in various benchmarks, it shows top-notch safety features, especially in cybersecurity tasks, limiting risky command execution.
+- Anthropic tests Fable 5.2 and Opus 5.5 ahead of the release — Anthropic is starting to test its upcoming frontier model in the wild. Several people have posted outputs that seem to come from a newer, more advanced model. Anthropic may be announcing Opus 5.5 this week. The model is rumored to be priced at $4 per million input tokens and $20 per million output tokens.
+- Meta's Muse personal AI agent tops ChatGPT, Grok and Claude for post-launch downloads — Meta's Muse AI app has surged to the top of the iOS App Store charts in the US, outpacing ChatGPT and other AI tools with 730,000 downloads shortly after its release. Powered by the Muse Spark AI models, the app allows users to manage digital assistants for tasks like filling forms and organizing emails.
+- The Great Unbundling of Intelligence — Agent economics are pushing AI from frontier-by-default toward capability-level routing, where judgment, ranking, search, and verification use cheaper specialized systems. Frontier models may handle fewer but harder tasks as applications become intelligence compilers that recombine services efficiently.
+- The Business of Building God — AI labs like OpenAI and Anthropic lead with a small model advantage but face competition as costs rise and open-source models close the gap. To sustain profits, labs aim to expand into new sectors, ranging from ads to robotics, while also exploring automation through recursive self-improvement (RSI). However, the path is fraught with uncertainty as enormous financial and talent investments may only maintain a temporary edge amid shifting economic and regulatory landscapes.
+- Swarm Scaling — Scaling up the number of agents in a swarm by 10x doesn't get as much performance as using 10x as many tokens with one agent. This shortfall accumulates quickly for larger scale-ups, with the swarm falling further and further behind. However, swarms can theoretically achieve the same task in much less time as they are run in parallel. The speedup is substantial, so swarms are useful in situations where a large premium is paid for speed.
+- The current balance of power in open models — The gap from open to closed models available to users has been decreasing over the last 3 years. Open model usage is exploding in high-value industries. Open-weight models have passed an inflection point in economic viability. Chinese labs are clearly maintaining their status as the leaders of the open-weight AI ecosystem.
+- Qwen's RecreationWorld Trains Agents to Rebuild Apps — RecreationWorld is a five-platform framework for training hybrid computer-use agents to explore GUIs, implement software with coding tools, and visually verify their work.
+- Bringing Devin Cloud to your terminal — Developers can now create, steer, resume, and watch Devin Cloud sessions from their terminal. Devin CLI can now transfer any ask to Devin to continue iterating on with its own cloud VM. Users can continue to observe and steer progress directly from the terminal as if Devin were working locally. Cognition is offering free SWE-2 sessions until October 8 so developers can try Devin Cloud from the terminal.
+- MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement — Reinforcement learning is the central training paradigm for advancing large foundation models towards self-improvement. The Mimo-V2.6 series is an omni-model family that pushes the frontier of model intelligence by scaling RL compute. Training was kept stable at scale by freezing the MoE router and establishing a multi-layer defense against reward hacking.
+- AI Comes for the If Statement — New AI models like Jev2 and SemIf streamline the if-then decision-making process, cutting costs by 99% and improving accuracy from 47% to over 80% in tests. These advancements optimize coding primitives, potentially transforming AI's economic model by using specialized systems for production. Specialization in these models promises significant cost savings while maintaining high accuracy.
+- Can gzip be a language model?
+- Show HN: Mini-AGI – Dynamic continual learning model trained on 8GB VRAM
+- M5 Ultra Mac Studio Review
+- Show HN: Drop – A rootless Linux sandbox with gVisor support
+- Amazon blocks Meta’s new Muse AI agent from shopping on amazon.com
+- Microsoft killed FoxPro in 2007. Anyway, here's FoxPro revived
+- LLM Ass Bench
+- Unreal Agent
+- Show HN: Lossless-memory – a personal AI memory that never summarizes
+- Show HN: JevBench, a reproducible benchmark for typed decision models
+- ReBarUEFI: Resizable BAR for almost any UEFI system
+- FAA debuts its AI-powered tool for managing flight traffic - politico.com
+- FAA launches AI tool to assist air traffic control at BWI, DC-area airports - Maryland Daily Record
+- FAA Launches AI Tool, Ukraine Deploys Ground Robots, White House Launches Trump TV: The Bulletin, September 22 - Newsweek
+- Freebeat Launches AI Tool That Fuses Song Lyrics into Video Scenes - USA Today
+- WHAT THE FOOD? GOUSTO LAUNCHES AI TOOL TO DECODE CONFUSING FOOD INGREDIENTS! - vergemagazine.co.uk
+- Marcos pushes AI for more accessible, inclusive gov't services - Philippine News Agency
+- Quickli launches new fact-finding tool - Broker Daily
+- EXCLUSIVE: Meta testing a 'human concierge' for its new personal AI agent, Muse - Reuters
+- Meta’s New Muse AI Agent May Be the Creepiest Ever Released - Futurism
+- Meta's Muse AI agent downloads are surging. Here's how it compares to ChatGPT, Grok and Claude - CNBC
+- Belitsoft Reviews TOP 5 AI Agent Development Trends in 2026 - WBOC TV
+- NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development - NVIDIA Blog
+- Wall Street expects Meta's AI agent to shape into a new revenue engine - Reuters
+- Cohesity Introduces Agent Resilience to Protect and Recover AI Agent Infrastructure - PR Newswire
+- NVIDIA Introduces SoL-Pi: Auto-Research Loops That Cut Coding Agent Token Traffic by Up to 49% - MarkTechPost
+- Perplexity Brings Its Local AI Agent to Windows - TechRepublic
+- AWS releases Strands harness as an open-source agent framework - Techzine Global
+- Is There Any Point In Buying An AI Subscription? - bgr.com
 
 ### US Headlines
-- Federal immigration agent shoots and injures man in Austin, Texas - NPR
-- 60 Minutes Transcript: Patrick Clancy - CBS News
-- Trump says planned 250-foot arch will be ‘military complex’ for drones, snipers - The Washington Post
-- Philadelphia woman was ‘petrified’ of ex-husband before she vanished. Now her case is part of a mystery involving 6 other women. - NBC News
-- Trump’s UN ambassador defends press ban as news outlets prepare legal challenges - CNN
-- ‘He is kryptonite’: Republicans start breaking with Trump - Politico
-- Suspects in 2021 killing of Haitian president flown to US to face trial - Reuters
-- Burnham hails Greenland deal ahead of expected first Trump meeting - BBC
+- US judge blocks deportation of DoorDash driver shot by ICE - BBC
+- Andreessen Horowitz Launches AI School as a College Alternative - Bloomberg.com
+- Banned White House outlets cover Trump at UN as court hearing looms - Reuters
+- Trump administration to remove 760,000 Affordable Care Act enrollees over fraud claims - AP News
+- Supreme Court Order Gives Parents Custody of Baby in Surrogacy Fight - The New York Times
+- Nolan Wells’ family vows to ‘never stop’ seeking the truth after grand jury report - NBC News
+- US to build two military bases in Greenland under new deal with Denmark - BBC
+- El Niño goes wild: Pacific Ocean under siege from tropical cyclones - USA Today
 
 ### Immigration & Visas
-- Trump Enacts Additional Immigration Policies Against H-1B Visa Holders - Forbes
+- DHS Proposes Immigration Rule To End 60-Day H-1B Grace Period - Cato Institute
+- Trump Enacts New Immigration Policies Against H-1B Visa Holders - Forbes
 - New US Visa Rules for Indians: H-1B Restrictions Extended and Social Media Checks Expanded - IndianEagle
-- FIIDS: Welcome tighter H-1B scrutiny, but not at cost of innovation - India Weekly
+- The H-1B midterm test: Why Indian tech workers could matter in the US elections - The Economic Times
 - Trump Extends $100,000 H-1B Visa Fee Order for Another Year - Tekedia
+- Why Diaspora Group FIIDS Welcomes H-1B Scrutiny—But Warns $100,000 Fees Threaten US AI Innovation - India Weekly
 - Nifty IT Share Price Today: Falls 0.7% on H-1B Visa Fee - Univest
-- Trump got appeasement, India suffered humiliation: Congress on H-1B visa-fee renewal - The Economic Times
-- Should Indian students abandon the 'American Dream' amid F-1 visa volatility? 4 things immigration expert - The Times of India
-- Starting September 18, new Green Card rules coming into effect: Full list of categories that are subject - The Times of India
-- Man shot and wounded in ICE shooting in Austin, Texas, city officials say - CNN
-- The clues in ICE’s mass detention court losses that point to a win at SCOTUS - Politico
-- Man shot and injured by ICE officer in Austin, police say - ABC News - Breaking News, Latest News and Videos
-- ICE agent shoots and wounds man in Austin, Texas, sparking demands for full investigation - CBS News
-- Man injured in shooting by ICE officer in Austin - Texas Standard
-- Federal ICE agent shoots man in Austin after pursuit, Austin PD says - NBC 5 Dallas-Fort Worth
-- City confirms ICE Officer involved in North Austin shooting, victim in stable condition - KEYE
+- A Venezuelan man was shot by ICE in Austin while doing deliveries. Here’s what we know - CNN
+- U.S. citizen hurt after ICE allegedly targeted him - NBC News
+- ICE detains S.F. lawmaker’s staffer in Nevada, prompting call for release - San Francisco Chronicle
+- SF staffer for Assemblymember Stefani detained by federal immigration authorities - The San Francisco Standard
+- SF supervisor’s staffer detained by ICE, calls for his release - KRON4
+- An Indianapolis woman set up an ice cream freezer outside her house, then got a letter from the health department - WTHR
+- Paul: ICE hasn’t shared information about Minneapolis shooting probes - politico.com
+- The Priest Preparing to Care for 31 Children If ICE Detains Their Parents - Time Magazine
 
 ### Markets
-- Index moves — S&P 500: 7,765 (+1.49%); Nasdaq Composite: 27,122 (+2.26%); Dow Jones: 52,049 (+0.71%)
-- Watchlist moves — NVDA +2.30%; AMZN +1.87%; MSFT +1.59%; GOOGL +1.55%; AAPL +0.85%
+- Index moves — S&P 500: 7,765 (-0.00%); Nasdaq Composite: 27,244 (+0.45%); Dow Jones: 51,864 (-0.36%)
+- Watchlist moves — NVDA +nan%; GOOGL +nan%; MSFT +nan%; AAPL +nan%; AMZN +nan%
 

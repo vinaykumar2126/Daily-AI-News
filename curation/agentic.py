@@ -16,7 +16,7 @@ import os
 from curation.base import Curator, FeedContext
 from curation.deterministic import DeterministicCurator
 from curation.tools import fetch_article, recent_digest_history
-from sources.base import Story
+from sources.base import Story, clip_sentences
 
 log = logging.getLogger("daily-news.curation.agentic")
 
@@ -42,13 +42,19 @@ Return ONLY a JSON object of this exact shape and nothing else:
 """
 
 
+# How much of each candidate's body the curator sees. Clipped on a sentence boundary so the
+# model never ranks a story from half a sentence.
+_CANDIDATE_BODY_CHARS = 300
+
+
 def _format_stories(stories: list[Story]) -> str:
     lines = []
     for i, s in enumerate(stories):
         extra = ""
         if s.source:
             extra = f" [{s.source}]"
-        lines.append(f"{i}. {s.title}{extra}\n   {s.body.strip()[:200]}\n   {s.url}")
+        body = clip_sentences(s.body or "", _CANDIDATE_BODY_CHARS)
+        lines.append(f"{i}. {s.title}{extra}\n   {body}\n   {s.url}")
     return "\n".join(lines)
 
 
@@ -106,7 +112,9 @@ class AgenticCurator(Curator):
                 ),
             ):
                 if event.is_final_response() and event.content and event.content.parts:
-                    final = event.content.parts[0].text or ""
+                    # The model may split its answer across several parts; joining them keeps a
+                    # long JSON selection intact instead of reading a half object from parts[0].
+                    final = "".join(p.text or "" for p in event.content.parts)
             return final
 
         raw = asyncio.run(_go())

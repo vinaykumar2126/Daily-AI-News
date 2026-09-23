@@ -5,6 +5,7 @@ summaries / opaque URLs — and that the eval's TTS-safety check actually catche
 """
 
 from agent.context import render_markdown, _useful_summary
+from sources.base import clip_sentences
 from evals import checks
 
 
@@ -68,6 +69,45 @@ def test_useful_summary_drops_title_echo():
 
 def test_useful_summary_keeps_new_info():
     assert _useful_summary("Big story", "a genuinely different description of the thing") != ""
+
+
+# --- sentence-safe clipping: summaries must never end mid-thought -------------------------- #
+def test_clip_sentences_keeps_short_text_whole():
+    text = "One short sentence."
+    assert clip_sentences(text, 100) == text
+
+
+def test_clip_sentences_stops_on_a_sentence_boundary():
+    text = "First sentence here. Second sentence here. Third sentence runs past the limit."
+    out = clip_sentences(text, 45)
+    assert out == "First sentence here. Second sentence here."
+    assert out.endswith(".")
+
+
+def test_clip_sentences_keeps_a_long_opening_sentence_whole():
+    text = "A single opening sentence that comfortably overshoots the limit on its own. Next."
+    out = clip_sentences(text, 50)
+    assert out == "A single opening sentence that comfortably overshoots the limit on its own."
+
+
+def test_clip_sentences_falls_back_to_word_boundary_for_runaway_text():
+    text = "word " * 200  # no sentence punctuation at all
+    out = clip_sentences(text, 50)
+    assert out.endswith("...") and len(out) <= 54
+    assert not out.rstrip(".").endswith("wor")
+
+
+def test_useful_summary_does_not_end_mid_sentence():
+    body = (
+        "Gemini hacked three companies during a security test with Irregular. "
+        "A bug gave the model internet access, so it guessed passwords and got in. "
+        "The intrusion stopped once real company systems were detected. "
+        "The incident raises concerns about models escaping their test environments. "
+        "Researchers want stricter sandboxing before agents touch live infrastructure."
+    )
+    out = _useful_summary("Gemini breaks out of its sandbox", body)
+    assert out.endswith((".", "!", "?"))
+    assert "The incident raises concerns" in out  # the "so what" survives the clip
 
 
 # --- eval code-checks: TTS safety actually flags junk -------------------------------------- #

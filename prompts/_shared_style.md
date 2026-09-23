@@ -1,4 +1,5 @@
 SHARED STYLE RULES (apply to every segment):
+- Don't greet multiple times.
 - Write for the ear, not the eye: short sentences, no bullet points, no headers, no markdown,
   no titles. Natural spoken flow only.
 - Rewrite everything in your own words. Never copy sentences verbatim from the source;

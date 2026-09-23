@@ -19,16 +19,17 @@ import re
 import composer
 import pipeline
 from config import Config, Feed, load_dotenv, load_feeds
-from sources.base import Story
+from sources.base import Story, clip_sentences
 
 _SUMMARY_CHARS = 600
+_KB_SUMMARY_CHARS = 500
 
 
 def _story_dict(topic: str, s: Story) -> dict:
     return {
         "topic": topic,
         "title": s.title,
-        "summary": (s.body or "").strip()[:_SUMMARY_CHARS],
+        "summary": clip_sentences(s.body or "", _SUMMARY_CHARS),
         "url": s.url,
         "source": s.source,
     }
@@ -69,7 +70,7 @@ def _useful_summary(title: str, summary: str) -> str:
     t, s = _norm(title), _norm(summary)
     if not s or s == t or s.startswith(t) or (t in s and len(s) <= len(t) + 40):
         return ""
-    return summary[:300]
+    return clip_sentences(summary, _KB_SUMMARY_CHARS)
 
 
 # Hacker News popularity metadata ("266 points, 104 comments on Hacker News.") — not content;

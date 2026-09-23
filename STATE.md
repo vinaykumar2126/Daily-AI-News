@@ -46,3 +46,4 @@ DRY_RUN=1 CURATOR=deterministic .venv/bin/python main.py    # print, no send
 - Judge = same model as generator → self-bias? try a different judge model
 - Capture full article text into golden sets (faithfulness needs it)
 - Agent memory: lookback window? store structured tool records, not just titles?
+

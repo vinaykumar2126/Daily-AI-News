@@ -45,6 +45,42 @@ def strip_symbols(text: str) -> str:
     return re.sub(r"[ \t]{2,}", " ", text)
 
 
+# Sentence end: ., ! or ? followed by whitespace. Decimals ("$2.50", "SAM 3.1") have no space
+# after the dot, so they are not split.
+_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+
+
+def clip_sentences(text: str, limit: int) -> str:
+    """Trim to roughly `limit` chars without cutting a sentence in half.
+
+    Hard character slicing left summaries ending mid-thought ("The incident"), which strands the
+    agent without the point of the story. Instead we keep whole sentences up to the limit; if even
+    the first sentence is longer, we keep it whole as long as it stays under a generous ceiling,
+    and only fall back to a word-boundary cut for genuinely runaway text.
+    """
+    text = (text or "").strip()
+    if len(text) <= limit:
+        return text
+
+    sentences = _SENTENCE_END.split(text)
+    kept: list[str] = []
+    total = 0
+    for sent in sentences:
+        extra = len(sent) + (1 if kept else 0)
+        if kept and total + extra > limit:
+            break
+        kept.append(sent)
+        total += extra
+    if kept:
+        clipped = " ".join(kept).strip()
+        # A single opening sentence may overshoot the limit; keep it whole unless it is runaway.
+        if len(clipped) <= limit * 2:
+            return clipped
+
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return f"{cut}..." if cut else text[:limit]
+
+
 @dataclass
 class Story:
     """One normalized news item, whatever its origin."""

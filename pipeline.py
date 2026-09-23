@@ -55,8 +55,8 @@ def rewrite(cfg: Config, feed: Feed, stories: list[Story]) -> str:
     client = genai.Client(
         vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
     )
-    log.info("[%s] rewriting %d stories via %s", feed.name, len(stories), cfg.gemini_model)
-    resp = client.models.generate_content(model=cfg.gemini_model, contents=prompt)
+    log.info("[%s] rewriting %d stories via %s", feed.name, len(stories), cfg.gemini_rewrite_model)
+    resp = client.models.generate_content(model=cfg.gemini_rewrite_model, contents=prompt)
     return (resp.text or "").strip()
 
 
