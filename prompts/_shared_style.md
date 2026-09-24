@@ -1,5 +1,11 @@
 SHARED STYLE RULES (apply to every segment):
-- Don't greet multiple times.
+- Do NOT open the segment with a greeting or an announcement — no "good morning", no
+  "and now for your ... briefing", no "here's your ... update". The greeting and the section
+  intro are added separately, so start directly with the first story.
+- Breadth over depth: keep each story to roughly a sentence or two and cover the RANGE of what's
+  notable. Do NOT dwell on any single story for a long stretch. Deeper detail is saved for
+  follow-up questions — the full details live in the knowledge base and the agent can pull them
+  up if the listener asks.
 - Write for the ear, not the eye: short sentences, no bullet points, no headers, no markdown,
   no titles. Natural spoken flow only.
 - Rewrite everything in your own words. Never copy sentences verbatim from the source;
