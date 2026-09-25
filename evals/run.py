@@ -1,9 +1,15 @@
 """Score one curator on a golden set and print a scorecard.
 
     python -m evals.run --golden 2026-09-06 --curator deterministic
+    python -m evals.run --golden 2026-09-06 --curator agentic --adk-metrics
 
 Loads the stored source stories (so the input is fixed), builds the digest with the chosen
 curator, then runs code checks + the LLM judge. Saves scorecard_<curator>.json in the golden dir.
+The run is traced to Cloud Trace, so latency and token spend land next to the scores.
+
+--adk-metrics adds Google's own evaluators (ADK hallucinations_v1 + per-rubric grading of
+expectations.md) as a second opinion. Off by default: it costs extra judge tokens, and leaving it
+off keeps a scorecard directly comparable with the ones already captured.
 """
 
 from __future__ import annotations
@@ -14,9 +20,10 @@ import time
 from pathlib import Path
 
 import composer
+import observability
 from config import Config, load_dotenv, load_feeds
 from curation import create_curator
-from evals import checks
+from evals import adk_metrics, checks
 from evals.judge import judge_against_expectations, judge_segment
 from pipeline import build_segments_from_stories
 from sources.base import Story
@@ -36,7 +43,9 @@ def load_expectations(name: str) -> str:
     return path.read_text() if path.exists() else ""
 
 
-def score(cfg: Config, golden_name: str, curator_name: str) -> dict:
+def score(
+    cfg: Config, golden_name: str, curator_name: str, with_adk_metrics: bool = False
+) -> dict:
     feeds = load_feeds()
     feed_stories = load_golden(golden_name)
     budgets = {f.name: f.length_budget_words for f in feeds}
@@ -66,11 +75,17 @@ def score(cfg: Config, golden_name: str, curator_name: str) -> dict:
             j["expectations_rationale"] = exp["rationale"]
         judged.append(j)
 
+    adk = (
+        adk_metrics.score_segments(cfg, segments, feed_stories, expectations)
+        if with_adk_metrics
+        else None
+    )
+
     def avg(key: str) -> float:
         vals = [j[key] for j in judged if key in j]
         return round(sum(vals) / len(vals), 3) if vals else 0.0
 
-    return {
+    scorecard = {
         "golden": golden_name,
         "curator": curator_name,
         "latency_sec": round(elapsed, 1),
@@ -86,6 +101,9 @@ def score(cfg: Config, golden_name: str, curator_name: str) -> dict:
         },
         "script": script,
     }
+    if adk is not None:
+        scorecard["adk_metrics"] = adk
+    return scorecard
 
 
 def print_scorecard(sc: dict) -> None:
@@ -100,6 +118,7 @@ def print_scorecard(sc: dict) -> None:
     print(" -- LLM judge, source-based (avg 0-1) --")
     j = sc["judge"]
     print(f"   faithfulness {j['faithfulness']:.2f}   coverage {j['coverage']:.2f}   relevance {j['relevance']:.2f}")
+    _print_adk_metrics(sc)
     if sc.get("has_expectations"):
         print(" -- LLM judge vs YOUR expectations.md (avg 0-1) --")
         print(f"   expectations_adherence {j['expectations_adherence']:.2f}")
@@ -113,21 +132,67 @@ def print_scorecard(sc: dict) -> None:
     print(f"{'=' * 60}\n")
 
 
+def _print_adk_metrics(sc: dict) -> None:
+    """Print the ADK block, if --adk-metrics was used."""
+    adk = sc.get("adk_metrics")
+    if not adk:
+        return
+    print(f" -- ADK / Google metrics (judge {adk.get('judge_model')}) --")
+    if adk.get("error"):
+        print(f"   ERROR: {adk['error']}")
+        return
+    halluc = adk.get("hallucinations_v1")
+    rubrics = adk.get("expectations_rubrics")
+    print(
+        f"   hallucinations_v1 {_fmt(halluc)}   expectations_rubrics {_fmt(rubrics)}"
+    )
+    for seg in adk.get("per_segment", []):
+        rubric = seg.get("expectations_rubrics") or {}
+        failed = ", ".join(rubric.get("failed") or []) or "none"
+        print(
+            f"     [{seg['segment']}] halluc {_fmt((seg.get('hallucinations_v1') or {}).get('score'))}"
+            f"  rubrics {_fmt(rubric.get('score'))}  failed: {failed}"
+        )
+        for row in rubric.get("rubrics", []):
+            if row.get("score") is not None and row["score"] < 0.5:
+                print(f"        x {row['rubric_id']}: {row['rationale'][:120]}")
+
+
+def _fmt(value: float | None) -> str:
+    return "  n/a" if value is None else f"{value:.2f}"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--golden", required=True)
     ap.add_argument("--curator", default="deterministic", choices=["deterministic", "agentic"])
+    ap.add_argument(
+        "--adk-metrics",
+        action="store_true",
+        help="also score with ADK's hallucinations_v1 + per-rubric expectations grading",
+    )
     args = ap.parse_args()
 
     load_dotenv()
     cfg = Config()
-    sc = score(cfg, args.golden, args.curator)
-    print_scorecard(sc)
+    observability.setup(cfg)
+    try:
+        with observability.span(
+            "daily_news.eval",
+            golden=args.golden,
+            curator=args.curator,
+            adk_metrics=args.adk_metrics,
+        ):
+            sc = score(cfg, args.golden, args.curator, with_adk_metrics=args.adk_metrics)
+            observability.set_attrs(words=sc["word_count"], latency_sec=sc["latency_sec"])
+        print_scorecard(sc)
 
-    out = GOLDEN_DIR / args.golden / f"scorecard_{args.curator}.json"
-    out.write_text(json.dumps(sc, indent=2, ensure_ascii=False))
-    print(f"Saved {out}")
-    return 0
+        out = GOLDEN_DIR / args.golden / f"scorecard_{args.curator}.json"
+        out.write_text(json.dumps(sc, indent=2, ensure_ascii=False))
+        print(f"Saved {out}")
+        return 0
+    finally:
+        observability.flush()
 
 
 if __name__ == "__main__":

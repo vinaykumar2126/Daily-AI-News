@@ -143,5 +143,60 @@
         "source": "Hacker News"
       }
     ]
+  },
+  {
+    "date": "2026-09-24",
+    "items": [
+      {
+        "title": "Claude Discovered a Novel Enzyme System",
+        "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Google's new speech models can design and direct voices",
+        "url": "https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Qwen Intelligence Launches Three Mobile AI Agents",
+        "url": "https://x.com/Alibaba_Qwen/status/2102727405198876753?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Nokia Open-Sources AnyJev: A Training-Free Layer That Turns Any Open LLM Into a Calibrated Decision Model - MarkTechPost",
+        "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOclVSQlBaU3FqU1lJQjJtVTF3VmRaWnRDMlUwd0t2VS1QR3poaE9YVUZYRDBzNklqcTEyRDlpM014LTFnNUdsQjhOaWdsZk9YcDlaVjlhSnFibnBVQ3RIREU1V0N1R3cyYnlIYzNlSVdHZUFkaDhSSVVOX0dMWjduWnkxQXBkSnV4SFRtOVRtSlVVYk5TdUtyQnRmclN3dmRXVEFlcXFYVGtrcHgwNXBVbG42ZFQzUTJkcHlIS3B1blpiZmw2Z0dIWEdOY1BCdDBmLVE3cDR3UHB4bVpRS3fSAeMBQVVfeXFMTnVkOHQyaWwzaUMxckNUd2VPUUVkVUdHUUk1Y2xJWXU2Yi1CRHFIcThFYkxOUkIzdmRZMndXOVZ2T1l6cGFXaXB3NUlsX3hBWGMwWXh1elllWkpXVGM4RmgwWFYwbDFXbjdmSFAyQmhKSlRaWmhFNnJ5aGZTS3RoSXg3dDI4emlLX0FhZHFKLXo5WXcwemdnUl9tQ1o5LWRxV2I4RERrVWFnRGM4aVJZOHIwU01GUHE4UElGSFl2QzV6TDdWS3BGVTM0U0FHQk1teWNvRDV4WXNXS0o2YmNjYnBRaVE?oc=5",
+        "source": "MarkTechPost"
+      },
+      {
+        "title": "Escaping SPACE: Part I",
+        "url": "https://www.perplexity.ai/hub/blog/escaping-space-part-i?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "OpenAI introduced MentalHealthBench",
+        "url": "https://openai.com/index/introducing-mentalhealthbench/?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Google plans AI memory that even Google cannot read",
+        "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Mercury 2.5 LLM hits 770 tokens per second",
+        "url": "https://artificialanalysis.ai/models/mercury-2-5",
+        "source": "Hacker News"
+      },
+      {
+        "title": "Introducing Ember-1",
+        "url": "https://fireworks.ai/blog/ember-1?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Introducing Comfy Router: One API for Frontier Media Models",
+        "url": "https://blog.comfy.org/p/introducing-comfy-router-one-api?utm_source=tldrai",
+        "source": "TLDR AI"
+      }
+    ]
   }
 ]

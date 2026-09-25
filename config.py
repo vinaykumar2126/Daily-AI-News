@@ -30,6 +30,14 @@ def load_dotenv() -> None:
         os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
+def _flag(name: str, default: bool) -> bool:
+    """Read a boolean env var. Unset falls back to `default`; 0/false/no are off."""
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() not in {"0", "false", "no", ""}
+
+
 @dataclass
 class SourceSpec:
     type: str
@@ -90,6 +98,36 @@ class Config:
 
         # Optional archive (also used by the agentic curator's memory)
         self.gcs_bucket = os.environ.get("GCS_BUCKET", "")
+
+        # --- Tracing (OpenTelemetry -> Cloud Trace, via ADK's Google Cloud exporters) ---
+        # No third-party observability SDK: ADK already emits GenAI spans and ships the GCP
+        # exporters. See observability.py.
+        self.trace_enabled = _flag("TRACE_ENABLED", True)
+        # Metrics are opt-in. The spans already carry gen_ai.usage.* token counts, so the Cloud
+        # Monitoring reader adds no information — but it does add a gRPC export path that fails
+        # intermittently ("Error while writing to Cloud Monitoring", UNAVAILABLE on the auth
+        # metadata fetch) and prints a traceback each time, which buries real output.
+        self.trace_metrics = _flag("TRACE_METRICS", False)
+        # Cloud Run already captures stdout, so OTel log export is opt-in.
+        self.trace_logs = _flag("TRACE_LOGS", False)
+        # Prompt/response text on spans: what makes a trace useful for debugging a bad segment,
+        # but the rewrite prompts carry whole articles. On locally, off in the deployed job
+        # (Cloud Run sets K_SERVICE) to keep span size and Trace ingestion cost down.
+        self.trace_content = _flag("TRACE_CONTENT", not os.environ.get("K_SERVICE"))
+        self.trace_service_name = os.environ.get("OTEL_SERVICE_NAME", "daily-news")
+        # "cloudtrace" = classic cloudtrace.googleapis.com, queryable straight away.
+        # "telemetry"  = ADK's default OTLP to telemetry.googleapis.com; that one needs the
+        # project onboarded to a trace bucket, or it accepts spans (HTTP 200) that can never be
+        # read back. Verified on dailynews-507123: telemetry -> "_Trace bucket not found".
+        self.trace_backend = os.environ.get("TRACE_BACKEND", "cloudtrace").strip().lower()
+
+        # Judge model for the ADK eval metrics. Deliberately not gemini_rewrite_model: a judge
+        # from the same model as the generator grades its own family.
+        self.eval_judge_model = os.environ.get("EVAL_JUDGE_MODEL", "gemini-2.5-flash")
+        # How many times each ADK evaluator samples the judge and votes. ADK's default is 5,
+        # which is 5 judge calls per metric per segment -- 40 for a 4-segment digest, enough to
+        # get the process OOM-killed on a laptop. 3 still votes.
+        self.eval_judge_samples = int(os.environ.get("EVAL_JUDGE_SAMPLES", "3"))
 
         # --- Realtime interactive agent (all optional; only needed for the phone-call mode) ---
         self.realtime_provider = os.environ.get("REALTIME_PROVIDER", "elevenlabs")

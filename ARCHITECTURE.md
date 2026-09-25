@@ -1,5 +1,5 @@
 # ARCHITECTURE — Daily_News
-`Daily_News` · updated 2026-09-19 · _how the app fits together. Update when the structure changes._
+`Daily_News` · updated 2026-09-24 · _how the app fits together. Update when the structure changes._
 
 **In one line:** every morning it pulls news from several sources, an LLM rewrites it into a spoken script, turns that into audio, and emails me the clip.
 
@@ -39,6 +39,59 @@ flowchart LR
     E[CURATOR env var] -.selects.-> C
 ```
 
+## Observability (tracing, tokens, cost)
+
+Everything stays on GCP — no LangSmith, no LangChain. ADK already emits OpenTelemetry GenAI spans
+for every agent run, model call and tool call; `observability.py` is the bootstrap that points them
+at Google Cloud and adds spans for the pipeline's own stages.
+
+```mermaid
+flowchart TD
+    Cfg[config.py · TRACE_* env] --> Obs[observability.py · setup]
+    Obs --> ADK[ADK spans<br/>invocation · agent_run · call_llm · execute_tool]
+    Obs --> Genai[opentelemetry-instrumentation-google-genai<br/>wraps the raw genai calls]
+    Obs --> Mine[our stage spans<br/>gather · curate · enrich · rewrite · compose · TTS · email]
+    ADK --> TP[OTel TracerProvider]
+    Genai --> TP
+    Mine --> TP
+    TP -->|TRACE_BACKEND=cloudtrace · default| CT[cloudtrace.googleapis.com<br/>→ Cloud Trace]
+    TP -.TRACE_BACKEND=telemetry.-> TG[telemetry.googleapis.com<br/>needs a trace bucket]
+    Obs --> Met[Cloud Monitoring metrics]
+    Exit[flush before exit] --> CT
+```
+
+One run is one trace:
+
+```
+daily_news.run                      curator, words, feeds, outcome
+├─ gather_stories (per feed)         → fetch_source per adapter, story counts
+├─ feed  name="AI & Tech"
+│  ├─ curate                        curation.fallback, adk.session_id
+│  │  └─ invocation → agent_run → call_llm / execute_tool      ← ADK's own spans
+│  ├─ enrich_stories                enriched
+│  └─ rewrite                       gen_ai.request.model + input/output tokens
+├─ compose · synthesize_mp3 · send_email · archive_to_gcs
+```
+
+**The knobs** (all in `.env.example`):
+
+| Env | Default | What it does |
+|---|---|---|
+| `TRACE_ENABLED` | on | `0` makes every span helper a no-op |
+| `TRACE_BACKEND` | `cloudtrace` | `telemetry` switches to ADK's OTLP endpoint |
+| `TRACE_METRICS` | **off** | Cloud Monitoring metric export. Opt-in: spans already carry the token counts, and this exporter throws `UNAVAILABLE` tracebacks intermittently. |
+| `TRACE_LOGS` | off | OTel log export (Cloud Run already captures stdout) |
+| `TRACE_CONTENT` | on locally, off in Cloud Run | prompt/response text on spans |
+| `EVAL_JUDGE_MODEL` | `gemini-2.5-flash` | judge for the ADK eval metrics |
+| `EVAL_JUDGE_SAMPLES` | `3` | judge samples per metric per segment (ADK default 5 = 40 calls/run) |
+
+**Two things that will bite you:**
+- **Flush or lose them.** The exporter batches; a Cloud Run Job exits first. Every entry point calls
+  `observability.flush()` in a `finally`.
+- **`TRACE_BACKEND=telemetry` can look healthy and export nothing.** It returns HTTP 200 but the
+  spans are unreadable until the project has a trace bucket (`_Trace bucket not found in project`).
+  That's why `cloudtrace` is the default.
+
 ## Where things live
 | Path | Its job |
 |---|---|
@@ -52,6 +105,8 @@ flowchart LR
 | `memory.py` | Cross-run memory (what past digests covered) — used by the agent. |
 | `prompts/` | One rewrite prompt per topic + `_shared_style.md`. Decides *how* each segment sounds. |
 | `evals/` | Quality testing: golden sets, LLM-judge, expectations grading, compare. |
+| `evals/adk_metrics.py` | Google's own judges (ADK `hallucinations_v1` + per-rubric expectations), behind `--adk-metrics`. |
+| `observability.py` | Tracing bootstrap + span helpers. One import per entry point. |
 | `deploy.sh` / `Dockerfile` | Package + ship to Cloud Run. |
 
 ## Key ideas (the patterns)

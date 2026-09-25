@@ -11,6 +11,7 @@ import logging
 from pathlib import Path
 
 import composer
+import observability
 from config import Config, Feed
 from curation import create_curator
 from curation.base import Curator, FeedContext
@@ -26,14 +27,21 @@ _SHARED_STYLE = (_PROMPT_DIR / "prompts" / "_shared_style.md").read_text()
 def gather_stories(feed: Feed) -> list[Story]:
     """Fetch and merge stories from all of a feed's sources. One dead source is skipped."""
     merged: list[Story] = []
-    for spec in feed.sources:
-        try:
-            src = create_source(spec.type, spec.params)
-            got = src.fetch()
-            log.info("[%s] source %s -> %d stories", feed.name, spec.type, len(got))
-            merged.extend(got)
-        except Exception as exc:  # noqa: BLE001
-            log.warning("[%s] source %s failed (skipping): %s", feed.name, spec.type, exc)
+    with observability.span("gather_stories", feed=feed.name, sources=len(feed.sources)):
+        for spec in feed.sources:
+            with observability.span("fetch_source", feed=feed.name, source=spec.type):
+                try:
+                    src = create_source(spec.type, spec.params)
+                    got = src.fetch()
+                    log.info("[%s] source %s -> %d stories", feed.name, spec.type, len(got))
+                    observability.set_attrs(stories=len(got))
+                    merged.extend(got)
+                except Exception as exc:  # noqa: BLE001
+                    log.warning("[%s] source %s failed (skipping): %s", feed.name, spec.type, exc)
+                    # Skipping is deliberate, but a source that quietly dies every morning
+                    # should be findable in a trace rather than only in the logs.
+                    observability.record_exception(exc, skipped=True, stories=0)
+        observability.set_attrs(stories=len(merged))
     return merged
 
 
@@ -56,8 +64,20 @@ def rewrite(cfg: Config, feed: Feed, stories: list[Story]) -> str:
         vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
     )
     log.info("[%s] rewriting %d stories via %s", feed.name, len(stories), cfg.gemini_rewrite_model)
-    resp = client.models.generate_content(model=cfg.gemini_rewrite_model, contents=prompt)
-    return (resp.text or "").strip()
+    with observability.span(
+        "rewrite",
+        feed=feed.name,
+        stories=len(stories),
+        budget_words=feed.length_budget_words,
+        **{"gen_ai.request.model": cfg.gemini_rewrite_model},
+    ):
+        resp = client.models.generate_content(model=cfg.gemini_rewrite_model, contents=prompt)
+        # The rewrite is the run's biggest token spend and the only place to measure it; the
+        # google-genai instrumentation adds its own child span, this is the per-feed roll-up.
+        observability.record_tokens(getattr(resp, "usage_metadata", None))
+        text = (resp.text or "").strip()
+        observability.set_attrs(words=len(text.split()))
+    return text
 
 
 def _needs_enrichment(story: Story) -> bool:
@@ -94,16 +114,18 @@ def enrich_stories(stories: list[Story], max_stories: int) -> None:
     from curation.tools import fetch_article
 
     enriched = 0
-    for s in stories:
-        if enriched >= max_stories:
-            break
-        if not _needs_enrichment(s):
-            continue
-        res = fetch_article(s.url)
-        if res.get("status") == "success" and len(res.get("text", "")) > 200:
-            s.body = _clean_enriched(res["text"])
-            enriched += 1
-            log.info("Enriched %r from %s (%d chars)", s.title[:50], s.url, len(s.body))
+    with observability.span("enrich_stories", candidates=len(stories), budget=max_stories):
+        for s in stories:
+            if enriched >= max_stories:
+                break
+            if not _needs_enrichment(s):
+                continue
+            res = fetch_article(s.url)
+            if res.get("status") == "success" and len(res.get("text", "")) > 200:
+                s.body = _clean_enriched(res["text"])
+                enriched += 1
+                log.info("Enriched %r from %s (%d chars)", s.title[:50], s.url, len(s.body))
+        observability.set_attrs(enriched=enriched)
     if enriched:
         log.info("Enriched %d stories with article text", enriched)
 
@@ -121,21 +143,37 @@ def build_segments_from_stories(
     segments: list[tuple[str, str]] = []
     for feed in feeds:
         stories = feed_stories.get(feed.name, [])
-        if not stories:
-            log.warning("[%s] no stories; skipping segment", feed.name)
-            continue
-        ctx = FeedContext(
-            name=feed.name, interests=feed.interests, max_stories=feed.max_stories
-        )
-        curated = curator.curate(stories, ctx)
-        if not curated:
-            log.warning("[%s] nothing survived curation; skipping segment", feed.name)
-            continue
-        if cfg.enrich_articles:
-            enrich_stories(curated, cfg.enrich_max_per_feed)
-        text = rewrite(cfg, feed, curated)
-        if text:
-            segments.append((feed.name, text))
+        with observability.span(
+            "feed",
+            name=feed.name,
+            curator=curator.name,
+            max_stories=feed.max_stories,
+            stories_in=len(stories),
+        ):
+            if not stories:
+                log.warning("[%s] no stories; skipping segment", feed.name)
+                observability.set_attrs(skipped="no_stories")
+                continue
+            ctx = FeedContext(
+                name=feed.name, interests=feed.interests, max_stories=feed.max_stories
+            )
+            with observability.span(
+                "curate", feed=feed.name, curator=curator.name, stories_in=len(stories)
+            ):
+                curated = curator.curate(stories, ctx)
+                observability.set_attrs(stories_out=len(curated))
+            if not curated:
+                log.warning("[%s] nothing survived curation; skipping segment", feed.name)
+                observability.set_attrs(skipped="nothing_curated")
+                continue
+            observability.set_attrs(stories_curated=len(curated))
+            if cfg.enrich_articles:
+                enrich_stories(curated, cfg.enrich_max_per_feed)
+            text = rewrite(cfg, feed, curated)
+            if text:
+                segments.append((feed.name, text))
+            else:
+                observability.set_attrs(skipped="empty_rewrite")
     return segments
 
 
@@ -155,4 +193,7 @@ def generate_script(
 ) -> str:
     """End-to-end: feeds -> segments -> one composed spoken script."""
     segments = build_segments(cfg, feeds, curator)
-    return composer.compose(segments, date=date)
+    with observability.span("compose", segments=len(segments)):
+        script = composer.compose(segments, date=date)
+        observability.set_attrs(words=len(script.split()))
+    return script

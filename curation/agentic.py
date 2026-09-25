@@ -12,7 +12,10 @@ import asyncio
 import json
 import logging
 import os
+import re
+import uuid
 
+import observability
 from curation.base import Curator, FeedContext
 from curation.deterministic import DeterministicCurator
 from curation.tools import fetch_article, recent_digest_history
@@ -79,6 +82,11 @@ Now curate the REAL candidates below. Return ONLY a JSON object of this exact sh
 _CANDIDATE_BODY_CHARS = 300
 
 
+def _slug(name: str) -> str:
+    """Feed name -> a token safe to use in an ADK app/session id (e.g. 'AI & Tech' -> 'ai-tech')."""
+    return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", name.lower())).strip("-") or "feed"
+
+
 def _format_stories(stories: list[Story]) -> str:
     lines = []
     for i, s in enumerate(stories):
@@ -105,6 +113,11 @@ class AgenticCurator(Curator):
                 raise RuntimeError("agent returned no selection")
         except Exception as exc:  # noqa: BLE001
             log.warning("[%s] agentic curation failed (%s); using fallback", ctx.name, exc)
+            # The digest still ships on the deterministic curator, but a silent daily fallback
+            # would otherwise look identical to a healthy agentic run. Make it queryable.
+            observability.record_exception(
+                exc, **{"curation.fallback": True, "curation.fallback_reason": str(exc)[:200]}
+            )
             return self.fallback.curate(stories, ctx)
 
         # Record what we surfaced (for future competitive comparisons), unless in eval mode.
@@ -117,6 +130,13 @@ class AgenticCurator(Curator):
         from google.adk.agents import Agent
         from google.adk.runners import InMemoryRunner
         from google.genai import types
+
+        # A per-feed app/session id. These land on ADK's own spans, so a shared constant would
+        # make the four per-feed agent runs in one pipeline execution indistinguishable in
+        # Trace Explorer.
+        slug = _slug(ctx.name)
+        app_name = f"curator-{slug}"
+        session_id = f"{slug}-{uuid.uuid4().hex[:8]}"
 
         agent = Agent(
             name="curator",
@@ -131,14 +151,14 @@ class AgenticCurator(Curator):
         prompt = "Candidate stories:\n\n" + _format_stories(stories)
 
         async def _go() -> str:
-            runner = InMemoryRunner(agent=agent, app_name="curator")
+            runner = InMemoryRunner(agent=agent, app_name=app_name)
             await runner.session_service.create_session(
-                app_name="curator", user_id="pipeline", session_id="s1"
+                app_name=app_name, user_id="pipeline", session_id=session_id
             )
             final = ""
             async for event in runner.run_async(
                 user_id="pipeline",
-                session_id="s1",
+                session_id=session_id,
                 new_message=types.Content(
                     role="user", parts=[types.Part.from_text(text=prompt)]
                 ),
@@ -149,8 +169,20 @@ class AgenticCurator(Curator):
                     final = "".join(p.text or "" for p in event.content.parts)
             return final
 
+        observability.set_attrs(
+            **{"adk.app_name": app_name, "adk.session_id": session_id, "adk.model": _MODEL}
+        )
+        # asyncio.run copies the current context into its task, so ADK's invocation /
+        # agent_run / call_llm / execute_tool spans nest under the caller's `curate` span.
         raw = asyncio.run(_go())
-        return self._parse(raw, stories)
+        selected = self._parse(raw, stories)
+        observability.set_attrs(
+            **{
+                "curation.fallback": False,
+                "curation.notes": sum(1 for s in selected if s.extra.get("competitive_note")),
+            }
+        )
+        return selected
 
     @staticmethod
     def _parse(raw: str, stories: list[Story]) -> list[Story]:
