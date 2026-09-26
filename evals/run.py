@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 
@@ -174,6 +175,12 @@ def main() -> int:
     args = ap.parse_args()
 
     load_dotenv()
+    # An eval replays stored golden stories. Without this the agentic curator records those
+    # replayed picks into .digest_memory.json as if they were a real digest, and the
+    # recent_digest_history tool then feeds them back into tomorrow's curation. Grading must not
+    # change what the agent believes it published, so set it here rather than relying on the
+    # caller remembering to prefix EVAL_MODE=1.
+    os.environ.setdefault("EVAL_MODE", "1")
     cfg = Config()
     observability.setup(cfg)
     try:

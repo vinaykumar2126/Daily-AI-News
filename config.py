@@ -80,7 +80,7 @@ class Config:
         os.environ.setdefault("GOOGLE_CLOUD_LOCATION", self.gemini_region)
 
         # Curation strategy: "deterministic" (default) or "agentic"
-        self.curator = os.environ.get("CURATOR", "deterministic")
+        self.curator = os.environ.get("CURATOR", "agentic")
 
         # Article enrichment: fetch real article text for thin (headline-only) curated stories
         # before rewriting, so the LLM grounds on facts instead of hallucinating from a headline.
