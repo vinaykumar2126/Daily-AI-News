@@ -5,7 +5,13 @@ beautifulsoup4>=4.12.0
 feedparser>=6.0.0
 PyYAML>=6.0
 yfinance>=0.2.40
-google-adk>=0.2.0
+# [gcp] adds the OTLP/HTTP exporter + GCP resource detector that observability.py needs.
+google-adk[gcp]>=2.9.0
+# Auto-instruments the raw google-genai calls (pipeline.rewrite, evals/judge). Prerelease only;
+# this is the range google-adk[otel-gcp] itself declares. The instrumentation ceiling matters:
+# 0.64b0+ requires opentelemetry-api ~=1.43, but google-adk pins api <=1.42.1 -> unresolvable.
+opentelemetry-instrumentation-google-genai>=0.7b1,<1
+opentelemetry-instrumentation<0.64b0
 # Realtime interactive agent (phone-call mode)
 elevenlabs>=1.0.0
 twilio>=9.0.0

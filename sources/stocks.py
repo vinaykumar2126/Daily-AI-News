@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
+import math
 
 from sources.base import Source, Story, register_source
 
@@ -38,9 +39,13 @@ def _pct_move(symbol: str) -> tuple[float, float] | None:
         return None
     last = float(closes.iloc[-1])
     prev = float(closes.iloc[-2])
-    if prev == 0:
+    # yfinance can hand back NaN closes (holiday/half-day/thin data) -> guard, or we emit "nan%".
+    if prev == 0 or not (math.isfinite(last) and math.isfinite(prev)):
         return None
-    return last, (last - prev) / prev * 100.0
+    pct = (last - prev) / prev * 100.0
+    if not math.isfinite(pct):
+        return None
+    return last, pct
 
 
 @register_source("stocks")

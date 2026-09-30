@@ -12,34 +12,79 @@ import asyncio
 import json
 import logging
 import os
+import re
+import uuid
 
+import observability
 from curation.base import Curator, FeedContext
 from curation.deterministic import DeterministicCurator
 from curation.tools import fetch_article, recent_digest_history
-from sources.base import Story
+from sources.base import Story, clip_sentences
 
 log = logging.getLogger("daily-news.curation.agentic")
 
 _MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 
-_INSTRUCTION = """You are a news curator for a spoken daily briefing. You are given a numbered
-list of candidate stories for the "{feed_name}" segment. The listener cares about: {interests}.
+_INSTRUCTION = """You are the news curator for one segment ("{feed_name}") of a spoken daily
+briefing for a working AI/ML engineer who wants to stay ahead of where the field is going.
+The listener cares about: {interests}.
 
-Your job:
-1. Select the important, non-duplicate stories (up to {max_stories}) — favor COVERAGE.
-   NEVER drop a genuine new tool, model, agent, or product launch; those are the point of this
-   segment. When you must cut to fit, cut pure funding rounds, opinion/meme posts, and off-topic
-   items first — not launches.
-2. Rank them best-first for a spoken briefing (biggest launches / competitive moves lead).
-3. For AI/tech stories about new tools or launches, you MAY call fetch_article to confirm a key
-   detail, and call recent_digest_history to check whether a launch competes with or beats
-   something covered before. If it does, write a short competitive_note (e.g. "beats last week's
-   X on cost").
+You are given a numbered list of candidate stories. Select and RANK the ones that matter most,
+up to {max_stories}, best-first. Rank by SIGNIFICANCE — what an engineer needs to know — NOT by
+keyword match, recency, or vote count.
 
-Return ONLY a JSON object of this exact shape and nothing else:
+Significance ladder for a tech/AI segment (highest priority first):
+1. New MODEL releases and capability launches from major labs (OpenAI, Anthropic, Google/DeepMind,
+   Meta, Qwen/Alibaba, Mistral, DeepSeek, xAI, and similar) — frontier OR open-weight — and novel
+   research/breakthroughs from those labs (e.g. "Claude discovered a novel enzyme system"). These
+   define where the field is heading. NEVER drop one to keep something from a lower tier.
+2. Developer tools, agents, and frameworks the listener could actually pick up and use.
+3. Competitive moves — one lab shipping something faster, cheaper, or better than a rival.
+4. Serious infra / inference / architecture / real benchmark ADVANCES (a genuine advance — not
+   "a benchmark WE built" or "we tested N models").
+5. Everything else of genuine engineering interest.
+
+DEMOTE hard, and DROP these first when trimming to fit: opinion / analysis / meta-commentary;
+"a tool or benchmark WE made" self-promo; generic roundups & listicles ("top 5…", "best X updated
+daily"); vertical business / PR product blurbs (a dog-food comparison tool, a real-estate CRM);
+pure funding rounds; off-topic items (consumer hardware, OS, gadgets); duplicates; and thin
+title-only entries with no real substance.
+
+For AI/tech launches you MAY call fetch_article to confirm a key detail, and recent_digest_history
+to check whether something competes with or beats a prior day's story — if so, add a short
+competitive_note (e.g. "beats last week's X on cost").
+
+--- EXAMPLE (illustrative — an AI & Tech segment, max_stories 4) ---
+Candidates:
+0. OpenAI introduces MentalHealthBench, an open benchmark built with mental-health experts
+1. Google releases Gemini Flash TTS — new speech models: voices from text, 30-second voice cloning
+2. Blue Buffalo launches an AI tool to help customers compare dog foods
+3. Anthropic's Claude autonomously discovered a previously unknown enzyme system
+4. We benchmarked 27 open-source LLMs — then had to fix our own benchmark
+5. Ember-1: a new model on Kimi K3 with the same quality at 40% fewer tokens
+
+Correct output:
+{{"selected": [1, 3, 5, 0], "notes": {{}}}}
+
+Why (reasoning — do NOT output it): 1, 3, 5 are frontier model releases / a major-lab breakthrough
+-> tier 1, ranked first. 0 is a real OpenAI benchmark -> keep, but lower. 2 is a vertical PR blurb
+and 4 is "we-made-a-benchmark" meta-commentary -> dropped.
+--- END EXAMPLE ---
+
+Now curate the REAL candidates below. Return ONLY a JSON object of this exact shape, nothing else:
 {{"selected": [<original story numbers, best first>],
   "notes": {{"<story number>": "<optional competitive_note>"}}}}
 """
+
+
+# How much of each candidate's body the curator sees. Clipped on a sentence boundary so the
+# model never ranks a story from half a sentence.
+_CANDIDATE_BODY_CHARS = 300
+
+
+def _slug(name: str) -> str:
+    """Feed name -> a token safe to use in an ADK app/session id (e.g. 'AI & Tech' -> 'ai-tech')."""
+    return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", name.lower())).strip("-") or "feed"
 
 
 def _format_stories(stories: list[Story]) -> str:
@@ -48,7 +93,8 @@ def _format_stories(stories: list[Story]) -> str:
         extra = ""
         if s.source:
             extra = f" [{s.source}]"
-        lines.append(f"{i}. {s.title}{extra}\n   {s.body.strip()[:200]}\n   {s.url}")
+        body = clip_sentences(s.body or "", _CANDIDATE_BODY_CHARS)
+        lines.append(f"{i}. {s.title}{extra}\n   {body}\n   {s.url}")
     return "\n".join(lines)
 
 
@@ -67,6 +113,11 @@ class AgenticCurator(Curator):
                 raise RuntimeError("agent returned no selection")
         except Exception as exc:  # noqa: BLE001
             log.warning("[%s] agentic curation failed (%s); using fallback", ctx.name, exc)
+            # The digest still ships on the deterministic curator, but a silent daily fallback
+            # would otherwise look identical to a healthy agentic run. Make it queryable.
+            observability.record_exception(
+                exc, **{"curation.fallback": True, "curation.fallback_reason": str(exc)[:200]}
+            )
             return self.fallback.curate(stories, ctx)
 
         # Record what we surfaced (for future competitive comparisons), unless in eval mode.
@@ -79,6 +130,13 @@ class AgenticCurator(Curator):
         from google.adk.agents import Agent
         from google.adk.runners import InMemoryRunner
         from google.genai import types
+
+        # A per-feed app/session id. These land on ADK's own spans, so a shared constant would
+        # make the four per-feed agent runs in one pipeline execution indistinguishable in
+        # Trace Explorer.
+        slug = _slug(ctx.name)
+        app_name = f"curator-{slug}"
+        session_id = f"{slug}-{uuid.uuid4().hex[:8]}"
 
         agent = Agent(
             name="curator",
@@ -93,24 +151,38 @@ class AgenticCurator(Curator):
         prompt = "Candidate stories:\n\n" + _format_stories(stories)
 
         async def _go() -> str:
-            runner = InMemoryRunner(agent=agent, app_name="curator")
+            runner = InMemoryRunner(agent=agent, app_name=app_name)
             await runner.session_service.create_session(
-                app_name="curator", user_id="pipeline", session_id="s1"
+                app_name=app_name, user_id="pipeline", session_id=session_id
             )
             final = ""
             async for event in runner.run_async(
                 user_id="pipeline",
-                session_id="s1",
+                session_id=session_id,
                 new_message=types.Content(
                     role="user", parts=[types.Part.from_text(text=prompt)]
                 ),
             ):
                 if event.is_final_response() and event.content and event.content.parts:
-                    final = event.content.parts[0].text or ""
+                    # The model may split its answer across several parts; joining them keeps a
+                    # long JSON selection intact instead of reading a half object from parts[0].
+                    final = "".join(p.text or "" for p in event.content.parts)
             return final
 
+        observability.set_attrs(
+            **{"adk.app_name": app_name, "adk.session_id": session_id, "adk.model": _MODEL}
+        )
+        # asyncio.run copies the current context into its task, so ADK's invocation /
+        # agent_run / call_llm / execute_tool spans nest under the caller's `curate` span.
         raw = asyncio.run(_go())
-        return self._parse(raw, stories)
+        selected = self._parse(raw, stories)
+        observability.set_attrs(
+            **{
+                "curation.fallback": False,
+                "curation.notes": sum(1 for s in selected if s.extra.get("competitive_note")),
+            }
+        )
+        return selected
 
     @staticmethod
     def _parse(raw: str, stories: list[Story]) -> list[Story]:

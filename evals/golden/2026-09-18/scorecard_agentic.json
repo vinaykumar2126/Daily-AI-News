@@ -1,8 +1,8 @@
 {
   "golden": "2026-09-18",
   "curator": "agentic",
-  "latency_sec": 147.8,
-  "word_count": 1186,
+  "latency_sec": 130.5,
+  "word_count": 782,
   "has_expectations": true,
   "code_checks": {
     "length_adherence": {
@@ -16,64 +16,263 @@
       "detail": "complete"
     },
     "tts_safety": {
-      "passed": false,
-      "score": 0.5,
-      "detail": "found: markdown(14), model_hyphen_digit(1)"
+      "passed": true,
+      "score": 1.0,
+      "detail": "clean"
     }
   },
   "judge": {
     "faithfulness": 1.0,
-    "coverage": 0.675,
+    "coverage": 0.6,
     "relevance": 1.0,
-    "expectations_adherence": 0.985,
+    "expectations_adherence": 0.781,
     "per_segment": [
       {
         "faithfulness": 1.0,
         "coverage": 0.5,
         "relevance": 1.0,
-        "rationale": "The segment is completely faithful to the provided sources and entirely relevant to the specified AI topics. However, it notably omits several significant product launches and announcements from major players like Google, Meta, and Ant Group that were present in the source material.",
+        "rationale": "The segment is completely faithful to the source material, accurately summarizing details or noting when details are minimal. All included stories are highly relevant to the specified AI topics. However, coverage is moderate as several significant stories from major companies like Google, Meta, and Microsoft, along with other important launches and technical developments, were omitted.",
         "segment": "AI & Tech",
-        "expectations_adherence": 0.94,
+        "expectations_adherence": 0.6666666666666666,
         "missed_must_includes": [
+          "Meta's Muse AI agent gets a Mac app",
           "OpenAI discloses \"concerning\" AI behaviour + new disclosure system"
         ],
-        "kept_noise": [],
-        "expectations_rationale": "The segment successfully included 3 out of 4 must-have AI & Tech stories, correctly omitted all specified \"noise\" items, and respected all \"red lines.\" One key must-include story about OpenAI's \"concerning AI behaviour\" was missed."
+        "kept_noise": [
+          "\"LLM Classification is Feature Engineering\""
+        ],
+        "expectations_rationale": "The briefing included two of the four must-include AI & Tech stories and correctly merged their duplicates. However, it missed two other critical must-include items and incorrectly kept one story that was designated as noise."
       },
       {
         "faithfulness": 1.0,
-        "coverage": 0.5,
+        "coverage": 0.6,
         "relevance": 1.0,
-        "rationale": "The segment is faithful to the provided source material, with all claims supported by the articles. All included stories are relevant to the segment's focus areas. However, the segment only covered 4 out of 7 distinct major news items, missing several important stories regarding criminal justice and immigration detention.",
+        "rationale": "The segment is completely faithful to the source material, with all claims supported by the provided stories. All included stories are highly relevant to the specified focus areas. However, the segment misses three clearly important national news stories from the sources: the LA bus crash murder charges, the conviction of a CBP officer, and the Raymond Horsch investigation.",
         "segment": "US Headlines",
-        "expectations_adherence": 1.0,
+        "expectations_adherence": 0.857,
         "missed_must_includes": [],
-        "kept_noise": [],
-        "expectations_rationale": "All 'must-include' US Headlines stories were present in the segment, and all 'should-drop' noise items for this category were correctly left out."
+        "kept_noise": [
+          "federal investigators have released a report on a Florida immigration facility nicknamed 'Alligator Alcatraz,' confirming that detainees were held in small outdoor cages."
+        ],
+        "expectations_rationale": "The segment successfully included both must-include stories and correctly omitted the explicitly listed noise items. However, it inappropriately included a localized incident report about a Florida immigration facility, which should have been dropped as noise for this national headlines segment."
       },
       {
         "faithfulness": 1.0,
-        "coverage": 0.7,
+        "coverage": 0.3,
         "relevance": 1.0,
-        "rationale": "The segment faithfully reports on the H-1B and Green Card news, but misses the O-1 visa story from the sources. It correctly excludes the ICE stories which, while immigration-related, are less relevant to the segment's specific focus on visa programs and changes for international professionals.",
+        "rationale": "The segment is perfectly faithful and relevant to the Green Card public charge rule. However, it covers only one story, missing several other relevant and important topics from the source articles like H-1B, O-1 visas, and various ICE-related news.",
         "segment": "Immigration & Visas",
-        "expectations_adherence": 1.0,
-        "missed_must_includes": [],
+        "expectations_adherence": 0.6,
+        "missed_must_includes": [
+          "VP JD Vance's stance that H-1B shouldn't replace American workers"
+        ],
         "kept_noise": [],
-        "expectations_rationale": "The segment perfectly covers both 'must-include' items for Immigration & Visas, correctly merging the duplicate Green Card rule. No 'should-drop' noise items were included, and acronyms were spelled for the ear."
+        "expectations_rationale": "The segment successfully covered the new Green Card rules and omitted all specified noise items, but it missed the crucial policy signal regarding VP JD Vance's stance on H-1B visas."
       },
       {
         "faithfulness": 1.0,
         "coverage": 1.0,
         "relevance": 1.0,
-        "rationale": "The script accurately reports all figures and details from the source stories with appropriate rounding, covering all provided market data relevant to the segment's focus.",
+        "rationale": "The segment faithfully reports all numerical data and trends from the source stories, includes all important market movements, and is entirely relevant to the market focus.",
         "segment": "Markets",
         "expectations_adherence": 1.0,
         "missed_must_includes": [],
         "kept_noise": [],
-        "expectations_rationale": "The segment perfectly covered all required market index and watchlist moves, and respected the red line by only reporting numbers without inventing causes."
+        "expectations_rationale": "The segment successfully included both the index moves and watchlist moves as required, and adhered to the red line regarding reporting only present numbers without inventing causes."
       }
     ]
   },
-  "script": "Good morning. Here's your briefing for Friday, September 18.\n\nFirst up, AI & Tech.\n\nAlright, let's dive into the week's AI and tech updates. We've got some new tools that could significantly streamline your workflow, a noteworthy competitive strategy from a major player, and important developments in AI infrastructure that impact how we build responsible systems.\n\nFirst up, a new tool called **Skillsync**, fresh out of Y Combinator's current batch, is addressing a common pain point for anyone working with multiple large language models. Skillsync makes your AI chat sessions portable across different agents. It allows you to export your conversational history and all its context from one AI platform, like Claude, and then seamlessly import it into another, such as Gemini or GPT-4o. This means you can pick up exactly where you left off, even when switching vendors or models. This tool is designed specifically for AI-ML engineers, power users, and developers who routinely interact with various AI agents and need to maintain continuity. The \"so what\" for you is a significant boost in workflow efficiency, reduced friction when comparing or switching platforms, and greater flexibility without being locked into a single vendor's ecosystem.\n\nNext, **Anthropic** has rolled out significant enhancements to its Claude AI assistant. They're integrating Claude's various capabilities into a single, more streamlined user interface, making the overall experience more cohesive. More importantly, they've launched powerful new document tools. Users can now upload and analyze multiple documents directly within Claude, allowing the AI to process, summarize, and extract information from large text datasets much more efficiently than before. This update is particularly useful for researchers, data analysts, and business professionals who frequently deal with extensive reports, legal documents, or academic papers. The \"so what\" is that Claude can now act as a more comprehensive and centralized analytical assistant, speeding up information retrieval and synthesis from your unstructured data.\n\n**Meta** is also making moves to expand the accessibility of its AI agents, specifically with the launch of a dedicated Mac app for its **Muse AI agent**. Muse, which is generally known for its creative generation and assistance capabilities, will now be available natively on Apple's macOS. This means creative professionals, designers, and content creators using Mac devices can now leverage Muse for brainstorming, generating ideas, and assisting with various creative tasks directly from their desktop. The \"so what\" here is that a native application can often offer better performance, tighter integration with local files and system services, and potentially offline capabilities compared to a web-based interface, making the AI more responsive and seamlessly part of a creative workflow.\n\nOn the crucial infrastructure and governance front, the **Advanced AI Society** has joined the Linux Foundation, launching an open verification ecosystem for AI agents. This initiative aims to create an open framework and tooling to verify the security, reliability, and ethical compliance of AI agents. For practitioners, this is a vital development because it provides a standardized, collaborative way to build trust and ensure the safety of the AI systems you're developing and deploying. The \"so what\" is that as AI agents become more autonomous and regulations inevitably tighten, having an open, auditable system to validate their safety and ethical behavior will be indispensable for staying compliant and ensuring the trustworthiness of your AI products.\n\nNow for a rapid rundown of other notable developments this week:\n\n**OpenAI** is expanding its advertising offerings with \"Sponsored Agents,\" a new business model that allows companies to pay for prominent placement of their AI agents within the ChatGPT ecosystem. This move signifies OpenAI's continued push into monetizing its platform and could influence how businesses leverage and promote their AI solutions directly to users, shaping the competitive landscape for AI agents.\n\nAnd in fascinating research news, **Stanford Medicine** researchers demonstrated AI agents capable of inter-agent communication. This breakthrough means these agents can effectively 'talk' to each other and collaborate autonomously on complex research tasks, potentially leading to new scientific discoveries by leveraging collective AI intelligence.\n\nThat wraps up the AI and tech brief for this morning. Stay sharp!\n\nNext, US Headlines.\n\nThe White House has withdrawn the nomination of Lance Schroyer to lead Immigration and Customs Enforcement, leaving the critical federal agency without permanent leadership. This decision followed reported objections from a Republican senator, highlighting continued political challenges in confirming key administration appointees.\n\nIn Alabama, the state carried out the execution of Jeffery Lee by lethal injection for a 1998 double murder, following a Supreme Court decision to block a last-minute appeal. This marks another instance of capital punishment proceeding after legal challenges, and drew attention to the methods of execution used in the state.\n\nFormer President Trump has reportedly threatened to tear down the Kennedy Center, a prominent national performing arts institution in Washington D.C. His remarks add a new dimension to an ongoing legal and financial dispute surrounding the center, sparking public debate over its future.\n\nFormer President Trump has publicly voiced his opposition to the hypothetical concept of Canada potentially joining the European Union. While no such official proposal exists, these comments underscore the complex and evolving relationship between the U.S., Canada, and Europe, as Canada seeks to strengthen its international alliances.\n\nTurning to Immigration & Visas.\n\nGood morning. Here are the latest updates impacting international professionals on US visas.\n\nFirst, a significant change concerning Green Card applications. New public charge scrutiny will take effect on September eighteenth. This means US immigration officials will now more closely evaluate whether Green Card applicants are likely to become primarily dependent on government assistance. This policy shift increases the level of examination for all Green Card applicants, and it's particularly important for those currently in the application process or planning to apply soon.\n\nIn other news, there's been a notable statement regarding the H one B visa program. US Vice President J.D. Vance recently commented that the H one B program should not exist to replace American workers with lower-wage foreign workers. While this specific statement does not represent an immediate policy change or new regulation, it signals a political perspective from a high-level official that could influence future discussions and potential reforms of the H one B visa program. Those on H one B visas or considering applying should be aware that such sentiment often indicates areas where future legislative or regulatory changes might be explored.\n\nAnd finally, Markets.\n\nStarting with the markets, it was a positive session across the board. The S&P 500 climbed, closing at seven-thousand-six-hundred-thirty-eight, up about one point one percent. The Nasdaq Composite also saw solid gains, rising almost one point seven percent to finish at twenty-six-thousand-four-hundred-eighteen. The Dow Jones Industrial Average finished up just over half a percent, ending the day at fifty-one-thousand-seven-hundred-seventy-eight.\n\nTurning to some of the individual names on your watchlist, it was a strong day for many of the major tech players. Nvidia led that group, rising about two point five percent. Amazon was also up, gaining just over two percent. Microsoft finished higher by about one-and-a-half percent. And both Apple and Alphabet, the parent company of Google, added around one point three percent.\n\nThat's your briefing. Have a great day."
+  "script": "Good morning. Here's your briefing for Saturday, September 26.\n\nFirst up, AI & Tech.\n\nA new paper from arXiv proposes an architecture called the Infinite-Parameter LLM. The core idea is to learn from live interactions by dynamically updating model weights, rather than just using a static context window. It uses a compact hypernetwork to turn online data into low-rank modulations of a base network, so weights are generated from live data instead of being read from memory. This approach aims to free the context window and persist updates across user sessions.\n\nA new developer tool called Skillsync has launched out of YC Winter twenty-six. It’s designed to make AI chat sessions portable across different coding agents, acting as a universal converter for session files. This lets you move an entire session, including messages, reasoning, and tool calls, from one agent to another without starting over. The core is a local, open-source Rust engine called T-X-script, which the creators compare to ffmpeg for agent sessions.\n\nA recent blog post argues that for classification tasks, an LLM's output should be treated as a feature, not the final verdict. The author notes that LLM classifiers are hard to calibrate and may ignore structured data. The proposed solution is to feed the LLM's label into a simple logistic regression model. This allows for proper calibration and threshold control using standard ML techniques, effectively using the LLM for feature engineering.\n\nIn competitive news, a Reuters headline states that Anthropic plans to combine its Claude AI features into a single interface and is launching new document tools.\n\nOpenAI is expanding its advertising efforts with a program called Sponsored Agents.\n\nA couple of other headlines with minimal detail have also appeared. One from Stanford Medicine claims that AI agents made from manuscripts can now communicate with each other to make new discoveries. Another headline from The Rundown AI reports that a co-creator of ChatGPT has launched a new kind of AI, though no further details were provided in the source.\n\nNext, US Headlines.\n\nAlabama has executed an inmate convicted of a 1998 double murder, following a Supreme Court decision that cleared the way for the lethal injection to proceed. The court had previously blocked the execution while a dispute over the inmate's request to be put to death by nitrogen gas was considered.\n\nIn Washington, the White House has withdrawn the nomination of Lance Schroyer to lead Immigration and Customs Enforcement, known as ICE. The move came after Republican Senator Markwayne Mullin reversed his support for the nominee, leaving the agency without a confirmed director for the foreseeable future.\n\nFormer President Donald Trump has suggested he might tear down the Kennedy Center for the Performing Arts if reelected, stating he would replace it with something \"much better.\" His comments add a political dimension to an ongoing legal dispute by preservationists over the cultural center's original design.\n\nOn the international front, former President Trump also stated the U.S. would not approve a deal for Canada to form a closer partnership with the European Union. Canada has been exploring the possibility of becoming an \"associate member\" of the EU, a move seen as a reaction to years of strained relations with the United States.\n\nAnd finally, federal investigators have released a report on a Florida immigration facility nicknamed \"Alligator Alcatraz,\" confirming that detainees were held in small outdoor cages. A former detainee testified to being confined for up to fifteen hours in what officials reportedly called \"calming areas.\"\n\nTurning to Immigration & Visas.\n\nA new public charge rule for green card applicants is set to take effect on September eighteenth. The change clarifies how U S C I S determines if an applicant is likely to become dependent on government benefits when they apply for adjustment of status. Under the new policy, officials will not consider the use of most non-cash benefits, such as food assistance programs like SNAP, the Children's Health Insurance Program, most forms of Medicaid, or housing subsidies. This policy provides more clarity for green card applicants and their families about accessing critical health and nutrition services without affecting their immigration status.\n\nAnd finally, Markets.\n\nThe major U.S. indices all finished in the green. The S&P 500 rose about one point one percent, while the Nasdaq led the way, gaining roughly one point seven percent. The Dow also added just over half a percent.\n\nLooking at your watchlist, it was a strong day for the big tech names. Nvidia was the standout, up about two and a half percent, and Amazon gained just over two percent. Microsoft, Apple, and Google also saw solid gains, with each rising more than one percent.\n\nThat's your briefing. Have a great day.",
+  "adk_metrics": {
+    "judge_model": "gemini-2.5-flash",
+    "hallucinations_v1": 0.812,
+    "expectations_rubrics": 0.804,
+    "per_segment": [
+      {
+        "segment": "AI & Tech",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 0.667,
+          "status": "FAILED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer states: \"OpenAI is expanding its advertising efforts with a program called Sponsored Agents.\" This directly covers the story about OpenAI expanding ChatGPT ads with Sponsored Agents, consistent with the provided source stories."
+            },
+            {
+              "rubric_id": "must_2",
+              "score": 1.0,
+              "rationale": "The final answer states: \"In competitive news, a Reuters headline states that Anthropic plans to combine its Claude AI features into a single interface and is launching new document tools.\" This accurately summarizes the core information from the source stories regarding Anthropic and Claude."
+            },
+            {
+              "rubric_id": "must_3",
+              "score": 0.0,
+              "rationale": "The final answer does not mention Meta's Muse AI agent getting a Mac app."
+            },
+            {
+              "rubric_id": "must_4",
+              "score": 0.0,
+              "rationale": "The final answer does not mention OpenAI disclosing \"concerning\" AI behaviour or a new disclosure system. The agent completely missed this story."
+            },
+            {
+              "rubric_id": "dedupe_1",
+              "score": 1.0,
+              "rationale": "The final answer covers this story once: \"OpenAI is expanding its advertising efforts with a program called Sponsored Agents.\" This single mention correctly deduplicates the multiple references to this event in the source stories."
+            },
+            {
+              "rubric_id": "dedupe_2",
+              "score": 1.0,
+              "rationale": "The final answer covers this story once: \"In competitive news, a Reuters headline states that Anthropic plans to combine its Claude AI features into a single interface and is launching new document tools.\" This single mention correctly deduplicates the multiple references to this event in the source"
+            },
+            {
+              "rubric_id": "dedupe_3",
+              "score": 1.0,
+              "rationale": "The final answer does not mention either of these stories, so the property is not applicable."
+            },
+            {
+              "rubric_id": "drop_1",
+              "score": 0.0,
+              "rationale": "The final answer does not mention Snapdrop file share, 3D meeting app, \"recover Google auth\", or \"How to Write with an LLM\". However, it dedicates an entire paragraph to \"LLM Classification Is Feature Engineering\": \"A recent blog post argues that for classification tasks, an LLM's output should be t"
+            },
+            {
+              "rubric_id": "drop_2",
+              "score": 1.0,
+              "rationale": "The final answer does not mention any of these stories, thus leaving them out or giving them a passing mention (which is none at all). This fulfills the property."
+            },
+            {
+              "rubric_id": "redline_1",
+              "score": 1.0,
+              "rationale": "The final answer does not mention the \"HitPaw Autumn Sale 50% off.\" This respects the red line."
+            },
+            {
+              "rubric_id": "redline_2",
+              "score": 1.0,
+              "rationale": "The final answer does not contain any benchmark numbers or prices. The numbers '23' and '24' for Ling-3.0-flash-Fin from Artificial Analysis were not included in the response, nor were the technical metrics for Agent Substrate or the percentage for HitPaw or the number of free searches for SerpApi, "
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 0.0,
+              "rationale": "The final answer contains the following acronyms:"
+            }
+          ],
+          "failed": [
+            "must_3",
+            "must_4",
+            "drop_1",
+            "cross_rule_1"
+          ]
+        }
+      },
+      {
+        "segment": "US Headlines",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 0.75,
+          "status": "FAILED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer directly discusses the story about Trump threatening to tear down the Kennedy Center, consistent with the provided source."
+            },
+            {
+              "rubric_id": "must_2",
+              "score": 1.0,
+              "rationale": "The final answer clearly covers the story about Canada's potential EU partnership and Trump's reaction to it, consistent with the provided source."
+            },
+            {
+              "rubric_id": "drop_1",
+              "score": 1.0,
+              "rationale": "The final answer entirely omits the specified stories, fulfilling the condition of \"leaves out\"."
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 0.0,
+              "rationale": "The final answer correctly uses no markdown. However, it fails to spell out acronyms for the ear as specified by the example. \"ICE\", \"U.S.\", and \"EU\" are written as they normally appear in text, not enunciated letter-by-letter as \"I. C. E.\", \"U. S.\", or \"E. U.\"."
+            }
+          ],
+          "failed": [
+            "cross_rule_1"
+          ]
+        }
+      },
+      {
+        "segment": "Immigration & Visas",
+        "hallucinations_v1": {
+          "score": 0.25,
+          "status": "FAILED"
+        },
+        "expectations_rubrics": {
+          "score": 0.8,
+          "status": "PASSED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer explicitly states, \"A new public charge rule for green card applicants is set to take effect on September eighteenth.\" This directly addresses the new green card rules effective September 18 and the public-charge scrutiny."
+            },
+            {
+              "rubric_id": "must_2",
+              "score": 0.0,
+              "rationale": "The final answer does not contain any mention of VP JD Vance, H-1B visas, or the idea that H-1B visas should not replace American workers."
+            },
+            {
+              "rubric_id": "dedupe_1",
+              "score": 1.0,
+              "rationale": "The final answer discusses the new public charge rule for green card applicants, its effective date, and details in a single, cohesive narrative without repeating the information or presenting it as separate items."
+            },
+            {
+              "rubric_id": "drop_1",
+              "score": 1.0,
+              "rationale": "The final answer focuses exclusively on the new public charge rule for green card applicants. It entirely omits any mention of the ICE-related stories listed in this property, thus fulfilling the condition of leaving them out. It also omits the O-1 Visa story and the JD Vance H-1B story, but those a"
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 1.0,
+              "rationale": "The final answer contains no markdown. For acronyms, it spells out \"U S C I S\" as \"U S C I S\", which adheres to the \"spelled for the ear\" instruction for an agency name. The acronym \"SNAP\" is not spelled out, but it is commonly pronounced as a word rather than letter-by-letter, and it is not one of "
+            }
+          ],
+          "failed": [
+            "must_2"
+          ]
+        }
+      },
+      {
+        "segment": "Markets",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 1.0,
+          "status": "PASSED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer explicitly discusses both \"The major U.S. indices\" (covering S&P 500, Nasdaq, Dow) and \"your watchlist\" (covering Nvidia, Amazon, Microsoft, Apple, Google), which directly correspond to the \"Index moves\" and \"Watchlist moves\" from the source stories."
+            },
+            {
+              "rubric_id": "redline_1",
+              "score": 1.0,
+              "rationale": "The agent accurately reports the numerical moves, rounding them appropriately for a spoken briefing. It also includes summary statements (e.g., \"finished in the green,\" \"strong day,\" \"led the way,\" \"standout,\" \"solid gains\") which are interpretations of the provided data but do not invent new causes"
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 1.0,
+              "rationale": "The final answer contains no markdown formatting. The provided examples for acronyms (\"H-1B\" -> \"H one B\", \"O-1\" -> \"O one\") refer to specific hyphenated acronyms that require letter-by-letter spelling. The agent uses \"S&P 500\", \"Nasdaq\", \"Dow\", \"Nvidia\", \"Amazon\", \"Microsoft\", \"Apple\", and \"Google\""
+            }
+          ],
+          "failed": []
+        }
+      }
+    ]
+  }
 }

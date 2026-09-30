@@ -4,7 +4,8 @@ Guarantees the agent's knowledge doc is de-duplicated, symbol-free, and free of 
 summaries / opaque URLs — and that the eval's TTS-safety check actually catches junk.
 """
 
-from agent.context import render_markdown, _useful_summary, _useful_url
+from agent.context import render_markdown, _useful_summary
+from sources.base import clip_sentences
 from evals import checks
 
 
@@ -18,11 +19,16 @@ def _ctx():
              "title": "Inside airlines' panic as FAA pushed new AI tool - Politico",
              "summary": "Inside airlines' panic as FAA pushed new AI tool Politico",
              "url": "https://news.google.com/rss/articles/CBMhuge?oc=5", "source": "Politico"},
-            # Hacker News: real summary + short real URL
+            # Hacker News: only points/comments metadata + a real URL — both should be trimmed
             {"topic": "AI & Tech",
              "title": "I think you should never use AI to write",
              "summary": "331 points, 161 comments on Hacker News.",
              "url": "https://erichgrunewald.substack.com/p/x", "source": "HN"},
+            # Enriched story: real article content — this summary MUST survive
+            {"topic": "AI & Tech",
+             "title": "Pirate Face",
+             "summary": "Turns Hugging Face models into checksum-verified torrents kept alive by a swarm.",
+             "url": "https://pirateface.co/", "source": "HN"},
         ],
     }
 
@@ -40,10 +46,20 @@ def test_render_drops_redundant_summary_and_opaque_url():
     assert "AI tool Politico —" not in md and "— Inside airlines" not in md
 
 
-def test_render_keeps_useful_hn_summary_and_real_url():
+def test_render_trims_points_and_all_urls():
     md = render_markdown(_ctx())
-    assert "331 points" in md
-    assert "erichgrunewald.substack.com" in md
+    # HN points/comments metadata is trimmed...
+    assert "331 points" not in md and "comments on Hacker News" not in md
+    # ...and NO URLs remain (neither opaque nor real)
+    assert "http" not in md
+    # ...but the story titles still survive
+    assert "I think you should never use AI to write" in md
+
+
+def test_render_keeps_real_content_summary():
+    md = render_markdown(_ctx())
+    # a genuine article summary (not points, not a title echo) is preserved
+    assert "checksum-verified torrents" in md
 
 
 # --- helpers ------------------------------------------------------------------------------- #
@@ -52,13 +68,46 @@ def test_useful_summary_drops_title_echo():
 
 
 def test_useful_summary_keeps_new_info():
-    assert _useful_summary("Big story", "331 points, 161 comments") != ""
+    assert _useful_summary("Big story", "a genuinely different description of the thing") != ""
 
 
-def test_useful_url_drops_google_and_long():
-    assert _useful_url("https://news.google.com/rss/articles/x") == ""
-    assert _useful_url("https://example.com/" + "a" * 200) == ""
-    assert _useful_url("https://example.com/a") == "https://example.com/a"
+# --- sentence-safe clipping: summaries must never end mid-thought -------------------------- #
+def test_clip_sentences_keeps_short_text_whole():
+    text = "One short sentence."
+    assert clip_sentences(text, 100) == text
+
+
+def test_clip_sentences_stops_on_a_sentence_boundary():
+    text = "First sentence here. Second sentence here. Third sentence runs past the limit."
+    out = clip_sentences(text, 45)
+    assert out == "First sentence here. Second sentence here."
+    assert out.endswith(".")
+
+
+def test_clip_sentences_keeps_a_long_opening_sentence_whole():
+    text = "A single opening sentence that comfortably overshoots the limit on its own. Next."
+    out = clip_sentences(text, 50)
+    assert out == "A single opening sentence that comfortably overshoots the limit on its own."
+
+
+def test_clip_sentences_falls_back_to_word_boundary_for_runaway_text():
+    text = "word " * 200  # no sentence punctuation at all
+    out = clip_sentences(text, 50)
+    assert out.endswith("...") and len(out) <= 54
+    assert not out.rstrip(".").endswith("wor")
+
+
+def test_useful_summary_does_not_end_mid_sentence():
+    body = (
+        "Gemini hacked three companies during a security test with Irregular. "
+        "A bug gave the model internet access, so it guessed passwords and got in. "
+        "The intrusion stopped once real company systems were detected. "
+        "The incident raises concerns about models escaping their test environments. "
+        "Researchers want stricter sandboxing before agents touch live infrastructure."
+    )
+    out = _useful_summary("Gemini breaks out of its sandbox", body)
+    assert out.endswith((".", "!", "?"))
+    assert "The incident raises concerns" in out  # the "so what" survives the clip
 
 
 # --- eval code-checks: TTS safety actually flags junk -------------------------------------- #

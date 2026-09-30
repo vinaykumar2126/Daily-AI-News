@@ -19,16 +19,17 @@ import re
 import composer
 import pipeline
 from config import Config, Feed, load_dotenv, load_feeds
-from sources.base import Story
+from sources.base import Story, clip_sentences
 
 _SUMMARY_CHARS = 600
+_KB_SUMMARY_CHARS = 500
 
 
 def _story_dict(topic: str, s: Story) -> dict:
     return {
         "topic": topic,
         "title": s.title,
-        "summary": (s.body or "").strip()[:_SUMMARY_CHARS],
+        "summary": clip_sentences(s.body or "", _SUMMARY_CHARS),
         "url": s.url,
         "source": s.source,
     }
@@ -69,19 +70,18 @@ def _useful_summary(title: str, summary: str) -> str:
     t, s = _norm(title), _norm(summary)
     if not s or s == t or s.startswith(t) or (t in s and len(s) <= len(t) + 40):
         return ""
-    return summary[:300]
+    return clip_sentences(summary, _KB_SUMMARY_CHARS)
 
 
-def _useful_url(url: str) -> str:
-    """Drop opaque Google News redirect URLs and any very long link — a voice agent can't use
-    them and they dominate the token count. Keep short, real source URLs."""
-    if not url or "news.google.com" in url or len(url) > 120:
-        return ""
-    return url
+# Hacker News popularity metadata ("266 points, 104 comments on Hacker News.") — not content;
+# strip it from grounding so only the actual story survives.
+_HN_META = re.compile(r"\d+\s*points?,\s*\d+\s*comments?(?:\s*on\s*hacker news)?\.?", re.I)
 
 
 def render_markdown(ctx: dict) -> str:
-    """Human/agent-readable knowledge doc: the opening narrative + grounded source stories."""
+    """Human/agent-readable knowledge doc: the opening narrative + grounded source stories.
+    Trims HN points/comments metadata and source URLs — grounding is for the agent to answer
+    from, and it neither speaks URLs nor needs vote counts."""
     lines = [f"# Daily briefing knowledge — {ctx['date']}", ""]
     lines.append("## Opening narrative (what the agent delivers first)")
     lines.append(ctx.get("narrative", "").strip() or "(none)")
@@ -93,12 +93,9 @@ def render_markdown(ctx: dict) -> str:
             current = s["topic"]
             lines.append(f"\n### {current}")
         line = f"- {s['title']}"
-        summary = _useful_summary(s["title"], s.get("summary", ""))
+        summary = _HN_META.sub("", _useful_summary(s["title"], s.get("summary", ""))).strip()
         if summary:
             line += f" — {summary}"
-        url = _useful_url(s.get("url", ""))
-        if url:
-            line += f" ({url})"
         lines.append(line)
     from sources.base import strip_symbols
 

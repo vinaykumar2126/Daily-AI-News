@@ -20,6 +20,7 @@ import smtplib
 import sys
 from email.message import EmailMessage
 
+import observability
 import pipeline
 from config import Config, load_dotenv, load_feeds
 
@@ -94,15 +95,19 @@ def synthesize_mp3(cfg: Config, script: str) -> bytes:
     audio = bytearray()
     chunks = _chunk_text(script)
     log.info("Synthesizing %d TTS chunk(s) with voice %s", len(chunks), cfg.tts_voice)
-    for chunk in chunks:
-        input_kwargs = {"text": chunk}
-        if cfg.tts_model and cfg.tts_prompt:
-            input_kwargs["prompt"] = cfg.tts_prompt
-        synthesis_input = texttospeech.SynthesisInput(**input_kwargs)
-        response = client.synthesize_speech(
-            input=synthesis_input, voice=voice, audio_config=audio_config
-        )
-        audio.extend(response.audio_content)
+    with observability.span(
+        "synthesize_mp3", chunks=len(chunks), voice=cfg.tts_voice, model=cfg.tts_model or "stable"
+    ):
+        for chunk in chunks:
+            input_kwargs = {"text": chunk}
+            if cfg.tts_model and cfg.tts_prompt:
+                input_kwargs["prompt"] = cfg.tts_prompt
+            synthesis_input = texttospeech.SynthesisInput(**input_kwargs)
+            response = client.synthesize_speech(
+                input=synthesis_input, voice=voice, audio_config=audio_config
+            )
+            audio.extend(response.audio_content)
+        observability.set_attrs(audio_bytes=len(audio))
     return bytes(audio)
 
 
@@ -127,28 +132,31 @@ def send_email(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
     )
 
     log.info("Emailing briefing to %s", cfg.recipient)
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(cfg.gmail_address, cfg.gmail_app_password)
-        server.send_message(msg)
+    with observability.span("send_email", audio_bytes=len(mp3)):
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(cfg.gmail_address, cfg.gmail_app_password)
+            server.send_message(msg)
 
 
 def archive_to_gcs(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
     if not cfg.gcs_bucket:
         return
-    try:
-        from google.cloud import storage
+    with observability.span("archive_to_gcs", bucket=cfg.gcs_bucket):
+        try:
+            from google.cloud import storage
 
-        client = storage.Client()
-        bucket = client.bucket(cfg.gcs_bucket)
-        bucket.blob(f"briefings/{date_str}.txt").upload_from_string(
-            script, content_type="text/plain"
-        )
-        bucket.blob(f"briefings/{date_str}.mp3").upload_from_string(
-            mp3, content_type="audio/mpeg"
-        )
-        log.info("Archived to gs://%s/briefings/%s.*", cfg.gcs_bucket, date_str)
-    except Exception as exc:  # noqa: BLE001
-        log.warning("GCS archive failed (non-fatal): %s", exc)
+            client = storage.Client()
+            bucket = client.bucket(cfg.gcs_bucket)
+            bucket.blob(f"briefings/{date_str}.txt").upload_from_string(
+                script, content_type="text/plain"
+            )
+            bucket.blob(f"briefings/{date_str}.mp3").upload_from_string(
+                mp3, content_type="audio/mpeg"
+            )
+            log.info("Archived to gs://%s/briefings/%s.*", cfg.gcs_bucket, date_str)
+        except Exception as exc:  # noqa: BLE001
+            log.warning("GCS archive failed (non-fatal): %s", exc)
+            observability.record_exception(exc, archived=False)
 
 
 # --------------------------------------------------------------------------- #
@@ -157,36 +165,54 @@ def archive_to_gcs(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
 def main() -> int:
     load_dotenv()
     cfg = Config()
+    # After Config(), which is what sets GOOGLE_CLOUD_PROJECT / GOOGLE_GENAI_USE_VERTEXAI.
+    observability.setup(cfg)
     feeds = load_feeds()
     date = dt.date.today()
     date_str = date.isoformat()
 
-    script = pipeline.generate_script(cfg, feeds, date=date)
-    if not script.strip():
-        log.info("No content across any feed today — nothing to send. Exiting cleanly.")
-        return 0
+    with observability.span(
+        "daily_news.run",
+        date=date_str,
+        curator=cfg.curator,
+        feeds=len(feeds),
+        dry_run=cfg.dry_run,
+    ):
+        script = pipeline.generate_script(cfg, feeds, date=date)
+        if not script.strip():
+            log.info("No content across any feed today — nothing to send. Exiting cleanly.")
+            observability.set_attrs(words=0, outcome="no_content")
+            return 0
 
-    word_count = len(script.split())
-    log.info("Composed briefing script (%d words)", word_count)
+        word_count = len(script.split())
+        log.info("Composed briefing script (%d words)", word_count)
+        observability.set_attrs(words=word_count)
 
-    if cfg.dry_run:
-        print("\n" + "=" * 70 + "\n" + script + "\n" + "=" * 70 + "\n")
-        log.info("DRY_RUN set — skipping audio + email.")
-        return 0
+        if cfg.dry_run:
+            print("\n" + "=" * 70 + "\n" + script + "\n" + "=" * 70 + "\n")
+            log.info("DRY_RUN set — skipping audio + email.")
+            observability.set_attrs(outcome="dry_run")
+            return 0
 
-    mp3 = synthesize_mp3(cfg, script)
-    log.info("Synthesized audio (%d KB)", len(mp3) // 1024)
+        mp3 = synthesize_mp3(cfg, script)
+        log.info("Synthesized audio (%d KB)", len(mp3) // 1024)
 
-    send_email(cfg, script, mp3, date_str)
-    archive_to_gcs(cfg, script, mp3, date_str)
+        send_email(cfg, script, mp3, date_str)
+        archive_to_gcs(cfg, script, mp3, date_str)
 
-    log.info("Done: briefing for %s delivered.", date_str)
+        log.info("Done: briefing for %s delivered.", date_str)
+        observability.set_attrs(outcome="delivered")
     return 0
 
 
 if __name__ == "__main__":
     try:
-        sys.exit(main())
+        code = main()
     except Exception as exc:  # noqa: BLE001
         log.exception("Pipeline failed: %s", exc)
-        sys.exit(1)
+        code = 1
+    finally:
+        # The Cloud exporter batches in the background and this process is about to exit, so
+        # without this the run's spans are never actually sent. The failure path needs it most.
+        observability.flush()
+    sys.exit(code)
