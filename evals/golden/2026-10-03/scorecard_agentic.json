@@ -1,0 +1,61 @@
+{
+  "golden": "2026-10-03",
+  "curator": "agentic",
+  "latency_sec": 158.3,
+  "word_count": 800,
+  "has_expectations": false,
+  "code_checks": {
+    "length_adherence": {
+      "passed": true,
+      "score": 0.99,
+      "detail": "all segments within budget"
+    },
+    "structure": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "complete"
+    },
+    "tts_safety": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "clean"
+    }
+  },
+  "judge": {
+    "faithfulness": 1.0,
+    "coverage": 0.65,
+    "relevance": 1.0,
+    "expectations_adherence": 0.0,
+    "per_segment": [
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.6,
+        "relevance": 1.0,
+        "rationale": "The segment is entirely faithful to the provided source material and all included stories are highly relevant to the briefing's focus. However, coverage is incomplete as it notably omits significant news regarding OpenAI's safety issues and the AI Agent Accountability Act, both of which are important developments from the sources.",
+        "segment": "AI & Tech"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.8,
+        "relevance": 1.0,
+        "rationale": "The segment is highly faithful to the source stories, with all claims accurately supported. All included stories are relevant to the stated focus areas. However, the segment missed covering a significant national story about a missing medical evacuation jet.",
+        "segment": "US Headlines"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.2,
+        "relevance": 1.0,
+        "rationale": "The segment faithfully reports on the H-1B visa fee ruling, which is highly relevant to the segment's focus. However, it misses several other clearly important immigration stories from the sources, including strong criticism of the H-1B program and various ICE-related news.",
+        "segment": "Immigration & Visas"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 1.0,
+        "relevance": 1.0,
+        "rationale": "The script faithfully reports all data points from the source stories without any inaccuracies or invented information. It covers all the provided index and watchlist movements, and all content is highly relevant to the segment's focus on markets.",
+        "segment": "Markets"
+      }
+    ]
+  },
+  "script": "Good morning. Here's your briefing for Saturday, October 3.\n\nFirst up, AI & Tech.\n\nAleph Alpha has released Kolibri, an open-weight Mixture of Experts model for German and English. It has seventy-eight billion total parameters, with about three-point-five billion active per token, and a native context of over two hundred sixty-two thousand. The weights are on Hugging Face under an Apache two-point-oh license, and Aleph Alpha describes it as a \"sovereign\" model trained in Europe under EU law.\n\nOn the decision model front, there are several new releases. Perplexity AI has released pplx-decider-v-one-twenty-seven-b, an open-source model fine-tuned from Qwen three-point-eight. The twenty-seven billion parameter model is available on Hugging Face, and its benchmarks show it outperforming its base model and another model, Jev, on several tasks.\n\nCloudflare also entered the space with Clef and Clef-flash, two open-source decision models. They are available on Hugging Face and are fully Jev-API compatible, designed to help agents make classifications and take actions.\n\nRounding out the decision model news, a new family of four open-source models called Kev is now available. Ranging from zero-point-eight to twenty-seven billion parameters, these models are also API compatible with TypeSafe's Jev, allowing applications to switch just by changing the endpoint and model name.\n\nMicrosoft has launched new audio models, including M-A-I-Transcribe-two-Streaming. The company states it is the number one streaming transcription model on the Artificial Analysis benchmark, providing real-time transcripts in sixty languages. They also released M-A-I-Voice-two-point-one and M-A-I-Voice-two-point-one-Flash for voice generation.\n\nA headline also indicates that AWS has released an open-source AI agent model called Strands Decider two B. The source provides no further details.\n\nFor local inference, the creator of Redis has released DwarfStar 4, or d-s-four. It's a C inference engine for running large models like DeepSeek V4, Qwen, and GLM on high-memory Mac, CUDA, and ROCm machines. The engine uses asymmetric two-bit quantization and features a disk-persisted KV cache that can survive restarts.\n\nGoogle researchers have built a framework for automated research called AIM, or Agentic Idea Management. It organizes research ideas, estimates their promise, and dispatches experiments. The paper reports it can find the best baseline score on Flash Attention up to three-point-one times faster than the ScientistOne agent.\n\nAn Anthropic research post describes a new toolkit called BootLoops, which came from using Claude for scientific problems. BootLoops is designed to help with quantitative science calculations in fields from ecology to population genetics.\n\nFinally, a headline from Bloomberg states that the AI startup Suno has a new tool that puts music to spoken word.\n\nNext, US Headlines.\n\nNew polling shows Democrats are either leading or tied with Republicans in five key Senate races, including in GOP-leaning states like Texas and Iowa. The tight contests suggest a potential Democratic surge that could scramble Republican strategy for the upcoming midterm elections.\n\nFormer President Donald Trump announced a plan to send ninety-dollar checks to more than twenty million seniors on Medicare. The payments are intended to help with rising premiums and are promised to go out before the November midterms.\n\nIn a push to make Daylight Saving Time permanent, former President Trump posted what appears to be the personal phone number of Republican Senator Tom Cotton. Trump urged his supporters to call the Arkansas senator to pressure him and other Republicans on the issue.\n\nA public feud is brewing between Republican Senators Ted Cruz and J.D. Vance. After Cruz called Vance \"insecure,\" Vance dismissed the jab, telling reporters it's \"really obvious\" that Cruz is preparing to run for president.\n\nThe head of Tennessee's prison system is resigning following the failed execution of inmate Christa Pike. The botched lethal injection, which reportedly left the inmate unconscious and burned, has intensified the national debate over the humanity and reliability of capital punishment.\n\nAn alleged gang rape at Cornell University is drawing national scrutiny over the school's handling of the case, after the student told investigators she \"felt like bait.\" The incident has prompted a broader conversation about how universities investigate sexual assault, especially after reports that the local district attorney did not review key evidence collected by campus police.\n\nTurning to Immigration & Visas.\n\nA second federal court has ruled against a proposed one hundred thousand dollar fee for H one B visas. The proposal was associated with the Trump administration.\n\nAnd finally, Markets.\n\nIt was a positive day for the markets. The Nasdaq led the gains, climbing more than one percent. The S&P 500 rose about three-quarters of a percent, and the Dow added about half a percent.\n\nLooking at the watchlist, big tech names had a strong showing. Google was up more than one and a half percent. Nvidia and Amazon both gained around one-point-three percent. Apple rose about one percent, and Microsoft was up just under one percent.\n\nThat's your briefing. Have a great day."
+}

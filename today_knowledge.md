@@ -1,123 +1,125 @@
-# Daily briefing knowledge — 2026-09-22
+Candidate stories:
 
-## Opening narrative (what the agent delivers first)
-Good morning. Here's your briefing for Tuesday, September 22.
-
-First up, AI & Tech.
-
-And now for your AI and tech briefing.
-
-The biggest launch this week is Meta's new personal AI agent, Muse. It has surged to the top of the U.S. iOS App Store charts, hitting seven hundred thirty thousand downloads shortly after its release and outpacing tools like ChatGPT and Grok. The app, powered by Meta's Muse Spark AI models, is designed to let you manage digital assistants for tasks like filling out forms and organizing your emails.
-
-The launch hasn't been without controversy, however. While Shopify has partnered with Meta to integrate what's being called "agentic checkout," Amazon has blocked the Muse agent from its site, citing security risks. Other headlines fill out the picture: Reuters reports that Meta is testing a "human concierge" service for Muse, and that Wall Street expects the agent to become a new revenue engine. And a piece in Futurism is already calling Muse the "creepiest" AI agent ever released.
-
-Meanwhile, a major competitor is preparing its next move. Anthropic has started testing its upcoming frontier models in the wild. People have begun posting outputs that appear to come from newer, more advanced models, possibly named Fable five point two and Opus five point five. An official announcement for Opus five point five could happen as soon as this week. The rumored pricing is four dollars per million input tokens and twenty dollars per million output tokens. So what this means for you is that a new, more advanced model from Anthropic is likely just days away. Keep an eye out for official benchmarks and pricing, as it could shift your model-of-choice calculations.
-
-Zooming out, this all plays into the growing tension between open and closed models. According to one analysis, the performance gap between the two has been shrinking over the last three years, and open-weight models have passed an inflection point for economic viability. Their usage is reportedly exploding in high-value industries. For a practitioner, this means open-source models are becoming an increasingly practical alternative to proprietary APIs for serious production work. The report also highlights that Chinese labs are maintaining their leadership status within the open-weight AI ecosystem.
-
-And in a final rapid-fire launch note: AWS has released Strands harness, which is described as an open-source agent framework.
-
-Next, US Headlines.
-
-The White House has banned several major news outlets from its official press pool, which normally provides close access to the president. A court hearing on the legality of the ban is approaching, while the affected outlets continue to cover the administration from a distance.
-
-The Supreme Court has declined to intervene in a custody battle between a California couple and a surrogate mother. The decision means the baby, who was born with a heart condition, will remain in the custody of the biological parents as originally agreed.
-
-A federal judge has temporarily blocked the deportation of a Venezuelan migrant and DoorDash driver who was shot by an ICE agent in Texas. The order comes as police released bodycam footage from the incident's aftermath, which has conflicting accounts.
-
-The Trump administration is removing approximately seven hundred sixty thousand people from health insurance plans under the Affordable Care Act. Officials say the move targets enrollment fraud and will save taxpayers an estimated two point two billion dollars.
-
-In Mississippi, a grand jury decided not to file criminal charges in the death of Nolan Wells, citing insufficient evidence of a crime. The family of Wells says they will continue to seek answers in the case.
-
-And finally, the United States signed a deal with Denmark and Greenland to build two new American military bases on the island. The agreement is designed to increase the U.S. military presence and security in the strategic Arctic region.
-
-Turning to Immigration & Visas.
-
-The Department of Homeland Security has proposed a new immigration rule that would affect H one B visa holders. The proposal aims to eliminate the sixty-day grace period that H one B workers currently have to find a new job after a layoff. If this rule is finalized, H one B professionals would no longer have that two-month window to secure new employment and maintain their legal status. It is important to note this is a proposal and has not been enacted as a final regulation.
-
-In other news, the Trump administration has enacted new policies and extended existing restrictions impacting the H one B visa program. As part of these changes, visa applicants will now face expanded social media checks during the application process.
-
-And finally, Markets.
-
-In the markets, it was a mixed picture for the major indices.
-
-The Dow Jones Industrial Average slipped about a third of a percent, and the S and P five hundred ended the day essentially flat. The Nasdaq Composite, however, moved in the other direction, finishing up just under half a percent.
-
-That's your briefing. Have a great day.
-
-## Source stories (grounding for follow-up questions)
-
-### AI & Tech
-- Xiaomi open-sources MiMo-V2.6 Pro and Flash models — Xiaomi MiMo-V2.6 Pro and Flash are omnimodal models that can coordinate agents to construct and visually test interactive 3D scenes. They can create Blender assets, control a robotic arm from camera feeds, produce frontends and presentations, assemble videos, and compose music as scores and MIDI. The models are now available in AI Studio, MiMo Code, MiMo Desktop, Xiaomi's MiMo API Platform, and OpenRouter.
-- Introducing Grok 4.7 — Grok 4.7 enhances coding and knowledge work capabilities with improved self-verification and safeguards, using a new, larger base model. It offers competitive pricing with $2 per million input tokens and $6 per million output tokens. Excelling in various benchmarks, it shows top-notch safety features, especially in cybersecurity tasks, limiting risky command execution.
-- Anthropic tests Fable 5.2 and Opus 5.5 ahead of the release — Anthropic is starting to test its upcoming frontier model in the wild. Several people have posted outputs that seem to come from a newer, more advanced model. Anthropic may be announcing Opus 5.5 this week. The model is rumored to be priced at $4 per million input tokens and $20 per million output tokens.
-- Meta's Muse personal AI agent tops ChatGPT, Grok and Claude for post-launch downloads — Meta's Muse AI app has surged to the top of the iOS App Store charts in the US, outpacing ChatGPT and other AI tools with 730,000 downloads shortly after its release. Powered by the Muse Spark AI models, the app allows users to manage digital assistants for tasks like filling forms and organizing emails.
-- The Great Unbundling of Intelligence — Agent economics are pushing AI from frontier-by-default toward capability-level routing, where judgment, ranking, search, and verification use cheaper specialized systems. Frontier models may handle fewer but harder tasks as applications become intelligence compilers that recombine services efficiently.
-- The Business of Building God — AI labs like OpenAI and Anthropic lead with a small model advantage but face competition as costs rise and open-source models close the gap. To sustain profits, labs aim to expand into new sectors, ranging from ads to robotics, while also exploring automation through recursive self-improvement (RSI). However, the path is fraught with uncertainty as enormous financial and talent investments may only maintain a temporary edge amid shifting economic and regulatory landscapes.
-- Swarm Scaling — Scaling up the number of agents in a swarm by 10x doesn't get as much performance as using 10x as many tokens with one agent. This shortfall accumulates quickly for larger scale-ups, with the swarm falling further and further behind. However, swarms can theoretically achieve the same task in much less time as they are run in parallel. The speedup is substantial, so swarms are useful in situations where a large premium is paid for speed.
-- The current balance of power in open models — The gap from open to closed models available to users has been decreasing over the last 3 years. Open model usage is exploding in high-value industries. Open-weight models have passed an inflection point in economic viability. Chinese labs are clearly maintaining their status as the leaders of the open-weight AI ecosystem.
-- Qwen's RecreationWorld Trains Agents to Rebuild Apps — RecreationWorld is a five-platform framework for training hybrid computer-use agents to explore GUIs, implement software with coding tools, and visually verify their work.
-- Bringing Devin Cloud to your terminal — Developers can now create, steer, resume, and watch Devin Cloud sessions from their terminal. Devin CLI can now transfer any ask to Devin to continue iterating on with its own cloud VM. Users can continue to observe and steer progress directly from the terminal as if Devin were working locally. Cognition is offering free SWE-2 sessions until October 8 so developers can try Devin Cloud from the terminal.
-- MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement — Reinforcement learning is the central training paradigm for advancing large foundation models towards self-improvement. The Mimo-V2.6 series is an omni-model family that pushes the frontier of model intelligence by scaling RL compute. Training was kept stable at scale by freezing the MoE router and establishing a multi-layer defense against reward hacking.
-- AI Comes for the If Statement — New AI models like Jev2 and SemIf streamline the if-then decision-making process, cutting costs by 99% and improving accuracy from 47% to over 80% in tests. These advancements optimize coding primitives, potentially transforming AI's economic model by using specialized systems for production. Specialization in these models promises significant cost savings while maintaining high accuracy.
-- Can gzip be a language model?
-- Show HN: Mini-AGI – Dynamic continual learning model trained on 8GB VRAM
-- M5 Ultra Mac Studio Review
-- Show HN: Drop – A rootless Linux sandbox with gVisor support
-- Amazon blocks Meta’s new Muse AI agent from shopping on amazon.com
-- Microsoft killed FoxPro in 2007. Anyway, here's FoxPro revived
-- LLM Ass Bench
-- Unreal Agent
-- Show HN: Lossless-memory – a personal AI memory that never summarizes
-- Show HN: JevBench, a reproducible benchmark for typed decision models
-- ReBarUEFI: Resizable BAR for almost any UEFI system
-- FAA debuts its AI-powered tool for managing flight traffic - politico.com
-- FAA launches AI tool to assist air traffic control at BWI, DC-area airports - Maryland Daily Record
-- FAA Launches AI Tool, Ukraine Deploys Ground Robots, White House Launches Trump TV: The Bulletin, September 22 - Newsweek
-- Freebeat Launches AI Tool That Fuses Song Lyrics into Video Scenes - USA Today
-- WHAT THE FOOD? GOUSTO LAUNCHES AI TOOL TO DECODE CONFUSING FOOD INGREDIENTS! - vergemagazine.co.uk
-- Marcos pushes AI for more accessible, inclusive gov't services - Philippine News Agency
-- Quickli launches new fact-finding tool - Broker Daily
-- EXCLUSIVE: Meta testing a 'human concierge' for its new personal AI agent, Muse - Reuters
-- Meta’s New Muse AI Agent May Be the Creepiest Ever Released - Futurism
-- Meta's Muse AI agent downloads are surging. Here's how it compares to ChatGPT, Grok and Claude - CNBC
-- Belitsoft Reviews TOP 5 AI Agent Development Trends in 2026 - WBOC TV
-- NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development - NVIDIA Blog
-- Wall Street expects Meta's AI agent to shape into a new revenue engine - Reuters
-- Cohesity Introduces Agent Resilience to Protect and Recover AI Agent Infrastructure - PR Newswire
-- NVIDIA Introduces SoL-Pi: Auto-Research Loops That Cut Coding Agent Token Traffic by Up to 49% - MarkTechPost
-- Perplexity Brings Its Local AI Agent to Windows - TechRepublic
-- AWS releases Strands harness as an open-source agent framework - Techzine Global
-- Is There Any Point In Buying An AI Subscription? - bgr.com
-
-### US Headlines
-- US judge blocks deportation of DoorDash driver shot by ICE - BBC
-- Andreessen Horowitz Launches AI School as a College Alternative - Bloomberg.com
-- Banned White House outlets cover Trump at UN as court hearing looms - Reuters
-- Trump administration to remove 760,000 Affordable Care Act enrollees over fraud claims - AP News
-- Supreme Court Order Gives Parents Custody of Baby in Surrogacy Fight - The New York Times
-- Nolan Wells’ family vows to ‘never stop’ seeking the truth after grand jury report - NBC News
-- US to build two military bases in Greenland under new deal with Denmark - BBC
-- El Niño goes wild: Pacific Ocean under siege from tropical cyclones - USA Today
-
-### Immigration & Visas
-- DHS Proposes Immigration Rule To End 60-Day H-1B Grace Period - Cato Institute
-- Trump Enacts New Immigration Policies Against H-1B Visa Holders - Forbes
-- New US Visa Rules for Indians: H-1B Restrictions Extended and Social Media Checks Expanded - IndianEagle
-- The H-1B midterm test: Why Indian tech workers could matter in the US elections - The Economic Times
-- Trump Extends $100,000 H-1B Visa Fee Order for Another Year - Tekedia
-- Why Diaspora Group FIIDS Welcomes H-1B Scrutiny—But Warns $100,000 Fees Threaten US AI Innovation - India Weekly
-- Nifty IT Share Price Today: Falls 0.7% on H-1B Visa Fee - Univest
-- A Venezuelan man was shot by ICE in Austin while doing deliveries. Here’s what we know - CNN
-- U.S. citizen hurt after ICE allegedly targeted him - NBC News
-- ICE detains S.F. lawmaker’s staffer in Nevada, prompting call for release - San Francisco Chronicle
-- SF staffer for Assemblymember Stefani detained by federal immigration authorities - The San Francisco Standard
-- SF supervisor’s staffer detained by ICE, calls for his release - KRON4
-- An Indianapolis woman set up an ice cream freezer outside her house, then got a letter from the health department - WTHR
-- Paul: ICE hasn’t shared information about Minneapolis shooting probes - politico.com
-- The Priest Preparing to Care for 31 Children If ICE Detains Their Parents - Time Magazine
-
-### Markets
-- Index moves — S&P 500: 7,765 (-0.00%); Nasdaq Composite: 27,244 (+0.45%); Dow Jones: 51,864 (-0.36%)
-- Watchlist moves — NVDA +nan%; GOOGL +nan%; MSFT +nan%; AAPL +nan%; AMZN +nan%
-
+0. Claude-shaped science [TLDR AI]
+   Matthew Schwartz describes using AI, notably Claude, to tackle "Claude-shaped" scientific problems where LLM capabilities like coding and data parsing excel. This led to BootLoops, a toolkit facilitating quantitative science calculations across diverse fields from ecology to population genetics.
+   https://www.anthropic.com/research/claude-shaped-science?utm_source=tldrai
+1. OpenAI cuts ties with 3 safety researchers, WSJ reports [TLDR AI]
+   OpenAI dismissed three safety researchers for sharing confidential information with a third-party AI safety group, according to the WSJ. This follows reports of OpenAI executives ignoring safety warnings and coincides with security issues involving AI agents.
+   https://techcrunch.com/2026/10/01/openai-cuts-ties-with-three-safety-researchers-wsj-reports/?utm_source=tldrai
+2. Why Superintelligent Machines May Be Most Valuable Doing Routine Work [TLDR AI]
+   OpenAI explored the possibility that humanity's main constraint is no longer generating ideas but executing increasingly complex ones.
+   https://openai.com/index/the-eternal-complement/?utm_source=tldrai
+3. Why Muse May Never Need Ads [TLDR AI]
+   Meta's Muse may avoid advertisements by focusing on trust, offering a transaction-based model where merchants pay fees, not users. Companies like DoorDash and Airbnb are developing proprietary AI agents but face limitations due to their inherent platform bias.
+   https://www.mbi-deepdives.com/no-ads-muse/?utm_source=tldrai
+4. Introducing Clef: our open-source decision models, and new RL fine-tuning platform [TLDR AI]
+   Clef and Clef-flash are fully Jev-API compatible decision models that help agents programmatically gather context, make decisions, and take actions on tasks. The models are fully open-sourced on Hugging Face under an Apache 2.0 license and can be run locally.
+   https://blog.cloudflare.com/clef-decision-models/?utm_source=tldrai
+5. Google Researchers Built an Agent for Automated Research [TLDR AI]
+   AIM is an autonomous system that organizes research ideas, selects promising directions, audits whether implementations match those ideas, and allocates experimental resources across search branches.
+   https://imhgchoi.github.io/agentic-idea-manager/?utm_source=tldrai
+6. Microsoft's first streaming transcription model debuts at No. 1 on Artificial Analysis [TLDR AI]
+   Microsoft's MAI-Transcribe and MAI-Voice models provide accurate, fast, low-cost, and chart-topping audio understanding and generation.
+   https://microsoft.ai/news/our-first-streaming-transcription-model/?utm_source=tldrai
+7. Kev [TLDR AI]
+   Kev is a family of four open-source decision models ranging from 0.8B to 27B parameters. It uses the same API as TypeSafe's Jev, so applications built with TypeSafe's SDK can switch just by changing the endpoint and model name.
+   https://jaredpalmer.com/blog/introducing-kev?utm_source=tldrai
+8. pplx-decider-v1-27b [TLDR AI]
+   pplx-decider-v1-27b is a decision model fine-tuned from Qwen3.8-27B. Its benchmark results are competitive with Jev, beating it in several tests.
+   https://huggingface.co/perplexity-ai/pplx-decider-v1-27b?utm_source=tldrai
+9. The Waymo effect: how AI is quietly making research less collaborative [TLDR AI]
+   Waymo and LLMs exemplify how frictionless technologies make research less collaborative by removing necessary human interactions. The convenience of using AI reduces serendipity and critical discourse, which are crucial for innovation and diverse ideas.
+   https://www.researchagenda.news/articles/the-waymo-effect.html?utm_source=tldrai
+10. The Dot and the Swarm [TLDR AI]
+   AI systems have surpassed the need for human-devised structures, like intricate management processes, as they self-organize and execute complex tasks efficiently. Tools like Meta's Muse and OpenAI's Dots demonstrate this by acting autonomously and correcting human errors without extensive input.
+   https://www.oneusefulthing.org/p/the-dot-and-the-swarm?utm_source=tldrai
+11. Product Manager, Applied AI at TLDR [TLDR AI]
+   TLDR is hiring its first PM to help build the agent-first operating layer used across the company. We're looking for a builder who has shipped real products/systems with LLMs. Click here to learn more .
+   https://jobs.ashbyhq.com/tldr.tech/897f4391-66ab-44ca-a8eb-65dd9809200d?utm_source=tldr
+12. Aleph Alpha Kolibri: How the sovereign German LLM works [Hacker News]
+   409 points, 11 comments on Hacker News.
+   https://tej.as/blog/aleph-alpha-kolibri
+13. Show HN: Giving Opus 5.5 a simulated paint canvas [Hacker News]
+   365 points, 108 comments on Hacker News.
+   https://stillwet.art/
+14. From the creator of Redis; run LLM locally with ds4 [Hacker News]
+   338 points, 97 comments on Hacker News.
+   https://dwarfstar.sh/
+15. Greg Kroah-Hartman – Security in the LLM Age [video] [Hacker News]
+   321 points, 115 comments on Hacker News.
+   https://www.youtube.com/watch?v=NnV_cWeoo5Q
+16. One month coding with GLM 5.3 Flash [Hacker News]
+   217 points, 175 comments on Hacker News.
+   https://wagtail.org/blog/one-month-on-glm-53-flash/
+17. Show HN: Audionaut – an open-source cross-platform multitrack audio editor [Hacker News]
+   142 points, 47 comments on Hacker News.
+   https://github.com/kvoltmer/Audionaut
+18. Show HN: Made an open-source Lego AI generator [Hacker News]
+   140 points, 49 comments on Hacker News.
+   https://github.com/anteloc/ldraw-nova
+19. Show HN: Pyxel – A Python retro game engine with built-in art and sound editors [Hacker News]
+   94 points, 8 comments on Hacker News.
+   https://github.com/kitao/pyxel
+20. Don't be fooled–LLMs don't reason [Hacker News]
+   75 points, 159 comments on Hacker News.
+   https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/
+21. GPT-6 Astra plays World of Warcraft for the first time with agent-wow [Hacker News]
+   75 points, 59 comments on Hacker News.
+   https://agent-wow.sh/gpt-6-astra-plays-world-of-warcraft-for-the-first-time-with-agent-wow/
+22. Show HN: Offrun – manage every coding agent from one workspace [Hacker News]
+   72 points, 58 comments on Hacker News.
+   https://offrun.dev/
+23. Show HN: Our space game has a built-in RISC-V emulator that runs Linux [Hacker News]
+   59 points, 23 comments on Hacker News.
+   https://againstallodds.games/blog/2026/10/03/our-risc-v-emulator-pasriscv/
+24. Show HN: Pi pod – Run your pi coding agent in sandboxes on your own server [Hacker News]
+   54 points, 23 comments on Hacker News.
+   https://pipod.dev/
+25. PayNearMe Launches AI Servicing and Collections Agent - Finovate [Finovate]
+   PayNearMe Launches AI Servicing and Collections Agent Finovate
+   https://news.google.com/rss/articles/CBMigAFBVV95cUxQVk8xTXlyLXFUSzB4STNMbzlmUktmcGJCZDlJQlJGakprOVRvS3hWUDJlVV9FUkZvenVwclM3QW1nd1hHNHp1LU1YbjZVeDl4NHdnTlV3T09nWVVCQTZQYTUxREFSSk84Ri1HX2xLNTJ6RmQzOVZaN1dLalVpc0xqcA?oc=5
+26. AI Startup Suno’s New Tool Puts Music to Spoken Word - Bloomberg.com [Bloomberg.com]
+   AI Startup Suno’s New Tool Puts Music to Spoken Word Bloomberg.com
+   https://news.google.com/rss/articles/CBMipgFBVV95cUxPUUlwX19xVEpZcmlyNTQ0dGdVOGVWa1hwdkV4UWFtSnhYdTVJeW5sejhnM0Zsd0NvMjlBY3hEeHBoQmgtZjlNVlNQVHAya0l2U3htTnIzaVFHMlFUQzFiTG5WZVVVUEdwOEZWLWZ0WE1USWl2WW03Uk5EU2k5djFvU3RiLVhBZ3RnWU51cktzcDZTcTM5bUNWbkhkTURpdnNBaGxPT1lB?oc=5
+27. Instagram launches new AI Video Assistant for creators - deccanherald.com [deccanherald.com]
+   Instagram launches new AI Video Assistant for creators deccanherald.com
+   https://news.google.com/rss/articles/CBMixAFBVV95cUxNMjRNcW9iNXJxcVM4ZzROTWUxdGR5b1ZNakhsRW1xNUh2LTZsQXh2cUY4Y0lRZDd4R2hNdEdNNkpGZWEwMU52TGc4M1hPOFJld2lLeTRpNU5zd1VJa0owdjJmNnVGT2FXU1V3NDBYak5iNmJfQkhEeVRrVG1oQmgzZUF4TktYQy02OExHeHBQenoxSzJzV013MkRwME9DaFpTTTZSN0VsbUlYVTVuUkVrQzdiTWFzOFJ6ZEZtcG1qSTJ5ZUNm?oc=5
+28. Meta launches new AI platform to transform enterprise business - trend.az [trend.az]
+   Meta launches new AI platform to transform enterprise business trend.az
+   https://news.google.com/rss/articles/CBMiUEFVX3lxTE9yXy1VXzgyMzBCeWRuWENjM1h5YVl2THNyT1ZPb0tic0RXVUJJTzVOSzBLRUFiTk9CTDRqaFNON3lJTkU4X2U1OGlYamM2ejEt?oc=5
+29. Police force launches AI tool to reduce 101 calls - BBC [BBC]
+   Police force launches AI tool to reduce 101 calls BBC
+   https://news.google.com/rss/articles/CBMiXkFVX3lxTE9zRTZOeDBObFJuYlV1dHlkQWVCS0FBcm5jVnNsZXA1enZKSm9DSXRnbXBIY0pXelQ3Znh3Zm9kMjY1TzZDVW01VFJuOU5uN0JKOHpGVlVEbkJYUjg1R2c?oc=5
+30. AWS Strands Decider 2B: Open-Source AI Agent Model [2026] - shattered.io [shattered.io]
+   AWS Strands Decider 2B: Open-Source AI Agent Model [2026] shattered.io
+   https://news.google.com/rss/articles/CBMiggFBVV95cUxQMllmMFFqWVpScS1uaTJDV3h2NzZGc095Nkx2aVZaZW5pa2RHeEF5VkhDR0ZSa3E5TlhpZzRzX2xCb1N0cG0yVVBiVGk0MTRqZUhnR3ZJYXltRm5jMlcwdXVKN0Nrd3loOEZBVlRWSVRuekxkSW85YUF4ODNpRlV5NXl3?oc=5
+31. OpenAI's Undeniable Resurgence and the Coming Liftoff of Personal AI Agents - Key Context by Tae Kim [Key Context by Tae Kim]
+   OpenAI's Undeniable Resurgence and the Coming Liftoff of Personal AI Agents Key Context by Tae Kim
+   https://news.google.com/rss/articles/CBMicEFVX3lxTE0wYzJGcXJLaXN4bmJKYVlfbmMweUYwaWxRMGFTeXgxU2dHOGZxbkZWMDBRT25rcWVEb0YzQlBBSXZXNkU4c3l4T0dQTHJzVWQ2aEdjZ1NldTM0d1lwRmVXYWFXNzc3QmZfMm52WGh6UXQ?oc=5
+32. Senators Hawley, Murphy Announce Bipartisan AI Agent Accountability Act - U.S. Senate (.gov) [U.S. Senate (.gov)]
+   Senators Hawley, Murphy Announce Bipartisan AI Agent Accountability Act U.S. Senate (.gov)
+   https://news.google.com/rss/articles/CBMiowFBVV95cUxNaUdBelJSWFdqbjQycXJMSXZzVE9LV2RVdWk0M2dlcmtySGhCaUlLZ2hLbHpFWGFoTC1VMzA5THVyeHg3eEZwaXFmbjJWTVRkak5fU3ZIMkY4WXpGU2xiS2JwdFdFOU1EUExhUVQ4bFBJcG1MMER1aWs1c0hVSHhYblRyb081THk0em1tWW9rTV9PZlhJeDBEN1VuQjhiNmZYUVhv?oc=5
+33. Cloudflare Open Sources Clef to Challenge OpenAI and Amazon on AI Agent Decisions - Startup Fortune [Startup Fortune]
+   Cloudflare Open Sources Clef to Challenge OpenAI and Amazon on AI Agent Decisions Startup Fortune
+   https://news.google.com/rss/articles/CBMirgFBVV95cUxOMVdod0RjOE5JenlkcDRPMUNyT2J4MEh0YmJWMUFfNnViSVJLUktTM1Npcl9VTTdKTEdxbFdQUzUwYTA4andaNVJfa0VFMlREV3hDUGRJMU43QTF5V2hIM01QcDFDQ3NJcFExZThNYUt3RDVJc2ZUNk40V0NlNUh0cFJiajAzOUJDWnZmTm9VanhBMy1YU1lDOFNaaVdwT2g1U01XUG15OHdKNjVCaGc?oc=5
+34. Google unveils latest AI model, but Wall Street wants a breakout personal agent - CNBC [CNBC]
+   Google unveils latest AI model, but Wall Street wants a breakout personal agent CNBC
+   https://news.google.com/rss/articles/CBMiowFBVV95cUxNRnl0RGo0clZVWk13V2ttZGw4TlI2aTB0OTc5UzYyblgydGtBd2I4SWxqTUJ6VWtUcEhvbjdUUnRTUHJpMW0yaU5PX1VpUzRqMlVjc3RPVEQ5dk42UjJ6cDZDRE01Z2I5V1dManlFOW5DeVA3Q1VWS1Z5NzVtb1JJc2xDNmRfYWswYlRGczVXSFRxVzZyX1dJcVFXZ01xSGV6Qmpj0gGoAUFVX3lxTE9jVzM5SC1xaEVWcnkwWGpGMHFWWU9NRkR1b3c2ZFpGQlBJSGZoOEFfOGt5YzZBUXNjdmhteWgya0QxYTIwdEZTV2NrR1ZGMUhZNjRaOUlCSGJHdHNmRFQ0ZmpXRU9xNHBqVThTQlN4R3FuX3g4OVp0YmpLLVBrc0FzYU5EWXZPMHd3THRGdnF2Xy10YzFlU3hYbDRUSERfYXRfVWMxTTVlVQ?oc=5
+35. Meta’s Muse is adorable agent of value destruction - Breakingviews [Breakingviews]
+   Meta’s Muse is adorable agent of value destruction Breakingviews
+   https://news.google.com/rss/articles/CBMisgFBVV95cUxNZ2NvU0dIRmJtR1JJTEkyaERTZUJ1S1NJWHFSeVRVX0pfcHNFRzFZTnRxR1pleXctTHEyUmp4cjZUeDI2dXBraDRhemJJYnM3WU10anJlN3B4dDRKNU5FYzhRRHl0cU9NSjdBbWtidVFqaUZmd284WUhpV1pzVjhpM2tLU0lKaHZfZDY0aDJYTlVYbXl6MkI5RThQdjJvTTNzVVVzeUFILXkwYU5kbXlFTHdR?oc=5
+36. OpenClaw Launches Free Open-source Enterprise Agent Platform for AI Agents - CyberSecurityNews [CyberSecurityNews]
+   OpenClaw Launches Free Open-source Enterprise Agent Platform for AI Agents CyberSecurityNews
+   https://news.google.com/rss/articles/CBMickFVX3lxTE5NRXdNMXdBRWxOLWpJdHFzcGl3elpvMjBteE9BSzdvaGhLR3pCa0pncEU5SVMyWVR4LVA4QUZHRVJQQ20ta09fZnYzQjdVeDdfZFY0NWtKQkNUR2FRMTR6eFdJNGl4UXE0cXl4a3JqbVVhd9IBd0FVX3lxTE5IaEdwQTc4cGM0RUo0YVFLeHBwTFNwSlZjQmdMdFphRXRxTFZxWUtPaElvNWg5VEZWWllvRDRGTDQ1WEJzeUYwNGZnV0RSNVo2cGtSZERHV0phQXh2YmdGRUh5anVyUG10V0JpbGFGQktrQVNhbkZB?oc=5
+37. Meta's Muse: Cute AI Agent Or 'AI Trojan Horse'? | BBC News - Modern Ghana [Modern Ghana]
+   Meta's Muse: Cute AI Agent Or 'AI Trojan Horse'? | BBC News Modern Ghana
+   https://news.google.com/rss/articles/CBMiX0FVX3lxTE1LeUZZZjNmRVBQNUJuQzBRQjBNaTd4Q29qa0NzTlYtOVB0aUxvLVlQYmpDS1JIUzVraF9DQmpONG5WRENmV05FcFBWaFQ1ZzU1SDkzZ3AxUGtiQmpJbldF0gFcQVVfeXFMUHdPTDdQWW1WZkU3VmJZeXlqakxHOExnaVppclRuQzVxR3ZPNVVCNVFmT2xoclpBd1FYd09RYkJ4UGs1Y2FGQ2d0Q0llVnp3OHJmNDlWd2tEREQzTkY?oc=5
+38. Introducing Clef: our open-source decision models, and new RL fine-tuning platform - Cloudflare Blog [Cloudflare Blog]
+   Introducing Clef: our open-source decision models, and new RL fine-tuning platform Cloudflare Blog
+   https://news.google.com/rss/articles/CBMiXkFVX3lxTE9RM1Ita1B0RS1icVRmLXktdXNCZlNsRk55ZlU1UE40NXBwV0RzMEh4OUJwU2VmZ1ZwdWl3ZGZmX0tZWUZfVTNES0xoblBZRGNvVWhfYU41RWl4bFVBaVE?oc=5
+39. Schwartz Releases BootLoops 1.0, an Open-Source LLM Harness for Science - Unite.AI [Unite.AI]
+   Schwartz Releases BootLoops 1.0, an Open-Source LLM Harness for Science Unite.AI
+   https://news.google.com/rss/articles/CBMilwFBVV95cUxPVUZMY2VuTDFydmxXbVZtVVVuNW9KM1Y1dUZBZHB5ZUZMWHBaNU5yVVp6WnRnVml5NnFRUFdfdDh2QkRZRlEtekxsNnFCNWdyblljUHVVTnp5bDBlbGxlV2pRSEZMZGxKYWNUVUpINnliOS04elVITGFiMmdqbHFNMjBjYmgyVkh2VDF6UEhNOUdXOWpaLUVv?oc=5
+40. Tuskira Launches Open Source AI Agent Runtime Gateway to Observe, Govern and Switch LLMs and MCP Tools Without Rewiring Agents - VMblog [VMblog]
+   Tuskira Launches Open Source AI Agent Runtime Gateway to Observe, Govern and Switch LLMs and MCP Tools Without Rewiring Agents VMblog
+   https://news.google.com/rss/articles/CBMi5AFBVV95cUxQeFB3TEhvejlBendxNXhPZUl5NXRGWWVsamhlZ2cxQVhYX2RKZWNyZ1hFTl9wMkx1THNRbEhKZ0U5TnluZWZzMkhGVGNCZ3BJc0dwWHo3YXd0UE44dVBMbGVGX2Q0RnFHM2lISERSc0FiaEx1eVh0UlhiZXdQUjhtcmZuQzc1YkhJYjdDRS1kYTFmdVFCNVItcDRqakRYdmY5TDRic0ZIbVJrTXVtQURuMl9WT1pGX2lCMXBEMmo2TE4tbVJtMW5iQklSOXdmLW5uVi1XTWdJbHRVSE9PV0FwMlVucUc?oc=5

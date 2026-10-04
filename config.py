@@ -70,6 +70,15 @@ class Config:
         self.gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
         self.gemini_rewrite_model = os.environ.get("GEMINI_REWRITE_MODEL", "gemini-2.5-pro")
         self.gemini_region = os.environ.get("GEMINI_REGION", "us-central1")
+        # The rewrite paraphrases sourced facts, so it should not be creative. Unset, it ran at
+        # the API default and invented detail (see pipeline.rewrite). Raise it only if segments
+        # start sounding mechanical.
+        self.rewrite_temperature = float(os.environ.get("REWRITE_TEMPERATURE", "0.2"))
+        # The curator ranks by significance; that is a judgement to make the same way twice, not a
+        # place for sampling. Left unset it ran at the API default (1.0), which is why the same
+        # frozen sources.json produced 677 / 838 / 820-word digests on consecutive eval runs.
+        # Kept at the rewrite's value so both LLM steps behave consistently.
+        self.curator_temperature = float(os.environ.get("CURATOR_TEMPERATURE", "0.2"))
 
         # Point ADK (agentic curator) at Vertex AI, matching pipeline.rewrite's
         # genai.Client(vertexai=True). Without this ADK defaults to the AI Studio

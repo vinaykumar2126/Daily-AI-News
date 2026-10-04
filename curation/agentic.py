@@ -24,6 +24,11 @@ from sources.base import Story, clip_sentences
 log = logging.getLogger("daily-news.curation.agentic")
 
 _MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# Ranking by significance should come out the same way twice. Unset, this ran at the API default
+# (1.0) and the same frozen sources.json produced a different selection every eval run, which made
+# score changes impossible to attribute. Mirrors REWRITE_TEMPERATURE; read here rather than from
+# Config because curate() only receives a FeedContext.
+_TEMPERATURE = float(os.environ.get("CURATOR_TEMPERATURE", "0.2"))
 
 _INSTRUCTION = """You are the news curator for one segment ("{feed_name}") of a spoken daily
 briefing for a working AI/ML engineer who wants to stay ahead of where the field is going.
@@ -147,6 +152,7 @@ class AgenticCurator(Curator):
                 max_stories=ctx.max_stories,
             ),
             tools=[fetch_article, recent_digest_history],
+            generate_content_config=types.GenerateContentConfig(temperature=_TEMPERATURE),
         )
         prompt = "Candidate stories:\n\n" + _format_stories(stories)
 
@@ -170,7 +176,12 @@ class AgenticCurator(Curator):
             return final
 
         observability.set_attrs(
-            **{"adk.app_name": app_name, "adk.session_id": session_id, "adk.model": _MODEL}
+            **{
+                "adk.app_name": app_name,
+                "adk.session_id": session_id,
+                "adk.model": _MODEL,
+                "gen_ai.request.temperature": _TEMPERATURE,
+            }
         )
         # asyncio.run copies the current context into its task, so ADK's invocation /
         # agent_run / call_llm / execute_tool spans nest under the caller's `curate` span.

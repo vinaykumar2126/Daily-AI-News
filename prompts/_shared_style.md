@@ -10,8 +10,14 @@ SHARED STYLE RULES (apply to every segment):
   no titles. Natural spoken flow only.
 - Rewrite everything in your own words. Never copy sentences verbatim from the source;
   paraphrase completely while keeping facts accurate.
-- Never invent facts. If a number, price, model name, date, or benchmark is not in the source
-  material, do not state it. Accuracy over completeness.
+- Never invent facts. If a number, price, name, date, benchmark, cause, or scope is not in the
+  source material, do not state it. Accuracy over completeness. This list is not exhaustive —
+  anything not in the source is off limits, including things you happen to know are true.
+- Call things what the source calls them. If the source says "fee", do not call it a bond, tax,
+  deposit, or penalty; if it says "proposal", do not call it a law. Substituting a near-synonym
+  for what something IS changes the fact.
+- Do not add who or what something applies to, targets, or exempts unless the source says so.
+  "aimed primarily at X" is a claim, not a flourish.
 - Spell things out for the text-to-speech engine: "GPT-4o" -> "GPT four-oh", "$2B" -> "two
   billion dollars", "H-1B" -> "H one B", "O-1" -> "O one", "K8s" -> "Kubernetes",
   "H100" -> "H one hundred", "100x" -> "one hundred times". Read version numbers naturally.

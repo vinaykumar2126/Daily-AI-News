@@ -69,9 +69,21 @@ def rewrite(cfg: Config, feed: Feed, stories: list[Story]) -> str:
         feed=feed.name,
         stories=len(stories),
         budget_words=feed.length_budget_words,
-        **{"gen_ai.request.model": cfg.gemini_rewrite_model},
+        **{
+            "gen_ai.request.model": cfg.gemini_rewrite_model,
+            "gen_ai.request.temperature": cfg.rewrite_temperature,
+        },
     ):
-        resp = client.models.generate_content(model=cfg.gemini_rewrite_model, contents=prompt)
+        # This step paraphrases sourced facts; it is not supposed to be creative. Left unset, the
+        # model ran at the API default and drifted -- it rewrote a "$100,000 H-1B fee" as a "bond"
+        # and invented who it targeted, neither of which was in the sources (2026-10-03 eval,
+        # faithfulness 0.60 on Immigration). A low temperature also makes eval runs comparable,
+        # which they were not: identical frozen input gave 0.90 and 0.99 on consecutive runs.
+        resp = client.models.generate_content(
+            model=cfg.gemini_rewrite_model,
+            contents=prompt,
+            config={"temperature": cfg.rewrite_temperature},
+        )
         # The rewrite is the run's biggest token spend and the only place to measure it; the
         # google-genai instrumentation adds its own child span, this is the per-feed roll-up.
         observability.record_tokens(getattr(resp, "usage_metadata", None))
@@ -182,6 +194,7 @@ def build_segments(
 ) -> list[tuple[str, str]]:
     """Fetch, curate, and rewrite every feed to a (name, segment_text) pair."""
     feed_stories = {f.name: gather_stories(f) for f in feeds}
+    print(feed_stories)
     return build_segments_from_stories(cfg, feeds, feed_stories, curator)
 
 
