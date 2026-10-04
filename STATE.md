@@ -1,39 +1,95 @@
 # STATE — where I left off
-`Daily_News` · updated 2026-09-26 · _read this first, update before I stop_
+`Daily_News` · updated 2026-10-03 · _read this first, update before I stop_
 
-## ▶ Start here (next) — 2026-09-27
-**Do this first. It's the root cause of three separate symptoms.**
-- [ ] **Google News RSS bodies are raw `<a href>` markup, not article text.** Every Immigration and
-      US Headlines story's `body` is a link blob (`<a href="https://news.google.com/rss/articles/CBMi…`),
-      522–3061 chars of junk. So the rewrite only ever sees the *headline*. This is why
-      `hallucinations_v1` scores Immigration 0.20–0.25 while my own judge says 1.00 — the judge
-      literally has nothing to cite. Fix: strip HTML in `sources/google_news_rss.py` so `body` holds
-      prose or nothing. Helpers already exist: `sources.base.strip_symbols`, `_strip_html`
-      (tested in `tests/test_cleaning.py`), `pipeline._clean_enriched`.
-- [ ] **Then revisit `pipeline._needs_enrichment`.** Two problems, and I had the reason wrong at first:
-      the *operative* one is the `news.google.com` URL guard, which returns False on line 1 and never
-      reaches the length check. The docstring's assumption — "those segments' headlines are
-      self-contained" — is simply false for Immigration. The `len(body) < 200` test is a *latent*
-      second bug: the HTML blob is >200 chars so it would sail through anyway.
-- [ ] **`cross_rule_1` (acronyms for the ear) now fails consistently** — 2 segments, 2 runs in a row.
-      "ICE" read as "Immigration and Customs Enforcement". Consistent = real, not noise. Prompt fix in
-      `prompts/_shared_style.md`, not a curator fix.
-- [ ] **Commit the tail end.** Tracing + evals are in (`ce3ea58`, `bfe43c1`). Still uncommitted:
-      `STATE.md`, `evals/adk_metrics.py` (the source-ref/aside stripping), and
-      `evals/golden/2026-09-18/scorecard_agentic.json`. **Nothing pushed yet** — branch
-      `feature/evaluations-tracing` is local only.
-- [ ] **Pin `google-adk`.** `requirements.txt` says `>=2.9.0`, and the evaluators are marked
-      EXPERIMENTAL by Google (that's the `UserWarning` spam in eval logs). An upgrade can change the
-      prompts and move my scores with no code change on my side.
-- [ ] **Immigration segment shipped as literally "(empty response)"** — the 2.5-pro rewrite returned that string (2 words / 4 output tokens) and `if text:` happily kept it. Found it in the very first trace. Guard `rewrite()` against junk output, or re-prompt.
-- [ ] **Agentic curator silently falls back on US Headlines** — "agent returned no selection", every time I've looked. Trace label `curation.fallback=true`. This is probably the same thing as the old "US Headlines coverage low" note: the agent isn't ranking that feed at all, deterministic is. Fix the curator there, not the ranking.
-- [ ] **The per-rubric grading works — act on what it found** (2026-09-18, agentic, judge 2.5-flash):
-  - `Markets / redline_1` — the rewrite invents interpretation ("positive day", "strongest showing") when my red line says report only the numbers present. My own judge gave Markets 1.00 and missed this entirely.
-  - `US Headlines / cross_rule_1` — reads "ICE" as "Immigration and Customs Enforcement"; my acronyms-for-the-ear rule wants the letters. Style nit but it's in the TTS output.
-  - `Immigration / must_2` — dropped the JD Vance H-1B story.
-  - `AI & Tech / drop_1` — kept one should-drop item ("LLM Classification is Feature Engineering").
+## ▶ Start here (next) — 2026-10-04
+
+### ✅ Closed today — do NOT redo these
+- ~~Google News RSS markup~~ — **I already fixed this on 2026-09-20 in `9b7db6d`.** `_strip_html`
+  runs at `sources/google_news_rss.py:109` and works; today's capture had **0 markup bodies in all
+  four feeds**. The markup only survives in golden sets captured *before* 09-20 (09-07, 09-08,
+  09-13, 09-18). So `hallucinations_v1` scoring Immigration 0.20 was an artifact of a stale eval
+  fixture, not a live defect. I had this wrong at the top of this file for a week.
+- ~~`_needs_enrichment` HTML blob~~ — moot once bodies are clean prose. The `news.google.com` URL
+  guard still short-circuits before the length check, but with real prose arriving that is now a
+  design choice rather than a bug.
+- ~~`fee` → `bond` hallucination~~ — fixed (see Today, 2026-10-03). Faithfulness 1.00 on all four
+  segments across two consecutive runs.
+
+### Still open
+- [ ] **`[Markets] agent returned no selection` — reproducible, and it is NOT US Headlines.**
+      Fired in all 4 runs today, Markets every time. My old note blaming US Headlines was wrong.
+      Likely cause: Markets has 2 candidates against `max_stories=4`, so the agent has nothing to
+      trim and returns an empty selection; `_run_agent` raises `RuntimeError("agent returned no
+      selection")` on an empty list and falls back to deterministic. Fix: treat "selected
+      everything" / "nothing to trim" as success when `len(stories) <= max_stories`.
+- [ ] **`cross_rule_1` (acronyms for the ear) fails consistently** — 2 segments, 2 runs.
+      "ICE" read as "Immigration and Customs Enforcement". Consistent = real, not noise.
+      Fix in `prompts/_shared_style.md`.
+- [ ] **Immigration segment once shipped as literally "(empty response)"** — the rewrite returned
+      that string (2 words / 4 output tokens) and `if text:` kept it. Not seen since the
+      temperature change, but the guard is still missing in `pipeline.rewrite`.
+- [ ] **Pin `google-adk`.** `requirements.txt` says `>=2.9.0` and the evaluators are marked
+      EXPERIMENTAL (that's the `UserWarning` spam). An upgrade can change their prompts and move my
+      scores with no code change from me.
+- [ ] **Tidy `adk_apps.curator/`** — `adk web` saved `eval_set_1.evalset.json` into a directory
+      whose name has a **dot**, not a slash, so it is a sibling of `adk_apps/` rather than inside
+      it. Move it under `adk_apps/curator/` or delete it.
+- [ ] **Coverage is the weak axis now that faithfulness is fixed** — 0.65–0.78, driven by AI & Tech
+      (41 candidates → 10) and Immigration. That is the next quality lever.
+- [ ] **`evals/judge.py` has no temperature set** — my own 3 judges run at the API default (1.0).
+      The ruler itself moves. Pinning it costs nothing in production (eval-only code) and would
+      make score changes attributable.
 - [ ] Try 2-host podcast format (less "reading the screen" — script/composer, not voice).
 - [ ] Deploy: `deploy.sh` still needs `telemetry.googleapis.com`/`cloudtrace.googleapis.com` enabled + `roles/cloudtrace.agent` & `roles/monitoring.metricWriter` on `vertex-ai-runner@`, and the `TRACE_*` env vars. Left alone on purpose this pass.
+
+## Today (2026-10-03) — killed a real hallucination, pinned both temperatures
+
+**The defect.** Immigration faithfulness came back **0.60** on a fresh golden set. The segment said
+a court blocked a "$100,000 **bond**" for H-1B visas, "aimed primarily at **IT consulting and
+outsourcing firms**". Neither "bond" nor "outsourcing" appears anywhere in the 13 source stories —
+the source says **fee**. Both inventions are *true in the real world*, which is the tell: the model
+filled in from its own knowledge instead of the sources.
+
+**Why my existing prompt rule did not catch it.** `_shared_style.md` already said "Never invent
+facts" and listed *"a number, price, model name, date, or benchmark"*. The model substituted a
+**noun** (fee → bond) and added a **scope** (who it targets). Neither is on that list, and it read
+the enumeration as exhaustive. So the fix was not to say it louder — it was to close the hole.
+
+**What I changed:**
+- `prompts/_shared_style.md` — broadened to "number, price, name, date, benchmark, cause, or scope",
+  plus **"This list is not exhaustive — anything not in the source is off limits, including things
+  you happen to know are true."** Added two rules: *call things what the source calls them* (a fee
+  is not a bond/tax/deposit; a proposal is not a law) and *do not add who something targets or
+  exempts unless the source says so*.
+- `pipeline.rewrite` passed **no generation config at all** — my most accuracy-critical step ran at
+  the API default (1.0). Now `config={"temperature": cfg.rewrite_temperature}`.
+- `curation/agentic.py` — same for the curator's ADK Agent via
+  `generate_content_config=types.GenerateContentConfig(temperature=_TEMPERATURE)`.
+- Both knobs: `REWRITE_TEMPERATURE` / `CURATOR_TEMPERATURE`, default **0.2**, in `.env.example`.
+  Both land on their spans as `gen_ai.request.temperature`, so a trace shows what ran at what.
+
+**Result (same frozen golden set 2026-10-03, two consecutive runs):**
+- Faithfulness **1.00 on every segment, both runs** (was 0.90 avg / 0.60 on Immigration). "bond",
+  "IT consulting", "outsourcing" all gone from the text — I checked the string, not just the score.
+- No collateral damage: AI & Tech / US Headlines / Markets stayed at 1.00.
+- **0.2 stops invention but does NOT give reproducibility.** Scripts differed (869 vs 800 words).
+  Traces show why: `curate` picked **3** Immigration stories in run A and **2** in run B, and the
+  rewrite produced **492 vs 407** words on AI & Tech from the *same* 10 stories. Coverage still
+  swings 0.65–0.74.
+- Decision: **keep 0.2/0.2.** For a clean comparison, run with
+  `CURATOR_TEMPERATURE=0 REWRITE_TEMPERATURE=0` — no code change needed.
+
+**Also today:**
+- `adk web` adapter — `adk_apps/curator/` exposes `root_agent` reusing the real `_INSTRUCTION` and
+  tools (`adk web adk_apps` → `/list-apps` returns `["curator"]`). `ADK_WEB_FEED` picks the feed.
+  `adk_apps/dump_candidates.py --feed X [--golden DATE]` prints paste-ready input.
+  ⚠ It only shows the **curator** — the rewrite and all judges are raw `genai` calls, not agents.
+- Next time, build agents ADK-native from the start: `adk create`, module-level `root_agent`, a
+  **callable instruction** (`Callable[[ReadonlyContext], str]`) reading per-run values from session
+  state instead of rebuilding the Agent per feed, and a `.env` in the agent folder (ADK loads it).
+- `evals/capture.py`'s stub `expectations.md` is **actively dangerous**: non-empty, so
+  `has_expectations=True` and the expectations judge graded against an empty key and returned
+  **1.00 on all four segments** — a false perfect score. Deleted the stub; the judge then skips.
 
 ## Today (2026-09-26) — understood the ADK eval metrics, then cleaned up my own code
 Spent today NOT building features: reading ADK's evaluation source until I actually understood what
@@ -106,7 +162,10 @@ each prompt. Net worse.
 ## Now
 - **Branch:** `feature/evaluations-tracing` (cut from `feature/hackathon`, *before* `b24789e` — so `CURATOR` still defaults to `deterministic` here)
 - **Pushed?** not yet · **Deployed to GCP?** ❌ no (Cloud Run runs OLD code; push ≠ deploy)
-- **Latest eval (2026-09-18, agentic, `--adk-metrics`, 2026-09-26):** adherence **0.78** ·
+- **Latest eval (2026-10-03, agentic, own judges only):** faithfulness **1.00** · coverage 0.65–0.74
+  · relevance 1.00 · latency 158–165s · 800–869 words · temperatures 0.2/0.2
+  - Two consecutive runs on the same frozen set: faithfulness identical, coverage and wording not.
+- **Previous eval (2026-09-18, agentic, `--adk-metrics`, 2026-09-26):** adherence **0.78** ·
   faithfulness 1.00 · coverage 0.60 · relevance 1.00 · latency 130.5s · 782 words
   - ADK alongside: `hallucinations_v1` **0.81** · `expectations_rubrics` **0.80**
   - Rubric failures: AI & Tech `must_3, must_4, drop_1, cross_rule_1` (0.67) · US Headlines
@@ -123,6 +182,11 @@ each prompt. Net worse.
 Daily audio news briefing: fetch sources → curate → LLM rewrites → Cloud TTS → email me. One digest, 4 segments: AI & Tech / US Headlines / Immigration / Markets.
 
 ## Built
+- **Both LLM steps have a pinned temperature** (0.2/0.2, `REWRITE_TEMPERATURE` /
+  `CURATOR_TEMPERATURE`). They had none, so they ran at Gemini's default of 1.0.
+- **Prompt rules against invention are now about *kinds* of claim, not a checklist of entity types**
+  — renaming a thing, and adding unstated scope, are both explicitly out.
+- **`adk_apps/curator/`** — the curator exposed for `adk web`, reusing the real instruction + tools.
 - **Tracing, all Google, no LangSmith.** ADK already emits the GenAI spans — I just never called the bootstrap. `observability.py` does that + adds stage spans (gather/curate/enrich/rewrite/compose/TTS/email). Knobs are `TRACE_*` in `.env.example`; see ARCHITECTURE.md.
 - **Token counts exist now.** They were being thrown away at all 5 LLM call sites. So the field-notes line about the agentic curator "not justifying ~2× the cost" is finally measurable instead of a guess.
 - **`evals/adk_metrics.py`** — Google's own judges (`hallucinations_v1`, `rubric_based_final_response_quality_v1`) behind `--adk-metrics`. My `expectations.md` gets parsed into individual rubrics, so a miss gets *named* instead of averaged into 0.985. Old judges and scorecard keys untouched, so old scorecards stay comparable.
@@ -132,7 +196,7 @@ Daily audio news briefing: fetch sources → curate → LLM rewrites → Cloud T
 - TTS = stable Chirp3-HD (dropped Gemini TTS preview — no gain)
 - Notes: `docs/field-notes.html`
 
-## Where I struggled today (so I don't burn the time twice)
+## Where I struggled, 2026-09-26 (so I don't burn the time twice)
 - **My own `adk_metrics.py` was the main obstacle.** I read it for 30+ minutes and still found it
   elusive. The culprit was a function that imported everything and returned `locals()` as a dict, so
   every call site read `api["EvalMetric"](...)` — no symbol to click, no autocomplete, no way to tell
@@ -162,6 +226,17 @@ Daily audio news briefing: fetch sources → curate → LLM rewrites → Cloud T
   is *my* threshold, `_FAIL_BELOW = 0.5` in `evals/adk_metrics.py`. I can move it.
 
 ## Gotchas I hit (one-liners)
+- **Gemini 2.5's default temperature is 1.0, not ~0.** Neither the rewrite nor the curator set one,
+  so my most accuracy-critical steps were sampling freely. That was the root of both the invented
+  "bond" and the un-comparable eval scores.
+- **A prompt rule phrased as a list gets read as exhaustive.** "Never invent a number, price, model
+  name, date, or benchmark" did not stop fee → bond, because a noun swap is not on the list.
+- **Temperature 0.2 ≠ deterministic.** Stops invention; does not stabilise ranking or length. Use 0
+  when I need runs to be comparable.
+- **`capture.py`'s stub `expectations.md` produces a FALSE 1.00 adherence**, not an error. Delete it
+  on a day I have not written a real answer key.
+- **`evals/run.py` logs nothing at INFO** — no `basicConfig`, so only WARNINGs reach the log. To see
+  per-feed curation counts, read the trace (`curate` span → `stories_out`), not the log.
 - **I did NOT need LangSmith/LangChain.** `langsmith` is out of `requirements.txt`; `google-adk[gcp]` ships the exporters. (`.env` still has dead `LANGSMITH_*`, `LLM_PROVIDER`, `USE_VERTEX`, `VERTEX_MODEL`, `VERTEX_REGION` keys — nothing reads them, clean them out when convenient.)
 - **`telemetry.googleapis.com` lies to you.** ADK's default backend returned HTTP 200 for every span and Cloud Trace had nothing — reading a trace id back gives `_Trace bucket not found in project`. The project isn't onboarded to the new Trace storage. Fixed by defaulting `TRACE_BACKEND=cloudtrace` (classic BatchWriteSpans, queryable in seconds). `telemetry` is still there for later.
 - **Batched exporter + one-shot job = zero traces.** Must `force_flush()` before exit, in a `finally` so the failure path exports too. This cost me a confusing "it works but nothing shows up".
