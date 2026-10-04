@@ -3,6 +3,64 @@
 
 ## ▶ Start here (next) — 2026-10-04
 
+### 🔴 Pick up exactly here: finish the 2026-10-03 answer key, then run both harnesses
+I stopped mid-task. `evals/golden/2026-10-03/expectations.md` exists (33 rubrics, parses fine) but
+**Claude drafted it, not me** — it is still untracked and still has the `# REVIEW` block in it. My
+own rule is that this file is my judgment, not a model's, so until I review it the
+`expectations_adherence` and rubric scores from this day are provisional.
+
+- [ ] **Review the draft key.** Specifically the calls flagged in the `# REVIEW` block: whether the
+      Meta Muse cluster deserves a line (I currently have it in duplicates, which is wrong — see
+      below), and whether Offrun (#22) / Pi pod (#23) are hobby projects or tier-2 agent tooling.
+      Delete the `# REVIEW` block when done.
+- [ ] **Fix `dedupe_2` (Meta Muse: #3 ≡ #35 ≡ #37) — it is incoherent.** Those are three *different
+      opinion pieces about the same subject*, not three reports of one event. "Merge into one
+      mention" is the wrong instruction; they belong in should-drop. Contrast `dedupe_1` (Cloudflare
+      Clef #4 ≡ #38 ≡ #33), which is legitimate: #4 and #38 are literally the same article and #33
+      is third-party coverage of it.
+- [ ] **Then run BOTH harnesses and compare:**
+      `EVAL_MODE=1 .venv/bin/python -m evals.run --golden 2026-10-03 --curator agentic --adk-metrics`
+      Baseline to beat (own judges only, 2026-10-03, temps 0.2/0.2): faithfulness **1.00** ·
+      coverage 0.65–0.74 · relevance 1.00.
+
+#### What I learned about dedupe rubrics (do not re-derive this)
+- **A `dedupe_*` rubric passes vacuously when the story is absent.** The judge's own words on 09-18:
+  *"The final answer does not mention the Green Card rules … Therefore the condition [holds]"* →
+  scored **1.0**. So **pair every `dedupe` with a `must-include`**, or it is a free point.
+  `dedupe_1` has teeth because Clef is also `must_1`: must_1 forces it to appear, dedupe_1 forces it
+  to appear only once.
+- **What dedupe actually tests:** count the distinct times the segment presents one event as a news
+  item; is it exactly one? Structural, not factual. "Clef and Clef-flash" in one sentence is 2 word
+  occurrences but 1 item — a pass. Facts are `faithfulness` / `hallucinations_v1`'s job, not this.
+- **The `#n` refs are invisible to the judge.** `Story.as_prompt_block()` renders
+  `- title / body / (url)` with **no index numbers**, so nothing in the prompt maps `#4` to a story.
+  The judge matches on the human-readable name ("Cloudflare Clef") — that phrase is what does the
+  work. Keep the refs for my own bookkeeping, but **write every bullet so it stands alone.**
+- **Beware the judge echoing my numbers back.** On 09-18 it wrote *"successfully combined the
+  information from Source Stories 2 and 3"*, which sounds like verification but cannot be — it was
+  repeating the numbers from my property text. The verdict may be right; the stated reasoning is
+  partly theatre.
+- **My label text never reaches the judge.** "- Known duplicates (merge into ONE mention each):" is
+  scanned only for the word "duplicate", which selects a template; the label words are discarded.
+  What the judge sees is the generated sentence, e.g. `This story is mentioned only once, not
+  repeated as separate items: Cloudflare Clef: #4 ≡ #38 ≡ #33`.
+- **There is no code comparing rubric to segment.** One LLM reads `<properties>` + `<user_prompt>`
+  (sources) + `<response>` (segment) and writes a verdict per `[id: …]`. The only deterministic
+  comparisons in the whole harness are the 3 checks in `evals/checks.py`.
+
+### 🟠 The big one I keep deferring: DEPLOY
+- [ ] **Cloud Run is running an image built 2026-09-04** — four weeks stale. The job itself runs fine
+      every morning (`daily-news-6rk8n`, 2026-10-03T11:03Z, succeeded), but on code that has **none**
+      of: the fee→bond fix, either temperature, the broadened prompt rules, any tracing, the
+      significance-ranking curator, or `_strip_html`. **Everything I fixed this week is laptop-only.**
+      `deploy.sh` still needs: `telemetry.googleapis.com` + `cloudtrace.googleapis.com` in the enable
+      list, `roles/cloudtrace.agent` on `vertex-ai-runner@`, and `GEMINI_REWRITE_MODEL`,
+      `REWRITE_TEMPERATURE`, `CURATOR_TEMPERATURE`, `TRACE_ENABLED`, `TRACE_BACKEND`,
+      `OTEL_SERVICE_NAME` in `--set-env-vars`. `TRACE_CONTENT` needs nothing — Cloud Run sets
+      `K_SERVICE`, so prompt text is excluded in prod automatically. Note `deploy.sh` still sets
+      `CURATOR=deterministic`; flip it only *after* one clean traced run, so a bad briefing is
+      attributable to one change rather than three.
+
 ### ✅ Closed today — do NOT redo these
 - ~~Google News RSS markup~~ — **I already fixed this on 2026-09-20 in `9b7db6d`.** `_strip_html`
   runs at `sources/google_news_rss.py:109` and works; today's capture had **0 markup bodies in all
@@ -226,6 +284,11 @@ Daily audio news briefing: fetch sources → curate → LLM rewrites → Cloud T
   is *my* threshold, `_FAIL_BELOW = 0.5` in `evals/adk_metrics.py`. I can move it.
 
 ## Gotchas I hit (one-liners)
+- **`dedupe_*` rubrics pass for free when the story is absent** — always pair one with a must-include.
+- **The judge never sees my `#n` source refs** — `as_prompt_block()` emits no indices. The
+  human-readable name in the bullet is what it matches on.
+- **My expectations.md label text is discarded** — only the keyword in it ("duplicate", "red line")
+  selects a template. The judge reads the generated sentence, not my wording.
 - **Gemini 2.5's default temperature is 1.0, not ~0.** Neither the rewrite nor the curator set one,
   so my most accuracy-critical steps were sampling freely. That was the root of both the invented
   "bond" and the un-comparable eval scores.
