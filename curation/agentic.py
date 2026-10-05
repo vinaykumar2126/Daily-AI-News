@@ -30,56 +30,33 @@ _MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 # Config because curate() only receives a FeedContext.
 _TEMPERATURE = float(os.environ.get("CURATOR_TEMPERATURE", "0.2"))
 
+# The feed-agnostic shell. Everything that differs per segment -- who is listening, the significance
+# ladder, what to drop, the worked example -- comes from that feed's `curate_prompt` file and lands
+# in {priorities}. This used to be one instruction carrying a ladder explicitly written "for a
+# tech/AI segment", applied to all four feeds: US Headlines had no valid criteria to rank by, so it
+# kept a sea-arch collapse and an assault case over a stimulus story and a Senate-race poll
+# (2026-10-03 eval: rubrics 0.20, adherence 0.00, while AI & Tech scored 0.93 on the same run).
 _INSTRUCTION = """You are the news curator for one segment ("{feed_name}") of a spoken daily
-briefing for a working AI/ML engineer who wants to stay ahead of where the field is going.
-The listener cares about: {interests}.
+briefing. The listener cares about: {interests}.
 
 You are given a numbered list of candidate stories. Select and RANK the ones that matter most,
-up to {max_stories}, best-first. Rank by SIGNIFICANCE — what an engineer needs to know — NOT by
+up to {max_stories}, best-first. Rank by SIGNIFICANCE — what this listener needs to know — NOT by
 keyword match, recency, or vote count.
 
-Significance ladder for a tech/AI segment (highest priority first):
-1. New MODEL releases and capability launches from major labs (OpenAI, Anthropic, Google/DeepMind,
-   Meta, Qwen/Alibaba, Mistral, DeepSeek, xAI, and similar) — frontier OR open-weight — and novel
-   research/breakthroughs from those labs (e.g. "Claude discovered a novel enzyme system"). These
-   define where the field is heading. NEVER drop one to keep something from a lower tier.
-2. Developer tools, agents, and frameworks the listener could actually pick up and use.
-3. Competitive moves — one lab shipping something faster, cheaper, or better than a rival.
-4. Serious infra / inference / architecture / real benchmark ADVANCES (a genuine advance — not
-   "a benchmark WE built" or "we tested N models").
-5. Everything else of genuine engineering interest.
-
-DEMOTE hard, and DROP these first when trimming to fit: opinion / analysis / meta-commentary;
-"a tool or benchmark WE made" self-promo; generic roundups & listicles ("top 5…", "best X updated
-daily"); vertical business / PR product blurbs (a dog-food comparison tool, a real-estate CRM);
-pure funding rounds; off-topic items (consumer hardware, OS, gadgets); duplicates; and thin
-title-only entries with no real substance.
-
-For AI/tech launches you MAY call fetch_article to confirm a key detail, and recent_digest_history
-to check whether something competes with or beats a prior day's story — if so, add a short
-competitive_note (e.g. "beats last week's X on cost").
-
---- EXAMPLE (illustrative — an AI & Tech segment, max_stories 4) ---
-Candidates:
-0. OpenAI introduces MentalHealthBench, an open benchmark built with mental-health experts
-1. Google releases Gemini Flash TTS — new speech models: voices from text, 30-second voice cloning
-2. Blue Buffalo launches an AI tool to help customers compare dog foods
-3. Anthropic's Claude autonomously discovered a previously unknown enzyme system
-4. We benchmarked 27 open-source LLMs — then had to fix our own benchmark
-5. Ember-1: a new model on Kimi K3 with the same quality at 40% fewer tokens
-
-Correct output:
-{{"selected": [1, 3, 5, 0], "notes": {{}}}}
-
-Why (reasoning — do NOT output it): 1, 3, 5 are frontier model releases / a major-lab breakthrough
--> tier 1, ranked first. 0 is a real OpenAI benchmark -> keep, but lower. 2 is a vertical PR blurb
-and 4 is "we-made-a-benchmark" meta-commentary -> dropped.
---- END EXAMPLE ---
+{priorities}
 
 Now curate the REAL candidates below. Return ONLY a JSON object of this exact shape, nothing else:
 {{"selected": [<original story numbers, best first>],
   "notes": {{"<story number>": "<optional competitive_note>"}}}}
 """
+
+# Fallback when a feed declares no curate_prompt: the generic rules that are true for every segment.
+# Deliberately thin -- a feed that wants real ranking should name a priorities file.
+_DEFAULT_PRIORITIES = """Prefer stories where something actually changed or shipped over commentary
+about it. Prefer ONE story per event: several outlets covering the same thing is one slot, not
+several. DROP opinion and analysis pieces, self-promotional "a thing WE built" posts, generic
+roundups and listicles, PR blurbs, duplicates, thin title-only entries with no substance, and
+anything that merely matched a search keyword without being about this segment's topic."""
 
 
 # How much of each candidate's body the curator sees. Clipped on a sentence boundary so the
@@ -150,6 +127,7 @@ class AgenticCurator(Curator):
                 feed_name=ctx.name,
                 interests=", ".join(ctx.interests) or "general relevance",
                 max_stories=ctx.max_stories,
+                priorities=ctx.priorities or _DEFAULT_PRIORITIES,
             ),
             tools=[fetch_article, recent_digest_history],
             generate_content_config=types.GenerateContentConfig(temperature=_TEMPERATURE),

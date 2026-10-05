@@ -279,15 +279,58 @@ def _judge_options(cfg: Any) -> Any:
     )
 
 
+def _keep_failure_reason(evaluator: Any) -> Any:
+    """Make hallucinations_v1 say WHY it could not score something.
+
+    `_evaluate_nl_response` returns `(score, reason)` and names the problem exactly -- "Segmenter
+    returned no text.", "Error during sentence validation: {e}", and three others. ADK's caller
+    throws it away (`fs_score, _ = await ...`), the None then propagates to
+    `overall_eval_status=NOT_EVALUATED`, and the scorecard shows a bare `n/a` with nothing in the
+    log to explain it. That happened on AI & Tech in two consecutive runs and cost real time to
+    chase. This wrapper keeps the reason, logs it, and stashes it for the scorecard.
+
+    Reaches into a private method, so it is defensive: if ADK renames it, grading still works and
+    we only lose the diagnostic.
+    """
+    inner = getattr(evaluator, "_evaluate_nl_response", None)
+    if inner is None:  # pragma: no cover - depends on the installed ADK
+        log.debug("hallucinations_v1 has no _evaluate_nl_response; failure reasons unavailable.")
+        return evaluator
+
+    evaluator._daily_news_failure = None
+
+    async def _with_reason(nl_response: str, context: str) -> Any:
+        score, reason = await inner(nl_response, context)
+        if score is None:
+            evaluator._daily_news_failure = reason
+            log.warning(
+                "hallucinations_v1 could not score a response (%d chars, context %d chars): %s",
+                len(nl_response or ""),
+                len(context or ""),
+                (reason or "no reason given")[:300],
+            )
+        return score, reason
+
+    evaluator._evaluate_nl_response = _with_reason
+    return evaluator
+
+
 def _hallucinations_evaluator(cfg: Any) -> Any:
-    """Sentence-level grounding check of the segment against its sources."""
-    return HallucinationsV1Evaluator(
-        EvalMetric(
-            metric_name="hallucinations_v1",
-            threshold=_THRESHOLD,
-            criterion=HallucinationsCriterion(
-                threshold=_THRESHOLD, judge_model_options=_judge_options(cfg)
-            ),
+    """Sentence-level grounding check of the segment against its sources.
+
+    Note this metric does NOT sample and vote the way the rubric grader does -- its
+    `evaluate_invocations` override scores each step exactly once, so `EVAL_JUDGE_SAMPLES` has no
+    effect here and a single flaky judge call loses the metric for that segment outright.
+    """
+    return _keep_failure_reason(
+        HallucinationsV1Evaluator(
+            EvalMetric(
+                metric_name="hallucinations_v1",
+                threshold=_THRESHOLD,
+                criterion=HallucinationsCriterion(
+                    threshold=_THRESHOLD, judge_model_options=_judge_options(cfg)
+                ),
+            )
         )
     )
 
@@ -348,6 +391,18 @@ async def _run(evaluator: Any, invocation: Any, want_rubrics: bool = False) -> d
             "score": _num(result.overall_score),
             "status": getattr(result.overall_eval_status, "name", None),
         }
+        # A metric that did not run is not the same as a metric that scored badly, and a bare `n/a`
+        # in the scorecard reads like the latter. Say so, and carry any reason the evaluator kept.
+        if out["score"] is None:
+            out["not_evaluated_reason"] = getattr(evaluator, "_daily_news_failure", None) or (
+                "evaluator returned no score and gave no reason"
+            )
+            log.warning(
+                "%s did not score this segment (status=%s): %s",
+                type(evaluator).__name__,
+                out["status"],
+                str(out["not_evaluated_reason"])[:200],
+            )
         for per in result.per_invocation_results or []:
             if getattr(per, "rationale", None):
                 out["rationale"] = per.rationale

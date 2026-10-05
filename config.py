@@ -54,6 +54,10 @@ class Feed:
     enabled: bool = True
     interests: list[str] = field(default_factory=list)
     max_stories: int = 6
+    # How the curator should RANK this feed, as a path to a prompts/curate_*.md file. Separate from
+    # `prompt`, which tells the rewrite how to WRITE the segment. A feed can set one, the other, or
+    # both; without this the curator falls back to generic rules.
+    curate_prompt: str = ""
 
 
 @dataclass
@@ -185,6 +189,7 @@ def load_feeds(path: str | Path | None = None) -> list[Feed]:
                 enabled=bool(item.get("enabled", True)),
                 interests=list(item.get("interests", [])),
                 max_stories=int(item.get("max_stories", 6)),
+                curate_prompt=str(item.get("curate_prompt", "")),
             )
         )
     feeds = [f for f in feeds if f.enabled]

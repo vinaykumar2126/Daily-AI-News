@@ -45,6 +45,22 @@ def gather_stories(feed: Feed) -> list[Story]:
     return merged
 
 
+def _curate_priorities(feed: Feed) -> str:
+    """Read a feed's curator ranking rules, or "" if it declares none.
+
+    Missing file is a warning, not an error: the curator falls back to generic rules and the digest
+    still ships, which beats failing a 7am run over a prompt typo.
+    """
+    if not feed.curate_prompt:
+        return ""
+    path = _PROMPT_DIR / feed.curate_prompt
+    try:
+        return path.read_text().strip()
+    except OSError as exc:
+        log.warning("[%s] curate_prompt %s unreadable (%s); using generic rules", feed.name, path, exc)
+        return ""
+
+
 def build_prompt(feed: Feed, stories: list[Story]) -> str:
     """Assemble the rewrite prompt: persona template + shared style, with placeholders filled."""
     template = (_PROMPT_DIR / feed.prompt).read_text()
@@ -167,7 +183,10 @@ def build_segments_from_stories(
                 observability.set_attrs(skipped="no_stories")
                 continue
             ctx = FeedContext(
-                name=feed.name, interests=feed.interests, max_stories=feed.max_stories
+                name=feed.name,
+                interests=feed.interests,
+                max_stories=feed.max_stories,
+                priorities=_curate_priorities(feed),
             )
             with observability.span(
                 "curate", feed=feed.name, curator=curator.name, stories_in=len(stories)

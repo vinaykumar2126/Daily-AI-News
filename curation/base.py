@@ -20,6 +20,10 @@ class FeedContext:
     name: str
     interests: list[str]  # keywords describing what matters for this feed
     max_stories: int  # rough cap on how many stories the segment should carry
+    # This feed's significance ladder, read from its `curate_prompt` file. Empty for feeds that
+    # declare none; the agentic curator then falls back to generic rules. The deterministic curator
+    # ignores it — it ranks on recency + interest keywords and has no use for prose.
+    priorities: str = ""
 
 
 class Curator(ABC):

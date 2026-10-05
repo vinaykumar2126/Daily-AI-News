@@ -10,7 +10,6 @@
   - **OpenAI cuts ties with three safety researchers** (#1 WSJ) — major-lab safety story
 - Known duplicates (merge into ONE mention each):
   - Cloudflare Clef: #4 ≡ #38 ≡ #33
-  - Meta Muse commentary: #3 ≡ #35 ≡ #37
 - Nice-to-include (genuine launches for an "also shipped" rundown):
   - Kev, a family of open models from 0.8B to 27B (#7)
   - ds4, a C inference engine for local LLMs from the creator of Redis (#14)
@@ -24,10 +23,6 @@
   - **"Product Manager, Applied AI at TLDR" (#11) — a job advert, drop entirely**
   - No invented model names, parameter counts, or benchmark numbers absent from the sources
 
-# REVIEW: I kept the Meta Muse cluster (#3/#35/#37) out of must-include because all three are
-# opinion pieces, but Muse is a Meta agent launch and you may want one line on it. I also dropped
-# Offrun (#22) and Pi pod (#23) as hobby projects — they are coding-agent tooling, which your
-# instruction file ranks tier 2, so you may disagree.
 
 ## US Headlines
 - Must-include:
@@ -43,7 +38,6 @@
   - **VP JD Vance calls the H-1B programme "completely broken" and says it should be scrapped** (#3) — policy signal from the administration
 - Known duplicates (merge into ONE mention each):
   - H-1B fee blocked: #0 ≡ #1 ≡ #2
-  - Renee Good ICE lawsuits: #6 ≡ #7 ≡ #8
 - Reasonable to include: the DACA status explainer (#4); ICE adding protester photos to a Palantir database (#5)
 - Should-drop (individual cases and political back-and-forth, not work or student visa policy):
   - Renee Good lawsuits (#6/#7/#8), aide released from ICE detention (#9), Benny Johnson defamation suit (#10), Homan defending the ICE crackdown (#11)
