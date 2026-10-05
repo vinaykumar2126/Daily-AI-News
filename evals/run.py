@@ -15,6 +15,7 @@ off keeps a scorecard directly comparable with the ones already captured.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import os
 import time
@@ -133,6 +134,49 @@ def print_scorecard(sc: dict) -> None:
     print(f"{'=' * 60}\n")
 
 
+def _append_history(golden: str, curator: str, sc: dict) -> Path:
+    """Append one line per run to history.jsonl, so a score survives the next run.
+
+    `scorecard_<curator>.json` is overwritten every run, which means the harness can show you the
+    latest number and nothing else -- no trend, no way to tell a regression from noise. This keeps
+    the headline metrics (not the whole script, which would bloat the file) with a timestamp and the
+    knobs that were in effect, so a row is interpretable months later.
+    """
+    j = sc.get("judge", {})
+    adk = sc.get("adk_metrics") or {}
+    row = {
+        "at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "golden": golden,
+        "curator": curator,
+        "latency_sec": sc.get("latency_sec"),
+        "word_count": sc.get("word_count"),
+        "has_expectations": sc.get("has_expectations"),
+        "faithfulness": j.get("faithfulness"),
+        "coverage": j.get("coverage"),
+        "relevance": j.get("relevance"),
+        "expectations_adherence": j.get("expectations_adherence"),
+        "hallucinations_v1": adk.get("hallucinations_v1"),
+        "expectations_rubrics": adk.get("expectations_rubrics"),
+        "code_checks": {k: v.get("score") for k, v in (sc.get("code_checks") or {}).items()},
+        "failed_rubrics": {
+            s["segment"]: (s.get("expectations_rubrics") or {}).get("failed") or []
+            for s in adk.get("per_segment", [])
+        },
+        # The knobs that shaped this run: without them a score six weeks from now is unreadable.
+        "env": {
+            "curator_temperature": os.environ.get("CURATOR_TEMPERATURE", "0.2"),
+            "rewrite_temperature": os.environ.get("REWRITE_TEMPERATURE", "0.2"),
+            "eval_judge_model": os.environ.get("EVAL_JUDGE_MODEL", "gemini-2.5-flash"),
+            "eval_judge_samples": os.environ.get("EVAL_JUDGE_SAMPLES", "3"),
+            "enrich_max_per_feed": os.environ.get("ENRICH_MAX_PER_FEED", "8"),
+        },
+    }
+    path = GOLDEN_DIR / golden / "history.jsonl"
+    with path.open("a") as fh:
+        fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return path
+
+
 def _print_adk_metrics(sc: dict) -> None:
     """Print the ADK block, if --adk-metrics was used."""
     adk = sc.get("adk_metrics")
@@ -196,7 +240,9 @@ def main() -> int:
 
         out = GOLDEN_DIR / args.golden / f"scorecard_{args.curator}.json"
         out.write_text(json.dumps(sc, indent=2, ensure_ascii=False))
+        hist = _append_history(args.golden, args.curator, sc)
         print(f"Saved {out}")
+        print(f"Appended to {hist}")
         return 0
     finally:
         observability.flush()

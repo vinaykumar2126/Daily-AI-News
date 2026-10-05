@@ -15,6 +15,12 @@ from sources.base import Story
 
 log = logging.getLogger("daily-news.evals.judge")
 
+# A judge is a measuring instrument: it must give the same reading twice on the same input. Left
+# unset these ran at Gemini's API default of 1.0, so every before/after comparison carried unknown
+# judge-side variance on top of the thing being measured. All three judges share this so they
+# cannot drift apart. JSON mime type keeps the parse strict.
+_JUDGE_CONFIG = {"response_mime_type": "application/json", "temperature": 0.0}
+
 _JUDGE_PROMPT = """You are a strict evaluator of an audio news briefing segment. You are given
 the SOURCE STORIES the segment was built from, and the SEGMENT SCRIPT that was produced.
 
@@ -57,7 +63,7 @@ def judge_segment(
         resp = client.models.generate_content(
             model=cfg.gemini_model,
             contents=prompt,
-            config={"response_mime_type": "application/json"},
+            config=_JUDGE_CONFIG,
         )
         data = json.loads(resp.text)
         return {
@@ -119,7 +125,7 @@ def judge_against_expectations(
         resp = client.models.generate_content(
             model=cfg.gemini_model,
             contents=prompt,
-            config={"response_mime_type": "application/json"},
+            config=_JUDGE_CONFIG,
         )
         data = json.loads(resp.text)
         return {
@@ -161,7 +167,7 @@ SEGMENT B:
         resp = client.models.generate_content(
             model=cfg.gemini_model,
             contents=prompt,
-            config={"response_mime_type": "application/json"},
+            config=_JUDGE_CONFIG,
         )
         data = json.loads(resp.text)
         return {"winner": data.get("winner", "tie"), "reason": data.get("reason", "")}

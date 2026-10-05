@@ -120,9 +120,16 @@ def _needs_enrichment(story: Story) -> bool:
 import re as _re
 
 # Standalone UI chrome that leaks in when we scrape a page (buttons/menus), safe to drop.
+# The second group was added after watching GitHub, YouTube and docs-site furniture survive the
+# first one -- "Appearance settings", "You signed in with another tab or window", "Press Copyright
+# Contact us" all came through intact and got handed to the rewrite as article text.
 _CHROME = _re.compile(
-    r"\b(log ?in|sign ?up|subscribe|theme|light\s+dark|menu|share|read more|"
-    r"accept( all)?( cookies)?|cookie settings|skip to content|toggle)\b",
+    r"\b(log ?in|sign ?up|sign ?in|subscribe( now)?|theme|light\s+dark|menu|share|read more|"
+    r"accept( all)?( cookies)?|cookie settings|skip to (main )?content|toggle|"
+    r"appearance settings|navigation|reload to refresh your session|"
+    r"you signed (in|out)( with another tab or window)?|press copyright|contact us|"
+    r"creators advertise|developers terms|privacy policy( & safety)?|enter a search term|"
+    r"get started|search / )\b",
     _re.I,
 )
 
@@ -213,7 +220,7 @@ def build_segments(
 ) -> list[tuple[str, str]]:
     """Fetch, curate, and rewrite every feed to a (name, segment_text) pair."""
     feed_stories = {f.name: gather_stories(f) for f in feeds}
-    print(feed_stories)
+    # print(feed_stories)
     return build_segments_from_stories(cfg, feeds, feed_stories, curator)
 
 

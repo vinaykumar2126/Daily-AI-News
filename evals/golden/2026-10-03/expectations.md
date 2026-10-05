@@ -50,5 +50,9 @@
 - Red line: report only the numbers present; do not invent causes, moves, or characterisations such as "a positive day" or "strongest showing"
 
 ## Cross-segment
-- No markdown; acronyms spelled for the ear ("H-1B" -> "H one B", "O-1" -> "O one", "ICE" -> "I C E")
+- No markdown. Mixed letter-and-number forms read naturally for the ear ("H-1B" -> "H one B",
+  "O-1" -> "O one"), and symbols are said as words ("S&P 500" -> "S and P five hundred",
+  "%" -> "percent"). Plain acronyms like AI, API, GOP or ICE stay written normally — the voice
+  layer pronounces those, and spacing them into letters would corrupt the knowledge base this
+  same text feeds.
 - Every claim traceable to a source story; nothing added from world knowledge even when true

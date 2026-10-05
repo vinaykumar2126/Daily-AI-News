@@ -150,6 +150,7 @@ def _rubrics_from_lines(lines: list[str], prefix: str = "") -> list[tuple[str, s
     Walks top to bottom holding the current group's template: a label line
     ("- Must-include:") selects it, the bullets indented beneath it are the items.
     """
+    lines = _join_wrapped(lines)
     rubrics: list[tuple[str, str]] = []
     template: str | None = None
     kind = ""
@@ -197,6 +198,25 @@ _SOURCE_REF = re.compile(r"\s*\(\s*#\d+[^)]*\)")
 # ("Canada / EU membership -- Trump's reaction") comes before the ref and survives, where cutting
 # at the first em-dash would have truncated the claim itself.
 _ASIDE_AFTER_REF = re.compile(r"(\(\s*#\d+[^)]*\))\s*\u2014.*$")
+
+
+def _join_wrapped(lines: list[str]) -> list[str]:
+    """Fold continuation lines back into their bullet.
+
+    A bullet wrapped over several lines is ordinary markdown, and the walker below only inspects
+    lines that start with "-", so without this a long rule is silently truncated at its first line
+    -- a cross-segment rule once reached the judge as `...read naturally for the ear ("H-1B" -> "H
+    one B"` with the rest of the sentence missing.
+    """
+    out: list[str] = []
+    for raw in lines:
+        if raw.strip().startswith("-") or not raw.strip():
+            out.append(raw)
+        elif out and out[-1].strip().startswith("-"):
+            out[-1] = out[-1].rstrip() + " " + raw.strip()
+        else:
+            out.append(raw)
+    return out
 
 
 def _clean(item: str) -> str:
@@ -249,7 +269,14 @@ async def _score_all(
         invocation = _invocation(name, sources, text)
 
         entry: dict[str, Any] = {"segment": name}
-        entry["hallucinations_v1"] = await _run(_hallucinations_evaluator(cfg), invocation)
+        # hallucinations_v1 scores each step exactly once -- its evaluate_invocations override has
+        # no num_samples loop -- so unlike the rubric grader there is no vote to absorb one flaky
+        # judge call. A single transient failure returned NOT_EVALUATED and silently lost the whole
+        # metric for this segment on two consecutive runs. One retry costs a judge call and only
+        # happens on failure.
+        entry["hallucinations_v1"] = await _run_with_retry(
+            lambda: _hallucinations_evaluator(cfg), invocation, label=f"hallucinations_v1/{name}"
+        )
 
         pairs = rubrics_by_segment.get(name, [])
         if pairs:
@@ -378,6 +405,27 @@ def _invocation(name: str, sources: str, segment: str) -> Any:
         ),
         final_response=types.Content(role="model", parts=[types.Part.from_text(text=segment)]),
     )
+
+
+async def _run_with_retry(
+    build: Any, invocation: Any, label: str, attempts: int = 2
+) -> dict:
+    """Run an evaluator, retrying once if it comes back with no score.
+
+    Takes a factory rather than an instance: the evaluator caches the failure reason on itself, so a
+    retry needs a fresh one to avoid reporting the first attempt's reason alongside a later success.
+    """
+    out: dict[str, Any] = {}
+    for attempt in range(1, attempts + 1):
+        out = await _run(build(), invocation)
+        if out.get("score") is not None:
+            if attempt > 1:
+                log.info("%s succeeded on attempt %d", label, attempt)
+            return out
+        if attempt < attempts:
+            log.warning("%s returned no score (attempt %d/%d); retrying", label, attempt, attempts)
+    out["attempts"] = attempts
+    return out
 
 
 async def _run(evaluator: Any, invocation: Any, want_rubrics: bool = False) -> dict:

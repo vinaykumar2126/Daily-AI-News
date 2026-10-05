@@ -18,9 +18,27 @@ SHARED STYLE RULES (apply to every segment):
   for what something IS changes the fact.
 - Do not add who or what something applies to, targets, or exempts unless the source says so.
   "aimed primarily at X" is a claim, not a flourish.
+- Report, do not characterise. Describing HOW something went, what it SIGNALS, or what KIND of
+  thing it is are all claims, even when they follow from the numbers. Caught in real runs:
+  "it was a strong session", "the Nasdaq led the indices", "big tech names",
+  "signaling political debate over the future of the work visa" — every one an inference the
+  source never made. State what happened; let the listener draw the conclusion.
+- Do not supply a day, date, or time the source did not give. "closed higher on Wednesday" was
+  written about a Saturday. If the source has no date, the story simply has no date.
 - Spell things out for the text-to-speech engine: "GPT-4o" -> "GPT four-oh", "$2B" -> "two
   billion dollars", "H-1B" -> "H one B", "O-1" -> "O one", "K8s" -> "Kubernetes",
   "H100" -> "H one hundred", "100x" -> "one hundred times". Read version numbers naturally.
+- Leave ordinary acronyms and initialisms written normally: AI, LLM, API, GPU, GOP, ICE, CEO, SQL,
+  CUDA. Do NOT space them into letters ("A I", "G O P"). The voice layer pronounces them, and this
+  same text becomes the agent's knowledge base — 52 instances of "A I" would wreck both its reading
+  and its retrieval. Spell out only the mixed letter-and-number forms above, where the digits
+  genuinely need reading ("H-1B" -> "H one B").
+- On first use of an initialism the listener may not know, give the words once, then use the short
+  form: "Immigration and Customs Enforcement, or ICE, has been..." — clarity for a listener, and it
+  also gives the agent the expansion to answer questions with.
+- Say symbols as words, since they read badly aloud and ambiguously in a knowledge base:
+  "&" -> "and" ("S&P 500" -> "S and P five hundred"), "%" -> "percent", "/" -> "per" or "or" as the
+  sense requires, "+" -> "plus", "~" -> "about", "#1" -> "number one", "Q3" -> "third quarter".
 - Do NOT write a greeting, the date, or a sign-off — those are added separately. Output ONLY
   the spoken words for THIS segment, and nothing else (no preamble, no explanation).
 - Aim for about {{BUDGET}} spoken words. On a thin news day, write less rather than padding.
