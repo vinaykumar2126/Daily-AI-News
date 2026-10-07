@@ -1,0 +1,305 @@
+{
+  "golden": "2026-10-03",
+  "curator": "agentic",
+  "latency_sec": 150.9,
+  "word_count": 733,
+  "has_expectations": true,
+  "code_checks": {
+    "length_adherence": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "all segments within budget"
+    },
+    "structure": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "complete"
+    },
+    "tts_safety": {
+      "passed": false,
+      "score": 0.75,
+      "detail": "found: markdown(2)"
+    }
+  },
+  "judge": {
+    "faithfulness": 1.0,
+    "coverage": 0.675,
+    "relevance": 1.0,
+    "expectations_adherence": 0.98,
+    "per_segment": [
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.6,
+        "relevance": 1.0,
+        "rationale": "The segment is highly faithful and relevant, accurately reporting on new model and tool releases within the specified focus. However, it misses several important stories, particularly significant news from OpenAI regarding safety and Meta's Muse, which impacts its overall coverage score.",
+        "segment": "AI & Tech",
+        "expectations_adherence": 0.92,
+        "missed_must_includes": [
+          "AWS releases Strands Decider 2B, an open-source agent model",
+          "OpenAI cuts ties with three safety researchers"
+        ],
+        "kept_noise": [],
+        "expectations_rationale": "The segment covered four out of six must-include stories and correctly avoided all specified noise and red lines, while also merging duplicates. However, it missed two must-include items regarding AWS and OpenAI."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.6,
+        "relevance": 1.0,
+        "rationale": "The script is entirely faithful to the source material and all included stories are highly relevant to the segment's focus. However, it omits several other significant national and election-related stories from the provided sources.",
+        "segment": "US Headlines",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "All must-include stories for US Headlines were present in the segment. No 'should-drop' items were included, and the segment correctly included a 'reasonable to include' story."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.5,
+        "relevance": 1.0,
+        "rationale": "The segment is faithful to the sources, accurately reporting on the H-1B fee, JD Vance's comments, and the ICE database. However, it misses several other important immigration-related stories from the sources, such as DACA status and the Renee Good lawsuits. All included content is highly relevant to the specified focus.",
+        "segment": "Immigration & Visas",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The segment perfectly adhered to all immigration and visa expectations, including all must-include stories, correctly merging duplicates, and avoiding all noise and red-line items."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 1.0,
+        "relevance": 1.0,
+        "rationale": "All claims in the script are accurately derived from the source stories, covering all provided information relevant to market movements.",
+        "segment": "Markets",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The segment successfully included all required index and watchlist moves. It also respected the red line by reporting only the numbers and avoiding subjective characterizations."
+      }
+    ]
+  },
+  "script": "Good morning. Here's your briefing for Monday, October 5.\n\nFirst up, AI & Tech.\n\nPerplexity has released `pplx-decider-v1-27b`, a twenty-seven billion parameter decision model, on Hugging Face. It's a fine-tune of Qwen 3.8-27B designed for tasks like routing requests. According to their benchmarks, it outperforms a model called Jev in several tests and requires a CUDA GPU with around forty-nine gigabytes of memory.\n\nIn other model news, German lab Aleph Alpha has released Kolibri, an open-weight model for German and English. It's a seventy-eight billion parameter Mixture of Experts model that uses about three-point-five billion parameters per token, with weights available under an Apache 2.0 license. Aleph Alpha describes it as a \"sovereign\" model, trained in Germany and Finland with a focus on data privacy and compliance with the EU AI Act.\n\nMicrosoft has launched new audio models, including MAI-Transcribe-2-Streaming. The company states this is its first streaming transcription model, and it debuted at number one on an Artificial Analysis benchmark. It provides real-time transcripts in sixty languages with automatic language detection. Microsoft also released MAI-Voice-2.1 and MAI-Voice-2.1-Flash for voice generation.\n\nOn the open-source decision model front, Cloudflare has released Clef and Clef-flash. They are designed to help agents make classifications and take actions. Separately, a family of four open-source decision models called Kev, ranging from zero-point-eight billion to twenty-seven billion parameters, has also been launched. Both Clef and Kev are compatible with the Jev API, allowing developers to switch from TypeSafe's SDK just by changing the endpoint and model name.\n\nMoving to developer frameworks, researchers at Google Cloud AI have built a framework called AIM, which stands for Agentic Idea Management. It's designed for automated research by organizing ideas, estimating their promise, dispatching experiments, and auditing results. A paper on the framework reports it achieved up to three-point-one times faster results on a Flash Attention task compared to a baseline.\n\nA new open-source toolkit called BootLoops 1.0 has also been released. It's described as an LLM harness for science, designed to help with quantitative calculations in fields from ecology to population genetics. The tool grew out of research using Claude for what the author calls \"Claude-shaped\" science problems.\n\nIn a practical look at inference, a developer blog post detailed a month of coding with the GLM 5.3 Flash model. The author noted that while the model was cost-effective, they ran into infrastructure availability issues with their chosen provider due to the model's popularity. This caused performance degradation and forced them to switch to other models, highlighting a real-world challenge when using popular open models on smaller providers.\n\nFinally, a headline from cnbc dot com states that Google has unveiled its latest AI model, but that Wall Street is more interested in a breakout personal agent. The article provides no further details on the model itself.\n\nNext, US Headlines.\n\nFormer President Trump has promised to send ninety-dollar checks to more than twenty million seniors on Medicare. The payments are intended to help with Medicare costs and are planned to be sent before the midterm elections.\n\nIn election news, new polling shows Democrats are either leading or neck and neck with Republicans in five key Senate races. Some of these competitive races are in states that typically lean toward the GOP, scrambling midterm strategy.\n\nAnd in Tennessee, the state's prisons chief is resigning following the failed execution of inmate Christa Pike. The incident, which left Pike unconscious and burned according to court filings, has fueled a national conversation about the humanity of lethal injection.\n\nTurning to Immigration & Visas.\n\nA second federal court has ruled against a Trump-era proposal that would have created a one hundred thousand dollar fee for H one B visas.\n\nSeparately, Senator J.D. Vance stated that the H one B visa program is, in his words, \"completely broken\" and should be scrapped.\n\nFinally, a report indicates that Immigration and Customs Enforcement, or ICE, has been adding photos of protesters to a database provided by the company Palantir.\n\nAnd finally, Markets.\n\nThe major indices moved up. The S and P five hundred rose about zero-point-seven percent, the Nasdaq Composite was up about one-point-two percent, and the Dow Jones added about half a percent.\n\nOn your watchlist, Google was up about one-point-six percent. Nvidia and Amazon were both up around one-point-three percent. Apple rose about one percent, and Microsoft was up just under one percent.\n\nThat's your briefing. Have a great day.",
+  "adk_metrics": {
+    "judge_model": "gemini-2.5-flash",
+    "hallucinations_v1": 1.0,
+    "expectations_rubrics": 0.884,
+    "per_segment": [
+      {
+        "segment": "AI & Tech",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 0.786,
+          "status": "FAILED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer states: \"On the open-source decision model front, Cloudflare has released Clef and Clef-flash. They are designed to help agents make classifications and take actions.\" This directly covers the core information of the source story, including Cloudflare, Clef, and open-source decision"
+            },
+            {
+              "rubric_id": "must_2",
+              "score": 1.0,
+              "rationale": "The final answer starts with: \"Perplexity has released `pplx-decider-v1-27b`, a twenty-seven billion parameter decision model, on Hugging Face. It's a fine-tune of Qwen 3.8-27B designed for tasks like routing requests. According to their benchmarks, it outperforms a model called Jev in several tests"
+            },
+            {
+              "rubric_id": "must_3",
+              "score": 1.0,
+              "rationale": "The final answer states: \"In other model news, German lab Aleph Alpha has released Kolibri, an open-weight model for German and English. It's a seventy-eight billion parameter Mixture of Experts model that uses about three-point-five billion parameters per token, with weights available under an Apac"
+            },
+            {
+              "rubric_id": "must_4",
+              "score": 0.0,
+              "rationale": "The final answer does not mention \"AWS Strands Decider 2B\" or any information related to this source story."
+            },
+            {
+              "rubric_id": "must_5",
+              "score": 1.0,
+              "rationale": "The final answer states: \"Microsoft has launched new audio models, including MAI-Transcribe-2-Streaming. The company states this is its first streaming transcription model, and it debuted at number one on an Artificial Analysis benchmark. It provides real-time transcripts in sixty languages with aut"
+            },
+            {
+              "rubric_id": "must_6",
+              "score": 0.0,
+              "rationale": "The final answer does not contain any mention of OpenAI cutting ties with safety researchers or any related information from this source story."
+            },
+            {
+              "rubric_id": "dedupe_1",
+              "score": 1.0,
+              "rationale": "The final answer mentions Cloudflare Clef only once: \"On the open-source decision model front, Cloudflare has released Clef and Clef-flash. They are designed to help agents make classifications and take actions.\" It correctly synthesizes the information into a single news item, without treating the "
+            },
+            {
+              "rubric_id": "drop_1",
+              "score": 1.0,
+              "rationale": "The final answer completely omits any mention of the specified opinion and meta-commentary articles. This fulfills the property's condition of leaving them out or giving them at most a passing mention."
+            },
+            {
+              "rubric_id": "drop_2",
+              "score": 1.0,
+              "rationale": "The final answer completely omits any mention of these hobby projects. This fulfills the property's condition of leaving them out or giving them at most a passing mention."
+            },
+            {
+              "rubric_id": "drop_3",
+              "score": 1.0,
+              "rationale": "The final answer completely omits any mention of these vertical and consumer PR stories. This fulfills the property's condition of leaving them out or giving them at most a passing mention."
+            },
+            {
+              "rubric_id": "redline_1",
+              "score": 1.0,
+              "rationale": "The final answer does not contain any mention of the job posting \"Product Manager, Applied AI at TLDR\". This means the red line was respected."
+            },
+            {
+              "rubric_id": "redline_2",
+              "score": 1.0,
+              "rationale": "I have reviewed all model names, parameter counts, and benchmark numbers mentioned in the final answer (e.g., `pplx-decider-v1-27b`, \"twenty-seven billion parameter\", \"Qwen 3.8-27B\", \"Jev\", \"forty-nine gigabytes\", \"Aleph Alpha Kolibri\", \"seventy-eight billion parameter\", \"three-point-five billion pa"
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 0.0,
+              "rationale": "The final answer uses backticks for the model name `pplx-decider-v1-27b`, which constitutes markdown. While other parts of the property regarding number and symbol formatting are generally followed, the use of markdown violates the \"No markdown\" rule."
+            },
+            {
+              "rubric_id": "cross_rule_2",
+              "score": 1.0,
+              "rationale": "I have carefully reviewed every claim made in the final answer. All facts, figures, and statements (e.g., details about models, companies, benchmarks, releases, and observed issues with GLM 5.3 Flash) are directly and unambiguously supported by the provided source stories. There is no evidence that "
+            }
+          ],
+          "failed": [
+            "must_4",
+            "must_6",
+            "cross_rule_1"
+          ]
+        }
+      },
+      {
+        "segment": "US Headlines",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 1.0,
+          "status": "PASSED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer accurately summarizes the key details of the story regarding Trump's promise of checks to seniors before the midterms, directly reflecting the provided source material."
+            },
+            {
+              "rubric_id": "must_2",
+              "score": 1.0,
+              "rationale": "The final answer directly covers the core elements of the story about Democrats being neck and neck in key Senate races, including details about GOP-leaning states and scrambling strategy, all traceable to the provided sources."
+            },
+            {
+              "rubric_id": "drop_1",
+              "score": 1.0,
+              "rationale": "The final answer entirely omits these stories, fulfilling the condition of leaving them out or spending at most a passing mention."
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 1.0,
+              "rationale": "The final answer correctly converts numerical forms to words (\"ninety-dollar\", \"twenty million\") for natural speech, keeps the acronym \"GOP\" as is, and contains no markdown, adhering to all aspects of the property."
+            },
+            {
+              "rubric_id": "cross_rule_2",
+              "score": 1.0,
+              "rationale": "All claims made in the final answer can be directly verified by the details present in the provided source stories. No external information or world knowledge was introduced."
+            }
+          ],
+          "failed": []
+        }
+      },
+      {
+        "segment": "Immigration & Visas",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 0.75,
+          "status": "FAILED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer directly addresses and accurately summarizes the story of a second federal court blocking Trump's $100,000 H-1B visa fee, which is consistent with the provided source stories."
+            },
+            {
+              "rubric_id": "must_2",
+              "score": 0.0,
+              "rationale": "The property specifies \"VP JD Vance\" and the source also states \"US VP JD Vance\". However, the final answer refers to him as \"Senator J.D. Vance\". This is a deviation from the source's description of his title, and it violates the principle of only using information from the provided source stories "
+            },
+            {
+              "rubric_id": "dedupe_1",
+              "score": 1.0,
+              "rationale": "The agent correctly consolidates the information from multiple sources about the H-1B fee being blocked into a single mention in the final answer, avoiding repetition."
+            },
+            {
+              "rubric_id": "drop_1",
+              "score": 1.0,
+              "rationale": "The final answer correctly omits detailed discussion of these topics, aligning with the instruction to leave them out or give only passing mention. There is no mention at all, which fulfills the condition."
+            },
+            {
+              "rubric_id": "redline_1",
+              "score": 1.0,
+              "rationale": "The agent successfully avoided mentioning the \"Disney licensing 'Ice Age' to Netflix\" story, adhering to the redline instruction."
+            },
+            {
+              "rubric_id": "redline_2",
+              "score": 1.0,
+              "rationale": "The final answer correctly uses the term \"fee\" consistent with the source stories and avoids the proscribed terms (bond, tax, deposit, penalty). It also does not state who it targets, as per the redline."
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 1.0,
+              "rationale": "The final answer correctly converts \"H-1B\" to \"H one B\" for natural pronunciation. It also keeps \"ICE\" as a plain acronym, which is appropriate for the voice layer to pronounce, and clarifies it for the listener, which is also suitable for a spoken briefing. No markdown is used."
+            },
+            {
+              "rubric_id": "cross_rule_2",
+              "score": 0.0,
+              "rationale": "The final answer contains a factual claim about J.D. Vance's title (\"Senator\" instead of \"US VP\") that is not traceable to the provided source story, which explicitly identifies him as \"US VP\". This constitutes adding information not present in the source, violating the property."
+            }
+          ],
+          "failed": [
+            "must_2",
+            "cross_rule_2"
+          ]
+        }
+      },
+      {
+        "segment": "Markets",
+        "hallucinations_v1": {
+          "score": 1.0,
+          "status": "PASSED"
+        },
+        "expectations_rubrics": {
+          "score": 1.0,
+          "status": "PASSED",
+          "rubrics": [
+            {
+              "rubric_id": "must_1",
+              "score": 1.0,
+              "rationale": "The final answer explicitly mentions the S&P 500, Nasdaq Composite, Dow Jones, Google, Nvidia, Amazon, Apple, and Microsoft, along with their respective percentage changes, which directly covers both the index moves and watchlist moves from the source stories."
+            },
+            {
+              "rubric_id": "redline_1",
+              "score": 1.0,
+              "rationale": "The agent uses phrases like \"moved up,\" \"rose,\" \"was up,\" and \"added,\" which are direct characterizations of the numerical movements, but it does not invent causes or broader characterizations like \"a positive day\" or \"strongest showing.\" The phrase \"moved up\" is a direct interpretation of the posit"
+            },
+            {
+              "rubric_id": "cross_rule_1",
+              "score": 1.0,
+              "rationale": "The final answer contains no markdown. \"S&P 500\" is correctly rendered as \"S and P five hundred\", and all \"%\" symbols are correctly rendered as \"percent\". There are no mixed letter-and-number forms or plain acronyms in the source other than \"S&P 500\" that would need special handling beyond what was "
+            },
+            {
+              "rubric_id": "cross_rule_2",
+              "score": 1.0,
+              "rationale": "Every piece of information in the final answer, including the indices, watchlist stocks, and their percentage changes (with appropriate rounding for spoken context), can be directly traced back to the provided source stories. No external information or world knowledge has been added."
+            }
+          ],
+          "failed": []
+        }
+      }
+    ]
+  }
+}

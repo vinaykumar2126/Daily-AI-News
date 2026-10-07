@@ -1,0 +1,44 @@
+SHARED STYLE RULES (apply to every segment):
+- Do NOT open the segment with a greeting or an announcement — no "good morning", no
+  "and now for your ... briefing", no "here's your ... update". The greeting and the section
+  intro are added separately, so start directly with the first story.
+- Breadth over depth: keep each story to roughly a sentence or two and cover the RANGE of what's
+  notable. Do NOT dwell on any single story for a long stretch. Deeper detail is saved for
+  follow-up questions — the full details live in the knowledge base and the agent can pull them
+  up if the listener asks.
+- Write for the ear, not the eye: short sentences, no bullet points, no headers, no markdown,
+  no titles. Natural spoken flow only.
+- Rewrite everything in your own words. Never copy sentences verbatim from the source;
+  paraphrase completely while keeping facts accurate.
+- Never invent facts. If a number, price, name, date, benchmark, cause, or scope is not in the
+  source material, do not state it. Accuracy over completeness. This list is not exhaustive —
+  anything not in the source is off limits, including things you happen to know are true.
+- Call things what the source calls them. If the source says "fee", do not call it a bond, tax,
+  deposit, or penalty; if it says "proposal", do not call it a law. Substituting a near-synonym
+  for what something IS changes the fact.
+- Do not add who or what something applies to, targets, or exempts unless the source says so.
+  "aimed primarily at X" is a claim, not a flourish.
+- Report, do not characterise. Describing HOW something went, what it SIGNALS, or what KIND of
+  thing it is are all claims, even when they follow from the numbers. Caught in real runs:
+  "it was a strong session", "the Nasdaq led the indices", "big tech names",
+  "signaling political debate over the future of the work visa" — every one an inference the
+  source never made. State what happened; let the listener draw the conclusion.
+- Do not supply a day, date, or time the source did not give. "closed higher on Wednesday" was
+  written about a Saturday. If the source has no date, the story simply has no date.
+- Spell things out for the text-to-speech engine: "GPT-4o" -> "GPT four-oh", "$2B" -> "two
+  billion dollars", "H-1B" -> "H one B", "O-1" -> "O one", "K8s" -> "Kubernetes",
+  "H100" -> "H one hundred", "100x" -> "one hundred times". Read version numbers naturally.
+- Leave ordinary acronyms and initialisms written normally: AI, LLM, API, GPU, GOP, ICE, CEO, SQL,
+  CUDA. Do NOT space them into letters ("A I", "G O P"). The voice layer pronounces them, and this
+  same text becomes the agent's knowledge base — 52 instances of "A I" would wreck both its reading
+  and its retrieval. Spell out only the mixed letter-and-number forms above, where the digits
+  genuinely need reading ("H-1B" -> "H one B").
+- On first use of an initialism the listener may not know, give the words once, then use the short
+  form: "Immigration and Customs Enforcement, or ICE, has been..." — clarity for a listener, and it
+  also gives the agent the expansion to answer questions with.
+- Say symbols as words, since they read badly aloud and ambiguously in a knowledge base:
+  "&" -> "and" ("S&P 500" -> "S and P five hundred"), "%" -> "percent", "/" -> "per" or "or" as the
+  sense requires, "+" -> "plus", "~" -> "about", "#1" -> "number one", "Q3" -> "third quarter".
+- Do NOT write a greeting, the date, or a sign-off — those are added separately. Output ONLY
+  the spoken words for THIS segment, and nothing else (no preamble, no explanation).
+- Aim for about {{BUDGET}} spoken words. On a thin news day, write less rather than padding.

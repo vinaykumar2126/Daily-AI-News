@@ -1,0 +1,176 @@
+"""LLM-as-judge scoring (Gemini).
+
+Given a segment's spoken text and the source stories it was built from, score it on
+faithfulness, coverage, and relevance (each 0-1) with a short rationale. Reference-free: the
+judge reasons from the source material, not a golden answer.
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+
+from config import Config
+from sources.base import Story
+
+log = logging.getLogger("daily-news.evals.judge")
+
+# A judge is a measuring instrument: it must give the same reading twice on the same input. Left
+# unset these ran at Gemini's API default of 1.0, so every before/after comparison carried unknown
+# judge-side variance on top of the thing being measured. All three judges share this so they
+# cannot drift apart. JSON mime type keeps the parse strict.
+_JUDGE_CONFIG = {"response_mime_type": "application/json", "temperature": 0.0}
+
+_JUDGE_PROMPT = """You are a strict evaluator of an audio news briefing segment. You are given
+the SOURCE STORIES the segment was built from, and the SEGMENT SCRIPT that was produced.
+
+Score the segment on three axes, each from 0.0 to 1.0:
+- faithfulness: Are all claims in the script supported by the source stories? Penalize any
+  invented facts, numbers, names, or dates not present in the sources.
+- coverage: Does the segment include the most important stories from the sources? Penalize
+  missing clearly-important items.
+- relevance: Are the included stories relevant to the segment's focus ({focus})? Penalize
+  off-topic or filler content.
+
+Respond ONLY with a JSON object of this exact shape:
+{{"faithfulness": <float>, "coverage": <float>, "relevance": <float>, "rationale": "<one or two sentences>"}}
+
+SOURCE STORIES:
+{sources}
+
+SEGMENT SCRIPT:
+{segment}
+"""
+
+
+def judge_segment(
+    cfg: Config,
+    focus: str,
+    segment_text: str,
+    source_stories: list[Story],
+) -> dict:
+    """Return {faithfulness, coverage, relevance, rationale}. On error, zeros + note."""
+    from google import genai
+
+    sources_block = "\n".join(s.as_prompt_block() for s in source_stories) or "(none)"
+    prompt = _JUDGE_PROMPT.format(
+        focus=focus, sources=sources_block, segment=segment_text
+    )
+    client = genai.Client(
+        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
+    )
+    try:
+        resp = client.models.generate_content(
+            model=cfg.gemini_model,
+            contents=prompt,
+            config=_JUDGE_CONFIG,
+        )
+        data = json.loads(resp.text)
+        return {
+            "faithfulness": float(data.get("faithfulness", 0.0)),
+            "coverage": float(data.get("coverage", 0.0)),
+            "relevance": float(data.get("relevance", 0.0)),
+            "rationale": str(data.get("rationale", "")),
+        }
+    except Exception as exc:  # noqa: BLE001
+        log.warning("judge failed for %s: %s", focus, exc)
+        return {
+            "faithfulness": 0.0,
+            "coverage": 0.0,
+            "relevance": 0.0,
+            "rationale": f"judge error: {exc}",
+        }
+
+
+_EXPECTATIONS_PROMPT = """You are grading one segment of an audio news briefing against an
+EDITOR'S ANSWER KEY (the expectations the editor wrote for this day). Focus only on the part of
+the answer key relevant to the "{focus}" segment.
+
+Score expectations_adherence from 0.0 to 1.0, judging how well the segment follows the key:
+- +credit for each MUST-INCLUDE story that is present
+- +credit for NOISE / should-drop items that were correctly left out
+- +credit for DUPLICATES correctly merged into a single mention (penalize repeats)
+- +credit for RED LINES respected (nothing that must-not-appear appears)
+- -penalty for missing must-includes, keeping noise, repeating duplicates, or crossing red lines
+
+Respond ONLY with a JSON object of this exact shape:
+{{"expectations_adherence": <float>,
+  "missed_must_includes": ["<title>", ...],
+  "kept_noise": ["<title>", ...],
+  "rationale": "<one or two sentences>"}}
+
+EDITOR'S ANSWER KEY (expectations.md):
+{expectations}
+
+SEGMENT SCRIPT:
+{segment}
+"""
+
+
+def judge_against_expectations(
+    cfg: Config, focus: str, segment_text: str, expectations: str
+) -> dict:
+    """Grade a segment against the human-written expectations.md answer key.
+
+    Returns {expectations_adherence, missed_must_includes, kept_noise, rationale}."""
+    from google import genai
+
+    prompt = _EXPECTATIONS_PROMPT.format(
+        focus=focus, expectations=expectations or "(none provided)", segment=segment_text
+    )
+    client = genai.Client(
+        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
+    )
+    try:
+        resp = client.models.generate_content(
+            model=cfg.gemini_model,
+            contents=prompt,
+            config=_JUDGE_CONFIG,
+        )
+        data = json.loads(resp.text)
+        return {
+            "expectations_adherence": float(data.get("expectations_adherence", 0.0)),
+            "missed_must_includes": list(data.get("missed_must_includes", [])),
+            "kept_noise": list(data.get("kept_noise", [])),
+            "rationale": str(data.get("rationale", "")),
+        }
+    except Exception as exc:  # noqa: BLE001
+        log.warning("expectations judge failed for %s: %s", focus, exc)
+        return {
+            "expectations_adherence": 0.0,
+            "missed_must_includes": [],
+            "kept_noise": [],
+            "rationale": f"judge error: {exc}",
+        }
+
+
+def judge_pairwise(
+    cfg: Config, focus: str, segment_a: str, segment_b: str
+) -> dict:
+    """Blind A/B: which segment is the better briefing? Returns {winner: 'A'|'B'|'tie', reason}."""
+    from google import genai
+
+    prompt = f"""Two audio news briefing segments cover the same topic ({focus}). Decide which is
+the better briefing overall (clearer, better prioritized, more useful, natural to listen to).
+Respond ONLY as JSON: {{"winner": "A" | "B" | "tie", "reason": "<one sentence>"}}
+
+SEGMENT A:
+{segment_a}
+
+SEGMENT B:
+{segment_b}
+"""
+    client = genai.Client(
+        vertexai=True, project=cfg.gcp_project, location=cfg.gemini_region
+    )
+    try:
+        resp = client.models.generate_content(
+            model=cfg.gemini_model,
+            contents=prompt,
+            config=_JUDGE_CONFIG,
+        )
+        data = json.loads(resp.text)
+        return {"winner": data.get("winner", "tie"), "reason": data.get("reason", "")}
+    except Exception as exc:  # noqa: BLE001
+        log.warning("pairwise judge failed for %s: %s", focus, exc)
+        return {"winner": "tie", "reason": f"judge error: {exc}"}

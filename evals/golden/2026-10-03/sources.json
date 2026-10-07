@@ -1,0 +1,620 @@
+{
+  "AI & Tech": [
+    {
+      "title": "Claude-shaped science",
+      "body": "Matthew Schwartz describes using AI, notably Claude, to tackle \"Claude-shaped\" scientific problems where LLM capabilities like coding and data parsing excel. This led to BootLoops, a toolkit facilitating quantitative science calculations across diverse fields from ecology to population genetics. Despite initial technical correctness, results required domain experts to refine relevance, illustrating that AI collaborations can rapidly produce technical solutions but still depend on human insight for impactful scientific advances.",
+      "url": "https://www.anthropic.com/research/claude-shaped-science?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Headlines & Launches",
+        "read_minutes": 24
+      }
+    },
+    {
+      "title": "OpenAI cuts ties with 3 safety researchers, WSJ reports",
+      "body": "OpenAI dismissed three safety researchers for sharing confidential information with a third-party AI safety group, according to the WSJ. This follows reports of OpenAI executives ignoring safety warnings and coincides with security issues involving AI agents. Additionally, OpenAI shelved the GPT-6.1 Astra launch due to safety concerns.",
+      "url": "https://techcrunch.com/2026/10/01/openai-cuts-ties-with-three-safety-researchers-wsj-reports/?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Headlines & Launches",
+        "read_minutes": 2
+      }
+    },
+    {
+      "title": "Why Superintelligent Machines May Be Most Valuable Doing Routine Work",
+      "body": "OpenAI explored the possibility that humanity's main constraint is no longer generating ideas but executing increasingly complex ones. Advanced AI could complement human intelligence by taking on the enormous coordination, engineering, and repetitive work required to turn ambitious scientific ideas into reality.",
+      "url": "https://openai.com/index/the-eternal-complement/?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Deep Dives & Analysis",
+        "read_minutes": 19
+      }
+    },
+    {
+      "title": "Why Muse May Never Need Ads",
+      "body": "Meta's Muse may avoid advertisements by focusing on trust, offering a transaction-based model where merchants pay fees, not users. Companies like DoorDash and Airbnb are developing proprietary AI agents but face limitations due to their inherent platform bias. Muse's ad-free model leverages user trust and could indirectly influence ad targeting on platforms like Instagram and Facebook, providing Meta with a competitive edge without direct ads within the app.",
+      "url": "https://www.mbi-deepdives.com/no-ads-muse/?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Deep Dives & Analysis",
+        "read_minutes": 10
+      }
+    },
+    {
+      "title": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform",
+      "body": "Clef and Clef-flash are fully Jev-API compatible decision models that help agents programmatically gather context, make decisions, and take actions on tasks. The models are fully open-sourced on Hugging Face under an Apache 2.0 license and can be run locally. Decision models make classifications to help agents decide how to act. They return typed answers with probabilities, allowing agents to programmatically gather context, make decisions, and take actions on tasks, or defer to a human when needed.",
+      "url": "https://blog.cloudflare.com/clef-decision-models/?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "read_minutes": 10
+      }
+    },
+    {
+      "title": "Google Researchers Built an Agent for Automated Research",
+      "body": "AIM is an autonomous system that organizes research ideas, selects promising directions, audits whether implementations match those ideas, and allocates experimental resources across search branches.",
+      "url": "https://imhgchoi.github.io/agentic-idea-manager/?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "read_minutes": 9
+      }
+    },
+    {
+      "title": "Microsoft's first streaming transcription model debuts at No. 1 on Artificial Analysis",
+      "body": "Microsoft's MAI-Transcribe and MAI-Voice models provide accurate, fast, low-cost, and chart-topping audio understanding and generation. The company has launched MAI-Transcribe-2-Streaming along with MAI‑Voice‑2.1 and MAI‑Voice‑2.1-Flash, giving users fast and fluid building blocks to create conversational experiences with no compromise on accuracy or voice quality. MAI-Transcribe-2-Streaming delivers low-latency, real-time transcripts in 60 languages, all while supporting automatic, continuous language detection. MAI-Voice-2.1 supports 23 languages and 26 locales, allowing users to keep a single voice everywhere.",
+      "url": "https://microsoft.ai/news/our-first-streaming-transcription-model/?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "read_minutes": 4
+      }
+    },
+    {
+      "title": "Kev",
+      "body": "Kev is a family of four open-source decision models ranging from 0.8B to 27B parameters. It uses the same API as TypeSafe's Jev, so applications built with TypeSafe's SDK can switch just by changing the endpoint and model name. The model only scores supplied options and doesn't generate explanations or retrieve missing facts. The code, weights, and evaluation reports are available, but the full 27B training corpus and some evaluation data are private.",
+      "url": "https://jaredpalmer.com/blog/introducing-kev?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "read_minutes": 15
+      }
+    },
+    {
+      "title": "pplx-decider-v1-27b",
+      "body": "pplx-decider-v1-27b is a decision model fine-tuned from Qwen3.8-27B. Its benchmark results are competitive with Jev, beating it in several tests.",
+      "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "kind": "Hugging Face Repo"
+      }
+    },
+    {
+      "title": "The Waymo effect: how AI is quietly making research less collaborative",
+      "body": "Waymo and LLMs exemplify how frictionless technologies make research less collaborative by removing necessary human interactions. The convenience of using AI reduces serendipity and critical discourse, which are crucial for innovation and diverse ideas. Funding structures and evaluation systems exacerbate this shift by rewarding speed and output over collaborative effort, risking the degradation of rich, human-driven research culture.",
+      "url": "https://www.researchagenda.news/articles/the-waymo-effect.html?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Miscellaneous",
+        "read_minutes": 13
+      }
+    },
+    {
+      "title": "The Dot and the Swarm",
+      "body": "AI systems have surpassed the need for human-devised structures, like intricate management processes, as they self-organize and execute complex tasks efficiently. Tools like Meta's Muse and OpenAI's Dots demonstrate this by acting autonomously and correcting human errors without extensive input. OpenAI's swarm model, used to attempt solving the Navier-Stokes problem, highlights AI's capacity to manage vast, self-directed agents, minimizing traditional management hurdles.",
+      "url": "https://www.oneusefulthing.org/p/the-dot-and-the-swarm?utm_source=tldrai",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Miscellaneous",
+        "read_minutes": 10
+      }
+    },
+    {
+      "title": "Product Manager, Applied AI at TLDR",
+      "body": "TLDR is hiring its first PM to help build the agent-first operating layer used across the company. We're looking for a builder who has shipped real products/systems with LLMs. Click here to learn more .",
+      "url": "https://jobs.ashbyhq.com/tldr.tech/897f4391-66ab-44ca-a8eb-65dd9809200d?utm_source=tldr",
+      "published_at": "2026-10-02T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Miscellaneous",
+        "kind": "$225k base + $60k bonus, Fully Remote"
+      }
+    },
+    {
+      "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+      "body": "409 points, 11 comments on Hacker News.",
+      "url": "https://tej.as/blog/aleph-alpha-kolibri",
+      "published_at": "2026-10-03T03:43:51",
+      "source": "Hacker News",
+      "extra": {
+        "points": 409,
+        "comments": 11
+      }
+    },
+    {
+      "title": "Show HN: Giving Opus 5.5 a simulated paint canvas",
+      "body": "367 points, 108 comments on Hacker News.",
+      "url": "https://stillwet.art/",
+      "published_at": "2026-10-01T17:27:56",
+      "source": "Hacker News",
+      "extra": {
+        "points": 367,
+        "comments": 108
+      }
+    },
+    {
+      "title": "From the creator of Redis; run LLM locally with ds4",
+      "body": "339 points, 97 comments on Hacker News.",
+      "url": "https://dwarfstar.sh/",
+      "published_at": "2026-10-02T11:01:16",
+      "source": "Hacker News",
+      "extra": {
+        "points": 339,
+        "comments": 97
+      }
+    },
+    {
+      "title": "Greg Kroah-Hartman – Security in the LLM Age [video]",
+      "body": "323 points, 116 comments on Hacker News.",
+      "url": "https://www.youtube.com/watch?v=NnV_cWeoo5Q",
+      "published_at": "2026-10-01T19:51:27",
+      "source": "Hacker News",
+      "extra": {
+        "points": 323,
+        "comments": 116
+      }
+    },
+    {
+      "title": "One month coding with GLM 5.3 Flash",
+      "body": "218 points, 175 comments on Hacker News.",
+      "url": "https://wagtail.org/blog/one-month-on-glm-53-flash/",
+      "published_at": "2026-10-02T08:29:15",
+      "source": "Hacker News",
+      "extra": {
+        "points": 218,
+        "comments": 175
+      }
+    },
+    {
+      "title": "Show HN: Audionaut – an open-source cross-platform multitrack audio editor",
+      "body": "142 points, 47 comments on Hacker News.",
+      "url": "https://github.com/kvoltmer/Audionaut",
+      "published_at": "2026-10-02T01:05:48",
+      "source": "Hacker News",
+      "extra": {
+        "points": 142,
+        "comments": 47
+      }
+    },
+    {
+      "title": "Show HN: Made an open-source Lego AI generator",
+      "body": "140 points, 49 comments on Hacker News.",
+      "url": "https://github.com/anteloc/ldraw-nova",
+      "published_at": "2026-10-02T13:00:15",
+      "source": "Hacker News",
+      "extra": {
+        "points": 140,
+        "comments": 49
+      }
+    },
+    {
+      "title": "Show HN: Pyxel – A Python retro game engine with built-in art and sound editors",
+      "body": "94 points, 8 comments on Hacker News.",
+      "url": "https://github.com/kitao/pyxel",
+      "published_at": "2026-10-01T16:26:35",
+      "source": "Hacker News",
+      "extra": {
+        "points": 94,
+        "comments": 8
+      }
+    },
+    {
+      "title": "Don't be fooled–LLMs don't reason",
+      "body": "75 points, 159 comments on Hacker News.",
+      "url": "https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/",
+      "published_at": "2026-10-02T06:45:42",
+      "source": "Hacker News",
+      "extra": {
+        "points": 75,
+        "comments": 159
+      }
+    },
+    {
+      "title": "GPT-6 Astra plays World of Warcraft for the first time with agent-wow",
+      "body": "75 points, 59 comments on Hacker News.",
+      "url": "https://agent-wow.sh/gpt-6-astra-plays-world-of-warcraft-for-the-first-time-with-agent-wow/",
+      "published_at": "2026-10-02T06:19:47",
+      "source": "Hacker News",
+      "extra": {
+        "points": 75,
+        "comments": 59
+      }
+    },
+    {
+      "title": "Show HN: Offrun – manage every coding agent from one workspace",
+      "body": "72 points, 59 comments on Hacker News.",
+      "url": "https://offrun.dev/",
+      "published_at": "2026-10-03T01:40:17",
+      "source": "Hacker News",
+      "extra": {
+        "points": 72,
+        "comments": 59
+      }
+    },
+    {
+      "title": "Show HN: Pi pod – Run your pi coding agent in sandboxes on your own server",
+      "body": "63 points, 27 comments on Hacker News.",
+      "url": "https://pipod.dev/",
+      "published_at": "2026-10-02T12:10:38",
+      "source": "Hacker News",
+      "extra": {
+        "points": 63,
+        "comments": 27
+      }
+    },
+    {
+      "title": "Show HN: Our space game has a built-in RISC-V emulator that runs Linux",
+      "body": "63 points, 26 comments on Hacker News.",
+      "url": "https://againstallodds.games/blog/2026/10/03/our-risc-v-emulator-pasriscv/",
+      "published_at": "2026-10-02T03:40:31",
+      "source": "Hacker News",
+      "extra": {
+        "points": 63,
+        "comments": 26
+      }
+    },
+    {
+      "title": "PayNearMe Launches AI Servicing and Collections Agent - Finovate",
+      "body": "PayNearMe Launches AI Servicing and Collections Agent Finovate",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVk8xTXlyLXFUSzB4STNMbzlmUktmcGJCZDlJQlJGakprOVRvS3hWUDJlVV9FUkZvenVwclM3QW1nd1hHNHp1LU1YbjZVeDl4NHdnTlV3T09nWVVCQTZQYTUxREFSSk84Ri1HX2xLNTJ6RmQzOVZaN1dLalVpc0xqcA?oc=5",
+      "published_at": "2026-10-02T23:10:24",
+      "source": "Finovate",
+      "extra": {}
+    },
+    {
+      "title": "AI Startup Suno’s New Tool Puts Music to Spoken Word - Bloomberg.com",
+      "body": "AI Startup Suno’s New Tool Puts Music to Spoken Word Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPUUlwX19xVEpZcmlyNTQ0dGdVOGVWa1hwdkV4UWFtSnhYdTVJeW5sejhnM0Zsd0NvMjlBY3hEeHBoQmgtZjlNVlNQVHAya0l2U3htTnIzaVFHMlFUQzFiTG5WZVVVUEdwOEZWLWZ0WE1USWl2WW03Uk5EU2k5djFvU3RiLVhBZ3RnWU51cktzcDZTcTM5bUNWbkhkTURpdnNBaGxPT1lB?oc=5",
+      "published_at": "2026-10-01T23:01:05",
+      "source": "Bloomberg.com",
+      "extra": {}
+    },
+    {
+      "title": "Instagram launches new AI Video Assistant for creators - Deccan Herald",
+      "body": "Instagram launches new AI Video Assistant for creators Deccan Herald",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNMjRNcW9iNXJxcVM4ZzROTWUxdGR5b1ZNakhsRW1xNUh2LTZsQXh2cUY4Y0lRZDd4R2hNdEdNNkpGZWEwMU52TGc4M1hPOFJld2lLeTRpNU5zd1VJa0owdjJmNnVGT2FXU1V3NDBYak5iNmJfQkhEeVRrVG1oQmgzZUF4TktYQy02OExHeHBQenoxSzJzV013MkRwME9DaFpTTTZSN0VsbUlYVTVuUkVrQzdiTWFzOFJ6ZEZtcG1qSTJ5ZUNm?oc=5",
+      "published_at": "2026-10-02T08:42:28",
+      "source": "Deccan Herald",
+      "extra": {}
+    },
+    {
+      "title": "Meta launches new AI platform to transform enterprise business - trend.az",
+      "body": "Meta launches new AI platform to transform enterprise business trend.az",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9yXy1VXzgyMzBCeWRuWENjM1h5YVl2THNyT1ZPb0tic0RXVUJJTzVOSzBLRUFiTk9CTDRqaFNON3lJTkU4X2U1OGlYamM2ejEt?oc=5",
+      "published_at": "2026-10-03T06:47:00",
+      "source": "trend.az",
+      "extra": {}
+    },
+    {
+      "title": "Police force launches AI tool to reduce 101 calls - BBC",
+      "body": "Police force launches AI tool to reduce 101 calls BBC",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9zRTZOeDBObFJuYlV1dHlkQWVCS0FBcm5jVnNsZXA1enZKSm9DSXRnbXBIY0pXelQ3Znh3Zm9kMjY1TzZDVW01VFJuOU5uN0JKOHpGVlVEbkJYUjg1R2c?oc=5",
+      "published_at": "2026-10-01T18:02:33",
+      "source": "BBC",
+      "extra": {}
+    },
+    {
+      "title": "AWS Strands Decider 2B: Open-Source AI Agent Model [2026] - shattered.io",
+      "body": "AWS Strands Decider 2B: Open-Source AI Agent Model [2026] shattered.io",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQMllmMFFqWVpScS1uaTJDV3h2NzZGc095Nkx2aVZaZW5pa2RHeEF5VkhDR0ZSa3E5TlhpZzRzX2xCb1N0cG0yVVBiVGk0MTRqZUhnR3ZJYXltRm5jMlcwdXVKN0Nrd3loOEZBVlRWSVRuekxkSW85YUF4ODNpRlV5NXl3?oc=5",
+      "published_at": "2026-10-03T21:02:32",
+      "source": "shattered.io",
+      "extra": {}
+    },
+    {
+      "title": "OpenAI's Undeniable Resurgence and the Coming Liftoff of Personal AI Agents - Key Context by Tae Kim",
+      "body": "OpenAI's Undeniable Resurgence and the Coming Liftoff of Personal AI Agents Key Context by Tae Kim",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0wYzJGcXJLaXN4bmJKYVlfbmMweUYwaWxRMGFTeXgxU2dHOGZxbkZWMDBRT25rcWVEb0YzQlBBSXZXNkU4c3l4T0dQTHJzVWQ2aEdjZ1NldTM0d1lwRmVXYWFXNzc3QmZfMm52WGh6UXQ?oc=5",
+      "published_at": "2026-10-02T08:03:13",
+      "source": "Key Context by Tae Kim",
+      "extra": {}
+    },
+    {
+      "title": "Senators Hawley, Murphy Announce Bipartisan AI Agent Accountability Act - U.S. Senate (.gov)",
+      "body": "Senators Hawley, Murphy Announce Bipartisan AI Agent Accountability Act U.S. Senate (.gov)",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNaUdBelJSWFdqbjQycXJMSXZzVE9LV2RVdWk0M2dlcmtySGhCaUlLZ2hLbHpFWGFoTC1VMzA5THVyeHg3eEZwaXFmbjJWTVRkak5fU3ZIMkY4WXpGU2xiS2JwdFdFOU1EUExhUVQ4bFBJcG1MMER1aWs1c0hVSHhYblRyb081THk0em1tWW9rTV9PZlhJeDBEN1VuQjhiNmZYUVhv?oc=5",
+      "published_at": "2026-10-01T21:51:47",
+      "source": "U.S. Senate (.gov)",
+      "extra": {}
+    },
+    {
+      "title": "Cloudflare Open Sources Clef to Challenge OpenAI and Amazon on AI Agent Decisions - Startup Fortune",
+      "body": "Cloudflare Open Sources Clef to Challenge OpenAI and Amazon on AI Agent Decisions Startup Fortune",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOMVdod0RjOE5JenlkcDRPMUNyT2J4MEh0YmJWMUFfNnViSVJLUktTM1Npcl9VTTdKTEdxbFdQUzUwYTA4andaNVJfa0VFMlREV3hDUGRJMU43QTF5V2hIM01QcDFDQ3NJcFExZThNYUt3RDVJc2ZUNk40V0NlNUh0cFJiajAzOUJDWnZmTm9VanhBMy1YU1lDOFNaaVdwT2g1U01XUG15OHdKNjVCaGc?oc=5",
+      "published_at": "2026-10-01T21:21:23",
+      "source": "Startup Fortune",
+      "extra": {}
+    },
+    {
+      "title": "Google unveils latest AI model, but Wall Street wants a breakout personal agent - cnbc.com",
+      "body": "Google unveils latest AI model, but Wall Street wants a breakout personal agent cnbc.com",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNRnl0RGo0clZVWk13V2ttZGw4TlI2aTB0OTc5UzYyblgydGtBd2I4SWxqTUJ6VWtUcEhvbjdUUnRTUHJpMW0yaU5PX1VpUzRqMlVjc3RPVEQ5dk42UjJ6cDZDRE01Z2I5V1dManlFOW5DeVA3Q1VWS1Z5NzVtb1JJc2xDNmRfYWswYlRGczVXSFRxVzZyX1dJcVFXZ01xSGV6Qmpj0gGoAUFVX3lxTE9jVzM5SC1xaEVWcnkwWGpGMHFWWU9NRkR1b3c2ZFpGQlBJSGZoOEFfOGt5YzZBUXNjdmhteWgya0QxYTIwdEZTV2NrR1ZGMUhZNjRaOUlCSGJHdHNmRFQ0ZmpXRU9xNHBqVThTQlN4R3FuX3g4OVp0YmpLLVBrc0FzYU5EWXZPMHd3THRGdnF2Xy10YzFlU3hYbDRUSERfYXRfVWMxTTVlVQ?oc=5",
+      "published_at": "2026-10-01T19:29:49",
+      "source": "cnbc.com",
+      "extra": {}
+    },
+    {
+      "title": "Meta’s Muse is adorable agent of value destruction - Breakingviews",
+      "body": "Meta’s Muse is adorable agent of value destruction Breakingviews",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNZ2NvU0dIRmJtR1JJTEkyaERTZUJ1S1NJWHFSeVRVX0pfcHNFRzFZTnRxR1pleXctTHEyUmp4cjZUeDI2dXBraDRhemJJYnM3WU10anJlN3B4dDRKNU5FYzhRRHl0cU9NSjdBbWtidVFqaUZmd284WUhpV1pzVjhpM2tLU0lKaHZfZDY0aDJYTlVYbXl6MkI5RThQdjJvTTNzVVVzeUFILXkwYU5kbXlFTHdR?oc=5",
+      "published_at": "2026-10-02T17:31:38",
+      "source": "Breakingviews",
+      "extra": {}
+    },
+    {
+      "title": "OpenClaw Launches Free Open-source Enterprise Agent Platform for AI Agents - CyberSecurityNews",
+      "body": "OpenClaw Launches Free Open-source Enterprise Agent Platform for AI Agents CyberSecurityNews",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5NRXdNMXdBRWxOLWpJdHFzcGl3elpvMjBteE9BSzdvaGhLR3pCa0pncEU5SVMyWVR4LVA4QUZHRVJQQ20ta09fZnYzQjdVeDdfZFY0NWtKQkNUR2FRMTR6eFdJNGl4UXE0cXl4a3JqbVVhd9IBd0FVX3lxTE5IaEdwQTc4cGM0RUo0YVFLeHBwTFNwSlZjQmdMdFphRXRxTFZxWUtPaElvNWg5VEZWWllvRDRGTDQ1WEJzeUYwNGZnV0RSNVo2cGtSZERHV0phQXh2YmdGRUh5anVyUG10V0JpbGFGQktrQVNhbkZB?oc=5",
+      "published_at": "2026-10-02T14:20:57",
+      "source": "CyberSecurityNews",
+      "extra": {}
+    },
+    {
+      "title": "Meta's Muse: Cute AI Agent Or 'AI Trojan Horse'? | BBC News - Modern Ghana",
+      "body": "Meta's Muse: Cute AI Agent Or 'AI Trojan Horse'? | BBC News Modern Ghana",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1LeUZZZjNmRVBQNUJuQzBRQjBNaTd4Q29qa0NzTlYtOVB0aUxvLVlQYmpDS1JIUzVraF9DQmpONG5WRENmV05FcFBWaFQ1ZzU1SDkzZ3AxUGtiQmpJbldF0gFcQVVfeXFMUHdPTDdQWW1WZkU3VmJZeXlqakxHOExnaVppclRuQzVxR3ZPNVVCNVFmT2xoclpBd1FYd09RYkJ4UGs1Y2FGQ2d0Q0llVnp3OHJmNDlWd2tEREQzTkY?oc=5",
+      "published_at": "2026-10-02T04:16:04",
+      "source": "Modern Ghana",
+      "extra": {}
+    },
+    {
+      "title": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform - Cloudflare Blog",
+      "body": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform Cloudflare Blog",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9RM1Ita1B0RS1icVRmLXktdXNCZlNsRk55ZlU1UE40NXBwV0RzMEh4OUJwU2VmZ1ZwdWl3ZGZmX0tZWUZfVTNES0xoblBZRGNvVWhfYU41RWl4bFVBaVE?oc=5",
+      "published_at": "2026-10-01T23:50:24",
+      "source": "Cloudflare Blog",
+      "extra": {}
+    },
+    {
+      "title": "Schwartz Releases BootLoops 1.0, an Open-Source LLM Harness for Science - unite.ai",
+      "body": "Schwartz Releases BootLoops 1.0, an Open-Source LLM Harness for Science unite.ai",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPVUZMY2VuTDFydmxXbVZtVVVuNW9KM1Y1dUZBZHB5ZUZMWHBaNU5yVVp6WnRnVml5NnFRUFdfdDh2QkRZRlEtekxsNnFCNWdyblljUHVVTnp5bDBlbGxlV2pRSEZMZGxKYWNUVUpINnliOS04elVITGFiMmdqbHFNMjBjYmgyVkh2VDF6UEhNOUdXOWpaLUVv?oc=5",
+      "published_at": "2026-10-01T18:34:02",
+      "source": "unite.ai",
+      "extra": {}
+    },
+    {
+      "title": "Tuskira Launches Open Source AI Agent Runtime Gateway to Observe, Govern and Switch LLMs and MCP Tools Without Rewiring Agents - VMblog",
+      "body": "Tuskira Launches Open Source AI Agent Runtime Gateway to Observe, Govern and Switch LLMs and MCP Tools Without Rewiring Agents VMblog",
+      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQeFB3TEhvejlBendxNXhPZUl5NXRGWWVsamhlZ2cxQVhYX2RKZWNyZ1hFTl9wMkx1THNRbEhKZ0U5TnluZWZzMkhGVGNCZ3BJc0dwWHo3YXd0UE44dVBMbGVGX2Q0RnFHM2lISERSc0FiaEx1eVh0UlhiZXdQUjhtcmZuQzc1YkhJYjdDRS1kYTFmdVFCNVItcDRqakRYdmY5TDRic0ZIbVJrTXVtQURuMl9WT1pGX2lCMXBEMmo2TE4tbVJtMW5iQklSOXdmLW5uVi1XTWdJbHRVSE9PV0FwMlVucUc?oc=5",
+      "published_at": "2026-10-01T19:16:33",
+      "source": "VMblog",
+      "extra": {}
+    }
+  ],
+  "US Headlines": [
+    {
+      "title": "Tennessee’s prisons chief is resigning after failed execution of Christa Pike - AP News",
+      "body": "Tennessee’s prisons chief is resigning after failed execution of Christa Pike AP News With Christa Pike Unconscious, Another Execution Attempt Is in Doubt The New York Times Christa Pike and the Absurdity of Humane Execution The New Yorker Christa Pike's botched execution fuels questions over whether lethal injection is the 'more humane' way to put people to death yahoo.com Christa Pike unconscious, burned and intubated, court filing shows The Tennessean",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOS2dvZno4RTVmS3RJLXVKV3ExNXptZUltbFhwQng2Zzl6RVZhYWZpREk3RnNPcVFrS2hLdHNpcWpOZW9paW5vM1d4UTZ4M1VVTklLbTNfbDZZeGhpaVU4WjVpOXJkMTNTOUlLMmZuRUNBdTRzVW9mWFYyMlVQek5UNXFTdGNpRkFWOVlENHlMYXh6RWlrbXJpc3I0WTF4UG1xQlExNUJrYw?oc=5",
+      "published_at": "2026-10-03T21:27:00",
+      "source": "AP News",
+      "extra": {}
+    },
+    {
+      "title": "Woman told Cornell investigators she 'felt like bait' during alleged gang rape - PBS",
+      "body": "Woman told Cornell investigators she 'felt like bait' during alleged gang rape PBS Cornell president breaks silence amid outcry over handling of sex assault case CNN DA did not review witness statements and other evidence Cornell police collected in alleged gang rape of student NBC News Picture of Jane Doe shared in Snapchat group on night of alleged Cornell rape CBS News 'It's not just a Cornell problem': Students speak out about sexual assault NPR",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNQ2FnMFpyLXJWN2N0SDBMcEpFOFBmblE2MXNuX3lIcjl0TUNscHBSaWlPSFdRR1pJaHdoa3JiYjZvUlgwSW1SVWhGWDFab2t4RlBwa2prOHVibnk3REtySUhkZnJWME8xOUZia2hGUF9CemhBOC1ybTN0Smg1VWM4dkdsZDY2WTRkaURiaUlaYXV2WnVLWFBpM2VwYjVMeDZtRVd0TGdJU3d2TFgxYVk3N2FR?oc=5",
+      "published_at": "2026-10-03T17:04:57",
+      "source": "PBS",
+      "extra": {}
+    },
+    {
+      "title": "Coast Guard searching off Nantucket for medical evacuation jet carrying 6 people heading from Bermuda to Boston - NBC News",
+      "body": "Coast Guard searching off Nantucket for medical evacuation jet carrying 6 people heading from Bermuda to Boston NBC News ‘You’re coming in blind?’ Medical plane flying to Boston from Bermuda declares emergency before going missing. The Boston Globe Light rain, low winds reported before Boston-bound air ambulance vanished WCVB Search Underway for Missing Plane Heading From Bermuda Off Nantucket The New York Times Aircraft reportedly declared emergency before losing contact WPRI.com",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaEZEZ0RZVkV1UkxGbkdkd2hxQ2FQVWpYSmRiU3FVdE1DTjBzWHFUT2xhSHV2TElXRlhLZUN3MEVWMlNqRnlXeTFLc0wzM3NHdFN2M0JMT0twclZXdVBuRmlROFNYT3h0U1lOWXYzamFvV1p5ZUxsV2kwZXR5ekFlZW1zWFUzRGlWakI3MDloOGQzVldJYUYwMVMwbUM3enpTTzB0VVlYTXFSZw?oc=5",
+      "published_at": "2026-10-03T20:28:35",
+      "source": "NBC News",
+      "extra": {}
+    },
+    {
+      "title": "Trump posts GOP lawmaker’s phone number amid spat over Daylight Saving Time - CNN",
+      "body": "Trump posts GOP lawmaker’s phone number amid spat over Daylight Saving Time CNN Trump cyber heckles Sen. Tom Cotton over daylight saving time MS NOW Trump pushes Senate Republicans to make daylight saving time permanent USA Today Trump urges calls to Arkansas Sen. Tom Cotton in push for permanent daylight saving time AP News Trump appears to post Sen. Tom Cotton’s cell number in push to make daylight saving time permanent NBC News",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOdW8xUURRRGloYU1SS1lhX3kydHktN2VxVHVnSnNHaXhjM0RHdGcxOHZWeHN3V05CZDBRSUVOSC1zRW8zenJkVFMwTHVlLVJ6SnpFdWdWcTVSR0tmMTJqUnktMjg1NmU2MUQ1djhWZlFKS1lkSGVvZUh6aGR5N1hTVXd2ZDJMWmt1MmlZc0ZB?oc=5",
+      "published_at": "2026-10-03T21:17:11",
+      "source": "CNN",
+      "extra": {}
+    },
+    {
+      "title": "Hawaii sea arch collapses into Pacific Ocean 550 years after its formation - CBS News",
+      "body": "Hawaii sea arch collapses into Pacific Ocean 550 years after its formation CBS News Hawaii’s famed Hōlei Sea Arch has collapsed CNN The Holei Sea Arch, a Centuries-Old Hawaii Wonder, Crumbles Into the Pacific The New York Times A famed Hawaii sea arch collapses, prompting NPS warnings of unstable cliffs AP News Hawaii visitors won't see this iconic landmark again USA Today",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1zRlRIM3RZb1J2Mk9VR3dxZ0pCeWdZSUdRY0U1N19UWVdFNWFwanMwRW1MVlNySFBCMEl1VUdmNXdtMkFMbHJnUE5sY0wwWWtnWGlBQWZtaElrRFZoWTlsQUFtcjNPcUlINVZmTjJ3?oc=5",
+      "published_at": "2026-10-03T22:02:02",
+      "source": "CBS News",
+      "extra": {}
+    },
+    {
+      "title": "Democrats edge out, neck and neck with Republicans in 5 key Senate races: Polls - The Hill",
+      "body": "Democrats edge out, neck and neck with Republicans in 5 key Senate races: Polls The Hill Democrats May Have Found the Recipe for Flipping Red-State Senate Seats The New York Times POLL: Democrats lead or tie Senate races in GOP-leaning states KOMO Democratic surge predicted to hit Republican states hardest, scrambling Senate strategy Reuters Hottest 2026 Midterm Races—Democrats Lead In Texas, Iowa, Michigan Senate Races (Updated Daily) Forbes",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPMzNpRWdQR1R5WnpSQllxd192QWRTc0EwNnJQLUs2SVRMUjdBT0RvMmhtMVZuVVNneVVDQjk0NTcwQkxNMUQxNEh3eXhEbGRKV2pJZk5Da0RSVzZEOEoyZkFwcXA3QW4yaHl1WlFaczIwcF9TdTQyVE8xakJ1VWExemd1TXZJanlTc0h2XzdWTDLSAZYBQVVfeXFMTnYzTzFhNXJBNlBfeTFuV0JwdmZ3aWdUcmU0R2t3MGg4WnpZajNMbnlZR3BBYlNYQmFDMlkxdDhiOUVKVFMwQk9QU2tfZTBWUUQzU3hJdjV6b3VlcUdhZWU3R0RRSENvdWxaeTlMelFfM0pRbFBoWDNwcTJYdDdSeW5fT0xTOE1pN3Noc2c4ckt0Q3dLdndR?oc=5",
+      "published_at": "2026-10-03T16:59:00",
+      "source": "The Hill",
+      "extra": {}
+    },
+    {
+      "title": "Trump promises another round of checks before the midterms - Politico",
+      "body": "Trump promises another round of checks before the midterms Politico Trump Announces Another Payment to Voters Ahead of Midterms WSJ Trump pledges to send $90 checks to millions of seniors on Medicare NBC News Trump to give $90 to senior citizens for Medicare premiums CNN Trump announces $90 checks for more than 20 million seniors to help combat Medicare costs Fox Business",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPWGNqZHZyeUJPYVRCbE8yTGNaZDU0MzJkZkxOLXFIc0dGWENVVzNWdG1OV08zVE02OEFwczJZR1VOcUpmaG1VcnFqOGpYZlZyTDJtcUZ1cjlsV3VwVzI0Q0E5QTNqRFFfdDFicVBMVWQxTEx1SWgxVWd4YjhDOFZCQmU1bDNZcnJQYUJhR1cyZ1Fvdw?oc=5",
+      "published_at": "2026-10-03T16:07:00",
+      "source": "Politico",
+      "extra": {}
+    },
+    {
+      "title": "Ted Cruz blasts JD Vance as ‘insecure,’ says he’s focused on helping GOP win midterms - Politico",
+      "body": "Ted Cruz blasts JD Vance as ‘insecure,’ says he’s focused on helping GOP win midterms Politico Vance talks 2028, Ted Cruz and a tough midterm climate that could factor into his future NBC News Vance: ‘Really obvious’ Cruz is running for president The Hill JD Vance Names 'Really Obvious' Presidential Opponent If Veep Decides To Run HuffPost JD Vance Shrugs Off Ted Cruz’s Jabs: ‘Really Obvious’ He’s ‘Running for President’ People.com",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNLUZGQmY2OFNrVGQtcWZjUEYwcjI4VHpDdUw1RUZLWVloYjZFUndPUnZBbVhOdEdlOFNucGp1dXBHVS1iR3Z5NEEtM1dNTGFnazlPNVhKRGVkSVhIM2xjSWc4Q1dha3BDOWtSVTAxSlI0TTVQeExyYng5RVpxZ3VaM2dOcW1udUhHUDdvNXB5OWpzZDBIODhPemZ4Vzh2X3RUTkcxQkVOTGdaWGpVaFVuUE9PXy0xUjdkRTdDRVU3VVV3V1cwTGh0bGliSQ?oc=5",
+      "published_at": "2026-10-03T21:20:00",
+      "source": "Politico",
+      "extra": {}
+    }
+  ],
+  "Immigration & Visas": [
+    {
+      "title": "Second Federal Court Rules Against Trump's $100,000 H-1B Visa Fee - Reason Magazine",
+      "body": "Second Federal Court Rules Against Trump's $100,000 H-1B Visa Fee Reason Magazine",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWU13dC1nY2VHV09BVnRmWnkxRl9DVi1tbWdCandpWWVVZWxMWEplN2pwbFVLV1RmS2kxZ3dsZnAxZUxTZmprRzg2cDJrSTdTc19vTEYzSUM0TFBuc2hVUXF1MEU1ZTlqREctUWkyN3l0Ti0xYVlrU0kzWi1lNWpFdUl4OGRNVW1LTkt1bmxKS09DOWdSWHlXaWF4RlVjSjZfUFE?oc=5",
+      "published_at": "2026-10-01T21:11:58",
+      "source": "Reason Magazine",
+      "extra": {}
+    },
+    {
+      "title": "$100,000 H-1B fee blocked: Second federal judge challenges Trump policy - The American Bazaar",
+      "body": "$100,000 H-1B fee blocked: Second federal judge challenges Trump policy The American Bazaar",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQRXh2MzAxTVBKZjZDS1VNWXI4SHFxazMtRERBSHJvWHlXTklFTnBta01IdXg1WC1tanJBeWQ4RUtRbF9zYmFDVHJHOERHSmtZTl8tQzZZaXNheGg5eVY4dmM5Vmt6OUlydllEbVByY2I5ZDNWckRfVUg5QW52UU9QTmF5WC1yOEYzaG5CdWhSMDJ3YzFwSHNZbHBMcHVZT3EtLXRHVjREZDh1NWV3RjNUY1JxOA?oc=5",
+      "published_at": "2026-10-01T19:09:23",
+      "source": "The American Bazaar",
+      "extra": {}
+    },
+    {
+      "title": "Calif. Judge Vacates Trump's $100K H-1B Fee Policies - Law360",
+      "body": "Calif. Judge Vacates Trump's $100K H-1B Fee Policies Law360",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQaGdWdWdZVFZBci1BdmR3SHJvZWstZnlNRjl5T2JvQll6Tk5IUkJOVTJxVHVLcG50WnYyN0FXUGFyVzdPT20zYXBnT3o3cnBWTFJmX1N0TVNPSGF6Z1R1NzJqVGx6eklPWE9jQkJZYlZOcmR0bFFXMjF1TGFOLThNZ0NnU2FLZ3JyUzE1Qlg5dkVsZFVfUEcxZ256ZzVHbDZPa3VOalVXSGV6NC15YzBQNG55NEhIUlZx0gFyQVVfeXFMTkRSSE1ZSDBLUUxENUxoTWNoYmx2X3hfTlo3aDJuclc3OFNtTHNKVW96djJIdncyVUNkb0tuakFhVkhKeGxYQ3lGMGI1NWNJV29IcnJzZ2lrTWtaT3h5N0Z3Y3JxekdVbVpfb3lJaDBNRHhR?oc=5",
+      "published_at": "2026-10-01T23:48:53",
+      "source": "Law360",
+      "extra": {}
+    },
+    {
+      "title": "US VP JD Vance says H-1B visa programme “completely broken”, should be scrapped - ANI News",
+      "body": "US VP JD Vance says H-1B visa programme “completely broken”, should be scrapped ANI News",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNVEVYcU0tU0FibUJzN0lfeGhrZzVNT0JVbVZ6VU9pZGZTNXo3Y1ptcGFKa19HcjJpb3BNU2xNNmRKQl9WSUs0MnBvenBMT1Y5clFoX0JrSkxaVzlMOFIxVGZSbWhTYmxrdXFsUDJKT29KTEdfSDRFZVh3TEZVNGZtWFQyeHE2Vk50SXlRcWYzTm1jTV9MYWV4U0poX09uXzhuOFBra2Y2SWFURFNCRTZwUzlkblMzbG1OUzhWaXhDYmxQbVVRdmo3RWsxSndqSTJ2?oc=5",
+      "published_at": "2026-10-02T04:05:00",
+      "source": "ANI News",
+      "extra": {}
+    },
+    {
+      "title": "Current Status of DACA: Explainer - National Immigration Forum",
+      "body": "Current Status of DACA: Explainer National Immigration Forum",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9TdWc5NjRGN2w5Qk9mNGFZem5jME53MF95Q3paM2hKblJoUWFteDNxelBxTjIxbmlTVU1MZzJIaHNRVW1ReXhSb0E2S2VaQWdRU3l2Z20tTzVZMGRNei1Sd1B3WElFLTJTWVpaZ3YtUVRjTHN1OGc?oc=5",
+      "published_at": "2026-10-01T21:56:34",
+      "source": "National Immigration Forum",
+      "extra": {}
+    },
+    {
+      "title": "ICE Has Been Dumping Protester Photos Into a Palantir Database - wired.com",
+      "body": "ICE Has Been Dumping Protester Photos Into a Palantir Database wired.com",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNaXVNdTcwWFE1bnZXdmdpRFYxazJRMDNna3hqZ2d0XzRCczdfdlQ0b0tUSEdURVp6NlJBT3d1SG5QYnVsbnFMbjZNTl9HVTFIZDZ0WTdCbWpJaklFS2dkeHROckZ5Rl9HV0lrbGtlOFVyOGFZQzl1ZS1QMmszcE1MbEY0UjY5cFhZUlY2RS05UEF6RUtVYVE?oc=5",
+      "published_at": "2026-10-02T20:52:00",
+      "source": "wired.com",
+      "extra": {}
+    },
+    {
+      "title": "Renee Good: Family of US woman killed by ICE agent sues Trump officials - BBC",
+      "body": "Renee Good: Family of US woman killed by ICE agent sues Trump officials BBC",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5yT1piUklaWnBQS3N1OWJOZktHOG43MnBWUUtsZFJVNHIxamtVMWQ2Q3BmVHc4Nk9TV09pbldNZmc3dnFQQTlrVnFuQ3lIOEJraU9VdWlxR1VkQWM?oc=5",
+      "published_at": "2026-10-01T21:30:47",
+      "source": "BBC",
+      "extra": {}
+    },
+    {
+      "title": "The family of Renee Good files lawsuits over her death during Minneapolis ICE raids - NPR",
+      "body": "The family of Renee Good files lawsuits over her death during Minneapolis ICE raids NPR",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNYzNNTFJDQ01FTGtXMmZPWFFmd056b05HUFB5RDc1dEk0THN0VzFOalRmUGpYbHhWODhDRngzX3NsUHd2V0pVbjl2ZnpvSjRrQy11WC1HLXZGU2c5VXFYVEZVRDZFNmFjYzI2aUk4c3l3amttNlROcjZyaW5VYW1uT0s3S3R2UQ?oc=5",
+      "published_at": "2026-10-01T21:15:07",
+      "source": "NPR",
+      "extra": {}
+    },
+    {
+      "title": "Opinion | If claims from Renee Good lawsuits are true, ICE didn't give her a chance - MS NOW",
+      "body": "Opinion | If claims from Renee Good lawsuits are true, ICE didn't give her a chance MS NOW",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOSi1JTVdab2lUeFpZRDRVTVJDSG5weUxUdXJOczVLaTNXYXlVU0pUNGEwYkd1TWtiaHc2VkVCcWVEUF9EdXEyOGo2TTZuQ0w4dEcwSzB6LW92c1lyazY2QmFDa0xsYWRBT0RiNl9fZ2xwdEpHN1hSSmZGc1JlZFNWUUtQdFBBTmprR2gwa0Y2OUZnakU2VlBMZEYycXZ4UzQ?oc=5",
+      "published_at": "2026-10-03T11:00:31",
+      "source": "MS NOW",
+      "extra": {}
+    },
+    {
+      "title": "California assemblymember's aide is released from ICE detention - KCRA",
+      "body": "California assemblymember's aide is released from ICE detention KCRA",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQd05Ea0dHWFNudmVhTlVQZm5Fb00taHk5THZlZzlOZHNxaDluOHVHMEY5VTU4Q2JvWWRiSEwyWWQyOG84MzR3QzhOZ25jLWJxcnNUX3YxUXpWVjFNNDhCamR4eEN0dGpVb2I1T2p3Rl9zdmJpRDR4Z3kwREVwei1ETWQyemZ3cXZneWtfdF92VENYMzV0ZnBZU2pxSFhwYkFTdkE?oc=5",
+      "published_at": "2026-10-03T16:45:00",
+      "source": "KCRA",
+      "extra": {}
+    },
+    {
+      "title": "Pro-Trump Influencer Benny Johnson is being sued for defamation by ICE protesters - NPR",
+      "body": "Pro-Trump Influencer Benny Johnson is being sued for defamation by ICE protesters NPR",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNaXFYT0VXbWltWlpGWk9abGJXcFJQa2pFZ2JuN2dTY01Ia0g1eWgyVV9XaGlDazZ1WFQweVY5SU8yb29IM0tWQmtPREdPOThEV2R6aWhSZjFndGNuN0xNXzV4THJYekVHUGNGSnFPTjdFQjdldDZuSkY5d1ZRaTVpSktKZ2p5TXpjQjNTajZrelBIeVlQeW9N?oc=5",
+      "published_at": "2026-10-02T19:43:30",
+      "source": "NPR",
+      "extra": {}
+    },
+    {
+      "title": "Homan defends ICE crackdown amid growing GOP criticism: \"Give me an example of where we went too far\" - CBS News",
+      "body": "Homan defends ICE crackdown amid growing GOP criticism: \"Give me an example of where we went too far\" CBS News",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOZVYyeU9OZFlGVDFnOC1tT3VGTlIyaUd3azRZMkN4bWdjZ2ZNbXJyemk5WTU5MmVadV9YMXlzWVlPbzU0UkFITUJDckZvOEFpLU9HdUZOWG5uV0JTUHRRLXJuOUNrT1ZuYTBYcHA1Q082VDNraWg4X3gwRmkzeHFHVlJhaw?oc=5",
+      "published_at": "2026-10-02T01:50:24",
+      "source": "CBS News",
+      "extra": {}
+    },
+    {
+      "title": "Disney licenses lineup of movies, TV shows to Netflix including 'Ice Age,' 'Will Trent' - Reuters",
+      "body": "Disney licenses lineup of movies, TV shows to Netflix including 'Ice Age,' 'Will Trent' Reuters",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNZUtjcWt0THV1LTltY2o5bzYyMERtYW5tSTJfRWl4T1dqYVFENG5uODNsZmdqY3l0X2lfN2hSUTB0dFU2YmVpenlZeEd2ZDlTTnlBZUpSZnpnSnFBam5wdzJwMFBDMnZJQUIzY0RNYnpBMUsxUFNoakRlSHFzbTdublludFFNS2lxcjNia1FRNVMtN0g2MnRwZjJHMUxOWWpldUFLOVAwVHdscTR5dUQtQlZaTHlXeTZhcnFyQkN6MXVTMFhLLV9qNlg1ZUstTzQ?oc=5",
+      "published_at": "2026-10-02T21:56:24",
+      "source": "Reuters",
+      "extra": {}
+    }
+  ],
+  "Markets": [
+    {
+      "title": "Index moves",
+      "body": "S&P 500: 7,723 (+0.73%); Nasdaq Composite: 27,191 (+1.19%); Dow Jones: 51,177 (+0.49%)",
+      "url": "",
+      "published_at": "2026-10-03T15:32:32.696997",
+      "source": "Markets",
+      "extra": {}
+    },
+    {
+      "title": "Watchlist moves",
+      "body": "GOOGL +1.56%; NVDA +1.34%; AMZN +1.33%; AAPL +1.02%; MSFT +0.92%",
+      "url": "",
+      "published_at": "2026-10-03T15:32:32.696997",
+      "source": "Markets",
+      "extra": {
+        "movers": [
+          [
+            "GOOGL",
+            1.555111730573374
+          ],
+          [
+            "NVDA",
+            1.3384719439145978
+          ],
+          [
+            "AMZN",
+            1.3253871818670284
+          ],
+          [
+            "AAPL",
+            1.020221313412527
+          ],
+          [
+            "MSFT",
+            0.9223950110185838
+          ]
+        ]
+      }
+    }
+  ]
+}

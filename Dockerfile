@@ -8,7 +8,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY main.py prompt_template.md ./
+# Copy the app (see .dockerignore for what's excluded: .venv, .env, evals/golden, etc.)
+COPY . .
 
 # Cloud Run Jobs invoke the container's entrypoint once per execution.
 ENTRYPOINT ["python", "main.py"]

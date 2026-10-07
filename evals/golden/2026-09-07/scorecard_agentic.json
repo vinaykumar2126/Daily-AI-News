@@ -1,0 +1,52 @@
+{
+  "golden": "2026-09-06",
+  "curator": "agentic",
+  "latency_sec": 51.6,
+  "word_count": 926,
+  "code_checks": {
+    "length_adherence": {
+      "passed": true,
+      "score": 0.91,
+      "detail": "all segments within budget"
+    },
+    "structure": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "complete"
+    },
+    "tts_safety": {
+      "passed": false,
+      "score": 0.75,
+      "detail": "found: model_hyphen_digit(1)"
+    }
+  },
+  "judge": {
+    "faithfulness": 0.983,
+    "coverage": 0.6,
+    "relevance": 1.0,
+    "per_segment": [
+      {
+        "faithfulness": 0.95,
+        "coverage": 0.9,
+        "relevance": 1.0,
+        "rationale": "The segment is highly faithful to the source stories, with only a minor interpretive nuance regarding the 'decades' for Fermat's Last Theorem, but no factual errors. It provides excellent coverage of the most important and relevant AI news, encompassing a broad range of topics and key players, all of which are perfectly aligned with the segment's stated focus.",
+        "segment": "AI & Tech"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.6,
+        "relevance": 1.0,
+        "rationale": "The segment is entirely faithful to the provided source material and all included stories are relevant to the briefing's focus. However, it omits two significant news stories (Trump's map posts and the Amy Acton incident) from the source articles, significantly impacting its coverage.",
+        "segment": "US Headlines"
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.3,
+        "relevance": 1.0,
+        "rationale": "The segment faithfully reports the Memphis ICE raid and accurately notes the absence of news on other visa topics from the sources. However, it fails to cover several other significant ICE and immigration enforcement stories provided in the source material, leading to low coverage. All content included is highly relevant to the segment's stated focus.",
+        "segment": "Immigration & Visas"
+      }
+    ]
+  },
+  "script": "Good morning. Here's your briefing for Monday, September 7.\n\nFirst up, AI & Tech.\n\nGood morning. Kicking off the AI and tech segment, we've got some big news about AI pushing boundaries in fundamental research and practical applications.\n\nFirst up, in a remarkable feat of automation, Claude successfully generated the first complete computer-verified proof of Fermat's Last Theorem in just eleven days using the Lean theorem prover. This is a monumental achievement for formal verification, a task that took human mathematicians decades to prove manually in the past. It shows the incredible potential for AI to ease incredibly complex and laborious mathematical proof.\n\nIn newly launched tools you can start exploring today:\nGrok Imagine Video one point five agent is now live on the web and mobile. Powered by Grok's latest Image two point oh model, it generates higher quality videos with better storytelling and continuity, offering a solid upgrade for anyone doing video generation.\nGoogle is integrating its new Pics AI image tool into Workspace apps, starting with Slides. Built with the Nano Banana model, this tool allows Workspace users to quickly generate images directly within their documents, streamlining content creation.\nAnd for agent developers, a new LLM-as-a-Verifier framework is available on GitHub. It provides fine-grained feedback for any agent without requiring additional training, achieving state-of-the-art performance across coding, robotics, and medical benchmarks. This is a significant tool for improving agent development and evaluation.\n\nMoving to competitive moves:\nOpenAI's GPT-6 Astra is making waves in robotic manipulation. In a simple bowl-picking task, Astra performed far more often than rival agent Fable, and at about half the cost per run, clearly setting a new bar for efficient robotic control.\nIn the open-source large language model space, Tencent has released a preview of its Hy4 LLM, boasting seven hundred seventy billion parameters and a context window of over one million tokens. This is a significant competitive entry, pushing the scale and capability of open-source models available to developers.\n\nOn the infrastructure and architecture front:\nExtropic has unveiled the Z1 chip, designed to dramatically improve energy efficiency for transformer inference by leveraging probabilistic sub-threshold CMOS technology. The 'so what' here is that this could lead to massively reduced energy costs for running large AI models, making widespread, high-volume inference much more sustainable and economically viable.\nAnd Meta introduced AIRA three, its next-generation autonomous AI research engine. This system is built to run and coordinate many long-running agents asynchronously in isolated environments. For practitioners, this means accelerated AI research by enabling more complex, parallel experimentation and faster discovery of new AI capabilities.\n\nFinally, some insight into benchmarks and research strategy:\nA recent analysis highlighted that OpenAI's impressive ninety-nine point nine percent score on the ARC-AGI-three benchmark came from the 'harness' or scaffolding built around the model, rather than the raw model itself, which scored sixty-two point seven percent. The takeaway here is that the surrounding agentic architecture and tooling are just as critical as the core model architecture for achieving high performance in practical applications.\nAnd from OpenAI itself, there's a goal to develop an automated AI researcher by March twenty twenty-eight, shifting human researchers towards more complex tasks as AI handles code generation and experiment execution. This implies a future where AI will be instrumental in its own development, fundamentally changing the research workflow.\n\nBriefly, Anthropic's IPO is now expected around mid-October, and Nvidia is reportedly acquiring Hugging Face for thirteen billion dollars, a significant consolidation in the AI platform space.\n\nNext, US Headlines.\n\nA mistrial has been declared in the high-profile Massachusetts case of Lindsay Clancy, who was accused of killing her three young children. The jury was unable to reach a unanimous verdict after a juror held out, leaving her legal fate unresolved for now.\n\nInvestigators are probing a fatal Amazon cargo plane crash at Miami International Airport, where a jet overran a runway, striking a cleaning crew van and S-U-V and killing five people. The National Transportation Safety Board has recovered the black boxes as it works to determine the cause of the incident.\n\nCanada has implemented retaliatory tariffs on a range of U.S. goods, including milk, perfume, and golf clubs, deepening an ongoing trade dispute between the two nations. This move comes as part of Canada's response to earlier U.S. tariffs, signaling a potential escalation in economic tensions.\n\nTensions are rising in the Middle East as Iran has issued new threats of \"economic warfare\" against the U.S. and reiterated its missile capabilities. This comes as Houthi forces, backed by Iran, reportedly attacked Saudi Arabia, and Tehran announced plans to expand its control in the vital Strait of Hormuz.\n\nOn the West Coast, Tropical Storm Marie is generating dangerous surf and intense heat for Southern California beaches. Meanwhile, Hurricane Lowell is bringing heavy rain, strong winds, and up to thirty-foot surf as it nears the western Hawaiian islands.\n\nAnd finally, Immigration & Visas.\n\nGood morning. For our immigration and visas update, we have news regarding Immigration and Customs Enforcement, or ICE, operations. Reports indicate a significant ICE enforcement action in Memphis, Tennessee, where a raid at a nightclub led to over one hundred and twenty arrests. This event highlights ongoing and large-scale federal immigration enforcement efforts. Such operations primarily affect individuals present who are found to be in violation of immigration laws, potentially leading to detention and deportation. There are no new policy announcements this week concerning H-One-B visas, O-One visas, green card processes, Optional Practical Training, or other international student regulations from USCIS or other federal agencies.\n\nThat's your briefing. Have a great day."
+}

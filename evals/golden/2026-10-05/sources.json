@@ -1,0 +1,390 @@
+{
+  "AI & Tech": [
+    {
+      "title": "Prime Inference: Fast, Reliable Serving for Frontier Open Models",
+      "body": "Prime Inference covers both serverless endpoints and reserved capacity. It offers resilient serving of frontier open-source models on Prime Intellect's GPU infrastructure across multiple data centers. The serving platform has powered large-scale RL rollouts, synthetic data generation, evaluations, and long-running coding agents at Prime, processing nearly a trillion tokens internally every day. Prime's mission is to build frontier open models and the open superintelligence stack for continuously improving agents.",
+      "url": "https://www.primeintellect.ai/blog/prime-inference?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Headlines & Launches",
+        "read_minutes": 18
+      }
+    },
+    {
+      "title": "Aleph Alpha releases open-weight Kolibri with 1M context",
+      "body": "Kolibri is an open-weight English-German Mixture-of-Experts model with 78.1 billion parameters. It supports tool calling and contexts up to one million tokens. The model is available on Hugging Face under the Apache 2.0 license. It is designed for sovereign, mission-critical work in government and regulated industries.",
+      "url": "https://www.testingcatalog.com/aleph-alpha-releases-open-weight-kolibri-with-1m-context/?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Headlines & Launches",
+        "read_minutes": 3
+      }
+    },
+    {
+      "title": "Anthropic to invest $100 million to train AI engineer talent",
+      "body": "Anthropic is investing $100 million in the Claude Frontier Academy to train 10,000 AI engineers by 2027. The program partners with firms like Accenture and Morgan Stanley to enhance AI fluency and enterprise tech integration. The initiative addresses increasing demand for AI expertise in various industries.",
+      "url": "https://www.cnbc.com/2026/10/02/anthropic-to-invest-100-million-to-train-ai-engineer-talent.html?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Headlines & Launches",
+        "read_minutes": 3
+      }
+    },
+    {
+      "title": "How many AI agents could run on the AI chips shipped through 2027?",
+      "body": "AI chips shipped through 2027 could run tens to hundreds of millions of concurrent frontier-model agents. These agents could supply as many weekly working hours as about 140-720 million full-time employees. Even a modest use of this capacity would require a massive increase in global demand for AI. Using 20% of the estimated central capacity would imply $2.6 trillion to $5.3 trillion a year in API-equivalent spending.",
+      "url": "https://epoch.ai/publications/estimating-the-agent-population?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Deep Dives & Analysis",
+        "read_minutes": 34
+      }
+    },
+    {
+      "title": "AI21 uses Kueue to manage a 10,000-GPU fleet",
+      "body": "AI21 describes replacing ad hoc GPU-capacity negotiations with queueing and fair scheduling across a shared Google Cloud cluster. A Google Cloud case study says high-priority workloads began 83% sooner under the new setup.",
+      "url": "https://www.ai21.com/blog/how-ai21-manages-its-gpu-fleet-with-kueue?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Deep Dives & Analysis",
+        "read_minutes": 15
+      }
+    },
+    {
+      "title": "Smaller models are the future of AI sovereignty",
+      "body": "Australia needs AI sovereignty by retaining control and choice, not relying on external companies for critical capabilities. Smaller, specialized AI models offer practical benefits such as adaptability, cost-efficiency, and easier governance compared to larger, frontier models. Embracing a portfolio approach with open-weight models increases options, fostering managed interdependence without becoming dependent on a single provider.",
+      "url": "https://katecarruthers.com/smaller-models-are-the-future-of-ai-sovereignty-2/?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Deep Dives & Analysis",
+        "read_minutes": 10
+      }
+    },
+    {
+      "title": "Whistle: Speech to Text in 16.9 MB",
+      "body": "Whistle is an open speech recognition model that runs on the same CPU engine as Needle. It can transcribe English, German, French, Spanish, Italian, Dutch, and Polish. At 16.8 MB, the model can run on mobiles, wearables, robots, smart home devices, automobiles, and microcontrollers.",
+      "url": "https://cactuscompute.com/blog/whistle?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "read_minutes": 6
+      }
+    },
+    {
+      "title": "Vx",
+      "body": "Vx is a systems programming language for heterogeneous computing. It puts hardware topology, memory placement, and reachability directly into the type system. Vx front-loads into type checking a class of bug that normally surfaces as a runtime crash, silent corruption, or an out-of-memory error at training step 1,200. Vx is the right language for things that must be correct and fast across ten kinds of silicon.",
+      "url": "https://vxlang.org/?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Engineering & Research",
+        "kind": "Website"
+      }
+    },
+    {
+      "title": "Muse, dots, Instinct, and the question every agent will be asked",
+      "body": "Agentic services will increasingly need to prove both which agent is acting and whether a real person authorized it. World ID lets users delegate privacy-preserving Proof of Human credentials to agents for access, limits, and approvals.",
+      "url": "https://x.com/worldnetwork/status/2105989118287134752?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Miscellaneous",
+        "read_minutes": 5
+      }
+    },
+    {
+      "title": "Human Intelligence is Surprising",
+      "body": "Human intelligence is a recent evolutionary accident, while AI can optimize directly against explicit objectives and rapidly surpass people on measurable tasks. The harder human problem is defining worthwhile objectives without steering models toward the wrong capabilities.",
+      "url": "https://x.com/RayanKrishnan/status/2106053382448484796?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Miscellaneous",
+        "read_minutes": 7
+      }
+    },
+    {
+      "title": "Toward provably private learning from federated data",
+      "body": "Google's new Federated Learning system provides externally verifiable privacy guarantees while shifting computation to the server to improve training speed, accuracy, and device coverage.",
+      "url": "https://research.google/blog/toward-provably-private-learning-from-federated-data/?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Quick Links",
+        "read_minutes": 12
+      }
+    },
+    {
+      "title": "Multimodal Models Learn From Their Own Critiques",
+      "body": "UniEvo-VL lets a single multimodal model act as both teacher and student, using its own critiques as privileged information during test-time self-improvement.",
+      "url": "https://arxiv.org/abs/2609.38721?utm_source=tldrai",
+      "published_at": "2026-10-05T00:00:00",
+      "source": "TLDR AI",
+      "extra": {
+        "category": "Quick Links",
+        "read_minutes": 22
+      }
+    },
+    {
+      "title": "Powerless F1 drivers frustrated by Bahrain F1 software glitch",
+      "body": "276 points, 234 comments on Hacker News.",
+      "url": "https://www.motorsport.com/f1/news/horrible-totally-unacceptable-powerless-f1-drivers-frustrated-by-bahrain-f1-software-glitch/10861968/",
+      "published_at": "2026-10-04T18:54:08",
+      "source": "Hacker News",
+      "extra": {
+        "points": 276,
+        "comments": 234
+      }
+    },
+    {
+      "title": "Show HN: AI search for every photo and every frame of video on macOS",
+      "body": "161 points, 72 comments on Hacker News.",
+      "url": "https://github.com/allenv0/SCM",
+      "published_at": "2026-10-04T02:24:52",
+      "source": "Hacker News",
+      "extra": {
+        "points": 161,
+        "comments": 72
+      }
+    },
+    {
+      "title": "Spending on AI Is Becoming Almost Impossible for Businesses to Budget",
+      "body": "55 points, 75 comments on Hacker News.",
+      "url": "https://www.wsj.com/tech/personal-tech/ai-token-spending-businesses-431ee94a",
+      "published_at": "2026-10-05T06:22:31",
+      "source": "Hacker News",
+      "extra": {
+        "points": 55,
+        "comments": 75
+      }
+    },
+    {
+      "title": "TikTok Launches New AI-Powered Smart Search: What Marketers Need to Know - Hello Partner",
+      "body": "TikTok Launches New AI-Powered Smart Search: What Marketers Need to Know Hello Partner",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNQjhmTGVKemxIUHdLREFqM3NNQlFkS1l2N285emo5eEtOa19MTVAtanZwcVp4WU1pRllROVVHVlFUMmVCbXBMRzN1MW1jSGZrR1drakk0TmJWQ3d5ZGc2QlFtYmlqV2FxRmVjUVlXbnAwM2xwOXhKUWxpbFQ4N3MtTG9tSDR4NWUwYTY3Z3d5WXdwSHNudmJXQmlIUzFsZw?oc=5",
+      "published_at": "2026-10-05T15:32:54",
+      "source": "Hello Partner",
+      "extra": {}
+    },
+    {
+      "title": "Big Tech Pulls AI Releases After Agent Hacks; Scholars Call It Self-Grading - Seoul Economic Daily",
+      "body": "Big Tech Pulls AI Releases After Agent Hacks; Scholars Call It Self-Grading Seoul Economic Daily",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQSEpfRTViREZJbFUwNVlkNkxiZmtxUGRkdHg3d3Bpd2NYVzhsVWVaR1RwRmI1S18wSVBiSXZCYTd6bU92S1ZydGxEZ1V5RFM3U01mMC1FNVhKY0ttVTljdTRVVm5VU2RpZnRETFhFRGE1aHM2R19BQmVaRGpfajl1Y0dRUDNwQWpsSm95WThqWjJhRGhHWi1QT2xLYlNXQWFDWXJabDdGdWJzdw?oc=5",
+      "published_at": "2026-10-05T07:42:32",
+      "source": "Seoul Economic Daily",
+      "extra": {}
+    },
+    {
+      "title": "Logistics Reply Introduces the LEA AI Agent Authority Model - Bringing Governed Agentic AI Into Warehouse Execution With LEA Dynamic Intelligence - via.ritzau.dk",
+      "body": "Logistics Reply Introduces the LEA AI Agent Authority Model - Bringing Governed Agentic AI Into Warehouse Execution With LEA Dynamic Intelligence via.ritzau.dk",
+      "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxQT2hoOXRNWW5LQUVSS3VMQm5uNDl4WUpDczZSTC14SXBrakFvdXoxYVVtQ1FuN1dEWjlNVWkxRUtwZXFvT2pUdE9pTGFCcE56VV85RlluNXJKdE1JWTYyM0x4djlXZU01LXJWanV0cEdvN0VhTDVuS0RpMDdmaXRXRllpazdGdGVYRGx5Z1l0REs2amxmbTNKeEhCY3IyMndGdGJQeGVNWnQ2VUxxeGp6VjJNYUVta2dhUGJmSE1RZmlOaDVtZkR1aGQyLUpZN1ZITHlObHdNci1lVnVlNkxTbERZeHdPM3I3NlYwdzhjM2J6OTZiUGx4MXRqZXZqQ2NwcExzNzktcWNOTG94RVNlLVFZdnk4bUcwNWdOQTBhUUE4X01jOVJJQTd0R2dxWV9hNFlmdGEtU1RqYk5vZ0E?oc=5",
+      "published_at": "2026-10-05T09:00:00",
+      "source": "via.ritzau.dk",
+      "extra": {}
+    },
+    {
+      "title": "I replaced ChatGPT, Claude, Gemini, and Perplexity with free open-source alternatives - xda-developers.com",
+      "body": "I replaced ChatGPT, Claude, Gemini, and Perplexity with free open-source alternatives xda-developers.com",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQUVFIXzJjc0RvN3dZZXI2d1QyelMtbTMtZzhQWDZUVWtsSHdWYUtyanEtR0RHWGQ2NVg2YXM4Ti05eUI0R2RFZGxGWTRCTGp1V3QwZmJpTGREY3NfLUhxcWM5eXJTdUR2aHdhQWtYSjRTelVZQVZaLXJpSllUazhoVnB1MkZhUUtsZ1AxVm9DYmlqZ0wxNWVJcGZJZlJVNVExMHVDdjVaeXFJdTg?oc=5",
+      "published_at": "2026-10-03T22:30:20",
+      "source": "xda-developers.com",
+      "extra": {}
+    },
+    {
+      "title": "Why Observability Is Vital For AI And LLM Applications - Open Source For You",
+      "body": "Why Observability Is Vital For AI And LLM Applications Open Source For You",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPTUlsbzhzTlFNdzNTOGNBZjJmZVo2dkVTT2dzbWJyZHNZMXBEYnFOODJNaV9FN2hPbHc3clpfVV9acUZ4c3V2UXVLMnpGUDFIclo3YXRJLTlRUFBHN0t6aEVwZGtsRXZMZFlXekRhR0t1ZFNkcHFPbUxTVVlXZHdwNzZ6NnRCVEw4dXItR0NrLWVKZTREaVRURk1n?oc=5",
+      "published_at": "2026-10-05T05:30:54",
+      "source": "Open Source For You",
+      "extra": {}
+    }
+  ],
+  "US Headlines": [
+    {
+      "title": "US supreme court hears big oil’s bid to block climate damage lawsuits - The Guardian",
+      "body": "US supreme court hears big oil’s bid to block climate damage lawsuits The Guardian A Supreme Court Battle Over Climate Change Begins The New York Times Supreme Court weighs local governments’ climate change lawsuits against oil and gas companies WRIC ABC 8News Conservative justices ask sharp questions of Colorado city suing oil companies over climate change impacts CNN Opinion | Boulder County Wants to Smash ‘Abundance’ wsj.com",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOYlFnV084NTBQQlg4c3ctTFJCYTlBcWlHN29MS1kwcHByWWlUZHlhLXZqMkRjVlFxQUJIcHE5VTI3OUpMQWduQmJwLV8tdmtoaXZoZWRuWS01R3JCWEY4SDBNMjQ3SVQ2bWpRQzJIQ2daWXViUHJlSmpiNzV3N1N1eGJnTzBfT2Mxc3BTZzVsRjhWSi11RlFBbQ?oc=5",
+      "published_at": "2026-10-05T14:34:00",
+      "source": "The Guardian",
+      "extra": {}
+    },
+    {
+      "title": "Dennis Hastert, ex-House speaker whose sex abuse admission upended legacy, dies at 84 - The Washington Post",
+      "body": "Dennis Hastert, ex-House speaker whose sex abuse admission upended legacy, dies at 84 The Washington Post Dennis Hastert, Powerful Politician Disgraced by Child Sexual Abuse, Dies The New York Times Former Republican House Speaker Dennis Hastert dead at 84 Fox News Dennis Hastert, longtime Republican House speaker who went to prison after molestation allegations, dies at age 84 CNN 2 killed, including 10th grader, after Florida school bus overturns in crash KATU",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPM2tIV3QxTGJhREFndHFxM0NmSTVweE5hcUdkZnZ1UXJCTm1vYkRYMGdya1loYWpIazlLYjNBU2pTa1lMSUd1a2EtaWt4YV8zUjNmLXY2bnhNU0xtRHdZQ1RURUJMV1BBTVE5QW05SFNjeW4yMzc0YkcydXR0OHBBanBCRmV1OVJONU54R2RYNjBvakNNYktpYWlSWkJGVjdfazV0UlJWLXVpRGFqWEE2WG5wRm5tM1hYam8zVzBXLVhPajlUakxFUVg3RkNORnc?oc=5",
+      "published_at": "2026-10-05T18:16:56",
+      "source": "The Washington Post",
+      "extra": {}
+    },
+    {
+      "title": "Christa Pike remains hospitalized in Nashville under armed guard - WKRN News 2",
+      "body": "Christa Pike remains hospitalized in Nashville under armed guard WKRN News 2 Tennessee’s outgoing prison chief had a history of execution missteps before Christa Pike, officials say CNN Christa Pike's attorneys renew push for commuted sentence after botched execution: \"Take death off the table\" CBS News Opinion | I Consulted With Christa Pike’s Death Row Team. I Knew This Could Happen. The New York Times Tennessee Correction commissioner to resign days after botched execution of Christa Pike: Governor abcnews.com",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNdmRhdFpZQVM2QzJlVHFfOHI5dXhUVW54bnE4N1N3VW9lMXlWTzJpUnZaM1E3QmN5S2JyamdwSnRHZ21VRHVKemJoQU8xUVo2ZmVnUDlBQkdTR2tCQ1FIU1M0NGZyUEJyNVJDc2lBYkJPY0RUaFRiRXQ0VHJsY0lPZU4yQTlNSTlkX0UxZTgyeDnSAZYBQVVfeXFMUGtDNl9wZHd4UFNwQXdPTVoxQ0lrTWhjS1JmN1BYd21jd3lNSWE0eWVNYVJDRzlWNldUbzBRejFRYVhCTU8tbU45akdGaGRkbzZPY2lfRGR1cDdHcW14N09BSzBJMFlvUW1ORllJSDZWU3kxbDJSOENtQzVOWWxYVzBwRWpUa0NTcmdIeUtvam1rT3BBclNB?oc=5",
+      "published_at": "2026-10-05T13:58:37",
+      "source": "WKRN News 2",
+      "extra": {}
+    },
+    {
+      "title": "Catholic schools, banned rifles and ‘climate lawfare’: Blockbuster fights await Supreme Court - Fox News",
+      "body": "Catholic schools, banned rifles and ‘climate lawfare’: Blockbuster fights await Supreme Court Fox News 6 things to watch in the Supreme Court’s new term The Washington Post A new Supreme Court term begins with cases on climate change, immigration and gun rights Yahoo How the Midterms Could Complicate the Supreme Court’s New Term The New York Times The Supreme Court faces another term jam-packed with controversy npr.org",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNOFhoMElRR3VuTzFPc08yTk51U2VWT1k5MTV2TnIwUk94SUdxbkpUcVlWbk5ETGkxbGpPOW5xdFEwSUlsTXhLUkN1QjVfWHpMVTc4Tmlfa0tXS0RXN0UteFlEbFlGSE1kaGNuNVlKbVhGc1VZNEdGTDV4N2Q1U1JwYzhEWmhaWUdFbnFlQlViZVNDeVBOcmJTeWhMTU1PN3dIaGh0VHBNb040M1NnVHBDZWhYLVd0ZmRKQmfSAb8BQVVfeXFMT0p4OS01cTVBNG5meFZHSzBVdWg2NzF6elZsSGktSUJWZHJ3bll6Ukl3amVnS0ZIMWZyU3g3VkpVRGxtb1VXZ2prN0hXSzNjSlM0Z3psMHlJMFBjYTdfdmZkNXV2THNBd010SHppWktSYUhRZGVhS1dKWl9jUWdmZmkwdEYtZUUwZW1HOHYzVl84TE5tLTZoQlgxUmpvZzg3NzFlYkpQazk3cjRRcnI3NmhEUWlxWXQ0WGp5bk5teHM?oc=5",
+      "published_at": "2026-10-05T13:00:03",
+      "source": "Fox News",
+      "extra": {}
+    },
+    {
+      "title": "Trump heads to Nebraska to rescue GOP seat as his beef import plan angers rural voters - Fortune",
+      "body": "Trump heads to Nebraska to rescue GOP seat as his beef import plan angers rural voters Fortune Trump heads to Nebraska for another red-state rally MS NOW President Donald Trump holds political rally in Nebraska ahead of November's midterms KETV How to watch President Trump at Grand Island midterm rally WOWT Trump heads to Nebraska as Republicans defend red-state Senate seat Reuters",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBJcGhQc3hQU0FhcnM2QW14ZnlSOEg1NVRjQXVsNHdHY05OSlBGMm93azhGd3puampCNnVRWTB3TUJ4bXA5a2tsZHRvUlRWLUhVSExGOHg3c3VjY09qQ3BlRnZqcHJwOHdUX1Jmd0w1NFZIbzZ3eFVRY2R4S3ozRFU?oc=5",
+      "published_at": "2026-10-05T14:10:00",
+      "source": "Fortune",
+      "extra": {}
+    },
+    {
+      "title": "Trump says ‘I feel badly’ for Cornell 7 accused in gang rape case - Syracuse.com",
+      "body": "Trump says ‘I feel badly’ for Cornell 7 accused in gang rape case Syracuse.com How Cornell Punished Each of the 7 Men Accused of Sexual Assault The New York Times Cornell building sprayed with graffiti blasting school’s response to gang rape accusation wbbjtv.com Cornell student who gave police leads in alleged rape says she feels ‘betrayed’ over its handling NBC News Opinion | Letitia James and the Cornell 7 wsj.com",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNU05aY1dza1ZtYUNCSENtT0J0VXdwYzBVWHg5NDJGS3ZIWnpJYmo1dW9QQmtJNDR3MUlhaERVSGh5aG9vMGw2TklEcjFmaVUtQlQ3blVuU2dxejREblFibGpKbjYtYWRyckdRc21sV1c1RmVtQ3V4UWZPcEVnUFFkb1AyREdQVkhFSjhGNlp0VXc4dWxkNldqQ3dRY1Q3Y1Z1S2JsOGl4SHV1clpWY0E?oc=5",
+      "published_at": "2026-10-05T14:35:00",
+      "source": "Syracuse.com",
+      "extra": {}
+    },
+    {
+      "title": "Trump plans executive order seeking to bring down high diesel costs - Politico",
+      "body": "Trump plans executive order seeking to bring down high diesel costs Politico Trump Plans to Ease Limits on Tax-Exempt Variety of Diesel Fuel bloomberg.com What is red-dyed diesel and can it help lower prices, as Trump wants? Reuters Trump to Issue Order Expanding Access to Tax-Exempt Diesel Fuel, Sources Say US News Money Trump is planning to ease restrictions on tax-exempt off-road diesel to cut fuel costs qz.com",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMXNZRTRyeTZ2eklHS29WekYySFhZVW1LQ2RQZlM2eVoydXN3ZTRSS1J4UEhpd3g2RkRZSXM1NGZ1d3dpdlpOY1JFYmtPYTBWNzFSUWl1V2I0VUpRMFdWc3k1MVVGazlvUU1Yb2ZKSFhibFdtR2V5OU1hV0pGc2k4VDJIMWNuc1J3b19QcEhn?oc=5",
+      "published_at": "2026-10-05T17:05:00",
+      "source": "Politico",
+      "extra": {}
+    },
+    {
+      "title": "US and German scientists win Nobel medicine prize for work on light and brain - Reuters",
+      "body": "US and German scientists win Nobel medicine prize for work on light and brain Reuters Nobel Prize in Physiology or Medicine Is Awarded for Discoveries in Neuroscience The New York Times Controlling the brain with light earns a physiology Nobel Ars Technica Stanford University professor Karl Deisseroth wins 2026 Nobel Prize in physiology or medicine Stanford Medicine Nobel Prize in medicine goes to 3 scientists for brain activity research WKRN News 2",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQXo2cFZNQjV2OVJOVnRDUlIzR0VJazh3WWt0MXlQXzBkWXlPRG1RVzZtVWlvbmdZMXFBM08xQzR0ZVlVdGtYVm5Dd2ptcHVhZmp1RDFxQkkxUzV4V2FLWWtaNlRWY25MbDVJSGsxNlA0LUdfNkVBOXdDTUdrNDdSR2lNSHc2c2VBMW1iejZWZ0tNN1hiVjBTdC1xcWR1SnA0cTFlVVF0RFA1SGhLWHZzR0QwbWkzYWRiM2U5dmpHdnJ3UnJV?oc=5",
+      "published_at": "2026-10-05T17:11:15",
+      "source": "Reuters",
+      "extra": {}
+    }
+  ],
+  "Immigration & Visas": [
+    {
+      "title": "\"Big week ahead\": Trump administration signals major action on foreign labour visa front - ANI News",
+      "body": "\"Big week ahead\": Trump administration signals major action on foreign labour visa front ANI News",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQdVBYclF4SnV2NFFHaFAzZDJDLWFUTTJxUGc3TTZkZjBDeHdfUlJSZ25LcEhWOHYyYmpXeFVNUVFRdVk0UGVEbEh0ak1uNmNlQlNJMDlLb0Z5aXpxYm5vejVpcFFlVk0tYWhGcUJxWW1iSnc1LXQ5ZDcyV29XNm1EdG1lSk5jQzhFc0JTb3NpT2R2TTVaYnRueUZqQmtpWHBYcDByQTlXSjM5QlB2TDNmY21hRElIZWxSNnJNM1dtbzVJTDlSRmVIQS0yc0M0cDRlSWc?oc=5",
+      "published_at": "2026-10-05T06:48:00",
+      "source": "ANI News",
+      "extra": {}
+    },
+    {
+      "title": "This nurse was assaulted by ICE – and it was caught on video. Now she wants her day in court - The Guardian",
+      "body": "This nurse was assaulted by ICE – and it was caught on video. Now she wants her day in court The Guardian",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQX0tveU94bk9ZS3Q3VmVDMnkzc1h1VjY4M3V4cUlHY3Q2bDFSaDRKUUFWQWhXLXJxUXlXQWh5YkpKN2dmSnR2WkxXbFN0NEpPd0NsUDB4dFJNR1gtU2YxV3pheUtDQWQ2STZSRm4xdFYzTzVOUndhbjFiLWF4eExDSm80OTdBSXQxUXNtQ0xIaDVPeXVfV2lXaA?oc=5",
+      "published_at": "2026-10-05T14:09:00",
+      "source": "The Guardian",
+      "extra": {}
+    },
+    {
+      "title": "Opinion | Bracing for a post-midterms ICE resurgence - The Washington Post",
+      "body": "Opinion | Bracing for a post-midterms ICE resurgence The Washington Post",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQdmxfTlYyVUV2S0RlUExSS1ZKTUFSMXJhaWVueUF6V29CNmJNNkFseVB5YWtyY0l1QS1NZjN0ZWRSQXE5LXZ2OVd1TUJsTnVSZF9XVVpnZ01yekRyMVVGTTVza0wxRmxld0REUWx6RUEyZUFDcjNxWUxDalQ1MnVRNUtKMUlFWjlCWVVTa05mSGp5NXVjdlZKa3VDRXVEeGdpblNxdjM0cmJ4SVhGemg3Xw?oc=5",
+      "published_at": "2026-10-05T17:45:00",
+      "source": "The Washington Post",
+      "extra": {}
+    },
+    {
+      "title": "ICE releases Austin woman 10 minutes after stopping her. Here’s what happened - Austin American-Statesman",
+      "body": "ICE releases Austin woman 10 minutes after stopping her. Here’s what happened Austin American-Statesman",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQMVdOOXNwLUZrWkFKckpNbzFkUUl1YVdLdUJrNVJTU3gwekpBQ0RXSnB6Yi1idVRlYkxoVFg2cElJdXdKSnRXYWg3TGVHUjFXQjRza3NNTjBXZXJ2TUlZYTdYZ2h2VTRKV0xfVXpDQnJLY3dONDhzRDJqWXhVLUNnWlNTd2tjZW93ak5hSUM2ejBYeGwxbmpYTXRQb3NlNVpaUHJFc05DVlhJU1U?oc=5",
+      "published_at": "2026-10-05T18:59:19",
+      "source": "Austin American-Statesman",
+      "extra": {}
+    },
+    {
+      "title": "ICE arrests with noncriminal violations surge in Austin - KXAN Austin",
+      "body": "ICE arrests with noncriminal violations surge in Austin KXAN Austin",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOX3VFODM0cGFPQlRDYzdnZnVnbldVVUpFcUtKNUdVWlVDWk5yLW9QcnFBOFlXdk9IMkdVNXVaRlg2Z19oM1RJMUZRQW90S1JFMEI4RGoyTkpmSjc5V0VCTTJSQzNmaThxNFR6d0NwY01BYXpsdE5kakxqeU5tT0gyZHhrWmJ1SnVFU2xwM3p5SkFhRDhLZTJKOHM4Yko3RXhXUUU2T25nUkIwVWc?oc=5",
+      "published_at": "2026-10-05T18:37:24",
+      "source": "KXAN Austin",
+      "extra": {}
+    },
+    {
+      "title": "Catch, release, catch: Inside ICE's new 'farce' tactic - MPR News",
+      "body": "Catch, release, catch: Inside ICE's new 'farce' tactic MPR News",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNZXFFSFZxMkVXejZuU0RFa2NYb3pHa2xMb2EzVVNYV3BJbE16U1hQZHR2aURqck9oNWFRVWZ0dFJxMFlDbUg5MkJGc2tVWEFYckJ2TEZYU2FjX29JQ1o5ZTZMdFpIOHdXVXVyVlpMWFBVMnQwejNtSWZTQUxyUUplV055dkVGd2tV?oc=5",
+      "published_at": "2026-10-05T10:00:00",
+      "source": "MPR News",
+      "extra": {}
+    },
+    {
+      "title": "“You Kidnapped My Son” - Mother Jones",
+      "body": "“You Kidnapped My Son” Mother Jones",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQa0VmeVpxRzdPdkxzT0ZLdjZSQlVhZmtHOEFpQ1dUTjZ3YmVZTFpKVXIyR3FubTZTSEtTYUtDdUFjaGZVenhWeTFJczJvWlh6ZjRncE5ZNUs1Q3NGSV9XcDZpYmdZRnZ4N0Z1RnZtYWhYOHJnYjNjcG9GNmFGckxJMFVtelBGR2thSW9VOWN2Rmk0NlhWTEVBeTZES09obEhDbDc5emxvR0xTOUZjdExmeGxGRWtURDlvNE96XzZPYXFENGVzZFp4N3ZuX1ZaMkNZWUJaOTlfM3F4S2tPbVJQR3gtQktpUmw0?oc=5",
+      "published_at": "2026-10-05T12:20:13",
+      "source": "Mother Jones",
+      "extra": {}
+    },
+    {
+      "title": "Dr Pepper Is Dropping a New Permanent Flavor - Allrecipes",
+      "body": "Dr Pepper Is Dropping a New Permanent Flavor Allrecipes",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1iWG51dGRkbWhDS3ZpNk5rWXFSN182MDY4ZUJZbUI1WTc3Wk05dUJXZ3U4Y0UzWFMxVktNdlNseDc3emhzcWlWMU5WNlBjNVQ5bnVQS1RBWTJjQVJHOXowVXJfUmk4RnFMRFRWV2RILW5qaGs?oc=5",
+      "published_at": "2026-10-05T14:00:00",
+      "source": "Allrecipes",
+      "extra": {}
+    },
+    {
+      "title": "Daily Wire’s Pro-ICE Film ‘Pawn Shop’ Production Temporarily Suspended - Variety",
+      "body": "Daily Wire’s Pro-ICE Film ‘Pawn Shop’ Production Temporarily Suspended Variety",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNVk1HdXZTeUpEbmZGUkREaE54NzhwZlpRMmM1S0NlRzkza2EyNUpZWkdwNnNza1p5UGxpbFA5WWJObkhZb0wzZHlsaXlRVXdaUGdHS3FQVFV1clJFSlBISks0eWREX0dDcWdGclg4Mkw0VzRRWG9LNzhlc3RNZFl0SEN2dFV5VXBKVXJKQUNWRFdhS25QUGtySnlMRFRTWW5pVjl3?oc=5",
+      "published_at": "2026-10-04T17:58:00",
+      "source": "Variety",
+      "extra": {}
+    }
+  ],
+  "Markets": [
+    {
+      "title": "Index moves",
+      "body": "S&P 500: 7,781 (+0.75%); Nasdaq Composite: 27,483 (+1.07%); Dow Jones: 51,324 (+0.29%)",
+      "url": "",
+      "published_at": "2026-10-05T11:43:01.336752",
+      "source": "Markets",
+      "extra": {}
+    },
+    {
+      "title": "Watchlist moves",
+      "body": "NVDA +2.07%; MSFT +1.62%; GOOGL +1.05%; AMZN +0.88%; AAPL -0.25%",
+      "url": "",
+      "published_at": "2026-10-05T11:43:01.336752",
+      "source": "Markets",
+      "extra": {
+        "movers": [
+          [
+            "NVDA",
+            2.07095588113002
+          ],
+          [
+            "MSFT",
+            1.6230871453620925
+          ],
+          [
+            "GOOGL",
+            1.0523989037481805
+          ],
+          [
+            "AMZN",
+            0.8826340581237793
+          ],
+          [
+            "AAPL",
+            -0.2547292688713023
+          ]
+        ]
+      }
+    }
+  ]
+}

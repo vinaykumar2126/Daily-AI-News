@@ -1,0 +1,391 @@
+{
+  "AI & Tech": [
+    {
+      "title": "OpenAI managed agents 🤖, TPU inference⚡, Anthropic $517B compute 💰",
+      "body": "OpenAI plans to introduce Managed Agents at DevDay 2026, following a\r\nmodel similar to Anthropic's offerings, targeting businesses and\r\ndevelopers ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ \r\n\r\n\r\n Sign Up [1] |Advertise [2]|View Online [3] \r\n\r\n \t\tTLDR \r\n\r\n \t\tTOGETHER WITH [Wispr] [4]\r\n\r\nTLDR AI 2026-09-08\r\n\r\n THE WISPR FLOW NOTETAKER IS HERE - AND IT'S GOT _ALL_ THE CONTEXT\r\nWITH NONE OF THE BOTS (SPONSOR) [4] \r\n\r\n We've all accepted that notetakers get things wrong, and all the pain\r\nthat comes with: tedious cleanup, garbled customer quotes, confusing\r\naction items.\r\n\r\nBut what if your notetaker got it right the first time, every time?\r\n\r\nMeet the Wispr Flow Notetaker [5].\r\n\r\nIt's free to use [6]. It GETS YOUR WORDS RIGHT. It gets speaker names\r\nright. It WORKS EVERYWHERE (even an impromptu Slack huddle.) It\r\ndelivers CLEAN AND USEABLE CONTEXT to your AI agents via MCP. And NO\r\nBOT EVER JOINS the call.\r\n\r\nStop settling for almost-right. Get accurate, ready to use meeting\r\nnotes that you don't need to double check.\r\n\r\nGet one month of Pro free → [7]\r\n\r\n🚀 \r\n\r\nHEADLINES & LAUNCHES\r\n\r\n ANTHROPIC SIGNED $517BN IN COMPUTE AGREEMENTS IN PAST 11 MONTHS (2\r\nMINUTE READ) [8] \r\n\r\n Anthropic has secured $517 billion in compute capacity leases over\r\nthe past 11 months, amounting to 14.8GW, primarily with Google and\r\nAWS. This expansion includes large deals with cloud providers like\r\nAkamai and Fluidstack and a $45bn agreement with Nscale. The company\r\nconfidentially filed for an IPO with the SEC in June. \r\n\r\n OPENAI PREPARES MANAGED AGENTS FOR DEVDAY 2026 (3 MINUTE READ) [9] \r\n\r\n OpenAI plans to introduce Managed Agents at DevDay 2026, following a\r\nmodel similar to Anthropic's offerings, targeting businesses and\r\ndevelopers. The new agents aim to integrate advanced models with\r\nsuperior computer-use capabilities at competitive price points to\r\nattract users. Additionally, they will offer functionality that\r\nenhances advertising through interactive agents, potentially\r\nchallenging major players like Meta and Google. \r\n\r\n🧠 \r\n\r\nDEEP DIVES & ANALYSIS\r\n\r\n TPU INFERENCE EXTERNALIZATION FULL STEAM AHEAD (35 MINUTE READ) [10] \r\n\r\n Google's TPUv7 Ironwood delivers up to 50% better performance per\r\ndollar compared to Nvidia's B200/B300 chips. Ironwood is the first\r\ngeneration in which Google is competing for others' inference\r\nworkloads with chips that can be purchased outright or rented through\r\nits own cloud. Google has decades of software engineering experience,\r\nso external TPU software should mature rapidly. This article takes a\r\nlook at the TPU system and discusses the steps needed to make the\r\nstack widely available. \r\n\r\n PROMPT INJECTION THROUGH TOOL OUTPUT (8 MINUTE READ) [11] \r\n\r\n Prompt injections hidden in tool results can evade conventional\r\nsafeguards because input and action screens inspect separate moments\r\nof an agent loop. The proposed signal is a “precedent gap,” where\r\nan agent suddenly makes a tool call or uses arguments absent from its\r\nexecution history. \r\n\r\n AUTOMATICALLY DETECTING AI TEXT IN MY BROWSER (5 MINUTE READ) [12] \r\n\r\n Automated AI text detection is currently an underserved niche.\r\nPangram does an excellent job, but it is still more a tool to confirm\r\nsuspicion. This developer wanted a tool that runs in the background\r\nand automatically scans sites so they can avoid AI-generated text in\r\nthe first place. This post details how they developed Deckard, a\r\nChrome extension that uses a locally-run model to mark AI-generated\r\ntext. \r\n\r\n THE TWO MMLU SCORES: WHAT A BENCHMARK NAME DOES NOT FIX (23 MINUTE\r\nREAD) [13] \r\n\r\n Two builds with the same provider, model family, metric identifier,\r\nunit, and benchmark name can score differently. The difference is the\r\nrunners, graders, and dataset splits. The shared mmlu label identifies\r\na dataset family, not a full measurement procedure. \r\n\r\n🧑‍💻 \r\n\r\nENGINEERING & RESEARCH\r\n\r\n YOUR AI DESERVES BETTER THAN GARBLED TRANSCRIPTS (SPONSOR) [14] \r\n\r\n If your AI is writing nonsensical followups and misattributing\r\ncustomer quotes, you might want to double-check your transcript... or\r\nuse the Wispr Flow Notetaker [15] and get meeting transcripts you can\r\ntrust. Names, people, technical terms - with the accuracy you expect\r\nfrom Wispr Flow. No meeting bots required. Use it for free [15] \r\n\r\n GOOGLE ACCELERATOR AGENTS FOR TPU DEVELOPMENT (GITHUB REPO) [16] \r\n\r\n Google's Accelerator Agents use Gemini to help developers migrate\r\nPyTorch workloads to JAX and optimize custom kernels for Google Cloud\r\nTPUs. The toolkit includes MaxCode for model conversion and MaxKernel\r\nfor writing, porting, profiling, and debugging Pallas kernels. \r\n\r\n QWEN-DRIVE (GITHUB REPO) [17] \r\n\r\n Qwen-Drive is a project that aims to create a Vision-Language\r\nFoundation model for autonomous driving. The project uses a staged\r\ntraining strategy that integrates perception, language, and planning\r\nobjectives. The model achieves specialized driving competence while\r\nretaining broad visual understanding and instruction-following\r\ncapabilities. A GPU with 24 GB+ of memory is recommended. \r\n\r\n HIP-AGENT: A HARNESS THAT FITS IN THE PROMPT (5 MINUTE READ) [18] \r\n\r\n hip-agent is a small agent harness designed for agents. The\r\nconfiguration is environment variables, actions are shell commands,\r\nand a subagent is a child process. The rest is handled by existing\r\nprotocols and formats. The core loop is about 200 lines of Python and\r\na module for the Codex API. \r\n\r\n🎁 \r\n\r\nMISCELLANEOUS\r\n\r\n PRODUCT MANAGER, APPLIED AI AT TLDR ($200K BASE + $60K BONUS, FULLY\r\nREMOTE) [19] \r\n\r\n TLDR is hiring its first PM to help build the agent-first operating\r\nlayer used across the company. We're looking for a builder who has\r\nshipped real products/systems with LLMs. Click here to learn more\r\n[19]. \r\n\r\n THE EDUCATION OF A DOOMER (9 MINUTE READ) [20] \r\n\r\n Automation has been good, but AGI may make humans economically\r\nuseless, which will have many consequences. It's clear that AI\r\ncapabilities are growing far faster than our ability to control or\r\nunderstand them. In the future, people will likely hand over control\r\nto AI voluntarily, as it will be the logical choice. However, before\r\nthat happens, there are several signs that people are already giving\r\nup thinking. \r\n\r\n MACHINES THAT THINK: EMBODIED INTELLIGENCE (10 MINUTE READ) [21] \r\n\r\n Vision and language models are making strides, but embodied AI in\r\nrobotics struggles due to sparse, costly training data for\r\nmanipulation tasks. Robotics excels where tasks are fixed, yet\r\ngeneral-purpose robots falter, evident in low performance on\r\nbenchmarks like Libero. Startups should focus on narrow, instrumented\r\ndeployments. Innovation lies in converting existing robot data into\r\ntraining insights. Ensuring reliability in physical AI systems is\r\nparamount. \r\n\r\n THE CHASM: THE SHAPE OF UNFINISHED AI CODEBASES (6 MINUTE READ) [22] \r\n\r\n AI codebases exhibit a unique, unpredictable pattern where programs\r\nappear polished but often hide deep, hidden issues leading to\r\nsignificant failures outside controlled demos. Unlike human-authored\r\nprograms where gaps surface predictably, AI-generated software\r\nmisleads with false performance tests or incomplete features,\r\nresulting in the need for frequent rewrites to address these\r\ndeep-rooted flaws. Understanding and anticipating the underlying shape\r\nof these unfinished AI codebases is crucial to navigating and\r\nmitigating the challenges they present. \r\n\r\n⚡ \r\n\r\nQUICK LINKS\r\n\r\n THE NEW WISPR FLOW NOTETAKER IS FREE (SPONSOR) [23] \r\n\r\n Download it, install it, and record your next meeting with no meeting\r\nbots. You'll feel the difference immediately. $0/mo with weekly\r\nlimits, or get one month free of Pro [24]. \r\n\r\n COSINE SIMILARITY IS NOT A SAFETY PROPERTY (18 MINUTE READ) [25] \r\n\r\n Cosine has no notion of truth, authority, or provenance. \r\n\r\n ARM'S C2-ULTRA, G2-ULTRA NX, AND CSS N4 IP (8 MINUTE READ) [26] \r\n\r\n Arm's upcoming C2-Ultra CPU and G2-Ultra NX GPU IP will see broad use\r\nacross flagship phones. \r\n\r\n BYTEDANCE IS PREPARING A REAL-TIME SPATIAL VIDEO MODEL UNDER ZHANG\r\nYIMING (4 MINUTE READ) [27] \r\n\r\n ByteDance, led by Zhang Yiming, plans to launch an AI model for\r\nreal-time spatial video generation, potentially as early as next\r\nmonth. \r\n\r\n GOOGLE TESTS AI-POWERED CONTRAIL AVOIDANCE ON LONG-HAUL FLIGHTS (1\r\nMINUTE READ) [28] \r\n\r\n Google is trialing contrail avoidance for ultra-long-haul flights in\r\nthe Asia-Pacific region. \r\n\r\n LOVABLE LAUNCHES DRAFTS FOR PARALLEL APP EXPERIMENTATION (3 MINUTE\r\nREAD) [29] \r\n\r\n Drafts allow tech teams to experiment with project changes without\r\naffecting live apps, enabling parallel version exploration. \r\n\r\nLove TLDR? Tell your friends and get rewards!\r\n\r\n Share your referral link below with friends to get free TLDR swag! \r\n\r\n https://refer.tldr.tech/3bd40fca/2 [30] \r\n\r\n \t\t Track your referrals here. [31] \r\n\r\nWant to advertise in TLDR? 📰\r\n\r\n If your company is interested in reaching an audience of AI\r\nprofessionals and decision makers, you may want to ADVERTISE WITH US\r\n[32]. \r\n\r\nWant to work at TLDR? 💼\r\n\r\n APPLY HERE [33], CREATE YOUR OWN ROLE [34] or send a friend's resume\r\nto jobs@tldr.tech and get $1k if we hire them! TLDR is one of INC.'S\r\nBEST BOOTSTRAPPED BUSINESSES [35] of 2025. \r\n\r\n If you have any comments or feedback, just respond to this email! \r\n\r\nThanks for reading, \r\nAndrew Tan [36], Ali Aminian [37], & Jacob Turner [38] \r\n\r\n Manage your subscriptions [39] to our other newsletters on tech,\r\nstartups, and programming. Or if TLDR AI isn't for you, please\r\nunsubscribe [40]. \r\n\r\n \r\n\r\nLinks:\r\n------\r\n[1] https://tldr.tech/ai?utm_source=tldrai\r\n[2] https://advertise.tldr.tech/?utm_source=tldrai&utm_medium=newsletter&utm_campaign=advertisetopnav\r\n[3] https://a.tldrnewsletter.com/web-version?ep=1&lc=79a452fe-a4cb-11f1-9088-9d48ec6382cd&p=4ee75892-ab72-11f1-898f-4b6f6aec0b08&pt=campaign&t=1788874682&s=30e9a7123472273b06af9685254a698c001ac8962d81d673cfe8aebede6ede13\r\n[4] https://wisprflow.ai/notetaker?dub_id=AJrvsjYd3Zz4AZUk&utm_source=tldrai&utm_medium=newsletter&utm_campaign=tldr-ai-2026-09&utm_content=primary-2026-09-08_header_wispr_flow_notetaker\r\n[5] https://wisprflow.ai/notetaker?dub_id=AJrvsjYd3Zz4AZUk&utm_source=tldrai&utm_medium=newsletter&utm_campaign=tldr-ai-2026-09&utm_content=primary-2026-09-08_Body_wispr_flow_notetaker\r\n[6] https://wisprflow.ai/notetaker?dub_id=AJrvsjYd3Zz4AZUk&utm_source=tldrai&utm_medium=newsletter&utm_campaign=tldr-ai-2026-09&utm_content=primary-2026-09-08_Body_its_use\r\n[7] https://wisprflow.ai/notetaker?dub_id=AJrvsjYd3Zz4AZUk&utm_source=tldrai&utm_medium=newsletter&utm_campaign=tldr-ai-2026-09&utm_content=primary-2026-09-08_cta_one_month_pro\r\n[8] https://www.datacenterdynamics.com/en/news/anthropic-signed-517bn-in-compute-agreements-in-past-11-months/?utm_source=tldrai\r\n[9] https://www.testingcatalog.com/openai-prepares-managed-agents-for-devday-2026/?utm_source=tldrai\r\n[10] https://inferencex.semianalysis.com/blog/tpu-inferencex-full-steam?utm_source=tldrai\r\n[11] https://www.armosec.io/blog/untrusted-tool-output-prompt-injection/?utm_source=tldrai\r\n[12] https://www.seangoedecke.com/deckard/?utm_source=tldrai\r\n[13] https://zatona.dev/blog/the-two-mmlu-scores?utm_source=tldrai\r\n[14] https://ref.wisprflow.ai/tldrai-sep8-secondary?utm_source=tldrai\r\n[15] https://ref.wisprflow.ai/tldrai-sep8-secondary\r\n[16] https://github.com/AI-Hypercomputer/accelerator-agents?utm_source=tldrai\r\n[17] https://github.com/QwenLM/Qwen-Drive-1.0?utm_source=tldrai\r\n[18] https://jonathanc.net/blog/hip-agent?v=2&utm_source=tldrai\r\n[19] https://jobs.ashbyhq.com/tldr.tech/897f4391-66ab-44ca-a8eb-65dd9809200d?utm_source=tldr\r\n[20] https://borretti.me/article/the-education-of-a-doomer?utm_source=tldrai\r\n[21] https://janbosch.com/machines-that-think-embodied-intelligence/?utm_source=tldrai\r\n[22] https://jimmyhmiller.com/shape-of-unfinished-ai-codebases?utm_source=tldrai\r\n[23] https://ref.wisprflow.ai/tldrai-sep8-quicklinks?utm_source=tldrai\r\n[24] https://ref.wisprflow.ai/tldrai-sep8-quicklinks\r\n[25] https://aminrj.com/posts/cosine-similarity-is-not-a-safety-property/?utm_source=tldrai\r\n[26] https://chipsandcheese.com/p/arms-c2-ultra-g2-ultra-nx-and-css?utm_source=tldrai\r\n[27] https://thenextweb.com/news/bytedance-spatial-video-world-model-zhang-yiming?utm_source=tldrai\r\n[28] https://blog.google/innovation-and-ai/models-and-research/google-research/contrail-avoidance-ultra-long-haul-flights/?utm_source=tldrai\r\n[29] https://lovable.dev/blog/introducing-drafts?utm_source=tldrai\r\n[30] https://refer.tldr.tech/3bd40fca/2\r\n[31] https://hub.sparklp.co/sub_c3d72a5538e5/2\r\n[32] https://advertise.tldr.tech/?utm_source=tldrai&utm_medium=newsletter&utm_campaign=advertisecta\r\n[33] https://jobs.ashbyhq.com/tldr.tech\r\n[34] https://jobs.ashbyhq.com/tldr.tech/c227b917-a6a4-40ce-8950-d3e165357871\r\n[35] https://www.linkedin.com/feed/update/urn:li:activity:7401699691039830016/\r\n[36] https://twitter.com/andrewztan\r\n[37] https://www.linkedin.com/in/aliiaminian/\r\n[38] https://www.linkedin.com/in/jacob-turner-7521a8198/\r\n[39] https://tldr.tech/ai/manage?email=godavartivinaykumar%40gmail.com\r\n[40] https://a.tldrnewsletter.com/unsubscribe?ep=1&l=eedf6b14-3de3-11ed-9a32-0241b9615763&lc=79a452fe-a4cb-11f1-9088-9d48ec6382cd&p=4ee75892-ab72-11f1-898f-4b6f6aec0b08&pt=campaign&pv=5&spa=1788872469&t=1788874682&s=0bbd83a936347e29630a955c30c7a4bf211b335f40dc8f0e48ae482c924959d5",
+      "url": "",
+      "published_at": null,
+      "source": "dan@tldrnewsletter.com",
+      "extra": {}
+    },
+    {
+      "title": "Muse – Meta’s personal AI agent",
+      "body": "286 points, 282 comments on Hacker News.",
+      "url": "https://ai.meta.com/muse/",
+      "published_at": "2026-09-08T12:25:00",
+      "source": "Hacker News",
+      "extra": {
+        "points": 286,
+        "comments": 282
+      }
+    },
+    {
+      "title": "Show HN: Copperhead – Cursor for circuit boards",
+      "body": "206 points, 79 comments on Hacker News.",
+      "url": "https://copperhead.sh/",
+      "published_at": "2026-09-08T06:26:45",
+      "source": "Hacker News",
+      "extra": {
+        "points": 206,
+        "comments": 79
+      }
+    },
+    {
+      "title": "Emacs Bedrock 2.0",
+      "body": "180 points, 51 comments on Hacker News.",
+      "url": "https://lambdaland.org/posts/2026-09-06-bedrock-v2/",
+      "published_at": "2026-09-07T13:12:12",
+      "source": "Hacker News",
+      "extra": {
+        "points": 180,
+        "comments": 51
+      }
+    },
+    {
+      "title": "Show HN: Stuxnet – A reconstructed source code of the infamous cyber-weapon",
+      "body": "167 points, 50 comments on Hacker News.",
+      "url": "https://github.com/Sadpainy/Stuxnet",
+      "published_at": "2026-09-07T15:12:38",
+      "source": "Hacker News",
+      "extra": {
+        "points": 167,
+        "comments": 50
+      }
+    },
+    {
+      "title": "Tell HN: OpenAI brings back 5 hour limit for plus and business standard users",
+      "body": "127 points, 145 comments on Hacker News.",
+      "url": "https://news.ycombinator.com/item?id=49600233",
+      "published_at": "2026-09-07T09:40:32",
+      "source": "Hacker News",
+      "extra": {
+        "points": 127,
+        "comments": 145
+      }
+    },
+    {
+      "title": "Show HN: LLM Attention Visualization",
+      "body": "124 points, 22 comments on Hacker News.",
+      "url": "https://ishamf.dev/p/llm-attention-visualizer/",
+      "published_at": "2026-09-08T09:59:41",
+      "source": "Hacker News",
+      "extra": {
+        "points": 124,
+        "comments": 22
+      }
+    },
+    {
+      "title": "Multi-Agents LLM Financial Trading Framework",
+      "body": "113 points, 75 comments on Hacker News.",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "published_at": "2026-09-07T22:20:23",
+      "source": "Hacker News",
+      "extra": {
+        "points": 113,
+        "comments": 75
+      }
+    },
+    {
+      "title": "Apparently CodePen 2.0 sends data to their servers as you type",
+      "body": "112 points, 59 comments on Hacker News.",
+      "url": "https://news.ycombinator.com/item?id=49596976",
+      "published_at": "2026-09-07T04:22:40",
+      "source": "Hacker News",
+      "extra": {
+        "points": 112,
+        "comments": 59
+      }
+    },
+    {
+      "title": "Show HN: GET Together – A social network where you don't need POST to Post",
+      "body": "106 points, 59 comments on Hacker News.",
+      "url": "https://gettogether.dev",
+      "published_at": "2026-09-06T18:41:11",
+      "source": "Hacker News",
+      "extra": {
+        "points": 106,
+        "comments": 59
+      }
+    },
+    {
+      "title": "Show HN: Engrim – A universal, local-first SQLite memory engine for AI CLIs",
+      "body": "90 points, 53 comments on Hacker News.",
+      "url": "https://github.com/timgordontg/engrim",
+      "published_at": "2026-09-06T21:49:36",
+      "source": "Hacker News",
+      "extra": {
+        "points": 90,
+        "comments": 53
+      }
+    },
+    {
+      "title": "GPT-6 Astra: A new generation of intelligence - OpenAI",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiTkFVX3lxTE11QUxBUVJLdC1jSmtJbmcxQzg4Qm9yUlNPS3JEMEVBanIyY1FRT2k2R0hBTlNnX2VqcWpTSDJUMDV0TjBJN1VGamlrZzVPZw?oc=5\" target=\"_blank\">GPT-6 Astra: A new generation of intelligence</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">OpenAI</font>",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE11QUxBUVJLdC1jSmtJbmcxQzg4Qm9yUlNPS3JEMEVBanIyY1FRT2k2R0hBTlNnX2VqcWpTSDJUMDV0TjBJN1VGamlrZzVPZw?oc=5",
+      "published_at": "2026-09-09T02:24:41",
+      "source": "OpenAI",
+      "extra": {}
+    },
+    {
+      "title": "Del Mar College launches AI strategy with chatbots, course tools and programs planned for fall 2027 - KRIS 6 News Corpus Christi",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMigwJBVV95cUxNeUxLOG5KTVlrOTFGNk5Gck8wRTdvVzFOR19JaS1HVVVVck9YZExsUGM3Zm5hN3ZMOVhKNWNGMVVnd2k3Uk9uNkptM25CYWRMbHZNbkFsZl9KbkI4Ml9xUmpPRkw3VUVZMWFQa0IwcGE5Q2R3MzYtbWs1a2VueEhMejB4NHdHdDZlZmJ3WTdPTnRIemV5SFlKRzdKMHNLOTQ4bEZiNmZILXlMdm9wYzcwVS1ORjFLUDRvc05PdGNfTUVCanNFbFBWLTZmZTJUcnFvemhjamtWSU91Z094TGswZm5ldUdmbnVTeWlGQk04MnExcktaV282aFN4UGlQRkZGdThJ?oc=5\" target=\"_blank\">Del Mar College launches AI strategy with chatbots, course tools and programs planned for fall 2027</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KRIS 6 News Corpus Christi</font>",
+      "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNeUxLOG5KTVlrOTFGNk5Gck8wRTdvVzFOR19JaS1HVVVVck9YZExsUGM3Zm5hN3ZMOVhKNWNGMVVnd2k3Uk9uNkptM25CYWRMbHZNbkFsZl9KbkI4Ml9xUmpPRkw3VUVZMWFQa0IwcGE5Q2R3MzYtbWs1a2VueEhMejB4NHdHdDZlZmJ3WTdPTnRIemV5SFlKRzdKMHNLOTQ4bEZiNmZILXlMdm9wYzcwVS1ORjFLUDRvc05PdGNfTUVCanNFbFBWLTZmZTJUcnFvemhjamtWSU91Z094TGswZm5ldUdmbnVTeWlGQk04MnExcktaV282aFN4UGlQRkZGdThJ?oc=5",
+      "published_at": "2026-09-09T01:45:45",
+      "source": "KRIS 6 News Corpus Christi",
+      "extra": {}
+    },
+    {
+      "title": "New Ecommerce Tools: September 8, 2026 - Practical Ecommerce",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE4xN0dfeFdMZk0xMTBtUmhqS3M4TUJrN2R0dkh4RWtzTFo0VHVfRG5hTnU4SEJMZEtJS2g1VnM0ODJUTHptbUdLTVdHcHQyX0RSWDdFUXl3aXBnM3Jab3FJUlhZS1JpUW1FN0NGZjVRekVKYlp1MkR5dWlZTQ?oc=5\" target=\"_blank\">New Ecommerce Tools: September 8, 2026</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Practical Ecommerce</font>",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE4xN0dfeFdMZk0xMTBtUmhqS3M4TUJrN2R0dkh4RWtzTFo0VHVfRG5hTnU4SEJMZEtJS2g1VnM0ODJUTHptbUdLTVdHcHQyX0RSWDdFUXl3aXBnM3Jab3FJUlhZS1JpUW1FN0NGZjVRekVKYlp1MkR5dWlZTQ?oc=5",
+      "published_at": "2026-09-08T14:07:28",
+      "source": "Practical Ecommerce",
+      "extra": {}
+    },
+    {
+      "title": "Google Pics vs Canva: New AI Tool After $7.1B Cut - shattered.io",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE4zSXNMaFJxQkdUTUhHc3dQaEpIQUZPV1ZKemV6dU1qV25RTTdNdFJ0UXBrdGZpam1lTkstdUE2cXdVWWhjVkpLY3hvQ1RsUWhVREhNSUZGZXY1WFZJamljQkExY3NFc1BWTjdmWVZXMnMzdw?oc=5\" target=\"_blank\">Google Pics vs Canva: New AI Tool After $7.1B Cut</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">shattered.io</font>",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE4zSXNMaFJxQkdUTUhHc3dQaEpIQUZPV1ZKemV6dU1qV25RTTdNdFJ0UXBrdGZpam1lTkstdUE2cXdVWWhjVkpLY3hvQ1RsUWhVREhNSUZGZXY1WFZJamljQkExY3NFc1BWTjdmWVZXMnMzdw?oc=5",
+      "published_at": "2026-09-08T11:31:14",
+      "source": "shattered.io",
+      "extra": {}
+    },
+    {
+      "title": "Canva now has a Google AI rival, just a month after $10b wipeout - AFR",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxPc1FSeUJ6VXMwV3JiaG9wZ1JoUzFqdXRpV3N5Qm9LQ09qREh2bEZIMDcwWmNfQWJDZWhBamM2SnN6c2ZYT2xVTnpWN0dyRjhDWGc2Z3Ixclo1b3Q4S2Y0cWFsMzIxaGZEaURVSEtGeDl6VjZVNjU1RzZQRHBHZXdKeGdVSVYyUXhaZnY2QVh3c1g3VzFmRkRXV2VMSDk5TUd3N2djeGxjQ3U0dw?oc=5\" target=\"_blank\">Canva now has a Google AI rival, just a month after $10b wipeout</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AFR</font>",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPc1FSeUJ6VXMwV3JiaG9wZ1JoUzFqdXRpV3N5Qm9LQ09qREh2bEZIMDcwWmNfQWJDZWhBamM2SnN6c2ZYT2xVTnpWN0dyRjhDWGc2Z3Ixclo1b3Q4S2Y0cWFsMzIxaGZEaURVSEtGeDl6VjZVNjU1RzZQRHBHZXdKeGdVSVYyUXhaZnY2QVh3c1g3VzFmRkRXV2VMSDk5TUd3N2djeGxjQ3U0dw?oc=5",
+      "published_at": "2026-09-08T00:00:00",
+      "source": "AFR",
+      "extra": {}
+    },
+    {
+      "title": "Pheonix Motorcycle Training launch Rider Mindset Ai Coach to help learner riders - visordown.com",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxPaHpsdHVDTW9aa2JHUUs3dlMwSzhsZTdwZ213YU05SXBqMVFmajI1c3B1T2tJTXZCdDNjX19kWFlZMDRpRXZLb2hnOTJKTll6b245dTV0cE40UDZHZUV2UWVfVHQ2NDRKVmR2QkJSN0dubVRMa2R5UXRiSmhKUDZ6UzZuSUY5RHl0X0hrOF9GRmtDQkNkQXlVT25FMi1UVUtCckxNX3EyNU9Jd19F?oc=5\" target=\"_blank\">Pheonix Motorcycle Training launch Rider Mindset Ai Coach to help learner riders</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">visordown.com</font>",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPaHpsdHVDTW9aa2JHUUs3dlMwSzhsZTdwZ213YU05SXBqMVFmajI1c3B1T2tJTXZCdDNjX19kWFlZMDRpRXZLb2hnOTJKTll6b245dTV0cE40UDZHZUV2UWVfVHQ2NDRKVmR2QkJSN0dubVRMa2R5UXRiSmhKUDZ6UzZuSUY5RHl0X0hrOF9GRmtDQkNkQXlVT25FMi1UVUtCckxNX3EyNU9Jd19F?oc=5",
+      "published_at": "2026-09-07T10:31:51",
+      "source": "visordown.com",
+      "extra": {}
+    },
+    {
+      "title": "Muse, Meta’s New Personal AI Agent, Needs You to Trust It - WIRED",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxOaWdIQlRkZjBGVFRhWnlpdTlaQkh6M0s1Z1VfTmlwTTFBR21UQkVQLS1US2ROYzRsbTB3R2p5bFZ3X252aXlLT2tnV1RUS2QyMGxhM3VjY04xa1EtN3dENEF4VzlIUWh0THh1WjUxYVNOSmxhaTVoWGlLWXBNVFFBZ1M5bzBnaE1ZS2JtU2FjRmhtSWViZVd0cUVR?oc=5\" target=\"_blank\">Muse, Meta’s New Personal AI Agent, Needs You to Trust It</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WIRED</font>",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaWdIQlRkZjBGVFRhWnlpdTlaQkh6M0s1Z1VfTmlwTTFBR21UQkVQLS1US2ROYzRsbTB3R2p5bFZ3X252aXlLT2tnV1RUS2QyMGxhM3VjY04xa1EtN3dENEF4VzlIUWh0THh1WjUxYVNOSmxhaTVoWGlLWXBNVFFBZ1M5bzBnaE1ZS2JtU2FjRmhtSWViZVd0cUVR?oc=5",
+      "published_at": "2026-09-08T21:12:00",
+      "source": "WIRED",
+      "extra": {}
+    },
+    {
+      "title": "Introducing Muse: The World’s First Personal AI Agent Built for Everyone - Meta Store",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTFBZUDMxR1V6bFBPZE1YZloyT2RYdlVOMUpsUlB1TzV6NEFuQ3VMbWw1dkE3QTJCRkp1UGllZDBuUzJYd3c4aU42bkdoWWhyQVVKbzlibFhUdFpJd2diVUJNRWhDXzlBM1ROUlA3YXp5TWFiOU9JeE1tUNIBfkFVX3lxTE9zanY0cDdYaU0zZ3FpdWdvUVI0QWlEUDZ5X3VDTXV4bWJoRDJSZlJfZU1DZHlPcm1zU2NoR1RtZTZfQTVHVThtTEpscjF4X0ZtdGMwU21zUmxPMWJ6OHc1T1VyRk5iUDlmWUItZEtfZkxvcE5wNVlyZ3ItSUM2QQ?oc=5\" target=\"_blank\">Introducing Muse: The World’s First Personal AI Agent Built for Everyone</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Meta Store</font>",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBZUDMxR1V6bFBPZE1YZloyT2RYdlVOMUpsUlB1TzV6NEFuQ3VMbWw1dkE3QTJCRkp1UGllZDBuUzJYd3c4aU42bkdoWWhyQVVKbzlibFhUdFpJd2diVUJNRWhDXzlBM1ROUlA3YXp5TWFiOU9JeE1tUNIBfkFVX3lxTE9zanY0cDdYaU0zZ3FpdWdvUVI0QWlEUDZ5X3VDTXV4bWJoRDJSZlJfZU1DZHlPcm1zU2NoR1RtZTZfQTVHVThtTEpscjF4X0ZtdGMwU21zUmxPMWJ6OHc1T1VyRk5iUDlmWUItZEtfZkxvcE5wNVlyZ3ItSUM2QQ?oc=5",
+      "published_at": "2026-09-08T20:00:51",
+      "source": "Meta Store",
+      "extra": {}
+    },
+    {
+      "title": "OpenAI releases new AI agent – after admitting one went rogue - The Guardian",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTFA3V0NZQmphR3B4eVV6dWM3Rm9Xb0RBUDhNZ2trT2RONml2Q0dsV0VQRlN3ZGQyVTlHSWJ0SGphX1h4MldQSnp1R05DQWVjV0JXbUVPR05XcEViTWtMaWprUWdYX1QwaEdUek9mdlJvR1dnZ1RBWWJPcHc2ek55ZlU?oc=5\" target=\"_blank\">OpenAI releases new AI agent – after admitting one went rogue</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font>",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3V0NZQmphR3B4eVV6dWM3Rm9Xb0RBUDhNZ2trT2RONml2Q0dsV0VQRlN3ZGQyVTlHSWJ0SGphX1h4MldQSnp1R05DQWVjV0JXbUVPR05XcEViTWtMaWprUWdYX1QwaEdUek9mdlJvR1dnZ1RBWWJPcHc2ek55ZlU?oc=5",
+      "published_at": "2026-09-08T16:05:00",
+      "source": "The Guardian",
+      "extra": {}
+    },
+    {
+      "title": "Meta launches AI agent that can access other apps to send emails, make payments - Reuters",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQS195TVZPeEJJbzNYTEZ0dnI4WGxOWXF2ZlRmbDEyU1VtWnFsd012VXVDd01mRHY3Y3lDOW9pRXRYSXR6R2NqYVM3R0xwMURjZElSZHVkckZidjNoWTh5OWlNWkZGUGJpWnpDSUhUOUxBUEZDTVpwZjFXemxIdTlvanpSMXF2MXo1UkNtN2UtZVdfX3J2ZTdCekREbUxkaFo1MVpLakxOT0ZaeUVoMlhlb2E0Y0dfV2g0bXRNbw?oc=5\" target=\"_blank\">Meta launches AI agent that can access other apps to send emails, make payments</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font>",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQS195TVZPeEJJbzNYTEZ0dnI4WGxOWXF2ZlRmbDEyU1VtWnFsd012VXVDd01mRHY3Y3lDOW9pRXRYSXR6R2NqYVM3R0xwMURjZElSZHVkckZidjNoWTh5OWlNWkZGUGJpWnpDSUhUOUxBUEZDTVpwZjFXemxIdTlvanpSMXF2MXo1UkNtN2UtZVdfX3J2ZTdCekREbUxkaFo1MVpLakxOT0ZaeUVoMlhlb2E0Y0dfV2g0bXRNbw?oc=5",
+      "published_at": "2026-09-08T22:29:41",
+      "source": "Reuters",
+      "extra": {}
+    },
+    {
+      "title": "Meta Introduces Muse, an A.I. Agent That Can Send Your Emails and Book Your Travel - The New York Times",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTE9ER3F6SHhyYnN6LVI5MnAwMG1xcGEwd29aRFkwQkQxa2k4a1lGYXk5Smc1NFNWMEgzTjdmdUdtLVRmWE9zanNNakNMd19PZzlXbXN0TVVzT3E0QjJ1blVCUzl4ZWI4emczaWtJY3ptcmV5N0E5Zkphbg?oc=5\" target=\"_blank\">Meta Introduces Muse, an A.I. Agent That Can Send Your Emails and Book Your Travel</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font>",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9ER3F6SHhyYnN6LVI5MnAwMG1xcGEwd29aRFkwQkQxa2k4a1lGYXk5Smc1NFNWMEgzTjdmdUdtLVRmWE9zanNNakNMd19PZzlXbXN0TVVzT3E0QjJ1blVCUzl4ZWI4emczaWtJY3ptcmV5N0E5Zkphbg?oc=5",
+      "published_at": "2026-09-08T20:00:03",
+      "source": "The New York Times",
+      "extra": {}
+    },
+    {
+      "title": "Meta debuts its Muse AI agent. Will consumers trust it? - TechCrunch",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxOQ2RNUUJzRXdDUURWemZraEM0ancyaUMtZmVfTHZ5NnV5WHEwYXd6bkpCNWJUVVBidmI4OGZiaEkwWUhYZkxicmkwbXI0NFNocWpwU3VMWURpTkk5dDlJU3JNdGpvaWFKb0t4bm82a25lWDIwMTd4eWQzTkRIcV9VdFJ0YjVfT0lTVTVsWUZsMldSZw?oc=5\" target=\"_blank\">Meta debuts its Muse AI agent. Will consumers trust it?</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOQ2RNUUJzRXdDUURWemZraEM0ancyaUMtZmVfTHZ5NnV5WHEwYXd6bkpCNWJUVVBidmI4OGZiaEkwWUhYZkxicmkwbXI0NFNocWpwU3VMWURpTkk5dDlJU3JNdGpvaWFKb0t4bm82a25lWDIwMTd4eWQzTkRIcV9VdFJ0YjVfT0lTVTVsWUZsMldSZw?oc=5",
+      "published_at": "2026-09-08T20:00:00",
+      "source": "TechCrunch",
+      "extra": {}
+    },
+    {
+      "title": "How llm-d makes the most of the hardware you already have - IBM Research",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTFBmY2sxRFdZX0NFLUoxUXVFMkxjaEhhcloyVGRkeEsyaDJ2YWxVaVkwUlJocDkxSU81Q0Y0ZDJhQkYwN0w4OHdUUk5fbHRGbzd5aW1HZ203cU5CU2lwb2h6cWY3d0FtdkxLVmUwUXV6NDlJT3Y1ZGo1a3FaQzU?oc=5\" target=\"_blank\">How llm-d makes the most of the hardware you already have</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">IBM Research</font>",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBmY2sxRFdZX0NFLUoxUXVFMkxjaEhhcloyVGRkeEsyaDJ2YWxVaVkwUlJocDkxSU81Q0Y0ZDJhQkYwN0w4OHdUUk5fbHRGbzd5aW1HZ203cU5CU2lwb2h6cWY3d0FtdkxLVmUwUXV6NDlJT3Y1ZGo1a3FaQzU?oc=5",
+      "published_at": "2026-09-08T13:00:00",
+      "source": "IBM Research",
+      "extra": {}
+    },
+    {
+      "title": "Opaque recurrence, and other AI terms that you should probably know - TechCrunch",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxNQUhpbHllUzltRkhXTWF5dmFqdXUyaDVQUUtIY21OZTBrbEhfcWFYWVlCMUhIZmxBVEVHRXg2MDFMd21UNDFEWEFxSGh3NHhDU3A5OVcyRm1PY01FbktKaDZiZG1jblRzVEhmTlc1eHJ1VW5VaC1KVlpKalFZRm5JczlSQnljV09YUVhlUEZWOGZhRUpJZFlZVWFFSnV4MTlTMzhrbXFDWGh1MVhHYmRsZGtCTl9UOVVxeHc?oc=5\" target=\"_blank\">Opaque recurrence, and other AI terms that you should probably know</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNQUhpbHllUzltRkhXTWF5dmFqdXUyaDVQUUtIY21OZTBrbEhfcWFYWVlCMUhIZmxBVEVHRXg2MDFMd21UNDFEWEFxSGh3NHhDU3A5OVcyRm1PY01FbktKaDZiZG1jblRzVEhmTlc1eHJ1VW5VaC1KVlpKalFZRm5JczlSQnljV09YUVhlUEZWOGZhRUpJZFlZVWFFSnV4MTlTMzhrbXFDWGh1MVhHYmRsZGtCTl9UOVVxeHc?oc=5",
+      "published_at": "2026-09-07T20:24:00",
+      "source": "TechCrunch",
+      "extra": {}
+    },
+    {
+      "title": "NVIDIA Acquires Hugging Face for $13 Billion: A Boost for Europe's Open-Source AI - IndexBox",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxQZFNkaTdZdEV5OURDbUhIRmdESWNndW1xOEhPWXZHTjY5YkVxZXViRDhYYWdQQ3duenkxUl9IWGcxblQ2Rjd0VlZlcjZobjFCamdfbVV3LW9iTDU5blFxVDROM3hCY2JEUUYzSWlvdFBfUnFIN2RrS1BYVURnN3BHaTNyVk5IY185RmhuREcyVjlZUGtKWG1KeHJBMjM5S09kZnVoc1BxcHFzSEFI?oc=5\" target=\"_blank\">NVIDIA Acquires Hugging Face for $13 Billion: A Boost for Europe's Open-Source AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">IndexBox</font>",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZFNkaTdZdEV5OURDbUhIRmdESWNndW1xOEhPWXZHTjY5YkVxZXViRDhYYWdQQ3duenkxUl9IWGcxblQ2Rjd0VlZlcjZobjFCamdfbVV3LW9iTDU5blFxVDROM3hCY2JEUUYzSWlvdFBfUnFIN2RrS1BYVURnN3BHaTNyVk5IY185RmhuREcyVjlZUGtKWG1KeHJBMjM5S09kZnVoc1BxcHFzSEFI?oc=5",
+      "published_at": "2026-09-07T05:34:33",
+      "source": "IndexBox",
+      "extra": {}
+    },
+    {
+      "title": "Tencent Releases Open-Source Hy4 LLM Preview With 770B Parameters and 1M+ Token Context - gadgetpilipinas.net",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNV3FmX3ZqUFZYVm9taFo1SFozTllOVTRSZmJtUU9hYk1udlhLbzAyTDIzNGs5d04xWnFDVHAySU15bVdaVWxoUVZ6RFUtTFpEZnZQMmkzODNLa3ZGTjZfYW5xNG9XQnBXRG1OcjlmbnAteTN2RFc0Ul9mbGExOXR3Tg?oc=5\" target=\"_blank\">Tencent Releases Open-Source Hy4 LLM Preview With 770B Parameters and 1M+ Token Context</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">gadgetpilipinas.net</font>",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNV3FmX3ZqUFZYVm9taFo1SFozTllOVTRSZmJtUU9hYk1udlhLbzAyTDIzNGs5d04xWnFDVHAySU15bVdaVWxoUVZ6RFUtTFpEZnZQMmkzODNLa3ZGTjZfYW5xNG9XQnBXRG1OcjlmbnAteTN2RFc0Ul9mbGExOXR3Tg?oc=5",
+      "published_at": "2026-09-08T05:57:04",
+      "source": "gadgetpilipinas.net",
+      "extra": {}
+    }
+  ],
+  "US Headlines": [
+    {
+      "title": "Missouri’s redistricting in flux after dissonant court rulings - Politico",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxOUlZobkoxMGF0eXdjaUc0c012c1ZCelp1Ynk1dzV2eTJQMGR6Z21CV3JFcXE5S2pUUWhpOTZHaW1RbGozMzNXb0lSd3c2MjFsdXd6YWJtNEYwOXV0dVE4c3pNM3ZSWkxwSlFCV3g5blVnTTVpMnUwUks4dkZuNnlzNzRnaldlWWZaWDNPc3VqVm4yWEZTMDBBVlI4TUJZOVE?oc=5\" target=\"_blank\">Missouri’s redistricting in flux after dissonant court rulings</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font></li><li><a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxQcUI1ZmxhWklDN2h1aHI1dV84cG1uV0F0amVzQW8wSi0wS1E4dUVEOTJyZDktWFBtdDZqSnBWWlZBWHNOUEdSNkpxVmlIaDNIYlFvVjM4SkdqbzlHMlB4dzNUU2swSXozUlpVSWhxZ0NPdFQydEMxODh1VnBhYkpicXdRUjQ4eVRpWUNWSnVRcXJsZmIwSkl6amtSWkFtT1RCdC1WU0x30gGrAUFVX3lxTE1QbmgzS2lpdEdkSVZZeXQxRTI3WFF6cWE1WEdxMkFDZWJnOENZSkp6WXdMYXlOR0pUMlU4VmU1azU3YjJjdkVMWVk1cVY1RzRzOGI5UDltQmcxQjB6al9SUjg2Y2RQeFZzUWlOc3FiWmNab3RabjhZVldrTzRXejJrTjk4bVFLWEFrMXFQUlM2NmJnaEFKTnZlNzFCQTdnQjlodVZOVkRZYmtEdw?oc=5\" target=\"_blank\">SCOTUS rejects Missouri GOP bid to use revised congressional map in midterms</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Fox News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdS1NZUtQN3VhTGNCQ3FQMjhKeWZDc0dKd2p0bk5jbXVhN196R2Rfc2xQWEVZcnU3R25hWWlwd3VmRTZQa01DNjZOalhOMWpaV1ljYXI3TGpJdFBVZmE0dXk0S1lMWjQ0NEdSaG51VktYZ1IyNHpQdGRua3dMZ3p1M1pWRlF5MG43QlRFRy1xaUVPLUZTVUNjcUhBY3hZM0FQaV9JcS1yT2dJUQ?oc=5\" target=\"_blank\">Missouri congressional map Q&amp;A: Which map is in effect and what happens next?</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KMBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi3gFBVV95cUxPQ3Jod09LY3lqVlpJWE5BQ0RMRzNIWC1yRW12U3RJbUlsaTVjNEo2Rjl3M2NaZ0VDQnRWS3o2UVJ6R3pIdEdLdGZZeTY2QTFualg2S0E0TWZ6QnQzamVZZ0tmcGt4RTMzMS1FaUlHYVlzamkzWXF6ODdMWUx4Umt5X2U1X3RmSTZ3aXRKRmgyc0Z2QWJUQXlKOW5qeFZvbV9QMTU4aU5kaldsRnJwTHlaZFNyVUY2SzktSEwzampFSGZxS2VjWkFMU1hvRHA0aHBYQWJ3WTlWU0EyZ2Nyc0E?oc=5\" target=\"_blank\">US supreme court rejects Missouri Republicans’ appeal to use Trump-backed congressional map in midterms – live</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxNLVNQTnZYSjdOTUl1V0wtdm4xSnk4aXFXTTFLcjNPeXBUZ3Z6bF94Y0swRDBVYmFIUEZXRDlUdldVWFIzeFVGMklBZnNOZWJTVXhBSlhZVVdWcGN4SDBTM0JWOG1VVm9DWkExUkdYNzdlOE5jZUtMOWtrM1B3azhCb2dGd3I2U09jMUQtTmRpSk5zTE5ocWRV?oc=5\" target=\"_blank\">Dueling Court Rulings Leave Missouri’s Congressional Races in Chaos</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOUlZobkoxMGF0eXdjaUc0c012c1ZCelp1Ynk1dzV2eTJQMGR6Z21CV3JFcXE5S2pUUWhpOTZHaW1RbGozMzNXb0lSd3c2MjFsdXd6YWJtNEYwOXV0dVE4c3pNM3ZSWkxwSlFCV3g5blVnTTVpMnUwUks4dkZuNnlzNzRnaldlWWZaWDNPc3VqVm4yWEZTMDBBVlI4TUJZOVE?oc=5",
+      "published_at": "2026-09-09T01:23:00",
+      "source": "Politico",
+      "extra": {}
+    },
+    {
+      "title": "Chris Pappas Defeats Progressive Challenger in New Hampshire Senate Primary - The New York Times",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxNTlZnVzlFb2dHQ2RjcXVFZ3lIT3JodGRVMzRSZThTMWdUTnlHNm9LSlVkeG11SmJRaUFUdXp2UmFNUDQ0NjNScWJ5QW1SZDhJUDduZUd2UUtCUU85eE1ZZVdaeVJDSFFwQUh0bkNqSWQxVjdfYzh5bGhlNE1nZmVXX0JaWlFJcVdqY3hjcjJzZw?oc=5\" target=\"_blank\">Chris Pappas Defeats Progressive Challenger in New Hampshire Senate Primary</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiigFBVV95cUxOTnNqY0tDS1FaMHZ6ekRJVHVWclIzZ2F3WVpLU19tdFpLS28zTkVfRS1TMjc0RkVsZlJETXlPQlIyMHlEUTQ0LTQzbVQ5Qy1LQXNmdnF5dGdkY3JxUndjenpNZTBuUVJUeHlnUWNSaG1NS2xXcHpvUWs1SVJCMURkaGFlNDR1dndudVE?oc=5\" target=\"_blank\">Full New Hampshire State House primary election results for Sept. 8, 2026</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WMUR</font></li><li><a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE94WnRobWZyRnZKYUM5MHVIOEhqNUdzeDZsZG1JN2d2TWkxY2pDZGhnQWJJaVRaS1dOcHNlOW03VjlDWF82U1RkOVFYMFFMYlhfU3JyLUJHQ0stdVMwOVNmN2RLTlI3dmpINU5JX2JpTkFYRVVnNDFSZUJvRQ?oc=5\" target=\"_blank\">Rep. Chris Pappas will face former Sen. John E. Sununu in New Hampshire Senate race, CNN projects</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiigFBVV95cUxNTVR3bnA5MTUtcTBhT1IxdmZONmIxVFFSQThuZ2prYW1SYTZvR3JfRFBPZGUzcFlkaWl1anVtaDRUekNPLVlQd203c3pEanBINjBNRHVzQW1FaEVSOUdnS3Z0NlVtbDlxcm00dkdBZUdwRXRvNHRybVItM3RUdE9LSTR4d0NGUGJ4c0E?oc=5\" target=\"_blank\">Live Results: New Hampshire midterm primaries</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font></li><li><a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxPYU05MWRnRGF1UlV1b3hkSzFuejJGUjFIM2RXWVFyQ1o5VVN0bHQ4czllcS05STRiT0dHZzlBZnNqUnczZ2NwaUVld0kyaW41c04yNHdVVmRHdGo3MEQyOHlVMEFQZkVUU0dJNlZOcGNRdHV4QndNY2lCdzVBMGxvMnZnN0JpYklzZHI0TQ?oc=5\" target=\"_blank\">New Hampshire Senate Primary Election 2026 Live Results: Chris Pappas, Karishma Manzur, John Sununu and More</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTlZnVzlFb2dHQ2RjcXVFZ3lIT3JodGRVMzRSZThTMWdUTnlHNm9LSlVkeG11SmJRaUFUdXp2UmFNUDQ0NjNScWJ5QW1SZDhJUDduZUd2UUtCUU85eE1ZZVdaeVJDSFFwQUh0bkNqSWQxVjdfYzh5bGhlNE1nZmVXX0JaWlFJcVdqY3hjcjJzZw?oc=5",
+      "published_at": "2026-09-09T01:05:44",
+      "source": "The New York Times",
+      "extra": {}
+    },
+    {
+      "title": "US military says it destroyed 5 more Iranian oil tankers after missile attacks on Navy warship - AP News",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxOUlN5b1FuNFl6ajd5T0Z0MVppWHZ5Y2hFOHJ4dkd0X1dqMGljMHlOX0FZNE9HSXU4SmoxVUVQVEs5OUg2OG8yM1NyazNZQ1VPU1dCS3p0NmNsUk5rVjBMY0xONjRQWGRtTk1vZkNFOC1PWElwcGZmbk9SUzVRS3JCeTlhN25heDc1b0dWbA?oc=5\" target=\"_blank\">US military says it destroyed 5 more Iranian oil tankers after missile attacks on Navy warship</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE1EWVRZOWsxbmp1SmZRd19JSldrbVloX0pjcXViM3dFRVFwTkY4WnRYNDJSUVVVQ0tqemlRcHdoOTk4TWJDYWc1dWlXU1RwVEVMX1hSWUJzdV9YdUVuVGduZ2taSjA4RXpOQlgwWTFOWUVwQzNRdmtEb1hFYUY?oc=5\" target=\"_blank\">US targets Iranian oil tankers in major escalation of campaign to cripple Tehran’s economy</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Fox News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQVGRvY3RUVHlVT1NoWDA0d2pZLTV5TjF4TG5UOVRtZGhlcHAtVFVhY2pPVFk2MUJSdEl6U2ZZSjNTQjlJd1otUGNQMjNRT1BMa2NvNDlEdThYXy1DOVB0WGJEaS1FN0RzYVBmendOTkRXQ0hhdEVlSkpSMDRyMU5kUmprSWlwYVJJV0pMVWxXSVRMV195T2VJN0l3WGR0enhTbGN2N3BDbkR6a3pCV1hCZVFwM3lLQXVV0gG-AUFVX3lxTFBZVkRPczZnZnVlUEJVSFhpeUlhTDdvZWh6dHJ4M2VCd3VlbmtIXzVJdXhtdzhJczNpTWNjSmdsWU9KVWExWkZnbW1NdW5obUtJUDZZSlJqRkxocGJtNXJULUpmNWdfN1NER0dubG1BSm1XX2I4VVlsVnpNOWZEajZqSTlXOXdNNXNvMXhVc2tieE5rODhVWGtHQnFocDRmSWhUUXlIdmhJTHhXOUhzVTVVQjlrNlhrbWZMN2ZVZmc?oc=5\" target=\"_blank\">Iran war live: US hits Iranian tankers, IRGC attacks US base in Jordan</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Al Jazeera</font></li><li><a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxPNkpTRGVrTlFEREt5SXZ5XzYtaUhFa1kyYnFqTmg1N0xaOU5DbWlORWRTS3BRWEwyQlhFaXIyZEp6ZmQ4N3dUQnhiMDV3bnZJa1ZmWmU2STlTZl9UTERDNW40SE85SlAyQlJuajBsenpXY0x0MGszV055RF8xNTNSZ1lPYVIzTnc?oc=5\" target=\"_blank\">U.S. Hits 5 Iranian Oil Tankers, Citing Attempted Strikes on Warship</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE9tVENJRGdHOVVBek9ES010M05NR1ZlYzZTNEszd2ZHZ0NyX09QQlM0UWhGaWJqUEdXVDU3cnBpVERKRmxqT3RZaUtOZDhicHlxT0tlbXR2U09sbkZVTjZxSEE1VlI1dWVUWEExUmt2bmJWYlVibWc?oc=5\" target=\"_blank\">US targets multiple Iranian tankers near Kharg Island</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">edition.cnn.com</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOUlN5b1FuNFl6ajd5T0Z0MVppWHZ5Y2hFOHJ4dkd0X1dqMGljMHlOX0FZNE9HSXU4SmoxVUVQVEs5OUg2OG8yM1NyazNZQ1VPU1dCS3p0NmNsUk5rVjBMY0xONjRQWGRtTk1vZkNFOC1PWElwcGZmbk9SUzVRS3JCeTlhN25heDc1b0dWbA?oc=5",
+      "published_at": "2026-09-09T01:09:00",
+      "source": "AP News",
+      "extra": {}
+    },
+    {
+      "title": "Exclusive: 3 Lindsay Clancy jurors speak out on holdout, prosecution, defense and more - NBC Boston",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxNTHRDcGdHcVhzWjNIQXlpU204ZEhmY1VXbDV0SVpqc19qNzJvZHRBSWNoeHNwZUVRMFkxTHhUenBfNXpxc3RHME4zd0hmRjhUSk5ObjNVay1yRG4wbUdpRG1yNkFxeHBXVVFhQTRJcC14Unk2cDhVektST2RSd0VNemtMaENLQjBPTHlYTnBZekRiUdIBmgFBVV95cUxQVXd0eklqVHUxUjIwV1VydVlzMEswTWJCeEZKcmJjbGhmcVMwU19CUG9LcGVlRUxwYXg5dHhRdTdVZTVRMTdKNlFkdVlaNlRHYlFGcFZHWllOQ0F1ZVcyZEtOamN4UjFCcW5aRjJBUlprU3QxUzlvMHhQQkU5ZURYWWNLb2EzbkQ3aHREeV9PMGRiQzl6cmlURFhB?oc=5\" target=\"_blank\">Exclusive: 3 Lindsay Clancy jurors speak out on holdout, prosecution, defense and more</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC Boston</font><strong><a href=\"https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pGMkxiMUVSRmZlVEpaOW1kQzhDZ0FQAQ?hl=en-US&amp;gl=US&amp;ceid=US:en&amp;oc=5\" target=\"_blank\">See more headlines & perspectives on Google News</a></strong>",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNTHRDcGdHcVhzWjNIQXlpU204ZEhmY1VXbDV0SVpqc19qNzJvZHRBSWNoeHNwZUVRMFkxTHhUenBfNXpxc3RHME4zd0hmRjhUSk5ObjNVay1yRG4wbUdpRG1yNkFxeHBXVVFhQTRJcC14Unk2cDhVektST2RSd0VNemtMaENLQjBPTHlYTnBZekRiUdIBmgFBVV95cUxQVXd0eklqVHUxUjIwV1VydVlzMEswTWJCeEZKcmJjbGhmcVMwU19CUG9LcGVlRUxwYXg5dHhRdTdVZTVRMTdKNlFkdVlaNlRHYlFGcFZHWllOQ0F1ZVcyZEtOamN4UjFCcW5aRjJBUlprU3QxUzlvMHhQQkU5ZURYWWNLb2EzbkQ3aHREeV9PMGRiQzl6cmlURFhB?oc=5",
+      "published_at": "2026-09-08T21:06:06",
+      "source": "NBC Boston",
+      "extra": {}
+    },
+    {
+      "title": "Mamdani releases records on toxic air in New York after 9/11 attacks - Al Jazeera",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPYVA0bmlRYm9MRXpyUDZCQmVRdmJUckhtRWVRZXNESy0wRUdSSzR5ZzJHbVVRVUQ1cUdqVm1WVGFTcGRfbEg5Y2ZQd09NRl8wVjMwaXI3TndDeGNvMDV1M3hRal9zTUNpSWxvLVVLUUlXV2hEdXI3UXhZSWpGWmN2eVAwRVpUOENqTEhaWGRwV2RSa2ZzbEJPTGpfREs2YmNHSmfSAacBQVVfeXFMTXVEdkljdDMzUG9JSUxZcTVxOV8xYTRrYmwycy1XQV96ZzhsZy15eEpwTkNxZ1RobmxsTjJpSEkwbUZqY1p1RXJmbWlIVnVKUDV6RmlmVHFkb1plMlM4QmFrOEg2QUxTb1loaFVfdmdrNlQ2R0xtbFEyUExsbGx0UFhPV0JHdlFvTW0wYXlBVTVXSXh5dEt0YzRtcFZndTJQZVJGdFNLNGM?oc=5\" target=\"_blank\">Mamdani releases records on toxic air in New York after 9/11 attacks</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Al Jazeera</font></li><li><a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxPb2pxWmVWenZ0ZW1HYmZOQ2Y3bTQwWkNYd3JGWnZIa2d0RVQ2MmNIMkIwT1hqZEtLZlRHVTR5SGhJSG1mekVzZk15UUlfQXQ1TjBDQktQTVU4ZjMxVncwWUVpeGFzZXItclpUS2kxaEJCRS1IdUlwNTNnOFpXWXhVS3dPb1JBT0pERmNpWWhOSnVfdlZaZUtyLVdybFFzMDRQS3JwMVVRcDhHenJRMk0zeg?oc=5\" target=\"_blank\">NYC opens 9/11 records portal, revealing new details about toxic conditions at Ground Zero</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC7 New York</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTE1EZS1TcGZnYzd3TmNHS1E3TVpZalQ4SXUwOVlxdFFJY1J0MWdkbmswNzcyT3FQaHNmOXN4a0lkbDQxUTlzZzJ3d28xUnpqVjhoZDFNTnJWeWdiQQ?oc=5\" target=\"_blank\">New Yorkers were 'lied' to about toxic air after 9/11 attacks, says Mamdani</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxPZFphMHdiVTdZbFpsZERFMm9ydjdodGd3UUhjZlhDazJZLWJPbnd2ZkNTdEt1YnRQLXdmLW5yWVNISlp3NFRlTWlxRndvcVRnUlJSaHZjME5tWUFOUG1OZHUycWVwLS1veUpuV2FKUGFZWVVjNmRVWXI5NXQ3ZmNJMWQ2RFhGQk9HVEExR1BWX084Q2pQSEJlR2ZNOEM?oc=5\" target=\"_blank\">Mayor Mamdani releases 170K documents related to post-9/11 air quality</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Gothamist</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxPWTh5bzR2Q2NJU1NUelZjR3dENGJpUGNMYV9DVllBWUdOeG1kTDQyUWhON094emtlN1RWMW5OVGpvMjJSTVNnNklZNzhhLVQtNDE5RTNkTkJBSWZvNE55UGlENl9FSGFVUllhN0lRRGctZzZxZlpVbnpUOGI1REY4Y1E1WlNKRFk4ejc5cHpzUVQ4OFVONHY3UE9IVDJyTEE?oc=5\" target=\"_blank\">Mamdani releases 170,000 pages of records regarding impact on air quality of the 9/11 attacks</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYVA0bmlRYm9MRXpyUDZCQmVRdmJUckhtRWVRZXNESy0wRUdSSzR5ZzJHbVVRVUQ1cUdqVm1WVGFTcGRfbEg5Y2ZQd09NRl8wVjMwaXI3TndDeGNvMDV1M3hRal9zTUNpSWxvLVVLUUlXV2hEdXI3UXhZSWpGWmN2eVAwRVpUOENqTEhaWGRwV2RSa2ZzbEJPTGpfREs2YmNHSmfSAacBQVVfeXFMTXVEdkljdDMzUG9JSUxZcTVxOV8xYTRrYmwycy1XQV96ZzhsZy15eEpwTkNxZ1RobmxsTjJpSEkwbUZqY1p1RXJmbWlIVnVKUDV6RmlmVHFkb1plMlM4QmFrOEg2QUxTb1loaFVfdmdrNlQ2R0xtbFEyUExsbGx0UFhPV0JHdlFvTW0wYXlBVTVXSXh5dEt0YzRtcFZndTJQZVJGdFNLNGM?oc=5",
+      "published_at": "2026-09-09T00:19:24",
+      "source": "Al Jazeera",
+      "extra": {}
+    },
+    {
+      "title": "Campaign staffer agreed to hear Centenary employee’s complaint about Lt. Governor, then ghosted her and blocked her - New Jersey Globe",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMi4wFBVV95cUxORl9JZFdzTlR1N2Rib09NcS0tYnZNeG1hZGI4Mm1IRmF1ZS1rdHV6dENycDhEdDI0WkxEblJaUTVLWFlIV2VVMGhJeXZTWG9ab2V3MWkyb2Y5ZW5yYzh5T1BsNmRsMkZOcGJMY3RRVVpyVm1IZTBGQ3BPR3l6Ym5oV3hMQWVsbEFVUXM3cm53LXZLOFZnVl9vMDJDMWxFdmtPbllQV3JnSnVjajBLeF9oZW5zT000T05iWHZxdHNIdHE1QWF4dkVEZGU5REg2ai1kYlFfUFg3MVYyVVA0Q0pXdjNxRQ?oc=5\" target=\"_blank\">Campaign staffer agreed to hear Centenary employee’s complaint about Lt. Governor, then ghosted her and blocked her</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">New Jersey Globe</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi3wFBVV95cUxQM1JBb2dkS2lSUUdTSm5uTjhSZm1wWUFFbk5FRzVyYzRSdXVvUGp6VVJBbVlxTVNZU296blBGdmZxdXRZeHlPeEh3V1p2b1k4enRMdEN1M1FqRDB2RmZhVkJKU3k1QUhLU2VxRThlYVZDS0x3Z3dPQ1hVNVpVcVg1c3V6YnJvWnR0MUJHR2lfSVpiZl9sY005NWNic0FLZFJnY2ZLYktySS1tWlQ3X21GaC1JSWU3SkRINThqUDl0QzJtZUgwOXZ5ZUNRaGJlMExtcWxIR0I2T1ZpUGxuRFI0?oc=5\" target=\"_blank\">A rising Democratic star has a lieutenant governor problem. She isn't talking about it.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxOeVJpakNZQVdpM2lRNmtSY211ZzJKcnRkbHN4NjFzV0dOUmdmaGQ5T1VfeU9zSWhDRUpXWmtCc3FTLTJwVl9sbjlCbW1xbzJFczV5VF8zX2hPVUFqTTM3VjNfVnZjc2F1bkVXbGdoQm9ydFp6UF80QktqVy1yYmE2SVB5NWJyQVY5alZGckQ0TEI3UdIBlwFBVV95cUxPcGxPSmpNQjc0QkhmQ1gwUVlqX19ydVZ5Nk96aEdOZFEwWnA2UkhJcW9lcGc1RHF4X1UyUGhCZXBYNnJpQ2ViX3FlZHJjTVBod2IyWm5kUEV3NFlZbTJrRjlIQUU5VXlJd3M0Vmc3MEZ0SUFDRmltOXo2dkFiemk2ZUJDMUFUUlRSMHF2Q2F4SVVqWElrdG1V?oc=5\" target=\"_blank\">New Jersey Lt. Gov. Dale Caldwell under investigation for alleged misconduct</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">6abc Philadelphia</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxNS1VTcS1aenVueTFockZXa1ByU3BZYU85Sk93NVNNMmtmZW1LdElpWmhfZlFOeXdsSXNrZjJVYWVPNENHNzFVTEFBQVh3M1lNb1AweDFzQTRtUUoxVjU0UkJNZ0U2aE5RWXR1X2IyZ05WMnRIUkNpaTA0Nzc4bXFXZU9wamNXODFUdF9TMkI4blM4N3M?oc=5\" target=\"_blank\">New Jersey Gov. Mikie Sherrill says complaints must be ‘fully examined’ after reports of probe into lieutenant</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">MS NOW</font></li><li><a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE1UaC1Jb0VBQ1FMdWJBcmEyOS1TTWplZkRiaXhCbF94OEh5MUoxYjJYYmNTVnZNeC1Zem1ubW00Uld6SE50aTlMMzNBTDV5c2dLdXV4c0NMZV85RHBpR2FfZzNTQm0wXy1MYmdWWEpjMGpUOTA?oc=5\" target=\"_blank\">Statement by Governor Mikie Sherrill</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Insider NJ</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxORl9JZFdzTlR1N2Rib09NcS0tYnZNeG1hZGI4Mm1IRmF1ZS1rdHV6dENycDhEdDI0WkxEblJaUTVLWFlIV2VVMGhJeXZTWG9ab2V3MWkyb2Y5ZW5yYzh5T1BsNmRsMkZOcGJMY3RRVVpyVm1IZTBGQ3BPR3l6Ym5oV3hMQWVsbEFVUXM3cm53LXZLOFZnVl9vMDJDMWxFdmtPbllQV3JnSnVjajBLeF9oZW5zT000T05iWHZxdHNIdHE1QWF4dkVEZGU5REg2ai1kYlFfUFg3MVYyVVA0Q0pXdjNxRQ?oc=5",
+      "published_at": "2026-09-08T08:45:46",
+      "source": "New Jersey Globe",
+      "extra": {}
+    },
+    {
+      "title": "Smithsonian chief to retire as Trump fights to reshape the institution - The Washington Post",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxOdmZ1MDY0ZncxdGx4THFleWhZaWlQRUltVzZrVE5EcWtubWFzMHowdG5RaENUMV9pVy1JcWtoY3dzWldtMVdJV1FrMXBPb2x2M2k4dXhRc19TdV9CcHA2SF9UOU1YU2tYZGJHQnpvRllObVI3UlJHQWdadEVhd0F5Q3pOenU2WTNqY0huMTlEdjdVUEJsZzM3R09sZURHX2s3Z2VUQUE5T19KVFFXYnFkc01pRFJQaHFaUkkzbl9uSVBQRHhf?oc=5\" target=\"_blank\">Smithsonian chief to retire as Trump fights to reshape the institution</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Washington Post</font></li><li><a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxORm5STjQ5ZVlOcmdDd3hIa1hWdjBFYTJwVE9XZmR5LXFTS0lDeE5Ga3JocG1CUXlnemRrc3dwY2had20zb3hmcjJtTmpGRXFub3Y5Mkw0b0k5aV8wVFE3Sm9QckhnVUljODVUWWFOTDFvZm41R3Vqc1llYi12ai1PNHpvVHg4NnZ5T0FfUWxHTFpKekx3QzI2TEh3?oc=5\" target=\"_blank\">Smithsonian’s Secretary to Resign as Trump Tries to Rule the Institution</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE5JcHFIR0R1YjM3SkFHZ28wdXcxUWtEV3hkVVRUdVJmRm9namVOSWQ3cVJyM1pubGNzTkpLTzU4SWhCTWViN3pQcV9BbEk4SnZCZFY1VG84eXRuOHBFd29xQ2gwd1NydVk0THU2ZldaeklIRFdhNllpZmRxMjY?oc=5\" target=\"_blank\">Smithsonian Secretary Lonnie Bunch III announces retirement</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">qz.com</font></li><li><a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxNbnIyaTdWVUJBS0llNm13S2J6RWVVTEpYX1BVN3doZ0hCRVdEb2NKN0VWSXoyTXhxaUFnaDlLSDFJZGQ1M2U4SFNHYUhoWGk5LVdKTXl5bHR0TEVLQTRCSmtHWTBsSWRCZWowM2dKaVpGcDBXZ2NzRTcxaUE1bmlxMW9XVWRCbXNLTFBEdUZXVmY3UmswOWc5S3FKb2YzRlp6cE5HeXhVUkZTZkk0Y1A4Sg?oc=5\" target=\"_blank\">Column | It’s up to Chief Justice Roberts to preserve the Smithsonian’s independence</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Washington Post</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiekFVX3lxTE1oZ3BDTVVBcUNqLTRLSDRmR2l5OU0zRHZsY2ozanBKU1V0S3Z4SnZJWURKVzREcUpNQ185UHRycjdpQlNKand4QzRsLUpndDExWDhFTHRqSDJSaEZRcFVFZHFGMGpxSjlhNWZPZXNmSHROWENkS3dkTm5n?oc=5\" target=\"_blank\">Smithsonian chief to retire after clashes with White House</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOdmZ1MDY0ZncxdGx4THFleWhZaWlQRUltVzZrVE5EcWtubWFzMHowdG5RaENUMV9pVy1JcWtoY3dzWldtMVdJV1FrMXBPb2x2M2k4dXhRc19TdV9CcHA2SF9UOU1YU2tYZGJHQnpvRllObVI3UlJHQWdadEVhd0F5Q3pOenU2WTNqY0huMTlEdjdVUEJsZzM3R09sZURHX2s3Z2VUQUE5T19KVFFXYnFkc01pRFJQaHFaUkkzbl9uSVBQRHhf?oc=5",
+      "published_at": "2026-09-09T02:23:19",
+      "source": "The Washington Post",
+      "extra": {}
+    },
+    {
+      "title": "Trump escalates trade war with Canada, moving to ban imports of some motorcycles, dairy and alcohol - NBC News",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxPR21QVmJISUl6amZFN3NjaC1DSjVuQTQ3RWFhNExoa1N1b1VkUlIzb09qdXkxakFGWklHYVJlak05b1NjVVNocVRJU3FucVpMYzZlUGttTXJ5TS1MTHMxVFRxMTB3VDVJNHBneWYxam1QdE95WERoTmt5MS1ZTnpOTVlNa0c0QW9VWm41U3JFaDdFTlhWb2JwbzAwMV9IclNDczROQWRINExidGtqNnBXVmdZSjllTkJ4TWRxd1ZkSQ?oc=5\" target=\"_blank\">Trump escalates trade war with Canada, moving to ban imports of some motorcycles, dairy and alcohol</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxNc1BOQjh6RzR3NkhUTWNocHc3U2RzckMzVGdyMFVwR0JqS3JocTgtbFFwTkwtUU1pTURKNGNma3VpZmYtUExvaHZuYU8wZTlDSEFqemRLc0U0NzhyWUxtaDVxUUp1TW45TFU2MnY5WGhqNFVWd0RPWG1sV1J0N2x3LUFweTlPb0pjcm9YcW9oSS1uTk14cWVIWUJ2Z202Zw?oc=5\" target=\"_blank\">US banning dairy products, most alcoholic beverages and motorcycles from Canada</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AP News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxPT29PLU05aU1vbGF3dFMwU2lkZVJTODFzM1hiSWV0RXh3X0l2M0lsUUFDZzE4WjlZbVBqSGNnSmZaQnV1MVAzOVlRQUJrbnd0QTRqNTQtQkpfYTRiajZnbnFENTdyOTdnekFjOHpYVm03aG9KZnRMV2VPVWZWYlYxQWEwaWQ4Zm9IdnVGWFZOR3pFNkdzYlhtbk1nZ2NNenlmZmxkWHNHNjhMOTJR?oc=5\" target=\"_blank\">Trump Signs Orders to Ban Some Canadian Products From U.S. Market</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WSJ</font></li><li><a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTE9SV3F2R2ZRYllBQ0VJNW4tNFBiY2s4dzJrYUVhM1pUTnJWNjNVUURrei1WMnJYMzI2UktmQzRsM2J3Ti01TGttWFBISEhLbVZXZnF1ZlJSUXhydl9IN2NqNjJGd1JNd2NRWTFJQ2pnM09ieFluc3I1VQ?oc=5\" target=\"_blank\">Canada Imposes New Tariffs on U.S. Goods After Trump’s Latest Levies</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxPQnJtRUpGelY0MERSSWduZmpjMnhCZ0pkUmV2VzdnMHUzcnM3VEdzMXZfdDZhX0RNRkw2enRDYk1lWE1YZkhTMFVOT3lzd3pmcFVaX1UtSVVGeFA5VjRtamY5VnRQQldjd09FRnhGeWx3VDNhNmxia0RnZ1dRaGVMNmg4YVJzYVV1ekZqVDdYNmxpdVFwRm5id01sLWs2UnFGU0lXVDBpZmpNVm1uaUN1aU8xbDJCMVZUdzhGVw?oc=5\" target=\"_blank\">Trump hits back at Canadian tariffs with government procurement threat</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPR21QVmJISUl6amZFN3NjaC1DSjVuQTQ3RWFhNExoa1N1b1VkUlIzb09qdXkxakFGWklHYVJlak05b1NjVVNocVRJU3FucVpMYzZlUGttTXJ5TS1MTHMxVFRxMTB3VDVJNHBneWYxam1QdE95WERoTmt5MS1ZTnpOTVlNa0c0QW9VWm41U3JFaDdFTlhWb2JwbzAwMV9IclNDczROQWRINExidGtqNnBXVmdZSjllTkJ4TWRxd1ZkSQ?oc=5",
+      "published_at": "2026-09-09T00:50:00",
+      "source": "NBC News",
+      "extra": {}
+    }
+  ],
+  "Immigration & Visas": [
+    {
+      "title": "Germany wanted more foreign workers. A far-right win may rewrite the immigration story - The Economic Times",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMi7wFBVV95cUxQUUM3Z05FamwzY18wa0lfLUE1bktKOUljcXBLVkV2dnNMLWZLdVpXS1dXN2l6aFUyREY1dnczOTRaWGNZRy1zQkhZM1NQVVBuVXpVT0h3ZEJ5TE1fMlg0Y1NfbGpjQ0N5OVV0eElZUU1xNE52VE9wSWpYTFNJUDYtdW1oT2JoVl9JOHFfZXFsSll1UWNKcHRGUjEtTXFqYVlMRU1RaWVua0Rwd1NWRjh1U1ZIM0hpR3JBTk5jY3B5NzQtYXJ6NTBvempFQjBuRGVqcC1VWmhCZjZhMjhyT1BGdkNzaHBtb2hXdmlyWmRLb9IB9AFBVV95cUxQRnIxSnNqY3R1c1NaMTFIVTNURjlBV1BjeHM3X3djV2pTSV9Rbm5KN1Y4REs5eEt4RlFsV2l6b1luNFEzeG9nLTdwSV9fckEzM0FtbXpvQUZ3Ukk2OTNucXlNSVVIR25kcFlvbEt0ZzcyMWstRkFaX1BCLXNTUVl3YXV3NE9GWjUxZlk4SkFGVUlhTjF2NlJvZWpCcE00V3VubjBoYVBidHMwSVFzUUNYMGVzdjFSWkdlSTlKWlFSbFdjMVpwcnY3RlY5MGl3LVR3QVRXUzJqZW1UVmROV29ZU0pIQXdCMUp2WGxSdTVTT1ZteW9V?oc=5\" target=\"_blank\">Germany wanted more foreign workers. A far-right win may rewrite the immigration story</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Economic Times</font>",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQUUM3Z05FamwzY18wa0lfLUE1bktKOUljcXBLVkV2dnNMLWZLdVpXS1dXN2l6aFUyREY1dnczOTRaWGNZRy1zQkhZM1NQVVBuVXpVT0h3ZEJ5TE1fMlg0Y1NfbGpjQ0N5OVV0eElZUU1xNE52VE9wSWpYTFNJUDYtdW1oT2JoVl9JOHFfZXFsSll1UWNKcHRGUjEtTXFqYVlMRU1RaWVua0Rwd1NWRjh1U1ZIM0hpR3JBTk5jY3B5NzQtYXJ6NTBvempFQjBuRGVqcC1VWmhCZjZhMjhyT1BGdkNzaHBtb2hXdmlyWmRLb9IB9AFBVV95cUxQRnIxSnNqY3R1c1NaMTFIVTNURjlBV1BjeHM3X3djV2pTSV9Rbm5KN1Y4REs5eEt4RlFsV2l6b1luNFEzeG9nLTdwSV9fckEzM0FtbXpvQUZ3Ukk2OTNucXlNSVVIR25kcFlvbEt0ZzcyMWstRkFaX1BCLXNTUVl3YXV3NE9GWjUxZlk4SkFGVUlhTjF2NlJvZWpCcE00V3VubjBoYVBidHMwSVFzUUNYMGVzdjFSWkdlSTlKWlFSbFdjMVpwcnY3RlY5MGl3LVR3QVRXUzJqZW1UVmROV29ZU0pIQXdCMUp2WGxSdTVTT1ZteW9V?oc=5",
+      "published_at": "2026-09-07T06:41:12",
+      "source": "The Economic Times",
+      "extra": {}
+    },
+    {
+      "title": "New report shows the economic toll of ICE raids - NPR",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxNRXJjcTc0MGdESEZVeUVacHpUZmdHc3E1RUVOYXpXXzEyaFYwUzkySHVWX1BkVGwtc24wYnpaY2RYeUxJVlF4a2RScnZVZ2JPeTRyZUhZVGFOSTBicXNGSGhXUHFlLXdlb3ZMejhJbnZNR2JHSWdUcXBGSnk2ZzFVZGNMWVBLcW51UjUzMUNJaTdReXBmNnF3?oc=5\" target=\"_blank\">New report shows the economic toll of ICE raids</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NPR</font>",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRXJjcTc0MGdESEZVeUVacHpUZmdHc3E1RUVOYXpXXzEyaFYwUzkySHVWX1BkVGwtc24wYnpaY2RYeUxJVlF4a2RScnZVZ2JPeTRyZUhZVGFOSTBicXNGSGhXUHFlLXdlb3ZMejhJbnZNR2JHSWdUcXBGSnk2ZzFVZGNMWVBLcW51UjUzMUNJaTdReXBmNnF3?oc=5",
+      "published_at": "2026-09-08T21:17:22",
+      "source": "NPR",
+      "extra": {}
+    },
+    {
+      "title": "Rare charges against ICE agent highlight DOJ’s broader retreat from shooting probes - The Washington Post",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxQeVA1T1Y4LW5menBoZERLRlFtX05FMTJGWXlVT0JJMWE1cEpUWjNoTThfN1I4SHh3MVFkaXA4Y0ZkZ21iMkd1dTFnVVpRcGxtS0NIcnRPVVVIV3JFZnh5R0ZFaUFFenZ5SFhVY1E5VXVWdmxlTUoya1dGU0lCd3NFT0xDTUs0VnZVc3Vrem0xbDEzSWM2TElHR1Brby12Y1pwQVpJeGh2RkRuaGYtUUpvY2ZSbHpWamJQQ1pPdVNrdXNtdw?oc=5\" target=\"_blank\">Rare charges against ICE agent highlight DOJ’s broader retreat from shooting probes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Washington Post</font>",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQeVA1T1Y4LW5menBoZERLRlFtX05FMTJGWXlVT0JJMWE1cEpUWjNoTThfN1I4SHh3MVFkaXA4Y0ZkZ21iMkd1dTFnVVpRcGxtS0NIcnRPVVVIV3JFZnh5R0ZFaUFFenZ5SFhVY1E5VXVWdmxlTUoya1dGU0lCd3NFT0xDTUs0VnZVc3Vrem0xbDEzSWM2TElHR1Brby12Y1pwQVpJeGh2RkRuaGYtUUpvY2ZSbHpWamJQQ1pPdVNrdXNtdw?oc=5",
+      "published_at": "2026-09-08T17:00:00",
+      "source": "The Washington Post",
+      "extra": {}
+    },
+    {
+      "title": "Contra Costa County adopts anti-ICE policy - The Mercury News",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiigFBVV95cUxOQ0NNX01sVVpEdDRuXzc5bUJ6SWlERGVBV0t3QmtOSVdoMjR0ZXFRdThVNV96bmlVMUlNVWxHa1NDZm5VbXYtb3hRVnlOZWVmcHJ1QThrNXJNczlvS3RuckNpRWtlY2RVY2FSc0owQlh0eEdWdnRvcEdZVDVVYXYwZ3E4V2lRZUxsY1HSAY8BQVVfeXFMTWw1TFlWa1ZfdzRUdTNRZlhmUENoZ0IwV1dXaWdGbW84VWJoTksyMGdld1VrYkRJUjRlbzlndTVGWDExdjI2WGdVWkxFcTE4QzRyM19MZWV5WFlmbHJMajdnZXFVa1VfczlXVl9vdS1lSV9qR2R0NHg3cGhjaTdDenI4VU4tUFJMR3hUWmY5UW8?oc=5\" target=\"_blank\">Contra Costa County adopts anti-ICE policy</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Mercury News</font>",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQ0NNX01sVVpEdDRuXzc5bUJ6SWlERGVBV0t3QmtOSVdoMjR0ZXFRdThVNV96bmlVMUlNVWxHa1NDZm5VbXYtb3hRVnlOZWVmcHJ1QThrNXJNczlvS3RuckNpRWtlY2RVY2FSc0owQlh0eEdWdnRvcEdZVDVVYXYwZ3E4V2lRZUxsY1HSAY8BQVVfeXFMTWw1TFlWa1ZfdzRUdTNRZlhmUENoZ0IwV1dXaWdGbW84VWJoTksyMGdld1VrYkRJUjRlbzlndTVGWDExdjI2WGdVWkxFcTE4QzRyM19MZWV5WFlmbHJMajdnZXFVa1VfczlXVl9vdS1lSV9qR2R0NHg3cGhjaTdDenI4VU4tUFJMR3hUWmY5UW8?oc=5",
+      "published_at": "2026-09-09T02:02:24",
+      "source": "The Mercury News",
+      "extra": {}
+    },
+    {
+      "title": "Labor Day weekend family camping trip ends in ICE raid - KING5.com",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxNbHJvTXhzOW5oVWtnUWhlYlZHX0M3eENxaUgwWFdlM05aVXVXUjhOdzhqWWtxSDFSdFZ6Q000MEdZeFlydjRQY0ZFUVVpRFBaZ0Z0dXItRHp2WExXZmJwNXcyMGVfRmNIYWsxaGJ0VXM2WFljOXNrNWVISXFERWNGM3R2VVlqeWo4R2N1dV9UejFRUFpOWHZBc2diMmdDYThxX0FpUTl1Z1c3RUtLSnBDX1NUZ05VcjZfZEwtbUdBbmtNd0FGNHZJN1I2ZkxyRFphZWc?oc=5\" target=\"_blank\">Labor Day weekend family camping trip ends in ICE raid</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KING5.com</font>",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNbHJvTXhzOW5oVWtnUWhlYlZHX0M3eENxaUgwWFdlM05aVXVXUjhOdzhqWWtxSDFSdFZ6Q000MEdZeFlydjRQY0ZFUVVpRFBaZ0Z0dXItRHp2WExXZmJwNXcyMGVfRmNIYWsxaGJ0VXM2WFljOXNrNWVISXFERWNGM3R2VVlqeWo4R2N1dV9UejFRUFpOWHZBc2diMmdDYThxX0FpUTl1Z1c3RUtLSnBDX1NUZ05VcjZfZEwtbUdBbmtNd0FGNHZJN1I2ZkxyRFphZWc?oc=5",
+      "published_at": "2026-09-08T01:18:00",
+      "source": "KING5.com",
+      "extra": {}
+    },
+    {
+      "title": "ICE arrests 1 person, chases another onto San Diego City College campus - NBC 7 San Diego",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxOVk9zaTc3RHFFXzF4RGJZQUUzQ1lKZC1vc2JBd3dEOWs4N3RGVmJyWUJMcHI2LTlUTk1Pdjg4emsySVZoQ1hXR1h2VFVnanVtbnkxajFncGRybDlVMnVSalQtREgxRkFyRTVUTWdXVng1TEZVZDF4RFpnZXVvVXU4cDBkMWtuSFhiZ1V1QUNOcjlyVXV3OFl1QWdOcjcyWFBZQlQ1bVlLSDhFNGQtcHRMNXIwc1NTdEHSAb8BQVVfeXFMT05mdWRwU0ZYX2I3NFV3NklKZG03Qmtha2ZUNUlScnBhcDNPTG1wTDVrbHNkTk1XX0Z3QjVwckJWQmZ6WFh3STdFOXUzM1p4QXRCR1ZZUndTQ0pRMEtLUmhIMHg4dlhqcW5XTjlPTHJycEJFWlhyWDJBWUgzeTdSUDZnQlYxZ2VVRldHcHRHRHJXeWtHS0dpdnZENmprZmhQUXphb25peHJGWVdZR1lIY0JObllHZzU4VjRRcERpa0E?oc=5\" target=\"_blank\">ICE arrests 1 person, chases another onto San Diego City College campus</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC 7 San Diego</font>",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOVk9zaTc3RHFFXzF4RGJZQUUzQ1lKZC1vc2JBd3dEOWs4N3RGVmJyWUJMcHI2LTlUTk1Pdjg4emsySVZoQ1hXR1h2VFVnanVtbnkxajFncGRybDlVMnVSalQtREgxRkFyRTVUTWdXVng1TEZVZDF4RFpnZXVvVXU4cDBkMWtuSFhiZ1V1QUNOcjlyVXV3OFl1QWdOcjcyWFBZQlQ1bVlLSDhFNGQtcHRMNXIwc1NTdEHSAb8BQVVfeXFMT05mdWRwU0ZYX2I3NFV3NklKZG03Qmtha2ZUNUlScnBhcDNPTG1wTDVrbHNkTk1XX0Z3QjVwckJWQmZ6WFh3STdFOXUzM1p4QXRCR1ZZUndTQ0pRMEtLUmhIMHg4dlhqcW5XTjlPTHJycEJFWlhyWDJBWUgzeTdSUDZnQlYxZ2VVRldHcHRHRHJXeWtHS0dpdnZENmprZmhQUXphb25peHJGWVdZR1lIY0JObllHZzU4VjRRcERpa0E?oc=5",
+      "published_at": "2026-09-09T01:52:14",
+      "source": "NBC 7 San Diego",
+      "extra": {}
+    },
+    {
+      "title": "ICE arrested nearly 50 immigrant workers in two central Pennsylvania operations, advocates say - inquirer.com",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ3lURy05cXR4ZUYtYkxyOV9HdHUwU1JwNHZ1Yk1GZDRiS2xIWm9UU09mZTB2YXJxaGFEdjFZN21WUXFKYXNEMU9uOUpBTGtCUkJuMDFCdGtCdUhEOXVBZmppNGhWVjVXb2JvVXVvWGRxVFJEeHc0NlZtVXl0dlJfdzN3cUFMa2t3WU5od0lELUdPdw?oc=5\" target=\"_blank\">ICE arrested nearly 50 immigrant workers in two central Pennsylvania operations, advocates say</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">inquirer.com</font>",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ3lURy05cXR4ZUYtYkxyOV9HdHUwU1JwNHZ1Yk1GZDRiS2xIWm9UU09mZTB2YXJxaGFEdjFZN21WUXFKYXNEMU9uOUpBTGtCUkJuMDFCdGtCdUhEOXVBZmppNGhWVjVXb2JvVXVvWGRxVFJEeHc0NlZtVXl0dlJfdzN3cUFMa2t3WU5od0lELUdPdw?oc=5",
+      "published_at": "2026-09-08T21:54:40",
+      "source": "inquirer.com",
+      "extra": {}
+    },
+    {
+      "title": "ICE launches CDL fraud tipline as DHS highlights deadly crashes involving illegal immigrants - Fox News",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxNd2ZNOEwtbXBUenh4S2VfOVlURWpodVNtVE1CUmpjRWpWZ2tuaElJZjRRLS1BXzYteEl2TXJVcndBcTY1R3VGX3lvZE1oLWxQeG1wejNjWWtGTTFsX2FQaVFjMTR1bk4xMWtzU294eFdOcDJTQ0NieEUyQ2hEc2VsRGR5d0ppdkJTNkd6N2l3dXNkTXBjbW5XNEc4SlYyekdoRnVLTVFSVDhlN05Gb1NpWHNPVHgwSE1tdU1DTWNYRQ?oc=5\" target=\"_blank\">ICE launches CDL fraud tipline as DHS highlights deadly crashes involving illegal immigrants</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Fox News</font>",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNd2ZNOEwtbXBUenh4S2VfOVlURWpodVNtVE1CUmpjRWpWZ2tuaElJZjRRLS1BXzYteEl2TXJVcndBcTY1R3VGX3lvZE1oLWxQeG1wejNjWWtGTTFsX2FQaVFjMTR1bk4xMWtzU294eFdOcDJTQ0NieEUyQ2hEc2VsRGR5d0ppdkJTNkd6N2l3dXNkTXBjbW5XNEc4SlYyekdoRnVLTVFSVDhlN05Gb1NpWHNPVHgwSE1tdU1DTWNYRQ?oc=5",
+      "published_at": "2026-09-09T00:06:17",
+      "source": "Fox News",
+      "extra": {}
+    },
+    {
+      "title": "ICE agents and protesters clash outside Maryland home - CNN",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxPbFlRVXVjTG45RkI1d05qQS13VmJmbFF6QVVBZ3NSdW51bklJQ3Q0SDRiTnFSanJQc3NaLVk2bUtxQ2dFaG5YRHJSZXVEZm01aWZaa3pUMVBFZWNMNk5RZmFKS0NfY3R0emt6RjRlSUJ6S3M1SXF3Y3VqRzJCQi02SjR0TFNQblpCRjN1dWgtU05SZXhTOHpGYzBxdXFWaU90X2pj?oc=5\" target=\"_blank\">ICE agents and protesters clash outside Maryland home</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNN</font>",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPbFlRVXVjTG45RkI1d05qQS13VmJmbFF6QVVBZ3NSdW51bklJQ3Q0SDRiTnFSanJQc3NaLVk2bUtxQ2dFaG5YRHJSZXVEZm01aWZaa3pUMVBFZWNMNk5RZmFKS0NfY3R0emt6RjRlSUJ6S3M1SXF3Y3VqRzJCQi02SjR0TFNQblpCRjN1dWgtU05SZXhTOHpGYzBxdXFWaU90X2pj?oc=5",
+      "published_at": "2026-09-08T21:16:00",
+      "source": "CNN",
+      "extra": {}
+    }
+  ],
+  "Markets": []
+}

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.git/
+.gitignore
+briefings/
+*.mp3
+*.aiff
+evals/golden/
+.digest_memory.json
+prompt_template.md
+Claude.md
+README.md

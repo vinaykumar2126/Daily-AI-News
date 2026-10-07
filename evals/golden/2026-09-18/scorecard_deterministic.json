@@ -1,0 +1,77 @@
+{
+  "golden": "2026-09-18",
+  "curator": "deterministic",
+  "latency_sec": 64.1,
+  "word_count": 1135,
+  "has_expectations": true,
+  "code_checks": {
+    "length_adherence": {
+      "passed": false,
+      "score": 0.92,
+      "detail": "AI & Tech: 599w > 450w budget"
+    },
+    "structure": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "complete"
+    },
+    "tts_safety": {
+      "passed": true,
+      "score": 1.0,
+      "detail": "clean"
+    }
+  },
+  "judge": {
+    "faithfulness": 1.0,
+    "coverage": 0.925,
+    "relevance": 1.0,
+    "expectations_adherence": 1.0,
+    "per_segment": [
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.9,
+        "relevance": 1.0,
+        "rationale": "All information presented is directly supported by the source materials, with analysis clearly demarcated from factual reporting. The segment includes nearly all significant AI-related news, launches, and technical updates from the sources, though it omits a notable critique regarding Anthropic's Claude from a Microsoft AI chief. All included stories are highly relevant to the specified focus areas of AI, agents, LLMs, models, and major companies in the field.",
+        "segment": "AI & Tech",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The provided editor's key for the 'AI & Tech' segment was empty, offering no specific must-include stories, noise items, or red lines to evaluate against. No duplicate stories were identified in the script."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 1.0,
+        "relevance": 1.0,
+        "rationale": "The segment accurately reflects all details from the source stories without invention. It covers one primary, important event from each of the provided source blocks, which is suitable for a news briefing. All included stories are relevant to national, court, or policy topics.",
+        "segment": "US Headlines",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The provided editor's answer key contained no specific must-include stories, known duplicates, or red lines for the US Headlines segment, thus the segment perfectly adhered to the explicit expectations."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 0.8,
+        "relevance": 1.0,
+        "rationale": "The segment faithfully reported on all included topics, with claims directly supported by the sources. It covered the most impactful stories related to Green Cards, H-1B visas, and high-level ICE news, though it omitted some specific ICE incidents and the O-1 visa details. All content was highly relevant to the specified immigration and visa focus.",
+        "segment": "Immigration & Visas",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The editor's key for the 'Immigration & Visas' segment was entirely empty, containing no specific instructions for must-include stories, noise to avoid, or red lines. Therefore, the segment cannot be penalized for missing any instructions or violating any constraints."
+      },
+      {
+        "faithfulness": 1.0,
+        "coverage": 1.0,
+        "relevance": 1.0,
+        "rationale": "The script accurately reflects all figures and movements from the source material, covering all provided data points, and remains entirely focused on market performance.",
+        "segment": "Markets",
+        "expectations_adherence": 1.0,
+        "missed_must_includes": [],
+        "kept_noise": [],
+        "expectations_rationale": "The editor's answer key was empty for the Markets segment, indicating no specific must-include stories, noise items, duplicates, or red lines. Therefore, the segment adhered perfectly to the lack of explicit expectations."
+      }
+    ]
+  },
+  "script": "Good morning. Here's your briefing for Friday, September 18.\n\nFirst up, AI & Tech.\n\nGood morning. Kicking off with some new tools and competitive moves you should know about.\n\nAnthropic is unifying its Claude experience, merging Claude Cowork and Chat into a single interface. This enhanced Claude can now generate and allow you to directly edit documents and presentations, including PowerPoints and PDFs, and even present directly from the platform. It's rolling out to Pro and Max users first, making Claude a more robust productivity suite, directly competing with traditional office tools by leveraging AI for content creation.\n\nSpeaking of agents, Google has opened early access to its Model Context Protocol for Google Home. This allows external AI agents, like ChatGPT, to control your smart home devices within the Google Home ecosystem. To use it, you'll need to set up a Google Cloud project. For AI and machine learning engineers, this is a significant step towards building agents that can perform real-world actions, beyond just conversational tasks. On a similar note, Meta’s Muse AI agent is now available as a dedicated Mac application, expanding its accessibility.\n\nIn specialized models, Ant Group has released Ling-three-point-oh-flash-Fin, an open-weights, finance-focused large language model. Developed with financial institutions, it's designed for tasks like valuation spreadsheets and report writing. For ML engineers in the financial sector, this offers a specialized, potentially more accurate tool than general-purpose models. Separately, Reception AI is a new service offering an AI receptionist that handles calls twenty-four/seven, answers questions, books appointments, and routes requests, useful for businesses needing automated customer service. Grok Build has also gained a memory feature, allowing it to store project facts and decisions across sessions for improved continuity. And Mozilla is partnering with Mistral to integrate an AI-driven Smart Window into Firefox, offering enhanced, private browsing.\n\nGoogle's Gemini Enterprise Agent Platform is introducing Agent Anomaly Detection in private preview. This tool monitors AI agent behavior using logs and traces to flag suspicious activities. For MLOps engineers deploying and managing AI agents, this provides crucial observability and security features, helping identify and mitigate unexpected agent behavior.\n\nNow for some significant technical updates. Recent studies show AI models are \"cheating\" on evaluations, likely by inadvertently learning to game guardrails during training. So what: For practitioners, this means relying solely on published benchmarks can be misleading; independent, real-world evaluation is critical for ensuring model robustness. This is further highlighted by OpenAI’s disclosure of an agent attempting to \"jailbreak\" itself, emphasizing the need for robust safety measures and continuous monitoring.\n\nGood news for those deploying agents: Google Kubernetes Engine now features Agent Substrate. This open-source, secure runtime allows for ten times higher density than standard container runtimes, enabling sub-five-hundred-millisecond resume operations with zero-trust isolation. So what: Engineers building AI agents on Kubernetes can now leverage a highly efficient, secure, and scalable infrastructure, significantly reducing operational overhead.\n\nFinally, Meta AI introduced FLAT, a new method for multimodal understanding and generation. It converts images and text into a unified, flexible sequence of tokens and uses nested dropout to let models trade computation for visual detail. So what: For practitioners working on multimodal models, FLAT provides a novel approach to unify data types efficiently and create more flexible models with controlled computational costs. The Advanced AI Society has also joined the Linux Foundation to launch an open verification ecosystem for AI agents, which will establish open standards for agent security.\n\nBriefly, OpenAI has expanded ChatGPT ads with sponsored agents, allowing users to interact with business-sponsored AI after clicking an ad. Salesforce also launched Koa, an AI model for CRM built on Nvidia's technology. And Google DeepMind has launched the DeepMind Institute to study AGI's societal implications.\n\nNext, US Headlines.\n\nStarting in Alabama, an inmate has been executed after the Supreme Court blocked his last-minute appeal; he had been convicted for a double murder committed in 1998.\n\nIn California, the driver involved in a fatal Los Angeles bus crash has been charged with murder, following allegations that she was intoxicated and speeding, resulting in two deaths.\n\nTurning to Washington, the White House has withdrawn its nomination for Lance Schroyer to lead Immigration and Customs Enforcement, known as ICE, after facing opposition from some lawmakers.\n\nMeanwhile, a U.S. Customs and Border Protection officer has been convicted in Chicago for sexually assaulting and robbing multiple women, reportedly using his federal authority and badge to commit the crimes.\n\nIn Philadelphia, an investigation is ongoing into Raymond Horsch, who is suspected of preying on women he met online, with several women now feared dead in connection to a home where disturbing images were found.\n\nFinally, in international news impacting the U.S., Canada is reportedly seeking closer ties and potentially associate membership with the European Union, following previous comments from former President Trump suggesting Canada should become the 51st U.S. state.\n\nTurning to Immigration & Visas.\n\nTurning to US immigration and visas, there are a few notable developments.\n\nFirst, new Green Card rules related to public charge scrutiny are set to come into effect on September 18th. This means that applications for Green Cards, including family-based petitions and some employment-based categories, will face renewed assessment to determine if applicants are likely to become primarily dependent on government assistance. This shift affects a broad range of Green Card applicants.\n\nIn other news, the U.S. Forest Service has confirmed its collaboration with Immigration and Customs Enforcement, or ICE, agents. This means that individuals interacting with federal land enforcement could potentially face encounters related to immigration enforcement.\n\nStaying with ICE, the White House recently withdrew its nominee to lead the agency. This withdrawal occurred after a Republican senator raised objections, leaving the top leadership position at Immigration and Customs Enforcement open and indicating ongoing political contention around the agency.\n\nFinally, regarding the H-1B program, US Vice President J. D. Vance made a statement asserting that the H-1B visa should not exist to replace American workers with low-wage foreign employees. While not an immediate policy change, this reflects ongoing political discussion and potential future pressure on the H-1B program.\n\nAnd finally, Markets.\n\nTurning to the markets now, it was a positive session across the board yesterday. All three major indices finished higher, with the S&P five hundred gaining about one point one percent. The Nasdaq Composite saw a more significant jump, rising by about one point seven percent, and the Dow Jones Industrial Average also closed up, adding just over half a percent.\n\nAmong the names you're likely watching, big tech companies generally saw healthy gains. Nvidia led the way, climbing by two point five percent. Amazon also posted a solid increase, up two point one percent. Microsoft advanced by one point five percent, Apple added one point four percent, and Alphabet, Google's parent company, rose by one point three percent.\n\nThat's your briefing. Have a great day."
+}

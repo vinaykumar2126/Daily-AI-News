@@ -1,0 +1,68 @@
+# The digest catalog. Each feed becomes one spoken segment, in `order`.
+# A feed can aggregate several sources; their stories are merged, then curated.
+# Add a new topic by adding a feed here — no code changes needed.
+
+feeds:
+  - name: "AI & Tech"
+    order: 1
+    enabled: true
+    length_budget_words: 700          # Option A: comprehensive tech-radar — room to cover every launch
+    max_stories: 10               # keep more of what the feeds surface (was 8)
+    prompt: prompts/ai_news.md
+    curate_prompt: prompts/curate_ai_news.md      # how the CURATOR ranks (vs prompt = how the rewrite writes)
+    interests: ["AI", "agent", "LLM", "model", "open source", "tool", "launch",
+                "release", "inference", "GPU", "benchmark", "Anthropic", "OpenAI",
+                "Google", "Meta", "startup"]
+    sources:
+      # TLDR AI, straight from tldr.tech — the real current AI edition as HTML.
+      # Sponsors are dropped at the source; stories carry real publisher URLs + categories.
+      - type: tldr_web
+        params: { max_items: 12 }
+      - type: hackernews
+        params: { queries: ["Show HN", "AI agent", "LLM"], min_points: 50, lookback_days: 2, max_items: 8 }
+      - type: google_news_rss
+        params: { queries: ["new AI tool launch", "AI agent released", "open source LLM"], max_items: 10, lookback_days: 2 }
+      # - type: producthunt   # optional; needs PRODUCTHUNT_TOKEN. Enable later.
+      #   params: { topic: "artificial-intelligence" }
+
+  - name: "US Headlines"
+    order: 2
+    enabled: true
+    length_budget_words: 250
+    max_stories: 6
+    prompt: prompts/us_news.md
+    curate_prompt: prompts/curate_us_news.md
+    interests: ["policy", "economy", "election", "court", "congress", "national"]
+    sources:
+      - type: google_news_rss
+        params: { topic: "NATION", max_items: 8, lookback_days: 1 }
+
+  - name: "Immigration & Visas"
+    order: 3
+    enabled: true
+    length_budget_words: 250
+    max_stories: 6
+    prompt: prompts/immigration.md
+    curate_prompt: prompts/curate_immigration.md
+    interests: ["H-1B", "O-1", "visa", "USCIS", "immigration", "green card",
+                "international students", "OPT", "STEM"]
+    sources:
+      - type: google_news_rss
+        params:
+          queries: ["H-1B visa policy", "O-1 visa", "international students USCIS", "USCIS policy change", "ICE"]
+          max_items: 8
+          lookback_days: 2
+
+  - name: "Markets"
+    order: 4
+    enabled: true
+    length_budget_words: 150
+    max_stories: 4
+    prompt: prompts/stocks.md
+    curate_prompt: prompts/curate_stocks.md
+    interests: []
+    sources:
+      - type: stocks
+        params:
+          indices: ["^GSPC", "^IXIC", "^DJI"]
+          watchlist: ["NVDA", "GOOGL", "MSFT", "AAPL", "AMZN"]

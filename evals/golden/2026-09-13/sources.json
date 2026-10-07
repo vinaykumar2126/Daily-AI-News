@@ -1,0 +1,345 @@
+{
+  "AI & Tech": [
+    {
+      "title": "Agents API 🤖, Cognition SWE-2👨‍💻, Muse Shared Agents🧑‍🤝‍🧑",
+      "body": "OpenAI introduced the Agents API in public beta, giving developers\r\naccess to the managed agent harness and infrastructure behind\r\nCodex. ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ \r\n\r\n\r\n Sign Up [1] |Advertise [2]|View Online [3] \r\n\r\n \t\tTLDR \r\n\r\n \t\tTOGETHER WITH [Fireworks] [4]\r\n\r\nTLDR AI 2026-09-11\r\n\r\n FORGE: THE CONFERENCE FOR COMPANIES MAKING THEIR OWN\r\nFRONTIERS (SPONSOR) [4] \r\n\r\n The most ambitious companies are training specialized models to\r\noutperform the frontier on their domain. \r\n\r\nOn November 3 in San Francisco, Fireworks Forge will bring together\r\nleaders making this shift.\r\n\r\nAt Forge [5], you'll\r\n\r\n \t* Learn what it takes to stop renting and start owning your\r\nintelligence\r\n \t* See how to take back control of your token bills with intelligent\r\nrouting\r\n \t* Join hands-on workshops for training, inference, routing, and\r\nevals\r\n\r\nHear from Jensen Huang, CEO of NVIDIA; Michele Catasta, President and\r\nHead of AI at Replit; Lin Qiao, CEO of Fireworks; and more speakers to\r\nbe announced.\r\n\r\nNovember 3 · Pier 27 · San Francisco\r\n\r\nAttendance is free and limited.\r\n\r\n👉 Apply to attend Forge [6]\r\n\r\n🚀 \r\n\r\nHEADLINES & LAUNCHES\r\n\r\n OPENAI LAUNCHES THE AGENTS API (3 MINUTE READ) [7] \r\n\r\n OpenAI introduced the Agents API in public beta, giving developers\r\naccess to the managed agent harness and infrastructure behind Codex.\r\nIt handles context, tools, subagents, persistent execution, files, and\r\ncode environments for agents that can run for extended periods. \r\n\r\n META TO ANNOUNCE SHARED AGENTS FOR MUSE AT META CONNECT (2 MINUTE\r\nREAD) [8] \r\n\r\n Meta's Muse app will introduce a \"Shared Agents\" feature, allowing\r\nusers to create customizable agents that can be shared with others,\r\nsimilar to Grokbot's system. This could benefit small businesses\r\nalready using Meta platforms by enabling specialized agents for\r\nworkflows like customer support and sales. \r\n\r\n OPENAI IS OPEN TO SLOWING CUTTING-EDGE AI, CEO SAM ALTMAN TELLS STAFF\r\n(2 MINUTE READ) [9] \r\n\r\n OpenAI is considering slowing down development of cutting-edge AI.\r\nThe company has raised concerns about its advanced AI systems, saying\r\nthat model development should be paused due to safety concerns. The\r\ncompany's researchers have gone viral for making comments saying\r\nOpenAI's technology will kill humanity by the end of the decade. \r\n\r\n🧠 \r\n\r\nDEEP DIVES & ANALYSIS\r\n\r\n AN OPERATIONALIZATION OF OPAQUE SERIAL DEPTH (3 MINUTE READ) [10] \r\n\r\n Chain-of-thought (CoT) is a valuable tool for overseeing AI models.\r\nHowever, some architectural shifts could significantly reduce CoT\r\nmonitorability. This study looks at how much unverbalized serial\r\ncognition a model can perform. \r\n\r\n DETECTING AND COUNTERING MISUSE OF AI: SEPTEMBER 2026 (5 HOUR READ)\r\n[11] \r\n\r\n Anthropic's Threat Intelligence team has identified and disrupted\r\nseveral operations in the past several months where threat actors\r\ntried to use Claude for malicious activity. This report shares case\r\nstudies from those operations and describes how malicious use of\r\nClaude has evolved since the company's previous threat reports. The\r\nreport covers disruptions between December 2025 and August. None of\r\nthe misuse cases involved the use of Claude Fable or Mythos-class\r\nmodels. \r\n\r\n DOES SCALING WEB-VIDEO PRE-TRAINING HELP REAL ROBOTS DO REAL WORK?\r\n(36 MINUTE READ) [12] \r\n\r\n Larger video models and increased pre-training compute improve robot\r\ntask performance, confirmed through Direct Video-Action models.\r\nPerformance gains arise from better predictions of held-out web\r\nvideos, with larger models excelling in real-world tasks like complex\r\nindustrial unpacking. Pre-training quality, measured via DINO FD,\r\npredicts downstream robot efficiency, enhancing scalability for real\r\ndeployments. \r\n\r\n🧑‍💻 \r\n\r\nENGINEERING & RESEARCH\r\n\r\n 🧘‍♀️ PEACE OF MIND IN EVERY SPRINT (SPONSOR) [13] \r\n\r\n Writing code can be stressful—but not half as stressful as a\r\nsurprise security meltdown. Inject optimism and calm into the\r\ndeveloper scrum with Microsoft Azure [14]. Unified security across\r\ncode and cloud environments and built-in DDoS protection mean you've\r\ngot less cause for concern—and a clear mind for innovation. Help\r\nsecure your apps with Azure > [14] \r\n\r\n MODEL CARD FOR NORTH SMALL TRANSLATE (8 MINUTE READ) [15] \r\n\r\n North Small Translate is an open-weights research release. It has 25\r\nbillion active parameters and 218 billion total parameters. The model\r\nis specialized for high-quality machine translation across 50\r\nlanguages. \r\n\r\n INTRODUCING SWE-2: PUSHING THE PARETO FRONTIER (23 MINUTE READ) [16] \r\n\r\n SWE-2 pushes the Pareto frontier and achieves 50.0% on FrontierCode\r\n1.1 Main1, while being 64% cheaper. It beats SWE-1.7 and Grok 4.6 on\r\nboth score and cost, matches GPT-5.6 Sol and Fable 5/5.1 at a fraction\r\nof their price, and comes within a few points of GPT-6 Astra at a\r\nquarter of the cost. \r\n\r\n OPENCODEREVIEW (GITHUB REPO) [17] \r\n\r\n Open Code Review is an AI-powered code review CLI tool. It originated\r\nas Alibaba Group's internal official AI code review assistant — over\r\nthe past two years, it has served tens of thousands of developers and\r\nidentified millions of code defects. It has been validated at massive\r\nscale. The agent can read full file contents, search the codebase,\r\ninspect other changed files for context, and produce deep reviews. \r\n\r\n OPENAI LAUNCHES GPT-LIVE-1 FOR FULL-DUPLEX VOICE AGENTS (2 MINUTE\r\nREAD) [18] \r\n\r\n GPT-Live-1 is now available in the OpenAI API at $0.05 per minute.\r\nThe model adds full-duplex speech, interruption handling, and 12 voice\r\noptions. It can listen and speak at the same time, handle\r\ninterruptions and acknowledgements as they happen, and keep\r\nconversations moving while performing deep reasoning or actions. The\r\nmodel can control tone, space, and style through the system prompt.\r\nEarly tests report 80% fewer interruptions than with previous\r\nturn-based systems. \r\n\r\n🎁 \r\n\r\nMISCELLANEOUS\r\n\r\n OPENAI PUTS PRO SUBSCRIPTIONS ON HOLD DUE TO ASTRA DEMAND (2 MINUTE\r\nREAD) [19] \r\n\r\n OpenAI has paused subscriptions for its $200-per-month Pro plan. The\r\ncompany's Astra model is now rolling out to Pro, Plus, Enterprise, and\r\nBusiness accounts. The model promises a major leap forward in\r\nreasoning, coding, and computer use. OpenAI says the model is the\r\nbeginning of the AGI era. \r\n\r\n WHY THE WORLD'S BEST AI STARTUPS WRITE BAD PROMPTS (& HOW TO FIX\r\nTHIS) (20 MINUTE READ) [20] \r\n\r\n AI startups often accumulate sprawling prompts full of contradictions\r\nand ambiguity as teams continuously add instructions. Treating prompts\r\nlike product and code, with modular sections for background, behavior,\r\nand output, can improve agent quality, reduce regressions, and lower\r\ncosts. \r\n\r\n⚡ \r\n\r\nQUICK LINKS\r\n\r\n AI AGENTS THAT BUILD LASTING LOYALTY AT BOOKING.COM, SAP, AND\r\nMICROSOFT (SPONSOR) [21] \r\n\r\n Loyalty doesn't have to wait on hold. Parloa's AI CX agents instantly\r\nmanage millions of conversations in any language. See how they build\r\nmeaningful customer relationships. Get a demo [22] \r\n\r\n INTRODUCING THE GOOGLE CLOUD DEVELOPER PLUGIN FOR AI CODING AGENTS (4\r\nMINUTE READ) [23] \r\n\r\n Google's new Google Cloud plugin is designed for AI coding agents,\r\nfeaturing installable bundles, agent plugins equip the AI agent of\r\nyour choice with skills, and tools to be more effective on Google\r\nCloud. \r\n\r\n META'S WEARABLEQA HEALTH REASONING BENCHMARK (GITHUB REPO) [24] \r\n\r\n Meta has released WearableQA, a benchmark with thousands of questions\r\nbuilt from real-world wearable data, blood biomarkers, and\r\ndemographics from 200 users. \r\n\r\n SALESFORCE FINDS BETTER WAYS TO CO-EVOLVE AGENTS AND THEIR HARNESSES\r\n(9 MINUTE READ) [25] \r\n\r\n Salesforce found that directly training smaller models on expert\r\nagent trajectories can hurt performance after their harness has\r\nalready been optimized. \r\n\r\n OPENAI LAUNCHES CHATGPT FOR FINANCIAL SERVICES (4 MINUTE READ) [26] \r\n\r\n OpenAI introduced a financial-services version of ChatGPT Work,\r\ncombining GPT-6 Astra with built-in premium data from popular\r\nproviders. \r\n\r\n UNIVERSAL MUSIC IS LAUNCHING AN AI MUSIC PLATFORM WITH ELEVENLABS (2\r\nMINUTE READ) [27] \r\n\r\n Universal Music Group is launching an AI platform with ElevenLabs,\r\nallowing users to create remixes and mashups using UMG's licensed\r\nmusic catalog. \r\n\r\nLove TLDR? Tell your friends and get rewards!\r\n\r\n Share your referral link below with friends to get free TLDR swag! \r\n\r\n https://refer.tldr.tech/3bd40fca/2 [28] \r\n\r\n \t\t Track your referrals here. [29] \r\n\r\nWant to advertise in TLDR? 📰\r\n\r\n If your company is interested in reaching an audience of AI\r\nprofessionals and decision makers, you may want to ADVERTISE WITH US\r\n[30]. \r\n\r\nWant to work at TLDR? 💼\r\n\r\n APPLY HERE [31], CREATE YOUR OWN ROLE [32] or send a friend's resume\r\nto jobs@tldr.tech and get $1k if we hire them! TLDR is one of INC.'S\r\nBEST BOOTSTRAPPED BUSINESSES [33] of 2025. \r\n\r\n If you have any comments or feedback, just respond to this email! \r\n\r\nThanks for reading, \r\nAndrew Tan [34], Ali Aminian [35], & Jacob Turner [36] \r\n\r\n Manage your subscriptions [37] to our other newsletters on tech,\r\nstartups, and programming. Or if TLDR AI isn't for you, please\r\nunsubscribe [38]. \r\n\r\n \r\n\r\nLinks:\r\n------\r\n[1] https://tldr.tech/ai?utm_source=tldrai\r\n[2] https://advertise.tldr.tech/?utm_source=tldrai&utm_medium=newsletter&utm_campaign=advertisetopnav\r\n[3] https://a.tldrnewsletter.com/web-version?ep=1&lc=79a452fe-a4cb-11f1-9088-9d48ec6382cd&p=1f5cef40-add1-11f1-a2ed-d9778b83da00&pt=campaign&t=1789135445&s=1ee08f51b8b1cff48083a1a76fa1bb082803e1c192e33bd82ab79208e93de4d3\r\n[4] https://fireworks.ai/forge?utm_source=tldr&utm_medium=newsletter&utm_campaign=forge&utm_content=header_forge_conference_companies\r\n[5] https://fireworks.ai/forge?utm_source=tldr&utm_medium=newsletter&utm_campaign=forge&utm_content=Body_forge\r\n[6] https://fireworks.ai/forge?utm_source=tldr&utm_medium=newsletter&utm_campaign=forge&utm_content=cta_apply_attend_forge\r\n[7] https://links.tldrnewsletter.com/2r52Yg\r\n[8] https://www.testingcatalog.com/meta-to-announce-shared-agents-for-muse-at-meta-connect/?utm_source=tldrai\r\n[9] https://links.tldrnewsletter.com/6f2sBW\r\n[10] https://blog.redwoodresearch.org/p/an-operationalization-of-opaque-serial?utm_source=tldrai\r\n[11] https://www.anthropic.com/threat-intelligence-report-september-2026?utm_source=tldrai\r\n[12] https://www.rhoda.ai/research/scaling-web-video-pretraining?utm_source=tldrai\r\n[13] https://links.tldrnewsletter.com/xpSn1y?utm_source=tldrai\r\n[14] https://links.tldrnewsletter.com/xpSn1y\r\n[15] https://huggingface.co/CohereLabs/North-Small-Translate-1.0?utm_source=tldrai\r\n[16] https://cognition.com/blog/swe-2?utm_source=tldrai\r\n[17] https://github.com/alibaba/open-code-review?utm_source=tldrai\r\n[18] https://www.testingcatalog.com/openai-launches-gpt-live-1-for-full-duplex-voice-agents/?utm_source=tldrai\r\n[19] https://techcrunch.com/2026/09/10/openai-puts-pro-subscriptions-on-hold-due-to-astra-demand/?utm_source=tldrai\r\n[20] https://links.tldrnewsletter.com/OYjxQ3\r\n[21] https://www.parloa.com/?utm_campaign=2026-q3-paid-awareness-brand&utm_source=tldr&utm_medium=newsletter&utm_content=hyperlink&utm_term=tldraiquicklink\r\n[22] https://www.parloa.com/contact-us/?utm_campaign=2026-q3-paid-awareness-brand&utm_source=tldr&utm_medium=newsletter&utm_content=hyperlink&utm_term=tldraisecondaryplacement\r\n[23] https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents?utm_source=tldrai\r\n[24] https://github.com/facebookresearch/WearableQA?utm_source=tldrai\r\n[25] https://arxiv.org/abs/2609.09134?utm_source=tldrai\r\n[26] https://links.tldrnewsletter.com/8JXq4v\r\n[27] https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai?utm_source=tldrai\r\n[28] https://refer.tldr.tech/3bd40fca/2\r\n[29] https://hub.sparklp.co/sub_c3d72a5538e5/2\r\n[30] https://advertise.tldr.tech/?utm_source=tldrai&utm_medium=newsletter&utm_campaign=advertisecta\r\n[31] https://jobs.ashbyhq.com/tldr.tech\r\n[32] https://jobs.ashbyhq.com/tldr.tech/c227b917-a6a4-40ce-8950-d3e165357871\r\n[33] https://www.linkedin.com/feed/update/urn:li:activity:7401699691039830016/\r\n[34] https://twitter.com/andrewztan\r\n[35] https://www.linkedin.com/in/aliiaminian/\r\n[36] https://www.linkedin.com/in/jacob-turner-7521a8198/\r\n[37] https://tldr.tech/ai/manage?email=godavartivinaykumar%40gmail.com\r\n[38] https://a.tldrnewsletter.com/unsubscribe?ep=1&l=eedf6b14-3de3-11ed-9a32-0241b9615763&lc=79a452fe-a4cb-11f1-9088-9d48ec6382cd&p=1f5cef40-add1-11f1-a2ed-d9778b83da00&pt=campaign&pv=5&spa=1789131643&t=1789135445&s=fbfdb75cfeeea3e2b909d44f6f5ea0d9e62f7c2a37cda8d82e540617c4a1d631",
+      "url": "",
+      "published_at": null,
+      "source": "dan@tldrnewsletter.com",
+      "extra": {}
+    },
+    {
+      "title": "OpenAI agents carried out an undisclosed attack on RubyGems",
+      "body": "949 points, 592 comments on Hacker News.",
+      "url": "https://www.rubyhack.ai/",
+      "published_at": "2026-09-11T16:17:42",
+      "source": "Hacker News",
+      "extra": {
+        "points": 949,
+        "comments": 592
+      }
+    },
+    {
+      "title": "Why are AI agents lying, cheating and coordinating?",
+      "body": "530 points, 615 comments on Hacker News.",
+      "url": "https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating",
+      "published_at": "2026-09-12T18:22:31",
+      "source": "Hacker News",
+      "extra": {
+        "points": 530,
+        "comments": 615
+      }
+    },
+    {
+      "title": "P(doom)",
+      "body": "153 points, 113 comments on Hacker News.",
+      "url": "https://lucumr.pocoo.org/2026/9/12/pdoom/",
+      "published_at": "2026-09-12T14:35:38",
+      "source": "Hacker News",
+      "extra": {
+        "points": 153,
+        "comments": 113
+      }
+    },
+    {
+      "title": "The worst spam emails: iLands AI agent hustle",
+      "body": "120 points, 55 comments on Hacker News.",
+      "url": "https://tedium.co/2026/09/11/ilands-agents-email-spam-kaixin-tang/",
+      "published_at": "2026-09-12T04:13:38",
+      "source": "Hacker News",
+      "extra": {
+        "points": 120,
+        "comments": 55
+      }
+    },
+    {
+      "title": "AgentsDock: An IDE designed for agentic AI research",
+      "body": "78 points, 32 comments on Hacker News.",
+      "url": "https://agentsdock.net/",
+      "published_at": "2026-09-12T16:45:58",
+      "source": "Hacker News",
+      "extra": {
+        "points": 78,
+        "comments": 32
+      }
+    },
+    {
+      "title": "LLMs are real, AI is fake",
+      "body": "74 points, 37 comments on Hacker News.",
+      "url": "https://pluralistic.net/2026/09/12/god-in-the-box/",
+      "published_at": "2026-09-12T06:47:28",
+      "source": "Hacker News",
+      "extra": {
+        "points": 74,
+        "comments": 37
+      }
+    },
+    {
+      "title": "Show HN: ResolveHQ – A Helpdesk Built on Cloudflare Workers, D1, R2 and Queues",
+      "body": "70 points, 25 comments on Hacker News.",
+      "url": "https://github.com/mirza-rizvi/ResolveHQ",
+      "published_at": "2026-09-11T14:48:00",
+      "source": "Hacker News",
+      "extra": {
+        "points": 70,
+        "comments": 25
+      }
+    },
+    {
+      "title": "Resistance Training Prescription for Muscle Function, Hypertrophy in Health",
+      "body": "58 points, 33 comments on Hacker News.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/",
+      "published_at": "2026-09-12T02:08:54",
+      "source": "Hacker News",
+      "extra": {
+        "points": 58,
+        "comments": 33
+      }
+    },
+    {
+      "title": "UNESCO launches new tools to reinforce ethical AI Governance at global forum in Riyadh, Saudi Arabia - UNESCO",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcFdhalJ5OUpQenQ2Y080RUdhT3h1N0M1ZGJGUEEzTEpaXzJvTGZOZUMxNFdfZHNPYlBMUV9iYnpXcEtRdnlQcnNja0NTbWpOWVBSTUtoUndRYmt2U196eTBFYXpHQ3R6SXdUenJHcWFCSGZXeXNKZWFxWkszVG5oLTk4ZFNEOUhiYTBndzlRYnI4V0Zmbi1vV0ZCRGFFYW8tb0U1MG0tMmhWOFBGMkp6Q3ZnVlFfeGZ6X0JlLUJreXFOZ1E?oc=5\" target=\"_blank\">UNESCO launches new tools to reinforce ethical AI Governance at global forum in Riyadh, Saudi Arabia</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">UNESCO</font>",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcFdhalJ5OUpQenQ2Y080RUdhT3h1N0M1ZGJGUEEzTEpaXzJvTGZOZUMxNFdfZHNPYlBMUV9iYnpXcEtRdnlQcnNja0NTbWpOWVBSTUtoUndRYmt2U196eTBFYXpHQ3R6SXdUenJHcWFCSGZXeXNKZWFxWkszVG5oLTk4ZFNEOUhiYTBndzlRYnI4V0Zmbi1vV0ZCRGFFYW8tb0U1MG0tMmhWOFBGMkp6Q3ZnVlFfeGZ6X0JlLUJreXFOZ1E?oc=5",
+      "published_at": "2026-09-11T22:43:27",
+      "source": "UNESCO",
+      "extra": {}
+    },
+    {
+      "title": "9/11 hero’s legacy lives on 25 years later as son unveils new tech lifeline for those facing grief - WFIN",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxPNm9hcDc3eTdBQVFuY0pjUzRRMEpSaE5CLUE3eDhsV1ZrdWd1VG8yR0xObHVRZ2MzdzM2OU5peXdfOGZGNjBxNHhTTlIwWlpKaUk5S3pBU1doVkdxcFVZVlp0NlpOai1DNjdoNmg0SnJWYkdjNm5pZWtPakh1dDZhQ3pPelhZUWVqQzNhWU1vZ01OV1ZINXdRc2l1b0N5ektPRmM2dG9GMzE2OVUxaGQ0Q3ZRZUN3b1BEOFZydDc5Qmxtd0xOcDdTdmJrN1k2YkE?oc=5\" target=\"_blank\">9/11 hero’s legacy lives on 25 years later as son unveils new tech lifeline for those facing grief</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WFIN</font>",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPNm9hcDc3eTdBQVFuY0pjUzRRMEpSaE5CLUE3eDhsV1ZrdWd1VG8yR0xObHVRZ2MzdzM2OU5peXdfOGZGNjBxNHhTTlIwWlpKaUk5S3pBU1doVkdxcFVZVlp0NlpOai1DNjdoNmg0SnJWYkdjNm5pZWtPakh1dDZhQ3pPelhZUWVqQzNhWU1vZ01OV1ZINXdRc2l1b0N5ektPRmM2dG9GMzE2OVUxaGQ0Q3ZRZUN3b1BEOFZydDc5Qmxtd0xOcDdTdmJrN1k2YkE?oc=5",
+      "published_at": "2026-09-11T14:04:09",
+      "source": "WFIN",
+      "extra": {}
+    },
+    {
+      "title": "Sanity Adds Agent Context to Its Content Platform - MarketScale",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMi2wFBVV95cUxNYldmZzlfMHY4VDM4V0xBNmNJQlozZzJlOGxqY0xVY2x6Qk83UnhNQjNIOHFFSEdPOGlYVTBjU0czcjVmR3ZfNWVLRTBsbzNqN1lYckl6c0d0Mnh4RmtwSTZROUp4dTJKQUZYYlFBbmxBa3FfWWpLVzB0SWFhVmxZRTdFMzdhdVNTWU1RbXlIVDRQdGkwVVpWdWl1aHRyTndRUm1YZndmcVJGWDlQSFd0bDhjYTBJWlJOS1g0ekNNVzR4TXBQeHhnWm9OUzkza0Y1eE5rajdQU29BOEU?oc=5\" target=\"_blank\">Sanity Adds Agent Context to Its Content Platform</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">MarketScale</font>",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNYldmZzlfMHY4VDM4V0xBNmNJQlozZzJlOGxqY0xVY2x6Qk83UnhNQjNIOHFFSEdPOGlYVTBjU0czcjVmR3ZfNWVLRTBsbzNqN1lYckl6c0d0Mnh4RmtwSTZROUp4dTJKQUZYYlFBbmxBa3FfWWpLVzB0SWFhVmxZRTdFMzdhdVNTWU1RbXlIVDRQdGkwVVpWdWl1aHRyTndRUm1YZndmcVJGWDlQSFd0bDhjYTBJWlJOS1g0ekNNVzR4TXBQeHhnWm9OUzkza0Y1eE5rajdQU29BOEU?oc=5",
+      "published_at": "2026-09-13T01:25:00",
+      "source": "MarketScale",
+      "extra": {}
+    },
+    {
+      "title": "Abacus.AI Smaug Models Cut Agent Costs 100x [2026] - shattered.io",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTFBROF95LXVxNXlGbVFLSTZmSnJnTVZ0MDFRSUpVa3ZYM3ZpUHpkSTFiU05sVnJFVElma29hRzgzNGlDSkJaeThHY25FTVZocFI5Nk9JNktZTElqQURlTGd3Q2hxMnpIWTFCN21oV1lR?oc=5\" target=\"_blank\">Abacus.AI Smaug Models Cut Agent Costs 100x [2026]</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">shattered.io</font>",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBROF95LXVxNXlGbVFLSTZmSnJnTVZ0MDFRSUpVa3ZYM3ZpUHpkSTFiU05sVnJFVElma29hRzgzNGlDSkJaeThHY25FTVZocFI5Nk9JNktZTElqQURlTGd3Q2hxMnpIWTFCN21oV1lR?oc=5",
+      "published_at": "2026-09-13T01:54:28",
+      "source": "shattered.io",
+      "extra": {}
+    },
+    {
+      "title": "How To Get Started With Meta's New AI Agent, Muse - Engadget",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiigFBVV95cUxPZ3lUVE9KRmtVQlEzWlNhWGJWYVl6U09RVnV2VmNaZkw4WXAwTDEwSFR2WTVZMDZzMEVQQTg2QktTcHZZX2NrcGJVWnotMWFqY2JKMnZQMkRlU2NTREZXbXN4cXlTaWVGVEN3NHRiMnZNdHZSMF9OZjFzZGVIRUZlbHRtV1N0cUtJYkE?oc=5\" target=\"_blank\">How To Get Started With Meta's New AI Agent, Muse</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Engadget</font>",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZ3lUVE9KRmtVQlEzWlNhWGJWYVl6U09RVnV2VmNaZkw4WXAwTDEwSFR2WTVZMDZzMEVQQTg2QktTcHZZX2NrcGJVWnotMWFqY2JKMnZQMkRlU2NTREZXbXN4cXlTaWVGVEN3NHRiMnZNdHZSMF9OZjFzZGVIRUZlbHRtV1N0cUtJYkE?oc=5",
+      "published_at": "2026-09-12T15:00:00",
+      "source": "Engadget",
+      "extra": {}
+    },
+    {
+      "title": "Solo.io Extends AI Agent Governance to the Desktop with agentdesktop - The Futurum Group",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxPSFZyOU9mSGtNTVVLNGhmdkttanNEdHVuU09HTFVGdlNraVBwYjNJR3NhOWpaT1VrR0lMRUVmS0xhdGlnRWR1cEhJN3BVcE1xaXR0Q0o4SVFPSUdSRlREaHNWNC1PdnFyaFlmQ3JMNTVLMDlsSXVsdE5RT2w2ajJfUnhJc0FPZzViTFpHQkNSR3haN2J3bjk2VHp2OHJLeVVwRTJwdnhB?oc=5\" target=\"_blank\">Solo.io Extends AI Agent Governance to the Desktop with agentdesktop</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Futurum Group</font>",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSFZyOU9mSGtNTVVLNGhmdkttanNEdHVuU09HTFVGdlNraVBwYjNJR3NhOWpaT1VrR0lMRUVmS0xhdGlnRWR1cEhJN3BVcE1xaXR0Q0o4SVFPSUdSRlREaHNWNC1PdnFyaFlmQ3JMNTVLMDlsSXVsdE5RT2w2ajJfUnhJc0FPZzViTFpHQkNSR3haN2J3bjk2VHp2OHJLeVVwRTJwdnhB?oc=5",
+      "published_at": "2026-09-11T17:07:51",
+      "source": "The Futurum Group",
+      "extra": {}
+    },
+    {
+      "title": "Ripple Just Put AI Agents Inside Its Treasury Software. Here’s What They Can and Can’t Do. - 247wallst.com",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMi3gFBVV95cUxNWVFlekFta28xZXR2VVhjeTlDVXFZbWJrb1JjbEZ4TTRZU1dsb285Z3BrOEttVHE4ZS00M0txMy02NlFwZHM0NnJKQ3JYWU9CUnZhSmtRUGZJOUFTSkpkY3pOWDdOZlBOUGM2bUQtUUVHWEdiamdVZ3hQZXpXX3N2T056VTBxUjJPN3h5YlBlUUc1UlVoMHFKT2pTVWt0QVpsY04xeWtnWThlOHVRdWxpVk4wZFY5NFRpTF9hT3JjZ09qbmZkbnpyUkZrb0FvNURnMGQ0ZURZYXdwNWNQdWc?oc=5\" target=\"_blank\">Ripple Just Put AI Agents Inside Its Treasury Software. Here’s What They Can and Can’t Do.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">247wallst.com</font>",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNWVFlekFta28xZXR2VVhjeTlDVXFZbWJrb1JjbEZ4TTRZU1dsb285Z3BrOEttVHE4ZS00M0txMy02NlFwZHM0NnJKQ3JYWU9CUnZhSmtRUGZJOUFTSkpkY3pOWDdOZlBOUGM2bUQtUUVHWEdiamdVZ3hQZXpXX3N2T056VTBxUjJPN3h5YlBlUUc1UlVoMHFKT2pTVWt0QVpsY04xeWtnWThlOHVRdWxpVk4wZFY5NFRpTF9hT3JjZ09qbmZkbnpyUkZrb0FvNURnMGQ0ZURZYXdwNWNQdWc?oc=5",
+      "published_at": "2026-09-11T23:43:00",
+      "source": "247wallst.com",
+      "extra": {}
+    },
+    {
+      "title": "Intel Reverses Decision To Cancel Their Open-Source Font Project - Phoronix",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE9KS1Fnd3VhZnJPRzM1M2g2eHhsbWpyQkhLaDFzdl81ZlB1Y3FqaFlYR2lQdThYQUE0OUk3WHFZanBBMGk4MzYtZEpGajl4em1wcVlENnhPRTVfSWYwODVr?oc=5\" target=\"_blank\">Intel Reverses Decision To Cancel Their Open-Source Font Project</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Phoronix</font>",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9KS1Fnd3VhZnJPRzM1M2g2eHhsbWpyQkhLaDFzdl81ZlB1Y3FqaFlYR2lQdThYQUE0OUk3WHFZanBBMGk4MzYtZEpGajl4em1wcVlENnhPRTVfSWYwODVr?oc=5",
+      "published_at": "2026-09-12T14:45:00",
+      "source": "Phoronix",
+      "extra": {}
+    }
+  ],
+  "US Headlines": [
+    {
+      "title": "Rep. Tom Tiffany says he sustained minor injuries in emergency plane landing on lake - NBC News",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMitgFBVV95cUxQLXNMVEhJNFQteThLTXVZRkxJcTFxNTZzZzhIaU9hSGVhd0ZsZF9rWWV2RnViLTFVX05Lei1mN1d4c29KVURCaXk3clQ3UnB2MmVjRWV2TnNNZzV1MDh6ZDJqakdreG9IWGhzVzROeHRXMHZqc2pJZEZWdzhGYURoMEZLM0xpd1V1ek9uYXpWSC1NaFB4TnhTbjdSVWN4ZFZ6OUxVZkNnRmEtY3VkekhPWnZkSk1rdw?oc=5\" target=\"_blank\">Rep. Tom Tiffany says he sustained minor injuries in emergency plane landing on lake</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTE9wY283NGdJbmJlSmhvTlpmWWlOTjg5QWVyNGlRSzdla1VxM2pYRnpTTTRTc1QtMHVHcFltWXhCXzh2UlIwMXBrMXhqTHRHRlZONWNzZ2h4ODVBZw?oc=5\" target=\"_blank\">US congressman swims to safety after his plane is forced to land on a lake</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxOdUxLOFRZVGQ5Z20tV3hYUmpqNVljbzRESTh5Z2Z5bmFFZllpRENQaDltRDFaS0RjQVhLMndELXZnMkNqVlh1d1E1UlFFUGlIaHFXQXZxdEE2TkhtZVZ1WExJLTBpRmtDMi02aDI0S0FOTEZJYnJzM2ZhRFBKdUR0RjJOX1ZUOXlMSlU0?oc=5\" target=\"_blank\">Wisconsin Rep. Tom Tiffany suffers minor injuries when his plane makes an emergency landing in a lake</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">cnn.com</font></li><li><a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTFBCOFY1MWpGNG5QUHpmY1d1dkdrR0xDQ2VrUkdNZThWLUFYSU5ZdzhiZEZqUkhJdVR5TmVFQmRYNG5ONUU2ajR5bHlBTHhxc3dWNzBYX21MWnp1bmQweUdtd2tXR2xyODg2Q1NJZXVSU2N6YmhtSW4xTtIBjAFBVV95cUxQT1BMMXkySnBxMW8zczEzX2FZSkRlcTdEUGI5cDlLWGJQZlgxMUNuQmpBNjdTcTJobXpLWGlIUzk4eGFkaDZNeUw2SERNWkFPMTVfeG5UM0hKNG5ZUjdDV1lKUllIWHBKOTRkOFRnOXZwRW9ZSjRkNzFOYTd0bVFKRm9jQllGZ0ZVaV91MQ?oc=5\" target=\"_blank\">Private plane crashes into Lake Wausau</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WSAW</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxPbUV4MVNJRE84a3ppeWN2YXJlYm43aks5YnJOcFhiREdZZWdlY09kejVSWjJJZmIxcXBiT3Q3N0Zfa0Z3Vk52MGdIVHNmVmlRRVdoeHFaSUtQdS14WGVhTlJiRkNnWlhabTEyaklvbU81NDZmQWF4MmZtd1kxNFZmdktNY2I4dE1WNVRoamxGLUcwU2hJOWFNZHkwS21NZ200Y29lb0wxeENKaWx5?oc=5\" target=\"_blank\">Authorities rescue Tom Tiffany after emergency plane landing in Lake Wausau</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">fox11online.com</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQLXNMVEhJNFQteThLTXVZRkxJcTFxNTZzZzhIaU9hSGVhd0ZsZF9rWWV2RnViLTFVX05Lei1mN1d4c29KVURCaXk3clQ3UnB2MmVjRWV2TnNNZzV1MDh6ZDJqakdreG9IWGhzVzROeHRXMHZqc2pJZEZWdzhGYURoMEZLM0xpd1V1ek9uYXpWSC1NaFB4TnhTbjdSVWN4ZFZ6OUxVZkNnRmEtY3VkekhPWnZkSk1rdw?oc=5",
+      "published_at": "2026-09-13T19:22:26",
+      "source": "NBC News",
+      "extra": {}
+    },
+    {
+      "title": "Security stops alleged trespasser on Kamala Harris’ Malibu property - WTOP News",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxNanI1eFFRYlg1eEtBQk8ydEJtRTNZaTcwSDNrMHhHY2d1Ymk0Vm5mN3F5R2hTckVLQ0hLcVRTMHRGbnVLcEZVb2FlY0V0elJtaE9EVFJqWU9oLUh5bndKLWpTaUdrbi1RM2NYay04VlZMNEhETnRackY3UktsNjRpQkVoYm5hT0lGYVoxQUFZOWlHMXEtaENqNVZlLW0yYjJEOEVV?oc=5\" target=\"_blank\">Security stops alleged trespasser on Kamala Harris’ Malibu property</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WTOP News</font><strong><a href=\"https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2ozOWVMOUVSRkZPd0V2RDN4RENpZ0FQAQ?hl=en-US&amp;gl=US&amp;ceid=US:en&amp;oc=5\" target=\"_blank\">See more headlines & perspectives on Google News</a></strong>",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNanI1eFFRYlg1eEtBQk8ydEJtRTNZaTcwSDNrMHhHY2d1Ymk0Vm5mN3F5R2hTckVLQ0hLcVRTMHRGbnVLcEZVb2FlY0V0elJtaE9EVFJqWU9oLUh5bndKLWpTaUdrbi1RM2NYay04VlZMNEhETnRackY3UktsNjRpQkVoYm5hT0lGYVoxQUFZOWlHMXEtaENqNVZlLW0yYjJEOEVV?oc=5",
+      "published_at": "2026-09-13T13:11:56",
+      "source": "WTOP News",
+      "extra": {}
+    },
+    {
+      "title": "Chicago mayor bets progressives will turn out for him in announcing reelection bid - Politico",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxQcnBfMzA4WjdFTFVHLVJ5SGpqUldhRmdZNnpKdXFqVUhyaG5sbC11R01HZlZUVGZfSmxzM2l6LW15OVZFbzBBa3k4cUhMT1c1ajlOb0N5enpYZVZNUXZkdWx1SDU1M2RGcmhVR09PQmpjMHJuSTNFcWNWQU5vYlZsSEFZQmpFSjhtZ09JNnBCc3NCUkFBdlVXbGxsOE1URS1CNlF1bw?oc=5\" target=\"_blank\">Chicago mayor bets progressives will turn out for him in announcing reelection bid</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxPeExPQ2haR2pjVXdlaGd6akw0bXdZdjVfNjYwVGRSZFdSaXV4OFJRUXpPZnVDTFJYY2N2aE9xQ01LNEpmZXk1clpPMDVmRkVNS2lGNXBSWXBFTWhFOEktUlNsTGhIVXRzMGdmRmk3UzFqV08wMF8xN0xMNEt5cjB3MFJtT1RJU1RCMVY4RkRWME5DazdQRlBZYlNIVUo4RnV4VThz0gGoAUFVX3lxTE9od0h3eVNwMk9HaXFucW81YXU2aGQtcUhfYldiVFM1X0plYjdNRk9JSGtLS0xMWG9rclR4Y1k3a2c0ZXlzZm9ueTZMZWx3SUxTaWM3NHJ3WXd2ZXBMY3ZaT2RYNC1vTks0eFNveE9qNnF2bmJfaXRqY09feGZmN3JRaWEwamxqSEVMVm9Da1J1VUVnQTZzNEtnVkxpemJRbWdLcUdOZ3dZNQ?oc=5\" target=\"_blank\">Chicago Mayor Brandon Johnson says he will run for reelection Sunday</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC7 Chicago</font></li><li><a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxQeXNOa3Z2SE5yRTQxc01KQl9jUFBIX0JHc1lqdnRNdmdiMEdyMExaUm9RZlNJZ3JFbVRPNVNRektaUE1UT3RKY05oYlhHTmh4cE9fc0NoakNwT3RQcmtiMEt2SERKUmtreDRUbmtDUXhuQVlWVmI1T2tTUERrV1d2ZTFVRXB5YXdmQTRPbQ?oc=5\" target=\"_blank\">Mayor Brandon Johnson declares reelection campaign</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Chicago Tribune</font></li><li><a href=\"https://news.google.com/rss/articles/CBMitAFBVV95cUxPVEpSNUJ4N0VoNDRHc2RVaXlfMTRNSjhCcFZjNTNLT1BNM3ZsNm8zelViS3FlalRFU3VCanMtYnpwVTBFaDc5cWdiWVM2MnZQQmhTdWpsbnBmbnFYUE4xOGpsZERTamVfMFNwbzFQejlwM21HcFZXbldLd1pEVDNFN2NmTnRteHJyal9LNnFXWnVBcDctNVVMdEZUVGV4bUYydXlTcUx4ZHRQZzlVRlVQYkFnYXM?oc=5\" target=\"_blank\">Chicago’s Mayor to Seek Reelection in Test of Progressive Clout</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Bloomberg.com</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxQZnhYUlBINTRaNlZtNTB5Wk1UejFLTC1iSm5Rak1oQ3NmUS1aNGRUcmNMb3diOEhVc1VWRVNnbnU4cWxSNjZZR1F5UmxFSHN0U0ZKMFd0a0xvNGFOaENDM3JwYXFFelhzOFZGWXQ5N0UzUFU4dU5nRUNLV3F2LUg2V3ZFTHpSNDBmM1EzMjRDS1hJdXBKbmN5UXZtb0E?oc=5\" target=\"_blank\">Who's vying to be mayor of Chicago? Here's a look at the roster of candidates so far.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">chicago.suntimes.com</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcnBfMzA4WjdFTFVHLVJ5SGpqUldhRmdZNnpKdXFqVUhyaG5sbC11R01HZlZUVGZfSmxzM2l6LW15OVZFbzBBa3k4cUhMT1c1ajlOb0N5enpYZVZNUXZkdWx1SDU1M2RGcmhVR09PQmpjMHJuSTNFcWNWQU5vYlZsSEFZQmpFSjhtZ09JNnBCc3NCUkFBdlVXbGxsOE1URS1CNlF1bw?oc=5",
+      "published_at": "2026-09-13T14:30:00",
+      "source": "Politico",
+      "extra": {}
+    },
+    {
+      "title": "Trump pokes the U.K., and Ireland’s unity debate catches fire - The Washington Post",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxPLVozR0NzRGxIS0JsZ3JHWlQ3QXo1VHFhUGRPTDd3elByZGJkdVB3WVYzOVBfbGV0SzlQeTA1bkhiZWJBZENLYlNJOVdtWFQzNmFHSm5xb1Bic2FrSTctZUhwNEpqYVhXb3FXWlRKX3JiVlFlM25BNGpteGxDOVBlMDNzcHo2RmVyVFlnc2FSOWU4Nm9SbFVYMEM5LVAwSFlvWk1sM29DRWlzOFpodTM1SG9SSGxQLVhw?oc=5\" target=\"_blank\">Trump pokes the U.K., and Ireland’s unity debate catches fire</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Washington Post</font></li><li><a href=\"https://news.google.com/rss/articles/CBMic0FVX3lxTE1naDV0SklkbzhsVUJJVEpKZFMzdmhIOUdRVVVRMzNKWjN5Szd5cl9wOWRkNGpfYzJxR2ljbFR2eXlQWVpJTzVydWtnb2ZMbGgyZ2lVN25ZcUVXLTNnSEZNSUswR3NVNjFVa0tCNkJyU2tfLUE?oc=5\" target=\"_blank\">Why Trump's united Ireland stance hit such a nerve</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font></li><li><a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxPT2o2QUJsTmh1Z0xZeS1IMmduZWY4UDdQTkNzUEFCSXFCaE9ONjNGRFRWSUdFMkFLSmk0U21RTUh4QmtoTG1wNG9Tek80YjFNTmJiWFZHSW9fNmtGcFY5OXhJLUd0eUtQVThCZk5EczZGdVRVUnlwRWQwMjYtM2lXWkVQeDJHaHBUb2xYemZ1b3Vvc1NLNFFoWlJKX0ZpeHVYY1g5WGJkSHBSUUV4bzcwVTZsY3Z3TDA?oc=5\" target=\"_blank\">For Trump, a Golf Trip to Ireland Tees Up a Reunification Controversy</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">wsj.com</font></li><li><a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxPcjJDQWswdURnNGs2YzlLME5MTEwzaVdERngxcGN1S3g0SkpOMEp2d2k5SmlVbWt4QnZLTXlaZjJsTXdpNy0xWWdzX3EyWjVLWmxhRDR3NXQ2Rkkxc2ZJbWt4UkNlRkVDVVh6bHJIcHczT1VYSHpqRGg5cW9zSy1rUUNDQ1llQ3NVMk9MMmtfWQ?oc=5\" target=\"_blank\">Trump Says Irish Unification Would Be ‘Fantastic,’ Breaking With Precedent</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxQY3c0NDhCOWpuX04wLVRjS0lXUE5yc2JETjdDTHRGOGYxcmZ4SGtDRVdEdmRzb3AxRTh6dDVnaEdVakhneWdqdzVxQ1BwZndhYTZZSjM5dnFaMFFFLWtNTEM2b3ZOSlltZFYyMWdjZ3Z4M21zbUVBNXRuczN4Z1ItQUpRQ3E0a2twR2lNZVF5cU1mUTF2MlJ6MVJ2SFBOLUV3Y2pxdlNmRlpjRjRlak1CdjFMVzhPaG9IMVphZmdhanQyLWpzNjJFeVg4U3hXdWtSNjRzQXUwVGg?oc=5\" target=\"_blank\">Shane Lowry distils the mania around him as Donald Trump and Clare Force One hit the course</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Irish Times</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPLVozR0NzRGxIS0JsZ3JHWlQ3QXo1VHFhUGRPTDd3elByZGJkdVB3WVYzOVBfbGV0SzlQeTA1bkhiZWJBZENLYlNJOVdtWFQzNmFHSm5xb1Bic2FrSTctZUhwNEpqYVhXb3FXWlRKX3JiVlFlM25BNGpteGxDOVBlMDNzcHo2RmVyVFlnc2FSOWU4Nm9SbFVYMEM5LVAwSFlvWk1sM29DRWlzOFpodTM1SG9SSGxQLVhw?oc=5",
+      "published_at": "2026-09-13T19:40:51",
+      "source": "The Washington Post",
+      "extra": {}
+    },
+    {
+      "title": "Trump downplays AI risks after dire expert warnings and calls to slow development down - BBC",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Va0d5eEp4ZUxtaHRQMU9obnE2UDFYcjlYV05YclYwcXA5c00wQU9hVEphQmcwOWdMUTRjblNoS0d3Mm5qRGVsSHBzbmdwQU00aV9vcXpTYWpoUQ?oc=5\" target=\"_blank\">Trump downplays AI risks after dire expert warnings and calls to slow development down</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPUC1sNlREa2ZpZmZkaklBb3dodW5GQV95czZiNVJCYXlhNlQxQXdpQ0pEWU5vZ3FsUVVEMzh0eUt1UVN0LXNvM2U5N0wtNVVkclVPbmRYZHBzanliXzhJMXZaUGp6MGthbWNoVUg2T3VSeFlIeVdNOFpwbmdrNkJZcENKd3ptaTVvakRlSDJWNUlMa1lOSG1MQkhzeHdVMXBYTVQ3ZHRRUXUwbkktZVAwRGFZZERhZk5rSEJudzhR?oc=5\" target=\"_blank\">Trump resists AI slowdown as the political tide turns</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Washington Post</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxNTXRiV0pkbEI4cXUtZ1dhZmhqSUlyOWJjQVVYSHdvX19XaENJNVZCTFNHQTZyTEtYcWxaemdTeHJzbTZUSXczM0gwb29IWlZWUW5SUW1YMnAzTWRSZnB1QWozYWhyV1JkcWYtZGF2dFlDNk5oSUlHT1YyTHZnYzJTMmxMWkFldGxnQjhuUndsNmhidWZaZ1NDeV94MU5tVkVOUWRzYy1ZSEZmSFdSX1E?oc=5\" target=\"_blank\">Trump downplays the need to check AI development and says he doesn't want to cede edge to China</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ABC7 Los Angeles</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi4wFBVV95cUxQYmRocGlCNXNxRmlhcGNBbk0xcWxmdy03MFFyVDAxVmtUQVR0ZVNrM0plWWc3SktOZGxjSm12TzN4bGFsR2l1NGNOYjlvZGxvbnFWOTlVaWFpd0tNMHJDR3pSZEpJYm1IU0JnRFQ3UG05Q1g0NkpSQ2tmb0hLLWV3QklldnZjaDc2UU5XeVBSQ1YyRmFVMTRFMVRTM0c5S0Zyc1RlWVJ5TmR5VExHLVJKVlphVTJCSDVIVHN0bVNyOEliWWN5MmFRbkV4cEhpY0ozRVJIY01Ba0JHaTRuSFRrbHp3SQ?oc=5\" target=\"_blank\">Trump rejects call by CEOs of Anthropic, OpenAI and xAI to slow AI down: 'Whoever wins with AI wins'</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxObThfSFpBRlQ0d1ZsVDV4SnZQdlJkYWZnRTlQRlpKWmRud283dWJQclhHQUUxM1dHSzVJakIxVnVBc2pYU0R2TmdUT01PSkJiY3I3WFRHUGNZNUh5RVdtRGk4QUppT1hVV0dHbDdwdGQzc0ZyZlRxeTUzNjg1UUY3RHpiR0JUOUpCdlV4b2xNd01FaEluMXhZZTA4eV9Gd0gxYW02eWprV05hRUREYWVGZUZLcHZWZWpa?oc=5\" target=\"_blank\">Trump says 'very negative forces' raising exaggerated concerns over AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Va0d5eEp4ZUxtaHRQMU9obnE2UDFYcjlYV05YclYwcXA5c00wQU9hVEphQmcwOWdMUTRjblNoS0d3Mm5qRGVsSHBzbmdwQU00aV9vcXpTYWpoUQ?oc=5",
+      "published_at": "2026-09-13T19:49:37",
+      "source": "BBC",
+      "extra": {}
+    },
+    {
+      "title": "Trump's $5,000 checks require Congress to approve, Johnson says - Axios",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTE0ybUJ0WDlQbmVjcF9rb2w5UEJReXJJcDgzZnRSQlh6LUVfOFNiQWVKZzh6UUJybHBrVHAtc1FtU1o0WFdhOUw2OFVwRHhDSURRQ1FyNzJQUTR6RFM5bmx4eWIxNjh1OG8ySGtmV1NMRkQ?oc=5\" target=\"_blank\">Trump's $5,000 checks require Congress to approve, Johnson says</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Axios</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxOekFrYVk1dDdNUG1yaFVSR3NoeVVJam5IOFBUNmxkRHZ2NWgwUk01akJyTC1hcGIxbUJiUmJlczZpRld3a2RHRlp4cGxuQ1U5ZDloTldxQ3JWS2lGenhfbUxvaS1lS1pYMmpvQzY4WlBta25XTnRYc2ZzVElrakpPejg5MGRMa2dHeExhWXNVYjNFWkNqYjhDMkYwODdxaFBCV2dKajdiemJoZHZLY2FLWWY2QkE4Tkk1ZXc?oc=5\" target=\"_blank\">Speaker Johnson says Congress could work with Trump to deliver $5,000 checks to Americans but there are no guarantees</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxNLWZFVlIycVlSTGN4d25US09oRHYzcGJISk1KMGFYckZ5UWRDYWdrYkZSa01NWWpPS0pvdEhhQ0doc2F5WmhGSVhHcElpUXNtYTAtTnBta1FjMW5FN3ctN3VVa3M1dXpkdnFfbjBLb0VlRnZVOWJaaVJ2M0I3Y0lYTHUyZFprME1rN19XZER4N25VUWE3Rl9xQ0c1OXk0cnI5cVJ4Z1RyVFBHLUZYSGt3aEFTYU5TQ01haGFR0gHAAUFVX3lxTFBxUmxBcXo4Ulk1djBoS2lyZENMcUdRVlRyNERDVEtWMTkza2RQcjA0NE1oRWpZMmhFNXhqd3RUU1BJajJCQ3h1Q2g5NVI0VTFCR0labEEtNGNoa196NXZ3Smg3SHRocmY4SEg0N1hfMkk2WVZFaGJyZnhiRXpVaDlaaEhPMS1ESVZyc2tRWDdfbzdLMWJfcVBTN1hjZlFUY3BqY2ZJaXU5a1AwcG5XU1JwNjl2WUN5SnFFcnJsS0QyNQ?oc=5\" target=\"_blank\">House Speaker Mike Johnson says Trump's $5,000 'dividend' needs congressional approval</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxQMXRfMWRzLWtaTEtyejBKWURMbDZyVFI3Mm5Ud1BucVVDVkctM0pHQmtFWjVYUnVNeVAxWW95dlJ1eDAzU1pON0ZNNmg2SnczT0R3ZHRfOWhLYXp4NmFxR21CWEtaVGNLYkRmOW9ObHoyTVA4cndXREZNOHpOaDZqb1Rjazh3MGJEdlk4RlllV1FvUlBqZVRsR1cwaThQYVk?oc=5\" target=\"_blank\">Trump calls $5,000 payouts 'easy' to fit into federal budget</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font></li><li><a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxOWFV0NlNJZ2hCb3FhM2MwdjJRTGlhUk9Cd1VvTE9sNTJjZGQyaUVvRThlNVhZTEg4MXRDamxKNXFOcFRWLWh1VHowLTZZZVNTWk5PcV9RT1NRVUo3SjRxMGxkYzk1cHNCQ3ZwNDhZbUVkNHZRVHEyV0FwbmlDaUYxetIBhgFBVV95cUxPLXRzakoxcUtFTnRLcG02V3dUbUQyM2d5TjUwTUYzcU1kRXhqY2hWQTg5NURZU2RBUHRuSUZ5blNTOHJBSVJwZWpENV9pU08wLXllcTJzbHBhVUl4VWk4Vi14Skh6UUlxS0dmanpTdF8yVWcxS3piUU5QQTVYTGNycFUtbTVRUQ?oc=5\" target=\"_blank\">Lawler deflects on supporting Trump’s $5K dividend pledge: ‘How do you pay for it?’</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Hill</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0ybUJ0WDlQbmVjcF9rb2w5UEJReXJJcDgzZnRSQlh6LUVfOFNiQWVKZzh6UUJybHBrVHAtc1FtU1o0WFdhOUw2OFVwRHhDSURRQ1FyNzJQUTR6RFM5bmx4eWIxNjh1OG8ySGtmV1NMRkQ?oc=5",
+      "published_at": "2026-09-13T20:41:15",
+      "source": "Axios",
+      "extra": {}
+    },
+    {
+      "title": "Bye, America: Trump’s rhetoric pushes some Canadians to shun the U.S. - The Washington Post",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxQcmdabkFyTjFFczEwcE9ubWU1NEtWOXdoVS15SGMzMGlJQlVHZ0FNS1J3NG5zcnd0amt4OWU0SUppVzNOWlViUGJHSDJDQ1RiMzJTUzg1VEFpUDFKcWhMejBPYV9JQnNjaG5hTDBiOW02a183SHZFNFB5VDhFSEV5Yi1KR0stZ3FZdE1hYXFNaTZZRGJLV1NJSDkwYUVEVnE5QlhB?oc=5\" target=\"_blank\">Bye, America: Trump’s rhetoric pushes some Canadians to shun the U.S.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Washington Post</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi-gFBVV95cUxNMHN4c0ViTDZiT0Rtb0lGNk9DZndNRG5odDhYUVA2WU96aXhMTEdOZjdSRDV0SGwyZGcwQnRlcG5kZnp0ZGRwSUNURnExcGhRVlNCWTl0Z2lqZDJ0eWxmOU9SQTA1TXdxU0cwSnY1VGt2UWVNWmU4MjQ0OTZ2UmhOUGlnajFFNWlWX25OVEZLSGNvRjczYjhTVFlILWpqSmV1NWF5TXFXal9tRy1kUUlWb1VnVGd5S3dsbU9neXFFT3k0UlIwbjlFSG1Jb0pzOFJPOGt5U1Zpc2FidmR4eFJLSmJCRlNBQjg5ZDJPczdxTlZxd1BzTFFLc29B?oc=5\" target=\"_blank\">Fentanyl, a Reagan ad and a near deal: Trump's trade war with Canada</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Channel 3000</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi0wFBVV95cUxNYWtMYlBMQkZoRHN1bzl5cmZvZE1fd1ZIMzZiUFlVYU02SFFlSC05dlNCNDlJc29kOEpZU2gyT2lsWkdxb2R2eXdhWFNqRkg4MU1BZWpCYWlOSTMyTmtsRUdPWDJ6TEpuYUI0RmFRZzlwMGp4V0FYbFZRdGU2QUtaQ0JxcE5rZkVjNllYanEyZEsxZ2hsWFVHTHgyOEVOdWp0U2xuYlc5ZXhSdm80bExTZnByaHBER1JHNnhYS2dvMUtHSDVkYjNiUTVoMi05bUpqU21N?oc=5\" target=\"_blank\">Canadian boycott of US products pushes grocers to adapt, explore new supply sources</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font></li><li><a href=\"https://news.google.com/rss/articles/CBMitAFBVV95cUxNODFVeG5SR2JDOTNQWFROellZWmtWRldwcFRPWkRwOFhYYVpPbTZ5TTlfSTlBQjhMazZPN2JTWGpuNjRkZ1Noc3dFWjlZcEMyYThrLXM1RDZRbXlDWTB3MlVoelJVd2owU1J0WXFnU0huQzAtQi1Rb08zTVNVSWFpSl9mdVZidW9mVDk4cVJOcDRvQkgzSjhOREctazFpZzdaM2ZUdXplaXd0RUNWYTl3dEpycDA?oc=5\" target=\"_blank\">The trade deficit with Canada that's upset Trump so much is due to oil the U.S. buys at a discount</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Fortune</font></li><li><a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxQU1RLUmVSVFU1V01rTTNRanl2UmYwbXJUR1p2dndPZXEzekdTMzlBNFNUWVVOZ0NIS1FKYUVjRnVlM09CVHBsWU1GblRGMXE4anItTFktYzFVMlRKX2g2ZXU5SllWZ0xjWTN5ck5xNTUwRm9scDhGVk5xNzFncUp0d3hrOVnSAYoBQVVfeXFMUGdrQTVSNXd2SERyUHhmTHFNRWlRaFFTaU5Vd2F6RWd3RUR0M3lXMFB4aHZlMzdWYk56b3QzVThhWHN6YzJaSHNfOUstaV93NlI3VFhKd0U3STNFb3BFWGpMeGZxUzBkdmI4RmNGUVBpU251ejZzcTlWQk42S3pHWGlNUldmanJGaUJ3?oc=5\" target=\"_blank\">The fallout from the US-Canada trade clash transcends economic impact</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Hill</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQcmdabkFyTjFFczEwcE9ubWU1NEtWOXdoVS15SGMzMGlJQlVHZ0FNS1J3NG5zcnd0amt4OWU0SUppVzNOWlViUGJHSDJDQ1RiMzJTUzg1VEFpUDFKcWhMejBPYV9JQnNjaG5hTDBiOW02a183SHZFNFB5VDhFSEV5Yi1KR0stZ3FZdE1hYXFNaTZZRGJLV1NJSDkwYUVEVnE5QlhB?oc=5",
+      "published_at": "2026-09-13T17:02:18",
+      "source": "The Washington Post",
+      "extra": {}
+    },
+    {
+      "title": "Vulnerable House Republicans embrace Trump as GOP bets on defying midterm history - Fox News",
+      "body": "<ol><li><a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxNdGk4d0plZEMydGF2dXJUUzdIdGtfLV96Q1ZmeVJqclVZMmtmS1ZmWTRQN3B6dTh3YzFIc3YtWGwteEJISXo0Z2c2VnlGWWFGelVaZDBfQlZRYzJQWDVoTjBuUnBXTWRRSjJYLU82UXQ5NkxHRkFwV2R1eUcxT1pkQzRJQWR3MVNocVN3WTR4RVFDWndnMVl3dGtLaDhmZ2NXOGZKQUIwSlRjem1K0gGyAUFVX3lxTE5IU21iUURSWkR0WkFoa2U3WnJ3Uk9uSVlPWE5iaS1YdktYQW5iRm9VOGQyR2poNzRRb0dGSC1Ddm16WHA5cVhTTDJjbVVqSXRQelZIeGFycDFJRVBzRmZXaTVVcVd2RW1reHdLdHpoZVhBTUJ5U05MN1RTZGNpRUlLYVFsTllkZnUxRWxXUDlnVWsybFhIS2FMX09PQVJtZExTdkRDci02ZGhMdHBWNEpxT0E?oc=5\" target=\"_blank\">Vulnerable House Republicans embrace Trump as GOP bets on defying midterm history</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Fox News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxNei1RbXpObzVpM0ZEcWt6TW5YN0hWZWdvdDBhLU11ejIxdklkN081NFl1MDM4a29sZkItbE0wVTl1SlVOZU5qWGczWW16cnUwVWhhemlsaDd3OV81eHZvX0FpQ1REM2lXNnpSd01sM2tXTGx5Q1ZXd3Faa29OTWtRbkwxbUFVMUtCNGNaMA?oc=5\" target=\"_blank\">Opinion | The Cult of Trump Is Waning</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxQOWJRNFRfTGM3RHY0SlNpQndIZWpkRlBlWThSQTBMc3hjbXpObGlKejIxcEtHdkJIamhwY2dDY1QyS05wbU5rV0JDb0swcFpKTUsyMHJpV0FYV3VxbEltUUgyQ2FoX01sODJNWnNxWDJubkNWcWJtQUZVYTBrMENqSVJscmd6bEFtWHNNRGNhUnZ3UQ?oc=5\" target=\"_blank\">Republicans aren’t convinced Dallas changed the midterms</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxQWFlHNnFLc0VrQndRX2NNZFhxY0w4S3kteHJCdmdsUDBxV3BMcXNGVTJjd0lSakd1Ul9YVUo3MTE4Z0s1N2U1XzFlLUlTYVlVeDEzV3Y2Vk9uV1FWVVRUYmJiLVFRZDFFNzY3TGZ6SFZJZzREQXZIeC1URG4tejBjMmFXczA3eHEtY21QeGtGSDRUSWMxRHlPWHZVTm8?oc=5\" target=\"_blank\">Empty seats, socialism and Trump dominate the Republican midterm convention</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NPR</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxPSXRnRFB0Y3BGakdyZE94X2FhVVRLd3JLbGZld0FCeWNEZFNITUFvbmJnZGFJOEJScnlYNGZwOHBGal80Sm1iN2o3OXJhM2FwWWtjaDB2S0NBQ3I4TWYtc0pjak9oaXRMSE1ZOGZha2RkYVJFV0VxSGFsbnpOTHFlNWpWSVRkX1J1eTJOaHJzRnlFZw?oc=5\" target=\"_blank\">Trump steps on Vance’s primetime moment and other takeaways from RNC convention’s second night</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">cnn.com</font></li></ol>",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNdGk4d0plZEMydGF2dXJUUzdIdGtfLV96Q1ZmeVJqclVZMmtmS1ZmWTRQN3B6dTh3YzFIc3YtWGwteEJISXo0Z2c2VnlGWWFGelVaZDBfQlZRYzJQWDVoTjBuUnBXTWRRSjJYLU82UXQ5NkxHRkFwV2R1eUcxT1pkQzRJQWR3MVNocVN3WTR4RVFDWndnMVl3dGtLaDhmZ2NXOGZKQUIwSlRjem1K0gGyAUFVX3lxTE5IU21iUURSWkR0WkFoa2U3WnJ3Uk9uSVlPWE5iaS1YdktYQW5iRm9VOGQyR2poNzRRb0dGSC1Ddm16WHA5cVhTTDJjbVVqSXRQelZIeGFycDFJRVBzRmZXaTVVcVd2RW1reHdLdHpoZVhBTUJ5U05MN1RTZGNpRUlLYVFsTllkZnUxRWxXUDlnVWsybFhIS2FMX09PQVJtZExTdkRDci02ZGhMdHBWNEpxT0E?oc=5",
+      "published_at": "2026-09-13T11:00:45",
+      "source": "Fox News",
+      "extra": {}
+    }
+  ],
+  "Immigration & Visas": [
+    {
+      "title": "Tech Giants Silently Reroute Jobs as H‑1B Costs Skyrocket - IEEE Spectrum",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE9tejJ4T2djS2gxM2ZkcVk4N0VqNENKSFJFbEc0WDFWNS1lTlFKNEh4VUpPNGtPRldfM1lzMU9XQjJ0NGk2TkVvMjl1UU9vUjhfVjE2U0Z2MXp3YUdaeGc?oc=5\" target=\"_blank\">Tech Giants Silently Reroute Jobs as H‑1B Costs Skyrocket</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">IEEE Spectrum</font>",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9tejJ4T2djS2gxM2ZkcVk4N0VqNENKSFJFbEc0WDFWNS1lTlFKNEh4VUpPNGtPRldfM1lzMU9XQjJ0NGk2TkVvMjl1UU9vUjhfVjE2U0Z2MXp3YUdaeGc?oc=5",
+      "published_at": "2026-09-12T14:00:52",
+      "source": "IEEE Spectrum",
+      "extra": {}
+    },
+    {
+      "title": "DHS Proposes Immigration Rule To End 60-Day H-1B Grace Period - Forbes",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxPaGU1cXRiYmVJdjdENThOTjE0SW12WFF1ZTgxX0tEOE5pZXFDQUJaYW1kdXpmVjMtcy1Mc0pOeW45THNQZWpyVjFzdG16Nm5KVnR3ZmFpRkFpNW5qeTRkbG5OUUxvTHZHc2NkYVQtZEkxOUgtZXVpTHo5WEJyMmFkRzVSNFZLVnVGeEdVRk4xR2E2dHB6NTB2UnhqcnRVNzRJLVpMQVpPSVoxdXc1NldENWRYdUxIWXZU?oc=5\" target=\"_blank\">DHS Proposes Immigration Rule To End 60-Day H-1B Grace Period</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Forbes</font>",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPaGU1cXRiYmVJdjdENThOTjE0SW12WFF1ZTgxX0tEOE5pZXFDQUJaYW1kdXpmVjMtcy1Mc0pOeW45THNQZWpyVjFzdG16Nm5KVnR3ZmFpRkFpNW5qeTRkbG5OUUxvTHZHc2NkYVQtZEkxOUgtZXVpTHo5WEJyMmFkRzVSNFZLVnVGeEdVRk4xR2E2dHB6NTB2UnhqcnRVNzRJLVpMQVpPSVoxdXc1NldENWRYdUxIWXZU?oc=5",
+      "published_at": "2026-09-11T14:38:34",
+      "source": "Forbes",
+      "extra": {}
+    },
+    {
+      "title": "O-1 Visa for Cybersecurity Professionals: O-1A Criteria and Evidence - The National Law Review",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxPTlNvcG9DQVFjTzlaMlVmbk54amxXVFY2eDRxcmZpamV5SjhGdU50ZEpta2hZai1JT3Q5UE9XWkMtdXFFRmFhbnB4ZUR5NFpaRi04UjVHMnpRbTh4M2pManVhRnFIOFFXQmFiN3lzTk9vc2Q2TzJqU1NpZU8yYXVhMVh4RHNfa3dKYlJSQmtCOTNlSnMyTXRFZFFUZnXSAaIBQVVfeXFMT1JQbGxnaFF4UjY1UEQ1Yi0yUmNUQnJ5NlNoajJVYlQ1V0ZOSVI3cmo0aHZkLV9mejdFSnhNR3h1MjN1eEZiRDhsZVZiZzhPU04zVTdtOW9xLVVPT005Qk9XaEY3VXJ6djFFV0gzY1JHTDJ3cHNwYTUtWlBPcWJaa083cjc3SDVXRGpBb055YzAwb0hkUUpEc3BYUmlqZGFKYjRB?oc=5\" target=\"_blank\">O-1 Visa for Cybersecurity Professionals: O-1A Criteria and Evidence</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The National Law Review</font>",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPTlNvcG9DQVFjTzlaMlVmbk54amxXVFY2eDRxcmZpamV5SjhGdU50ZEpta2hZai1JT3Q5UE9XWkMtdXFFRmFhbnB4ZUR5NFpaRi04UjVHMnpRbTh4M2pManVhRnFIOFFXQmFiN3lzTk9vc2Q2TzJqU1NpZU8yYXVhMVh4RHNfa3dKYlJSQmtCOTNlSnMyTXRFZFFUZnXSAaIBQVVfeXFMT1JQbGxnaFF4UjY1UEQ1Yi0yUmNUQnJ5NlNoajJVYlQ1V0ZOSVI3cmo0aHZkLV9mejdFSnhNR3h1MjN1eEZiRDhsZVZiZzhPU04zVTdtOW9xLVVPT005Qk9XaEY3VXJ6djFFV0gzY1JHTDJ3cHNwYTUtWlBPcWJaa083cjc3SDVXRGpBb055YzAwb0hkUUpEc3BYUmlqZGFKYjRB?oc=5",
+      "published_at": "2026-09-11T18:46:47",
+      "source": "The National Law Review",
+      "extra": {}
+    },
+    {
+      "title": "Work Visa Grace Period Could Be Eliminated - The Korea Daily",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE0yOGpuc2doX1BHVWRrQ2JiRFc3cTJBMkhOSWYxSVJSM2N2SDhoOEdIZ0hIWmExSlBZM29SVHVQdmNKNm94d21uckxaT3VlSklMei0tbm5NMzJua3JwWGc?oc=5\" target=\"_blank\">Work Visa Grace Period Could Be Eliminated</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Korea Daily</font>",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE0yOGpuc2doX1BHVWRrQ2JiRFc3cTJBMkhOSWYxSVJSM2N2SDhoOEdIZ0hIWmExSlBZM29SVHVQdmNKNm94d21uckxaT3VlSklMei0tbm5NMzJua3JwWGc?oc=5",
+      "published_at": "2026-09-11T18:58:57",
+      "source": "The Korea Daily",
+      "extra": {}
+    },
+    {
+      "title": "US student visas: What Indian students need to know in 2026 - The American Bazaar",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxQdC1KdWc3YndLUUNPVEZkY29UTVZ2bGlUcmgza3hqSzRKRXN3dFRMVld6SzhnWUNWM09OajZOTnA5bHh2SkdUNTZHUTFQa09KblpqYVlRREt3bGtoU2tmck56cDg1WEE2SENfd25fWVNmRFdNZFRGc2NSdVhuM3dJWnZvSmZEOXZRT3Y1VHlOVVg5blA5cUhCWWU2ME0?oc=5\" target=\"_blank\">US student visas: What Indian students need to know in 2026</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The American Bazaar</font>",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQdC1KdWc3YndLUUNPVEZkY29UTVZ2bGlUcmgza3hqSzRKRXN3dFRMVld6SzhnWUNWM09OajZOTnA5bHh2SkdUNTZHUTFQa09KblpqYVlRREt3bGtoU2tmck56cDg1WEE2SENfd25fWVNmRFdNZFRGc2NSdVhuM3dJWnZvSmZEOXZRT3Y1VHlOVVg5blA5cUhCWWU2ME0?oc=5",
+      "published_at": "2026-09-13T16:09:31",
+      "source": "The American Bazaar",
+      "extra": {}
+    },
+    {
+      "title": "USCIS Stops Sending ‘Welcome to America’ Green Card Pack - Newsweek",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxQVS1wT1NzN21FQjVXY1ZGazBvOUlocE9MMlhza3FsM1p0QjVXMnE1aHF2Q0R6SDliSS1uZXIxQ1l3NFl0MW55S3pueEtMZUtjREdxUS1YWEwwWTBWS2U4Y080M3ktNlBuTERhN05WblUwVUdfdmRDR3c5dFowZWZVd3UyTVprdndfSW96UzU3Y2JSZw?oc=5\" target=\"_blank\">USCIS Stops Sending ‘Welcome to America’ Green Card Pack</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Newsweek</font>",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQVS1wT1NzN21FQjVXY1ZGazBvOUlocE9MMlhza3FsM1p0QjVXMnE1aHF2Q0R6SDliSS1uZXIxQ1l3NFl0MW55S3pueEtMZUtjREdxUS1YWEwwWTBWS2U4Y080M3ktNlBuTERhN05WblUwVUdfdmRDR3c5dFowZWZVd3UyTVprdndfSW96UzU3Y2JSZw?oc=5",
+      "published_at": "2026-09-11T19:21:00",
+      "source": "Newsweek",
+      "extra": {}
+    },
+    {
+      "title": "Tom Homan blasts Congress’ backlash toward ICE: ‘They wrote the law’ - NewsNation",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE1oNzVnTE1hMVZuRmZrdjZVLWNyelU0UVRFVGI2ZTZ0djNGZGFOd0MxdEJoNF9fMS1aNWpVRGFpNlVzaERPcFNVRGs1SkExRXJEMjliS2dXQ0YtcVc3YlA3bHQyZUpSM3JFUUw2OUFFc1pZLW130gF6QVVfeXFMT1ozUzZaU0RPNE0xWmViRXZJSGFxWGpZUlZaYXd4NFYxSmFjSUQwVUdUZjJrU21zNUpLdldLN08wd2hKNVFJSHpaV0puRGRKYlFfckJnMlhGY2NuOWtQMXNMdF8tWGFQUnRYQVotRS14NnVzVzhweDlxeFE?oc=5\" target=\"_blank\">Tom Homan blasts Congress’ backlash toward ICE: ‘They wrote the law’</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NewsNation</font>",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1oNzVnTE1hMVZuRmZrdjZVLWNyelU0UVRFVGI2ZTZ0djNGZGFOd0MxdEJoNF9fMS1aNWpVRGFpNlVzaERPcFNVRGs1SkExRXJEMjliS2dXQ0YtcVc3YlA3bHQyZUpSM3JFUUw2OUFFc1pZLW130gF6QVVfeXFMT1ozUzZaU0RPNE0xWmViRXZJSGFxWGpZUlZaYXd4NFYxSmFjSUQwVUdUZjJrU21zNUpLdldLN08wd2hKNVFJSHpaV0puRGRKYlFfckJnMlhGY2NuOWtQMXNMdF8tWGFQUnRYQVotRS14NnVzVzhweDlxeFE?oc=5",
+      "published_at": "2026-09-13T08:16:48",
+      "source": "NewsNation",
+      "extra": {}
+    },
+    {
+      "title": "Cary pastor released from ICE custody. Daughter says he's moving to a hospital - WRAL",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxNRjV0UHphbk5uenJRWmdWeHE3NXVxa093dXpfZ1NCOFNGeVVRUmVpTVQ5RGtzcW9feTM2dHBPMlljMVNXTjF0bUVNbXVlVDNWa3FEVDE5ck4teWxUOWtIckxTSVpQdW5ZRWJSbXRTWTlBMlgxMU41YXp5Z21GcjhiVUVLZUtwYXBZQlJHd3EyZGxhNXBaUUpCdXBkLXdna3dXajFLMmNfaXhQQm5rc2M2VDJOUQ?oc=5\" target=\"_blank\">Cary pastor released from ICE custody. Daughter says he's moving to a hospital</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WRAL</font>",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNRjV0UHphbk5uenJRWmdWeHE3NXVxa093dXpfZ1NCOFNGeVVRUmVpTVQ5RGtzcW9feTM2dHBPMlljMVNXTjF0bUVNbXVlVDNWa3FEVDE5ck4teWxUOWtIckxTSVpQdW5ZRWJSbXRTWTlBMlgxMU41YXp5Z21GcjhiVUVLZUtwYXBZQlJHd3EyZGxhNXBaUUpCdXBkLXdna3dXajFLMmNfaXhQQm5rc2M2VDJOUQ?oc=5",
+      "published_at": "2026-09-13T02:27:10",
+      "source": "WRAL",
+      "extra": {}
+    },
+    {
+      "title": "ICE Treatment of Transgender Women Reversing Years-Long Practices - The Marshall Project",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxNVW5DeVRMRHdXUlE5eXF1c29qYnlRdVJBRFV1NFptSzBydHY2bXAzblpCVm1xTE1uWllwdXpVX2lQQzI2RE9qX0hzVERBbElsUmNiNWsxN1hTdWVxQVpXQ1JBZDlfSjVaci1xeXNSTE9tcHczVHJUUUlWV1E3R0daOWZJdFBXZElHS2VN?oc=5\" target=\"_blank\">ICE Treatment of Transgender Women Reversing Years-Long Practices</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Marshall Project</font>",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNVW5DeVRMRHdXUlE5eXF1c29qYnlRdVJBRFV1NFptSzBydHY2bXAzblpCVm1xTE1uWllwdXpVX2lQQzI2RE9qX0hzVERBbElsUmNiNWsxN1hTdWVxQVpXQ1JBZDlfSjVaci1xeXNSTE9tcHczVHJUUUlWV1E3R0daOWZJdFBXZElHS2VN?oc=5",
+      "published_at": "2026-09-12T17:00:00",
+      "source": "The Marshall Project",
+      "extra": {}
+    },
+    {
+      "title": "‘Why are you taking her?’ ICE arrests surge in El Paso region as families feel the impact - El Paso Matters",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiqwFBVV95cUxOazVvaFFlN0NncDZ2MmU0MHJMbFNQT0g1NVBUaU1sSlJrbXUzNEExWnBRa3ZhczJKUFNBZktHVmZabjJxaUJka19JZ2NMck5BREtqem00aE00N0dGaS1YMkRJNm5abkx0QUwxWGVweHhkbmluRUJUaHp5MEVBVDI4bjhPU25KT1hFTmdRR0kwZkVlbHVHOHNUdGN0Z3hWRzNwUjdabjdrMV9VdG8?oc=5\" target=\"_blank\">‘Why are you taking her?’ ICE arrests surge in El Paso region as families feel the impact</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">El Paso Matters</font>",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOazVvaFFlN0NncDZ2MmU0MHJMbFNQT0g1NVBUaU1sSlJrbXUzNEExWnBRa3ZhczJKUFNBZktHVmZabjJxaUJka19JZ2NMck5BREtqem00aE00N0dGaS1YMkRJNm5abkx0QUwxWGVweHhkbmluRUJUaHp5MEVBVDI4bjhPU25KT1hFTmdRR0kwZkVlbHVHOHNUdGN0Z3hWRzNwUjdabjdrMV9VdG8?oc=5",
+      "published_at": "2026-09-13T14:10:00",
+      "source": "El Paso Matters",
+      "extra": {}
+    },
+    {
+      "title": "Judge orders ICE to halt construction of proposed detention facility near Gilroy - NBC Bay Area",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNTExrVlU4eHpKUVA1Q2dWWnBQbGFERWVtTmRTWDBFRnBmSXpOMFR4Umh6VjZNZk8zT2hCcVpKNGhhbGxSTW9QQzZPNDg4MHRxMFRROVc2VEt3Wm83RjlfZXdaNDc3ZC14RzlzOEwza2ZVWVZQRk1IWjBKa2d2YVdWUk02TVJQRzA4SU1JNFB1MkhxU3BMR0FqMFUzcWxsZUnSAacBQVVfeXFMTzUtYV9CNkxiaVYyQjlwOXZoV2p5TUlLbUNGZzdRNkZlVHp1ODNEMTBNYUNtU2dlTWdxb2hwcmJNeUx1OFl1NXM3TmxOQ296aDl4TjNrLWFTQlBobUlDcGFnS1BrcnNLd1RqQ1oxZnhOOFFRYUxEc0s1RDNvUzZ4TTdMQkM5VzdIeHpLblR6Nl94LVZCajFzanA4UWxPOWFfOU5nMW5BajQ?oc=5\" target=\"_blank\">Judge orders ICE to halt construction of proposed detention facility near Gilroy</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NBC Bay Area</font>",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNTExrVlU4eHpKUVA1Q2dWWnBQbGFERWVtTmRTWDBFRnBmSXpOMFR4Umh6VjZNZk8zT2hCcVpKNGhhbGxSTW9QQzZPNDg4MHRxMFRROVc2VEt3Wm83RjlfZXdaNDc3ZC14RzlzOEwza2ZVWVZQRk1IWjBKa2d2YVdWUk02TVJQRzA4SU1JNFB1MkhxU3BMR0FqMFUzcWxsZUnSAacBQVVfeXFMTzUtYV9CNkxiaVYyQjlwOXZoV2p5TUlLbUNGZzdRNkZlVHp1ODNEMTBNYUNtU2dlTWdxb2hwcmJNeUx1OFl1NXM3TmxOQ296aDl4TjNrLWFTQlBobUlDcGFnS1BrcnNLd1RqQ1oxZnhOOFFRYUxEc0s1RDNvUzZ4TTdMQkM5VzdIeHpLblR6Nl94LVZCajFzanA4UWxPOWFfOU5nMW5BajQ?oc=5",
+      "published_at": "2026-09-13T04:12:58",
+      "source": "NBC Bay Area",
+      "extra": {}
+    },
+    {
+      "title": "Mullin seeks to win over immigration hardliners with messaging blitz - Politico",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMiYkFVX3lxTE03SEFmYzlEQnVLSTF2RjhxcjNSaDlIdnBQUm82ZWJTVWM3ejFxUURmc2tfUVpPekdrZmtleDlFLTdrazB0aWdZNm41bk5FVnJFTEhfdDZMRHBMY2pJTEZfNlln?oc=5\" target=\"_blank\">Mullin seeks to win over immigration hardliners with messaging blitz</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE03SEFmYzlEQnVLSTF2RjhxcjNSaDlIdnBQUm82ZWJTVWM3ejFxUURmc2tfUVpPekdrZmtleDlFLTdrazB0aWdZNm41bk5FVnJFTEhfdDZMRHBMY2pJTEZfNlln?oc=5",
+      "published_at": "2026-09-13T15:00:00",
+      "source": "Politico",
+      "extra": {}
+    },
+    {
+      "title": "Calls for investigation after video shows ICE officers using batons on protesters - The Guardian",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE1zaWpwMkhyWXpDejlMTG9pdFQtMkU4TlhRemJSbTI5MjVTYlhSOUxNTmoxZDJ0QzB0UDdSb295eGtBS2pZNGFDZUFJbmhNRjdBOXctS19IQnhZUXRHaFgxd1c0Q0ItSlIyNGsxSkVwejk0Q2xFcHdVNlZHcw?oc=5\" target=\"_blank\">Calls for investigation after video shows ICE officers using batons on protesters</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font>",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1zaWpwMkhyWXpDejlMTG9pdFQtMkU4TlhRemJSbTI5MjVTYlhSOUxNTmoxZDJ0QzB0UDdSb295eGtBS2pZNGFDZUFJbmhNRjdBOXctS19IQnhZUXRHaFgxd1c0Q0ItSlIyNGsxSkVwejk0Q2xFcHdVNlZHcw?oc=5",
+      "published_at": "2026-09-12T13:01:00",
+      "source": "The Guardian",
+      "extra": {}
+    },
+    {
+      "title": "Minnesota churches roiled by legal battle over ICE surveillance and right to protest - PBS",
+      "body": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxNTmtYS1BWejNkZjA2T2F4TmpMc202b0NJelZacU1lV3BtOHp4VnlXWGJlX0drZF8zUFhnYzMxYVVwMFItVG9ZakxWMEVydFAwQ1ZkQ1pGX2RlWmFobnRfZ2xRM1M5ZGhMRlAzMEFJSlZNeW9YM0dMN1RxMFFjVFRtOGprNVYxUV9FVld1VWdrSHhkbFhIZ2tWTDJJbVVydkZ2ZFI0VFJFOGFENjZYcl9SOGEyRDhRRXRnQTBKNw?oc=5\" target=\"_blank\">Minnesota churches roiled by legal battle over ICE surveillance and right to protest</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PBS</font>",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNTmtYS1BWejNkZjA2T2F4TmpMc202b0NJelZacU1lV3BtOHp4VnlXWGJlX0drZF8zUFhnYzMxYVVwMFItVG9ZakxWMEVydFAwQ1ZkQ1pGX2RlWmFobnRfZ2xRM1M5ZGhMRlAzMEFJSlZNeW9YM0dMN1RxMFFjVFRtOGprNVYxUV9FVld1VWdrSHhkbFhIZ2tWTDJJbVVydkZ2ZFI0VFJFOGFENjZYcl9SOGEyRDhRRXRnQTBKNw?oc=5",
+      "published_at": "2026-09-12T22:25:55",
+      "source": "PBS",
+      "extra": {}
+    }
+  ],
+  "Markets": []
+}
