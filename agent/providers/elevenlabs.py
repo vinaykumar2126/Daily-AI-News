@@ -65,6 +65,21 @@ class ElevenLabsProvider(RealtimeProvider):
         # dashboard. One update sets both.
         prompt_cfg: dict = {
             "knowledge_base": [{"type": "text", "name": doc.name, "id": doc.id}],
+            # Give the agent the end_call system tool. Without it the model can SAY goodbye but
+            # cannot actually hang up — "hang up" is just more words, so the turn loops back to the
+            # caller and the call never ends. Reasserted on every sync so it can't drift out of the
+            # dashboard. The prompt tells it when to use this.
+            "built_in_tools": {
+                "end_call": {
+                    "name": "end_call",
+                    "description": (
+                        "End the phone call. Call this when the listener says they're done, says "
+                        "goodbye, asks you to hang up, or once you've given your sign-off. Say a "
+                        "brief, warm goodbye first, then call this tool to actually hang up."
+                    ),
+                    "params": {"system_tool_type": "end_call"},
+                }
+            },
         }
         anchor = _read_anchor_prompt()
         if anchor:
