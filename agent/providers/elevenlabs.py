@@ -12,10 +12,22 @@ ELEVENLABS_PHONE_NUMBER_ID, USER_PHONE_NUMBER.
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 
 from agent.providers.base import RealtimeProvider
 
 log = logging.getLogger("daily-news.agent.elevenlabs")
+
+# The host persona/system prompt, kept in-repo so the call's voice is version-controlled.
+_ANCHOR_PROMPT = Path(__file__).resolve().parent.parent / "prompts" / "anchor.md"
+
+
+def _read_anchor_prompt() -> str:
+    """Load the agent's system prompt (agent/prompts/anchor.md), or '' if it's missing."""
+    try:
+        return _ANCHOR_PROMPT.read_text().strip()
+    except OSError:
+        return ""
 
 
 class ElevenLabsProvider(RealtimeProvider):
@@ -48,21 +60,27 @@ class ElevenLabsProvider(RealtimeProvider):
             text=text, name=name
         )
 
-        # Attach ONLY today's document to the agent.
+        # Push the host persona (agent/prompts/anchor.md) as the system prompt alongside today's
+        # knowledge, so the voice/style is version-controlled here instead of pasted in the
+        # dashboard. One update sets both.
+        prompt_cfg: dict = {
+            "knowledge_base": [{"type": "text", "name": doc.name, "id": doc.id}],
+        }
+        anchor = _read_anchor_prompt()
+        if anchor:
+            prompt_cfg["prompt"] = anchor
+
         self.client.conversational_ai.agents.update(
             agent_id=self.cfg.eleven_agent_id,
-            conversation_config={
-                "agent": {
-                    "prompt": {
-                        "knowledge_base": [
-                            {"type": "text", "name": doc.name, "id": doc.id},
-                        ]
-                    }
-                }
-            },
+            conversation_config={"agent": {"prompt": prompt_cfg}},
         )
-        log.info("Agent %s knowledge refreshed -> doc %s", self.cfg.eleven_agent_id, doc.id)
-        return {"document_id": doc.id, "name": doc.name}
+        log.info(
+            "Agent %s refreshed -> doc %s, persona %s",
+            self.cfg.eleven_agent_id,
+            doc.id,
+            "updated" if anchor else "left as-is (anchor.md not found)",
+        )
+        return {"document_id": doc.id, "name": doc.name, "persona_pushed": bool(anchor)}
 
     def create_session(self) -> dict:
         """Return {'signed_url': ...} for the browser client to open a live conversation.
@@ -74,13 +92,73 @@ class ElevenLabsProvider(RealtimeProvider):
             "ElevenLabs create_session() not implemented — verify the signed-URL endpoint and fill in."
         )
 
-    def place_outbound_call(self, to_number: str) -> dict:
+    def _resolve_phone_number_id(self) -> str:
+        """The ElevenLabs id of the Twilio number to call FROM.
+
+        Prefers ELEVENLABS_PHONE_NUMBER_ID. With that unset, looks up the account's registered
+        Twilio numbers -- convenient, and it means a fresh checkout works before anyone copies an
+        id into .env. Set the env var in production so a second number appearing in the account
+        cannot silently change which line you call from.
+        """
+        if self.cfg.eleven_phone_number_id:
+            return self.cfg.eleven_phone_number_id
+
+        numbers = [
+            n for n in self.client.conversational_ai.phone_numbers.list()
+            if getattr(n, "provider", None) == "twilio"
+        ]
+        if not numbers:
+            raise RuntimeError(
+                "No Twilio number registered in ElevenLabs. Import the number under "
+                "Conversational AI -> Phone Numbers, then set ELEVENLABS_PHONE_NUMBER_ID."
+            )
+        if len(numbers) > 1:
+            labels = ", ".join(f"{n.phone_number} ({n.phone_number_id})" for n in numbers)
+            raise RuntimeError(
+                f"{len(numbers)} Twilio numbers registered; set ELEVENLABS_PHONE_NUMBER_ID to pick "
+                f"one: {labels}"
+            )
+        chosen = numbers[0]
+        log.info(
+            "Using Twilio number %s (%s) — set ELEVENLABS_PHONE_NUMBER_ID to pin it",
+            chosen.phone_number,
+            chosen.phone_number_id,
+        )
+        return chosen.phone_number_id
+
+    def place_outbound_call(self, to_number: str | None = None) -> dict:
         """Ring `to_number` and connect them to the agent (the daily morning call).
 
-        Implement (verify): use ElevenLabs' outbound-call API (via ELEVENLABS_PHONE_NUMBER_ID, or
-        a Twilio integration) to dial `to_number` and attach ELEVENLABS_AGENT_ID. Return the call id.
+        ElevenLabs places the call itself using the Twilio credentials held against the number you
+        imported into its dashboard -- so TWILIO_ACCOUNT_SID / TWILIO_AUTH_TOKEN are NOT needed here
+        and this code never talks to Twilio directly.
+
+        Call `sync()` first: the agent answers from whatever knowledge base is attached, so dialling
+        before the refresh means today's call discusses yesterday's news.
         """
-        raise NotImplementedError(
-            "ElevenLabs place_outbound_call() not implemented — verify the telephony/outbound-call "
-            "API and fill in. Requires a configured phone number."
+        to_number = to_number or self.cfg.user_phone_number
+        if not to_number:
+            raise RuntimeError("No destination number: pass to_number or set USER_PHONE_NUMBER")
+        if not self.cfg.eleven_agent_id:
+            raise RuntimeError("ELEVENLABS_AGENT_ID not set")
+
+        phone_number_id = self._resolve_phone_number_id()
+        log.info("Calling %s from phone_number_id=%s as agent %s",
+                 to_number, phone_number_id, self.cfg.eleven_agent_id)
+        resp = self.client.conversational_ai.twilio.outbound_call(
+            agent_id=self.cfg.eleven_agent_id,
+            agent_phone_number_id=phone_number_id,
+            to_number=to_number,
         )
+        out = {
+            "success": getattr(resp, "success", None),
+            "message": getattr(resp, "message", None),
+            "conversation_id": getattr(resp, "conversation_id", None),
+            "call_sid": getattr(resp, "call_sid", None),
+        }
+        # ElevenLabs answers 200 with success=False for a refused call (bad number, unverified
+        # Twilio trial destination), so the HTTP status alone does not tell you it rang.
+        if not out["success"]:
+            raise RuntimeError(f"ElevenLabs refused the call: {out['message']!r}")
+        log.info("Call placed: conversation=%s call_sid=%s", out["conversation_id"], out["call_sid"])
+        return out
