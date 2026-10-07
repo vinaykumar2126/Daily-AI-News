@@ -253,5 +253,60 @@
         "source": "Seoul Economic Daily"
       }
     ]
+  },
+  {
+    "date": "2026-10-06",
+    "items": [
+      {
+        "title": "Mistral launches open-source Mistral Large 4, details AI roadmap - SiliconANGLE",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ05jajV1RG5hV0FEdHBNX1VUMXNESWg1UE1IMmFfQVd1a0RCeDhxbERFb0RYR0dFMEY3STVkcVVjenNiQWVNcWFSbWJxZzVaa1hUNEtKazlTTFRIRFNfbVg5R0hZWmhSVG8wV3NDRGpwR2xXUU5yWlhmVUYxNk53NlFGM2dMWXYtRUlST2FfSXFGOFZxUHV1SDNlU1BBX0xwbHc?oc=5",
+        "source": "SiliconANGLE"
+      },
+      {
+        "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+        "url": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors",
+        "source": "Hacker News"
+      },
+      {
+        "title": "Reflection AI debuts open-source Beam model with 501B parameters - SiliconANGLE",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNamc0Rmp0cW9qbjJXVE1KQWhXX19BUGk4WDdWT0VKaGw3Z296S2hxNkJxeEZBWHdzbnlvQjA4MzB1MW1tWGczYU9wM2pMRU42RGthMUtFY0JTR3JPcnJmLUx3T25Uc2cteHFkMVNXdTlNOVBQZ1lad0lscGMtR2RwaEZzcEE0a2g1UVdRLWVpaEdpQkk0aVIyY3Z3U2k4Tml4LWZJ?oc=5",
+        "source": "SiliconANGLE"
+      },
+      {
+        "title": "Announcing d1 with vision",
+        "url": "https://x.com/liquidai/status/2107161990808674404?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "OpenAI to Add Text Watermarks",
+        "url": "https://openai.com/index/eu-text-provenance/?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "How Devin's Memory and Dreaming Work",
+        "url": "https://devin.ai/blog/memory-and-dreaming?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Framefields",
+        "url": "https://github.com/gatewai-dev/framefields?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Meta and Walmart Unveil Common Standard for AI Agent Connectivity - BigGo Finance",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1hLXVKSzNrRUI3X0FlLWswdlNJWnNJMmVjRjFPT3BqWm10dk4zRE4tYVRXWXZ4YXdKZ1J5R3RKM1paQVhJOWRiYUY5eVBscUJSR0hmY0lERDJBZXV4T1kyTzhhSEJnN204MlJpVC1qTjB4Q05Xenc?oc=5",
+        "source": "BigGo Finance"
+      },
+      {
+        "title": "Instinct in group chats",
+        "url": "https://x.com/noahrshinn/status/2107161132192690558?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Transcend Rails brings policy enforcement and spending controls to AI agents - Help Net Security",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNTThIT1Q2T3dKbXBkZElxZ3FfZnRLX3RpeWYtUEVpUkdjT200WnRGekx3SGRBU09lYnNvS1ZCcHVnNk1aZ2djeW40T1diazR3Z3oxb2ZWWEhiVi0wUjZ6UmRUZ0dXS3dIQ1FXT0ZPb1dtWVBKR0JCQUtmVnhiazlzV01aNEo4REQyVzM4aGdHMzJ2NU9CRVNGLVVtTVl4Y184bnZmcHNsVDRvSWxZd0NjZWM3aDJKamd2R2Ytcw?oc=5",
+        "source": "Help Net Security"
+      }
+    ]
   }
 ]

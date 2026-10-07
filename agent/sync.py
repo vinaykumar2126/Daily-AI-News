@@ -24,11 +24,35 @@ log = logging.getLogger("daily-news.agent.sync")
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="build + print, don't update the provider")
+    ap.add_argument(
+        "--call",
+        nargs="?",
+        const="",
+        metavar="NUMBER",
+        help="after syncing, ring this number (default USER_PHONE_NUMBER) and connect the agent",
+    )
+    ap.add_argument(
+        "--call-only",
+        nargs="?",
+        const="",
+        metavar="NUMBER",
+        help="ring without refreshing knowledge first — for testing the telephony wiring alone",
+    )
     args = ap.parse_args()
 
     load_dotenv()
     cfg = Config()
     observability.setup(cfg)
+
+    # Telephony-only path: skip the pipeline entirely. Rebuilding the briefing costs ~2 minutes and
+    # real tokens, which is a poor way to find out whether a phone number is wired up.
+    if args.call_only is not None:
+        try:
+            _place_call(create_provider(cfg), args.call_only or None)
+        finally:
+            observability.flush()
+        return 0
+
     feeds = load_feeds()
 
     with observability.span(
@@ -55,7 +79,22 @@ def main() -> int:
             result = provider.sync(ctx)
         log.info("Done: %s", result)
         observability.set_attrs(outcome="synced")
+
+        if args.call is not None:
+            _place_call(provider, args.call or None)
     return 0
+
+
+def _place_call(provider, to_number: str | None) -> dict:
+    """Ring the listener and connect them to the agent, after the knowledge refresh."""
+    log.info("Placing outbound call via %s", provider.name)
+    with observability.span("outbound_call", provider=provider.name):
+        result = provider.place_outbound_call(to_number)
+        observability.set_attrs(
+            conversation_id=result.get("conversation_id"), call_sid=result.get("call_sid")
+        )
+    log.info("Call result: %s", result)
+    return result
 
 
 if __name__ == "__main__":
