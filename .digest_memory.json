@@ -308,5 +308,60 @@
         "source": "Help Net Security"
       }
     ]
+  },
+  {
+    "date": "2026-10-08",
+    "items": [
+      {
+        "title": "GPT-6 and Intelligent UI for everyone",
+        "url": "https://openai.com/index/gpt-6-for-everyone/?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Mistral launches open-source Mistral Large 4, details AI roadmap - SiliconANGLE",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZ05jajV1RG5hV0FEdHBNX1VUMXNESWg1UE1IMmFfQVd1a0RCeDhxbERFb0RYR0dFMEY3STVkcVVjenNiQWVNcWFSbWJxZzVaa1hUNEtKazlTTFRIRFNfbVg5R0hZWmhSVG8wV3NDRGpwR2xXUU5yWlhmVUYxNk53NlFGM2dMWXYtRUlST2FfSXFGOFZxUHV1SDNlU1BBX0xwbHc?oc=5",
+        "source": "SiliconANGLE"
+      },
+      {
+        "title": "Introducing Claude Haiku 5.5",
+        "url": "https://www.anthropic.com/claude-haiku-5-5?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Open d1: Edge decision models for text, vision, and audio",
+        "url": "https://www.liquid.ai/blog/d1-open?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs with RTX Spark and AI Agents",
+        "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "AWS launches open-source AI agent sandbox to prevent YOLO mode disasters - The Register",
+        "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQdldCZWVraDhsNlpyYWdfRm80YmpyVERNZHh1bEJOVWwxSlkweDZhMG5IZmx1ZmlIOFVkNUVOTXk3MXNaT2luSU94M1UzQ1dCeHo3cWdpczVTYmdmSUlLX2Z0VV9Xdy1sQXVpMlVMbHRWNVl4M3pxTVVrbXhEMXI4c1VIR2ZkR014d3VqLWtORG1QQURwSXB5eElFdVZDNmpKRGUtZlpCdUZpalJlbEFpWDQtNDZNWnpDZU56N3BCTVRUZmoyRzUwMg?oc=5",
+        "source": "The Register"
+      },
+      {
+        "title": "Google Launches SynthID Site to Detect AI-Generated Media - The Tech Buzz",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNaEwyWVpidUpDVGNYbXVibnFpaTc0ZmFhSTF2UFF3RWh1OWNQMVhTV3pOWFZmUWlBR2cwcUF6bl83cFRfMGVkOEJXSFZZcUg1TG5YeHZiSXh0bkNndzZET2FTSGZkU3kwaVhkVmx1YWUyYnZ6dTNNNjhTUHpnZlBiOEx2OElCUzk2cWhIc2RUVGY1YXg4?oc=5",
+        "source": "The Tech Buzz"
+      },
+      {
+        "title": "Google Cloud introduces Gemini agent for work as AI race heats up - CNBC",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQN05nOC03OVQ1MzBlYWVrYzVUck5kbC1kZ3czYTc2TGxqZXRzUlR2SEhXYjRsbnF3SmkwUllKLTBoT1I0VW9YVFF3M1JKQ01GemZIcFByQUxYVXJoaDBCcUlFZzBfelhEWUdmYW5vWTd6dkNYTWw5RmFZbTh5RGxaM3h2eHlocGJ3U0EzM3hOQlpxVVp6Y29xeVdkajZXV1dTYjI2OdIBqgFBVV95cUxOOHIyVWRYbHF1WUxoWGZtWU4wbGgyaUN5NHVHSTl5WC1pRXpUc1MwMFdhU3pJVnQ4bnhsTHlyR1k1dGNWbTRHLUtmRDJ0QzdFM1FJREZRWlJ5YTNwMzVfN09NX0MzNjdhUklZMmZNM0xxMUxhcW1KVjN6LXBtd2NDNUs3RkVYc1FTUXI2ZUJPUTMtdWFFeXhVMHhPckQ3Yll4S2ZlMmZZU3UzUQ?oc=5",
+        "source": "CNBC"
+      },
+      {
+        "title": "Multimodal embeddings beyond a single vector",
+        "url": "https://www.perplexity.ai/hub/blog/multimodal-embeddings-beyond-a-single-vector?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Sub-1-Bit LLM Compression via Latent Factorization",
+        "url": "https://github.com/SamsungLabs/LittleBit",
+        "source": "Hacker News"
+      }
+    ]
   }
 ]

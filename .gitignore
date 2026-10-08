@@ -5,6 +5,6 @@ __pycache__/
 briefings/
 *.mp3
 *.aiff
-
+.digest_memory.json
 # adk web local dev server scratch
 .adk/
