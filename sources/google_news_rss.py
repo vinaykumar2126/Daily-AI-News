@@ -15,12 +15,78 @@ import logging
 import re
 import time
 import urllib.parse
+import urllib.request
 
 import feedparser
 
 from sources.base import Source, Story, register_source
 
 log = logging.getLogger("daily-news.sources.gnews")
+
+# Google News serves its RSS differently to datacenter IPs (GCP/AWS) than to residential ones:
+# with feedparser's default User-Agent it returns an empty feed (0 entries) from Cloud Run, even
+# though the same URL works from a laptop. A browser UA + the EU-consent cookie (harmless in the
+# US, required in some regions) makes it serve real content. See fetch() below.
+_BROWSER_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+)
+# "YES+" pre-accepts Google's consent interstitial so the RSS endpoint returns the feed, not a
+# consent redirect page.
+_CONSENT_COOKIE = "CONSENT=YES+cb.20210328-17-p0.en+FX+000"
+_FETCH_TIMEOUT = 15
+_FETCH_RETRIES = 2
+
+
+def _fetch_feed(url: str):
+    """Fetch an RSS URL with a browser User-Agent and parse it, retrying on empty/error.
+
+    Returns a parsed feedparser result. Logs why a fetch came back empty (HTTP status, parse
+    error, or simply zero entries) so a silent datacenter-IP block is visible in the logs instead
+    of looking like "no news today".
+    """
+    last = None
+    for attempt in range(1, _FETCH_RETRIES + 1):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={
+                    "User-Agent": _BROWSER_UA,
+                    "Accept": "application/rss+xml, application/xml, text/xml, */*",
+                    "Accept-Language": "en-US,en;q=0.9",
+                    "Cookie": _CONSENT_COOKIE,
+                },
+            )
+            with urllib.request.urlopen(req, timeout=_FETCH_TIMEOUT) as resp:
+                status = getattr(resp, "status", None) or resp.getcode()
+                raw = resp.read()
+            parsed = feedparser.parse(raw)
+            n = len(parsed.entries)
+            if n:
+                return parsed
+            # 200 with zero entries is the datacenter-block signature — log and retry.
+            bozo = getattr(parsed, "bozo_exception", None)
+            log.warning(
+                "google_news_rss: 0 entries (HTTP %s%s) attempt %d/%d: %s",
+                status,
+                f", parse error {bozo!r}" if bozo else "",
+                attempt,
+                _FETCH_RETRIES,
+                url,
+            )
+            last = parsed
+        except Exception as exc:  # noqa: BLE001 - network/DNS/timeout; log and retry
+            log.warning(
+                "google_news_rss: fetch failed attempt %d/%d (%r): %s",
+                attempt,
+                _FETCH_RETRIES,
+                exc,
+                url,
+            )
+            last = None
+        if attempt < _FETCH_RETRIES:
+            time.sleep(1.0 * attempt)
+    return last if last is not None else feedparser.parse(b"")
 
 
 def _strip_html(text: str) -> str:
@@ -93,7 +159,7 @@ class GoogleNewsRssSource(Source):
         stories: list[Story] = []
         seen_titles: set[str] = set()
         for url in urls:
-            feed = feedparser.parse(url)
+            feed = _fetch_feed(url)
             count = 0
             for entry in feed.entries:
                 when = _entry_datetime(entry)
