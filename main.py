@@ -164,7 +164,7 @@ def archive_to_gcs(cfg: Config, script: str, mp3: bytes, date_str: str) -> None:
 # --------------------------------------------------------------------------- #
 def main() -> int:
     load_dotenv()
-    # cfg = Config()
+    cfg = Config()
     # After Config(), which is what sets GOOGLE_CLOUD_PROJECT / GOOGLE_GENAI_USE_VERTEXAI.
     observability.setup(cfg)
     feeds = load_feeds()
