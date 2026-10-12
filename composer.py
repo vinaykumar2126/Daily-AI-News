@@ -8,6 +8,22 @@ predictable regardless of which curator produced the segments.
 from __future__ import annotations
 
 import datetime as dt
+import re
+
+# A rewrite can come back "empty" in two ways: a truly blank string, or a literal placeholder the
+# model types when its prompt tells it to stay silent (the Immigration prompt does this when there
+# is no genuine visa-policy news). The model emits things like "(no output)" or "[EMPTY]" — non-
+# blank text that would otherwise be spoken aloud as a segment. Treat those as blank so the segment
+# is dropped cleanly instead of the agent announcing "no output".
+_BLANK_SEGMENT = re.compile(
+    r"^[\s\(\[\]\)]*(no output|empty|none|n/?a|no (?:updates|news)\b[^.]*)[\s\(\[\]\)\.]*$",
+    re.I,
+)
+
+
+def _is_blank_segment(text: str) -> bool:
+    t = (text or "").strip()
+    return not t or bool(_BLANK_SEGMENT.match(t))
 
 # A spoken lead-in per segment position. The first uses "First up"; later ones rotate through
 # natural hand-offs. Falls back to a generic transition if there are more segments than phrases.
@@ -38,7 +54,7 @@ def _transition(index: int, total: int, name: str) -> str:
 def compose(segments: list[tuple[str, str]], date: dt.date | None = None) -> str:
     """segments: list of (feed_name, segment_text) in order. Returns the full spoken script."""
     date = date or dt.date.today()
-    segments = [(name, text.strip()) for name, text in segments if text and text.strip()]
+    segments = [(name, text.strip()) for name, text in segments if not _is_blank_segment(text)]
     if not segments:
         return ""
 
