@@ -1,7 +1,7 @@
 # ARCHITECTURE — Daily_News
-`Daily_News` · updated 2026-10-04 · _how the app fits together. Update when the structure changes._
+`Daily_News` · updated 2026-10-17 · _how the app fits together. Update when the structure changes._
 
-**In one line:** every morning it pulls news from several sources, an LLM rewrites it into a spoken script, turns that into audio, and emails me the clip.
+**In one line:** every morning it pulls news from several sources, an LLM rewrites it into a spoken briefing, and a voice agent **phones me** with it and answers follow-up questions.
 
 > The diagram below is [Mermaid](https://mermaid.js.org/). It renders as a graph on GitHub automatically, or in VS Code with the "Markdown Preview Mermaid Support" extension.
 
@@ -9,24 +9,38 @@
 
 ```mermaid
 flowchart TD
-    Sched[Cloud Scheduler · 7 AM] --> Run[Cloud Run Job → main.py]
+    Sched[Cloud Scheduler · 11:30 AM ET] --> Run[Cloud Run Job → python -m agent.sync --call]
     Run --> Loop{for each feed in feeds.yaml}
     Loop --> Fetch[sources/ · fetch + merge stories]
     Fetch --> Cur[curation/ · curator picks + ranks]
-    Cur --> Rewrite[pipeline.rewrite · Gemini writes the segment]
+    Cur --> Enr[pipeline.enrich_stories · fetch article text for thin stories]
+    Enr --> Rewrite[pipeline.rewrite · Gemini writes the segment]
     Rewrite --> Loop
     Loop -->|all segments done| Comp[composer.py · stitch into one script]
-    Comp --> TTS[main.synthesize_mp3 · Cloud TTS → MP3]
-    TTS --> Mail[main.send_email · Gmail]
-    Comp -.optional.-> Arc[archive_to_gcs]
+    Comp --> Doc[agent/context.py · narrative + source stories doc]
+    Doc --> Sync[ElevenLabs sync · knowledge base + anchor persona]
+    Sync --> Call[outbound call · Twilio number → my phone]
 ```
 
 **In plain words:**
-1. A timer (Cloud Scheduler) starts the job → runs `main.py`.
-2. `main.py` reads the feed list from `feeds.yaml`.
-3. For each feed: **fetch** stories from its sources → **curate** (pick the good ones) → **rewrite** into a spoken segment with Gemini.
-4. `composer.py` stitches all segments into one script (greeting + transitions + sign-off).
-5. `main.py` turns the script into an MP3 (Cloud TTS) and emails it. Optionally archives to GCS.
+1. A timer (Cloud Scheduler, 11:30 AM ET) starts the job → runs `python -m agent.sync --call`.
+2. It reads the feed list from `feeds.yaml`.
+3. For each feed: **fetch** stories from its sources → **curate** (pick the good ones) → **enrich**
+   headline-only stories with real article text → **rewrite** into a spoken segment with Gemini.
+4. `composer.py` stitches all segments into one script (greeting + transitions + sign-off). A
+   segment that came back blank or as a placeholder like "(no output)" is dropped, not spoken.
+5. `agent/context.py` packages the script plus the raw source stories into one knowledge doc.
+6. That doc is uploaded to the ElevenLabs agent, then ElevenLabs rings my phone. On the call the
+   agent reads the briefing and answers follow-ups from the source stories.
+
+`deploy.sh` overrides the image's entrypoint to get this path. The `Dockerfile` still says
+`python main.py`, which is the older MP3-by-email path (see below).
+
+### The older path: MP3 by email (`main.py`)
+
+Retired in production but still works locally (`DRY_RUN=1 python main.py`). It runs the same
+gather → curate → enrich → rewrite → compose steps, then `synthesize_mp3` (Cloud TTS, Chirp3-HD) →
+`send_email` (Gmail) → optional `archive_to_gcs`.
 
 ### The two LLM steps, and their temperature
 
@@ -43,26 +57,41 @@ ran at Gemini's default of 1.0; that is how a `$100,000 H-1B fee` once became a 
 different story selection and length each run. Export both as `0` when you need two eval runs to be
 comparable.
 
-## A second entry point: the realtime voice agent
+## The voice agent (how the phone call works)
 
-`main.py` makes the daily clip. `agent/sync.py` is a separate, optional path that reuses the same
-pipeline to keep a conversational agent's knowledge base current, so you can ask it follow-ups.
+`agent/sync.py` is the production entry point. It reuses the same pipeline, then hands the result
+to a voice **provider**.
 
 ```mermaid
 flowchart LR
     S[agent/sync.py] --> C[agent/context.py<br/>reuses gather + curate + rewrite]
-    C --> M[render_markdown<br/>→ today_knowledge.md]
+    C --> M[render_markdown<br/>narrative + source stories]
     M --> P{Provider · providers/base.py}
-    P --> E[ElevenLabs<br/>knowledge-base upload]
-    P -.scaffold.-> G[gemini_live.py]
-    P -.scaffold.-> R[retell.py]
+    P --> E[ElevenLabs<br/>sync + outbound call]
+    P -.stub.-> G[gemini_live.py]
+    P -.stub.-> R[retell.py]
     V[REALTIME_PROVIDER env] -.selects.-> P
 ```
 
-Same **strategy pattern** as the curator: a `Provider` contract behind `REALTIME_PROVIDER`. Only the
-knowledge-base refresh is actually built — `ElevenLabsProvider.sync()`. Its live-call methods
-(signed URL, outbound dial) and both other providers are still `NotImplementedError` stubs, so this
-branch can prepare the agent's knowledge but not yet hold the call.
+Same **strategy pattern** as the curator: a `Provider` contract behind `REALTIME_PROVIDER`.
+`ElevenLabsProvider` is fully built:
+- **`sync()`** uploads today's doc as a new dated knowledge-base document and attaches only that one
+  to the agent. It also pushes the host persona from `agent/prompts/anchor.md` as the system prompt
+  and re-asserts the `end_call` tool, so the persona lives in git, not the dashboard. Without
+  `end_call` the agent could *say* goodbye but never actually hang up.
+- **`place_outbound_call()`** asks ElevenLabs to ring `USER_PHONE_NUMBER` from the Twilio number
+  imported into ElevenLabs. ElevenLabs holds the Twilio credentials, so this code never talks to
+  Twilio directly. ⚠ ElevenLabs answers HTTP 200 with `success=False` for a refused call, so check
+  `success`, not the status code.
+- **Order matters:** sync first, then call. Dialling first means the agent discusses yesterday's news.
+- `create_session()` (browser/signed-URL mode) is still a stub. Gemini Live and Retell are stubs too.
+
+```bash
+python -m agent.sync --dry-run      # build + print the doc, touch nothing
+python -m agent.sync                # refresh knowledge only
+python -m agent.sync --call         # refresh, then ring (what prod runs)
+python -m agent.sync --call-only    # ring without rebuilding: tests telephony alone, skips ~2 min of pipeline
+```
 
 ## How a curator plugs in (the swappable brain)
 
@@ -96,18 +125,22 @@ flowchart TD
     Exit[flush before exit] --> CT
 ```
 
-One run is one trace:
+One run is one trace. The production (phone) run:
 
 ```
-daily_news.run                      curator, words, feeds, outcome
+daily_news.agent_sync               curator, feeds, provider, stories, outcome
 ├─ gather_stories (per feed)         → fetch_source per adapter, story counts
 ├─ feed  name="AI & Tech"
 │  ├─ curate                        curation.fallback, adk.session_id
 │  │  └─ invocation → agent_run → call_llm / execute_tool      ← ADK's own spans
 │  ├─ enrich_stories                enriched
 │  └─ rewrite                       gen_ai.request.model + input/output tokens
-├─ compose · synthesize_mp3 · send_email · archive_to_gcs
+├─ provider_sync                    provider
+└─ outbound_call                    conversation_id, call_sid
 ```
+
+The `main.py` run has the same middle, under a `daily_news.run` root, and ends with
+`compose · synthesize_mp3 · send_email · archive_to_gcs` instead of the last two spans.
 
 **The knobs** (all in `.env.example`):
 
@@ -165,21 +198,21 @@ python -m evals.compare --golden DATE                        # deterministic vs 
 ## Where things live
 | Path | Its job |
 |---|---|
-| `main.py` | Entry point. Orchestrates, then TTS + email + archive. |
-| `pipeline.py` | The core loop: gather → curate → rewrite → compose. |
+| `agent/` | **The production entry point.** `sync.py` (sync + call), `context.py` (builds the knowledge doc), `providers/` (ElevenLabs built; Gemini Live + Retell stubs), `prompts/anchor.md` (the host persona). |
+| `main.py` | Older entry point (MP3 by email). Orchestrates, then TTS + email + archive. Still the `Dockerfile` default. |
+| `pipeline.py` | The core loop: gather → curate → enrich → rewrite → compose. Shared by both entry points. |
 | `config.py` | Loads settings (env vars) + the feed list from `feeds.yaml`. |
 | `feeds.yaml` | **The knobs.** Topics, sources, word budgets. Edit here to change what the briefing covers. |
-| `sources/` | One adapter per source (TLDR AI web, Gmail, Google News, Hacker News, stocks). All return a `Story`. |
+| `sources/` | One adapter per source, all returning a `Story`. In use: `tldr_web`, `hackernews`, `rss` (publishers' own feeds), `stocks`. Still in the code but no longer used by any feed: `google_news_rss` (Google News 503s datacenter IPs) and `gmail_newsletter`. |
 | `curation/` | The swappable brain: `deterministic.py` + `agentic.py`, both behind `base.Curator`. |
-| `composer.py` | Joins segments into the final spoken script. |
+| `composer.py` | Joins segments into the final spoken script; drops blank/placeholder segments. |
 | `memory.py` | Cross-run memory (what past digests covered) — used by the agent. |
-| `prompts/` | One rewrite prompt per topic + `_shared_style.md`. Decides *how* each segment sounds. |
-| `agent/` | The optional voice-agent branch: `sync.py` (entry point), `context.py` (builds the doc), `providers/` (ElevenLabs + two scaffolds). |
+| `prompts/` | Per topic: a rewrite prompt (how it *sounds*) + a `curate_*.md` (how it's *ranked*), plus `_shared_style.md`. |
 | `evals/` | Quality testing: `capture.py` freezes input, `checks.py` code checks, `judge.py` my 3 LLM judges, `compare.py` A/B, `golden/` the frozen days. |
 | `evals/adk_metrics.py` | Google's own judges (ADK `hallucinations_v1` + per-rubric expectations), behind `--adk-metrics`. |
 | `observability.py` | Tracing bootstrap + span helpers. One import per entry point. |
 | `adk_apps/` | Dev-loop only, not part of a run: exposes the curator to `adk web` so its turns can be watched live. See below. |
-| `deploy.sh` / `Dockerfile` | Package + ship to Cloud Run. |
+| `deploy.sh` / `Dockerfile` | Package + ship to Cloud Run. `deploy.sh` overrides the entrypoint to `agent.sync --call` and owns the schedule. |
 
 ## Watching the curator live (`adk web`)
 
@@ -205,13 +238,16 @@ agents, so they never appear here. Use Cloud Trace for a whole run.
 - **`feeds.yaml`** — config, not code. New topic = new entry here.
 - **Evals** — grade a segment two ways: vs the sources (no answer key needed), and vs my hand-written `expectations.md`.
 - **Fail soft on anything non-essential.** A dead source is skipped, the agentic curator falls back
-  to deterministic, GCS archiving and all tracing swallow their own errors. The briefing ships.
+  to deterministic, a blank segment is dropped instead of spoken, and GCS archiving and all tracing
+  swallow their own errors. The briefing ships.
 
 ## How to extend
 - **Add a source** → new file in `sources/` implementing `fetch()`, register it, reference it in `feeds.yaml`.
 - **Add a topic** → add a feed block in `feeds.yaml` + a prompt in `prompts/`. No code.
 - **Change the brain** → `CURATOR=deterministic|agentic`, or add a strategy in `curation/`.
-- **Change voice / length** → `TTS_VOICE` env; `length_budget_words` per feed.
+- **Change the call time** → `SCHEDULE` / `TIMEZONE` in `deploy.sh`, then redeploy.
+- **Change how the host talks on the call** → `agent/prompts/anchor.md`; the next sync pushes it.
+- **Change voice / length** → the voice on the call is set in the ElevenLabs agent dashboard (`ELEVENLABS_VOICE_ID` is loaded by `config.py` but nothing uses it yet); `TTS_VOICE` only affects the MP3 path. Length: `length_budget_words` per feed.
 - **Change how factual the rewrite is** → `REWRITE_TEMPERATURE`, and the rules in `prompts/_shared_style.md`.
 - **Add a voice provider** → new file in `agent/providers/` implementing `sync()`, register it, set `REALTIME_PROVIDER`.
 - **Next agent you build** → make it ADK-native from the start so `adk web` works day one: `adk create`,
