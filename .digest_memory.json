@@ -363,5 +363,60 @@
         "source": "Hacker News"
       }
     ]
+  },
+  {
+    "date": "2026-10-11",
+    "items": [
+      {
+        "title": "Gemini Agent",
+        "url": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Ultrafast is rolling out today for GPT-6.1 Sol in the API, Codex, and ChatGPT Work",
+        "url": "https://threadreaderapp.com/thread/2108262812489531498.html?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "NVIDIA's Long-Video and World-Action Research",
+        "url": "https://github.com/NVlabs/LongLive?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Quicksand",
+        "url": "https://github.com/microsoft/quicksand?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
+        "url": "https://github.com/rociiu/talorys",
+        "source": "Hacker News"
+      },
+      {
+        "title": "Why is Speculative Decoding Fast?",
+        "url": "https://jbarrow.ai/2026-10-08-why-is-speculative-decoding-fast/?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "ATLAS: Evaluating Agents on Search-Intensive Tasks",
+        "url": "https://exa.ai/blog/atlas-benchmark?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Can AI automate Epoch?",
+        "url": "https://epoch.ai/publications/can-ai-automate-epoch?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "Anthropic Cyber Defense Initiative",
+        "url": "https://www.anthropic.com/news/anthropic-cyber-mission?utm_source=tldrai",
+        "source": "TLDR AI"
+      },
+      {
+        "title": "500B tokens later: Letting AI agents decompile a first-person shooter",
+        "url": "https://momo5502.com/posts/2026-10-09-game-decompilation/",
+        "source": "Hacker News"
+      }
+    ]
   }
 ]
