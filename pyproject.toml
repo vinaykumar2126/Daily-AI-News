@@ -1,0 +1,36 @@
+[project]
+name = "daily-news-mcp"
+version = "0.1.0"
+description = "MCP server exposing the Daily News engine (fetch, curate, rewrite AI/news) as tools."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Vinay Kumar Godavarti" }]
+keywords = ["mcp", "news", "ai", "llm", "gemini"]
+dependencies = [
+    "mcp>=1.2.0,<2",
+]
+
+[project.scripts]
+daily-news-mcp = "mcp_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# The MCP server (mcp_server.py) imports the app's runtime modules + prompt/feed data, so the
+# wheel must bundle them. evals/ and the web/deploy tooling are intentionally excluded.
+[tool.hatch.build.targets.wheel]
+include = [
+    "mcp_server.py",
+    "config.py",
+    "pipeline.py",
+    "composer.py",
+    "observability.py",
+    "agent/**",
+    "sources/**",
+    "curation/**",
+    "prompts/**",
+    "feeds.yaml",
+]

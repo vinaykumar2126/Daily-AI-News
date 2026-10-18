@@ -43,6 +43,48 @@ gcloud auth application-default login   # for Vertex + TTS credentials
 You should receive the briefing email within a minute. Check the transcript reads naturally and
 the audio has no mangled acronyms/numbers.
 
+## MCP server
+
+The news engine (fetch → curate → rewrite) is also exposed as an [MCP](https://modelcontextprotocol.io)
+server, so any MCP client (Claude Desktop, Cursor, …) can pull AI/news content. It runs locally
+and uses **your own** credentials — nothing is sent to a hosted service. (The voice/phone-call
+feature is deliberately not exposed over MCP.)
+
+Tools:
+
+| Tool | Credentials | What it does |
+|------|-------------|--------------|
+| `list_topics()` | none | the topics covered ("AI & Tech", "US Headlines", …) |
+| `get_stories(topic)` | none | today's raw source stories for a topic |
+| `get_briefing(topic?)` | Google Cloud / Vertex | curated, rewritten briefing (one topic, or all) |
+
+Run it:
+
+```bash
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python mcp_server.py           # speaks MCP over stdio
+```
+
+Wire it into Claude Desktop (`claude_desktop_config.json`) — keys stay on your machine:
+
+```jsonc
+{
+  "mcpServers": {
+    "daily-news": {
+      "command": "/absolute/path/to/.venv/bin/python",
+      "args": ["/absolute/path/to/Daily_News/mcp_server.py"],
+      "env": {
+        "GOOGLE_CLOUD_PROJECT": "your-gcp-project"   // only needed for get_briefing
+      }
+    }
+  }
+}
+```
+
+For `get_briefing`, also run `gcloud auth application-default login` (it calls Gemini on Vertex).
+`list_topics` and `get_stories` need no credentials. Once published, `uvx daily-news-mcp` runs it
+without a local checkout.
+
 ## Test the deployed job
 
 ```bash

@@ -12,6 +12,9 @@ google-adk[gcp]>=2.9.0
 # 0.64b0+ requires opentelemetry-api ~=1.43, but google-adk pins api <=1.42.1 -> unresolvable.
 opentelemetry-instrumentation-google-genai>=0.7b1,<1
 opentelemetry-instrumentation<0.64b0
+# MCP server (mcp_server.py) — exposes the news engine as tools for any MCP client.
+# Pinned <2 to use the stable FastMCP 1.x API (2.x renamed it to MCPServer).
+mcp>=1.2.0,<2
 # Realtime interactive agent (phone-call mode)
 elevenlabs>=1.0.0
 twilio>=9.0.0

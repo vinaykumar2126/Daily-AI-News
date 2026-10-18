@@ -63,8 +63,11 @@ class Feed:
 @dataclass
 class Config:
     def __init__(self) -> None:
-        self.gmail_address = self._req("GMAIL_ADDRESS")
-        self.gmail_app_password = self._req("GMAIL_APP_PASSWORD")
+        # Optional, not required at construction: the app now has non-email entry points (the
+        # realtime agent sync and the MCP server) that never send mail. The email delivery path
+        # validates these at send time; the deployed job still provides both via secrets.
+        self.gmail_address = os.environ.get("GMAIL_ADDRESS", "")
+        self.gmail_app_password = os.environ.get("GMAIL_APP_PASSWORD", "")
         self.recipient = os.environ.get("RECIPIENT", self.gmail_address)
 
         # LLM: Gemini on Vertex AI
