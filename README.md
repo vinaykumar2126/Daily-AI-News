@@ -105,9 +105,17 @@ Wire it into Claude Desktop (`claude_desktop_config.json`) — keys stay on your
 }
 ```
 
-`get_briefing` also needs `gcloud auth application-default login` (it calls Gemini on Vertex);
-`list_topics` and `get_stories` need no credentials. Once published, `uvx daily-news-mcp` runs it
-without a local checkout.
+`list_topics` and `get_stories` need no credentials or extra packages. `get_briefing` additionally
+requires the **`briefing` extra** (the Gemini/Vertex stack) plus `gcloud auth application-default
+login`:
+
+```bash
+pip install "daily-news-mcp[briefing]"    # adds google-genai + google-adk for get_briefing
+```
+
+Without the extra, `get_briefing` returns a clear "install the briefing extra" message; the keyless
+tools still work. Once published to PyPI, `uvx daily-news-mcp` runs the server without a local
+checkout (`uvx "daily-news-mcp[briefing]"` to include get_briefing).
 
 ## Deploy
 

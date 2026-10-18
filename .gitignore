@@ -8,3 +8,8 @@ briefings/
 .digest_memory.json
 # adk web local dev server scratch
 .adk/
+
+# Python packaging build artifacts (the MCP wheel/sdist)
+dist/
+build/
+*.egg-info/
