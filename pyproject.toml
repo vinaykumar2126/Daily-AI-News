@@ -1,6 +1,6 @@
 [project]
 name = "daily-news-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server exposing the Daily News engine (fetch, curate, rewrite AI/news) as tools."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -8,8 +8,22 @@ license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "Vinay Kumar Godavarti" }]
 keywords = ["mcp", "news", "ai", "llm", "gemini"]
+# Core deps cover import + the keyless tools (list_topics, get_stories): config needs PyYAML,
+# the sources need feedparser (import-time) plus beautifulsoup4 and yfinance (used at runtime).
 dependencies = [
     "mcp>=1.2.0,<2",
+    "PyYAML>=6.0",
+    "feedparser>=6.0.0",
+    "beautifulsoup4>=4.12.0",
+    "yfinance>=0.2.40",
+]
+
+# get_briefing curates + rewrites via Gemini on Vertex; those imports are lazy, so this heavy
+# stack is an optional extra. Install with: pip install "daily-news-mcp[briefing]"
+[project.optional-dependencies]
+briefing = [
+    "google-genai>=0.3.0",
+    "google-adk[gcp]>=2.9.0",
 ]
 
 [project.scripts]
@@ -34,3 +48,4 @@ include = [
     "prompts/**",
     "feeds.yaml",
 ]
+

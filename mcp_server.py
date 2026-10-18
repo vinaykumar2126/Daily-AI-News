@@ -77,6 +77,14 @@ def get_briefing(topic: str | None = None) -> str:
     across all topics. Requires Google Cloud / Vertex AI credentials (set GOOGLE_CLOUD_PROJECT
     and run `gcloud auth application-default login`), because curation and rewriting call Gemini.
     """
+    try:
+        import google.genai  # noqa: F401  (lazy: only get_briefing needs the Gemini stack)
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "get_briefing needs the optional 'briefing' extra (Gemini on Vertex). Install it with: "
+            "pip install 'daily-news-mcp[briefing]'"
+        ) from exc
+
     import agent.context as agent_context
 
     cfg = _cfg()
