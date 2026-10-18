@@ -1,8 +1,8 @@
 [project]
 name = "daily-news-mcp"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP server exposing the Daily News engine (fetch, curate, rewrite AI/news) as tools."
-readme = "README.md"
+readme = "README_pypi.md"
 requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
