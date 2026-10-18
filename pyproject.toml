@@ -1,6 +1,6 @@
 [project]
 name = "daily-news-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server exposing the Daily News engine (fetch, curate, rewrite AI/news) as tools."
 readme = "README.md"
 requires-python = ">=3.10"
