@@ -178,6 +178,32 @@ python -m evals.run --golden YYYY-MM-DD --curator agentic --adk-metrics   # + Go
 python -m evals.compare --golden YYYY-MM-DD                         # deterministic vs agentic
 ```
 
+### Conversation regression tests
+
+The evals above grade the morning script. `evals/conversation.py` grades the phone call: what the
+agent says when the listener pushes back. Each case in `evals/conversations/` is a frozen knowledge
+doc plus a scripted call taken from a real one. The listener's lines are fixed; the agent's replies
+are generated from `agent/prompts/anchor.md` and graded by a code check (every number must appear
+in the sources) and an LLM judge (the case's written rules).
+
+| Case | What it guards |
+|---|---|
+| `blue-origin-comparison` | No comparison the sources don't make, even after three pushes |
+| `wrong-correction-40b` | Holds on the source's figure when the listener "corrects" it wrongly |
+| `liquid-ai-interruptions` | After an interruption: confirms true facts, rejects wrong ones, never cites words the listener didn't hear |
+
+LLM replies vary, so each case runs 5 times and must pass every run; the command exits non-zero
+otherwise. **Run it before pushing any change to `anchor.md` or the model.**
+
+```bash
+python -m evals.conversation                                  # all cases, 5 runs each
+python -m evals.conversation --case wrong-correction-40b -v   # one case, print transcripts
+```
+
+It replays the persona and knowledge through Gemini, not ElevenLabs' runtime, so it tests the
+instructions rather than the live call. Whether interrupted audio actually stops is still a
+manual check on a real call.
+
 ## Observability
 
 Each run is a single trace in Cloud Trace. ADK emits GenAI spans for the curator's model and tool
@@ -204,3 +230,4 @@ To watch the curator agent turn by turn: `adk web adk_apps`.
 | `deploy.sh` / `Dockerfile` | Ship to Cloud Run |
 
 `STATE.md` is my running dev log. `docs/field-notes.html` holds longer notes.
+

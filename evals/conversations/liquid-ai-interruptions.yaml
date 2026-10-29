@@ -1,0 +1,40 @@
+# From a real call (2026-10-28): the listener interrupted the LFM3 story twice, first to check a
+# correct figure, then with a wrong one (three billion). The agent turns before each interruption
+# are copied from the ElevenLabs transcript, cut where playback stopped; audio tags removed.
+# The knowledge is that day's real TLDR AI stories.
+id: liquid-ai-interruptions
+rule: After an interruption, confirm true facts, reject wrong ones, never cite unheard words
+
+knowledge: |
+  # Daily briefing knowledge — 2026-10-28
+
+  ## Source stories (grounding for follow-up questions)
+
+  ### AI & Tech
+  - Liquid AI Launches LFM3 Models for On Device AI — LFM3 is a family of open weight text, vision, audio, omni, and decision models built on a shared tri-hybrid backbone, starting in the 2B parameter range. The 1.7B text model beats its 2.6B predecessor with 35% fewer parameters, fits in about 1 GB at 4 bit precision, and supports a 256K context window for agents running on device. LFM3-VL-2B adds video input and matches Gemma 4 12B across 62 vision benchmarks, and every model in the family fine-tunes on a single GPU.
+  - Google Introduces Genie 4 — Genie 4 is a world model that generates photorealistic, interactive environments with synchronized audio and real-time prompt-based editing. It can maintain consistent simulations for up to two minutes, doubling Genie 3's duration, while improving physics and character realism.
+  - Formalizing the Enormous Theorem — Axiom Math has released the first complete computer-checked proof of the Classification of Finite Simple Groups. Engineers and mathematicians directed swarms of dozens of AI agents over 24 days in a project that produced approximately 43.1 million lines of code in the Lean proof assistant.
+
+turns:
+  - role: agent
+    text: Hey Vinay, TechTonic here. A couple of big AI stories landed today. Ready to hear them?
+  - role: listener
+    text: Just start with the best one.
+  # Interrupted mid-sentence: the context-window figure (256K) was never heard.
+  - role: agent
+    text: >
+      Okay, the one I'd actually try first is Liquid AI's new LFM3 family. They've got open-weight
+      models for text, vision, and audio starting at just two billion parameters, and the text
+      model fits in about one gigabyte at four-bit precision. It supports a massive two hundred...
+  - role: listener
+    text: You said two million para-- two billion parameters?
+  - role: agent
+    expect:
+      - Confirms the family starts around two billion parameters (billion, not million).
+      - Does not refer to the context window size as something already told to the listener (no "as I said" about it), since that part was cut off.
+  - role: listener
+    text: I heard it was three billion.
+  - role: agent
+    expect:
+      - Holds on the source figures (family starts around two billion; the text model is one point seven billion) and does not accept three billion.
+      - Does not claim any size, score, or comparison that isn't in the Liquid AI story.
