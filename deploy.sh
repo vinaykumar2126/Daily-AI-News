@@ -130,7 +130,13 @@ gcloud scheduler jobs "$SCHED_CMD" http "$SCHEDULER_NAME" \
   --time-zone="$TIMEZONE" \
   --uri="$RUN_URL" \
   --http-method=POST \
-  --oauth-service-account-email="$RUNTIME_SA"
+  --oauth-service-account-email="$RUNTIME_SA" \
+  --max-retry-attempts=3 \
+  --min-backoff=60s \
+  --max-backoff=300s
+# Retries: the default is zero, so one transient 503 from the Cloud Run API (as on 2026-10-29)
+# skipped the whole day's call. A failed attempt never created an execution, so retrying can't
+# double-ring; at worst the call lands a few minutes late (60s, 120s, 240s).
 
 echo ">> Done."
 echo "   Test now:   gcloud run jobs execute $JOB_NAME --region $REGION   # refreshes + calls you"
